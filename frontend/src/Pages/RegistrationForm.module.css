@@ -1,0 +1,45 @@
+.register {
+  display: flex;
+
+  align-items: center;
+  flex-direction: column;
+}
+.register__form {
+  display: flex;
+  flex-direction: column;
+  color: grey;
+}
+.register__form label {
+  border-bottom: 1px solid grey;
+  margin-bottom: 30px;
+  padding-bottom: 5px;
+}
+.register__form label input {
+  border: none;
+  outline: none;
+}
+.register__header {
+  display: flex;
+}
+.register__signup {
+  width: 250px;
+  height: 45px;
+  background-color: rgb(4, 189, 140);
+  color: white;
+  letter-spacing: 2px;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.register__signin {
+  width: 250px;
+  height: 45px;
+  background-color: transparent;
+  border: 1px solid rgb(20, 85, 146);
+  color: rgb(20, 85, 146);
+  letter-spacing: 2px;
+  border-radius: 20px;
+  cursor: pointer;
+}
