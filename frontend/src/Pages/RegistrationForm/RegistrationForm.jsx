@@ -28,39 +28,39 @@ const RegistrationForm = () => {
       </div>
       <form className={styles.register__form} onSubmit={handleSubmit}>
         <label>
-          Email:
           <input
             type="email"
             value={email}
+            placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </label>
         <label>
-          Password:
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            placeholder="Password"
           />
         </label>
         <label>
-          Confirm Password:
           <input
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
+            placeholder="Confirm password"
           />
         </label>
         <label>
-          First Name:
           <input
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             required
+            placeholder="First name"
           />
         </label>
         <button className={styles.register__signup} type="submit">
