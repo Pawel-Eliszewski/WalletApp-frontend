@@ -1,8 +1,10 @@
 import * as React from "react";
 import { useState } from "react";
-import styles from "./RegistrationForm.module.css";
-import wallet from "../../../public/wallet.svg";
-
+import styles from "./RegisterForm.module.css";
+import wallet from "../../assets/mini-wallet.svg";
+import emailIcon from "../../assets/email-icon.svg";
+import lockIcon from "../../assets/lock-icon.svg";
+import personIcon from "../../assets/person-icon.svg";
 const RegistrationForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,14 +14,11 @@ const RegistrationForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Tutaj możesz dodać kod do przetwarzania danych rejestracji, na przykład wysłanie ich na serwer
-
     setEmail("");
     setPassword("");
     setConfirmPassword("");
     setFirstName("");
   };
-
   return (
     <div className={styles.register}>
       <div className={styles.register__header}>
@@ -28,15 +27,17 @@ const RegistrationForm = () => {
       </div>
       <form className={styles.register__form} onSubmit={handleSubmit}>
         <label>
+          <img src={emailIcon} alt="email" />
           <input
             type="email"
             value={email}
-            placeholder="Email"
+            placeholder="E-mail"
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </label>
         <label>
+          <img src={lockIcon} alt="lock" />
           <input
             type="password"
             value={password}
@@ -46,6 +47,7 @@ const RegistrationForm = () => {
           />
         </label>
         <label>
+          <img src={lockIcon} alt="lock" />
           <input
             type="password"
             value={confirmPassword}
@@ -55,6 +57,7 @@ const RegistrationForm = () => {
           />
         </label>
         <label>
+          <img src={personIcon} alt="person" />
           <input
             type="text"
             value={firstName}
@@ -66,10 +69,9 @@ const RegistrationForm = () => {
         <button className={styles.register__signup} type="submit">
           REGISTER
         </button>
-        <button className={styles.register__signin}>LOGIN</button>
+        <button className={styles.register__signin}>LOG IN</button>
       </form>
     </div>
   );
 };
-
 export default RegistrationForm;

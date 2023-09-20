@@ -1,8 +1,10 @@
 .register {
   display: flex;
-
+  min-width: 320px;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  max-width: 1300px;
 }
 .register__form {
   display: flex;
@@ -14,17 +16,25 @@
   margin-bottom: 30px;
   padding-bottom: 5px;
 }
+
 .register__form label input {
   border: none;
   outline: none;
+  background-color: transparent;
+}
+.register__form label img {
+  margin-right: 40px;
 }
 .register__header {
   display: flex;
 }
+.register__header img {
+  margin-right: 10px;
+}
 .register__signup {
   width: 250px;
   height: 45px;
-  background-color: rgb(4, 189, 140);
+  background-color: var(--primary-income-color);
   color: white;
   letter-spacing: 2px;
   border-radius: 20px;
@@ -42,4 +52,23 @@
   letter-spacing: 2px;
   border-radius: 20px;
   cursor: pointer;
+}
+@media (min-width: 768px) {
+  .register {
+    width: 533px;
+    height: 616px;
+    border-radius: 8px;
+    background-color: white;
+    z-index: 9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .register__form {
+    display: flex;
+    align-items: center;
+  }
+  .register__form label {
+    width: 380px;
+  }
 }
