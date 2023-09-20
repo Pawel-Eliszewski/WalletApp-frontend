@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import Balance from "../Balance/Balance";
@@ -33,3 +32,9 @@ export default function Chart({ arrColors, arrMoney, consumption }) {
     </div>
   );
 }
+
+Chart.propTypes = {
+  arrColors: PropTypes.array.isRequired,
+  arrMoney: PropTypes.array.isRequired,
+  consumption: PropTypes.number.isRequired,
+};
