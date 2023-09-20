@@ -1,0 +1,92 @@
+.wrapper {
+    width: 100%;
+    max-width: 540px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.logoWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.appName {
+    margin: 0;
+    width: 74px;
+    height: 17px;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userName {
+    color: var(--primary-gray-font-color);
+    margin: 0;
+    font-family: 'Circe', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: 0em;
+    text-align: bottom;
+}
+
+.iconExit {
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin-left: 10px;
+}
+
+.title {
+    font-family: Poppins;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 36px;
+    letter-spacing: 0em;
+}
+
+.transactionTypeBox {
+    display: flex;
+}
+
+.btnGreen {
+    background-color: var(--primary-income-color);
+    width: 300px;
+    height: 50px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.btnTransparent {
+    background: none;
+    width: 300px;
+    height: 50px;
+    border-radius: 20px;
+    border: 1px solid var(--household-products-diagram-color);
+    cursor: pointer;
+    color: var(--household-products-diagram-color);
+}
