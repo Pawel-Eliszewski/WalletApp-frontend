@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styles from "./LoginForm.module.css";
 import wallet from "../../assets/mini-wallet.svg";
-import emailIcon from "../../assets/email-icon.svg";
-import lockIcon from "../../assets/lock-icon.svg";
+import emailIcon from "../../assets/emailIcon.svg";
+import lockIcon from "../../assets/lockIcon.svg";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");

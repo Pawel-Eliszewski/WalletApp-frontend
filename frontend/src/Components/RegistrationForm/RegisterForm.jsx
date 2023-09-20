@@ -2,9 +2,9 @@ import * as React from "react";
 import { useState } from "react";
 import styles from "./RegisterForm.module.css";
 import wallet from "../../assets/mini-wallet.svg";
-import emailIcon from "../../assets/email-icon.svg";
-import lockIcon from "../../assets/lock-icon.svg";
-import personIcon from "../../assets/person-icon.svg";
+import emailIcon from "../../assets/emailIcon.svg";
+import lockIcon from "../../assets/lockIcon.svg";
+import personIcon from "../../assets/personIcon.svg";
 const RegistrationForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

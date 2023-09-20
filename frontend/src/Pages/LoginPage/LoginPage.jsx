@@ -2,8 +2,8 @@ import * as React from "react";
 import { useState } from "react";
 import LoginForm from "../../Components/LoginForm/LoginForm";
 import styles from "./LoginPage.module.css";
-import frametablet from "../../assets/icon-main-tablet.png";
-import framedesktop from "../../assets/icon-main.png";
+import frametablet from "../../assets/tablet-frame.svg";
+import framedesktop from "../../assets/desktop-frame.svg";
 
 const LoginPage = () => {
   return (
