@@ -1,0 +1,96 @@
+.wrapper {
+    width: 100%;
+    max-width: 768px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px 15px;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+
+.logoWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.appName {
+    margin: 0;
+    width: 74px;
+    height: 17px;
+    display: block;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userName {
+    color: var(--primary-gray-font-color);
+    margin: 0;
+    font-family: "Circe", sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+.iconExit {
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin-left: 10px;
+}
+
+.textExit {
+    display: none;
+    margin: 0;
+    padding: 0;
+}
+
+.boxExit {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+    .userName {
+        padding-right: 12px;
+        border-right: 1px solid var(--primary-gray-font-color);
+    }
+
+    .textExit {
+        color: var(--primary-gray-font-color);
+        display: block;
+    }
+
+    .wrapper {
+        max-width: 1280px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .wrapper {
+        max-width: 100%;
+    }
+}

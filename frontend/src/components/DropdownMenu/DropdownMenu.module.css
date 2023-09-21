@@ -1,7 +1,7 @@
 .dropdown {
     margin: 0 auto;
     z-index: 100;
-    min-width: 280px;
+    width: 280px;
     position: relative;
 }
 
@@ -68,7 +68,7 @@
 .dropdownBtn {
     z-index: -1;
     display: block;
-    min-width: 280px;
+    width: 280px;
     margin: 0 auto;
 }
 
@@ -82,4 +82,18 @@
     width: 18px;
     height: 9px;
     transform: rotate(180deg);
+}
+
+@media screen and (min-width: 767px) {
+
+    .dropdown,
+    .dropdownBtn,
+    .dropdownBtnActive {
+        width: 394px;
+    }
+
+    .dropdownContent .item {
+        padding: 5px;
+        padding-left: 20px;
+    }
 }
