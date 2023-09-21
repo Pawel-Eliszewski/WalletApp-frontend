@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mui/icons-material": "^5.14.9",
+    "@mui/material": "^5.14.10",
     "modern-normalize": "^2.0.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
