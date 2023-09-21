@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import css from "./Header.module.css";
 
 export const Header = ({ userName }) => {
@@ -5,7 +6,7 @@ export const Header = ({ userName }) => {
     // zmienia flagę w redux store: global.isModalLogoutOpen na true
   };
 
-  userName = "Wasiljenko"; //docelowo będzie pobierane z redux
+  userName = 'Wasiljenko'; //docelowo będzie pobierane z redux
   const isModalLogoutOpen = false; //docelowo będzie pobierane z redux
 
   return (
@@ -29,4 +30,8 @@ export const Header = ({ userName }) => {
       )}
     </div>
   );
+};
+
+Header.propTypes = {
+  userName: PropTypes.string.isRequired,
 };
