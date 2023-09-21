@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 import { Doughnut } from "react-chartjs-2";
 import Balance from "../Balance/Balance";
 import styles from "./Chart.module.css";
