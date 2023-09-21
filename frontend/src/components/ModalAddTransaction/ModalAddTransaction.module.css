@@ -7,7 +7,6 @@
     flex-direction: column;
     margin: 0 auto;
     height: 100%;
-    /* height: 600px; */
 }
 
 .header {
@@ -74,16 +73,25 @@
     display: flex;
     justify-content: space-around;
     min-width: 257px;
-    padding-block: 40px;
-    background-color: none;
+    padding-block: 30px;
+    color: gray;
 }
 
 .switchContainer label {
     margin: 0;
 }
 
+.income {
+    color: var(--primary-income-color);
+    font-weight: 600;
+}
+
+.expense {
+    color: var(--primary-expanse-color);
+    font-weight: 600;
+}
+
 .form {
-    /* width: 100%; */
     min-width: 280px;
     display: flex;
     flex-direction: column;
@@ -97,6 +105,7 @@
     min-width: 280px;
     border: none;
     padding-left: 12px;
+    padding-bottom: 5px;
     border-bottom: 1px solid gray;
 }
 
@@ -112,6 +121,7 @@
 .money:focus,
 .comment:focus {
     outline: none;
+    border-bottom: 1px solid black;
 }
 
 .btnGreen {
@@ -132,4 +142,5 @@
     border: 1px solid var(--household-products-diagram-color);
     cursor: pointer;
     color: var(--household-products-diagram-color);
+    margin-bottom: 15px;
 }

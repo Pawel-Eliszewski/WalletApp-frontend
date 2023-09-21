@@ -5,14 +5,16 @@ import css from "./Calendar.module.css";
 
 export const Calendar = ({ date, onChange }) => {
   return (
-    <Datetime
-      className={css.calendar}
-      initialValue={date}
-      onChange={(newDate) => onChange(newDate)}
-      dateFormat="DD.MM.YYYY"
-      timeFormat={false}
-      closeOnSelect="true"
-    />
+    <div className={css.calendarBox}>
+      <Datetime
+        className={css.calendar}
+        initialValue={date}
+        onChange={(newDate) => onChange(newDate)}
+        dateFormat="DD.MM.YYYY"
+        timeFormat={false}
+        closeOnSelect="true"
+      />
+    </div>
   );
 };
 
