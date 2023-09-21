@@ -7,12 +7,16 @@
 
 .logo {
 	height: 44px;
+	border-radius: 10px;
+	overflow: hidden;
+	transition: box-shadow 0.3s ease-in-out;
 }
 
 .logo:active,
 .logo:focus,
 .logo:hover {
 	box-shadow: 0px 0px 5px 0px rgba(66, 68, 90, 1);
+	fill: var(--household-products-diagram-color);
 }
 
 .description {
@@ -29,6 +33,7 @@
 		display: flex;
 		align-items: center;
 		cursor: pointer;
+		transition: font-weight 0.3s ease-in-out;
 	}
 
 	.item:active,
@@ -39,6 +44,7 @@
 
 	.logo {
 		height: 18px;
+		border-radius: 3px;
 	}
 
 	.description {

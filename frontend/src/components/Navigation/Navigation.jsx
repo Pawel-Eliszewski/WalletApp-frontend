@@ -7,7 +7,7 @@ export const Navigation = () => {
 			<ul className={css.nav}>
 				<li>
 					<a className={css.item} to="#">
-						<img className={css.logo} src="/assets/icon-home.png" />
+						<img className={css.logo} src="/assets/icon-home.svg" />
 						<p className={css.description}>Home</p>
 					</a>
 				</li>
