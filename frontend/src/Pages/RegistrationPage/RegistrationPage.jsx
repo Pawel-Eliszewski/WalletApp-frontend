@@ -1,7 +1,6 @@
-//RegForm
 import * as React from "react";
 import { useState } from "react";
-import RegistrationForm from "../../Components/RegisterForm/RegisterForm";
+import RegistrationForm from "../../Components/RegistrationForm/RegisterForm";
 import styles from "./RegistrationPage.module.css";
 import frametablet from "../../assets/tablet-frame.svg";
 import framedesktop from "../../assets/desktop-frame.svg";

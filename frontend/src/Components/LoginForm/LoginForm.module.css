@@ -18,15 +18,17 @@
   flex-direction: column;
   color: grey;
 }
-.login__form label {
+.field {
   border-bottom: 1px solid grey;
   margin-bottom: 30px;
   padding-bottom: 5px;
+  position: relative;
 }
-.login__form label input {
+.login__field {
   border: none;
   outline: none;
   background-color: transparent;
+  width: 300px;
 }
 .login__form label img {
   margin-right: 40px;
@@ -54,6 +56,12 @@
   border-radius: 20px;
   cursor: pointer;
   margin-bottom: 20px;
+}
+.error {
+  position: absolute;
+  color: red;
+  right: -50px;
+  top: 0;
 }
 @media (min-width: 768px) {
   .login {

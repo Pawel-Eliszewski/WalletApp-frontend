@@ -1,5 +1,9 @@
 import * as React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+
+import validationSchema from "../../Utils/yupValidationSchema";
 import styles from "./RegisterForm.module.css";
 import wallet from "../../assets/mini-wallet.svg";
 import emailIcon from "../../assets/emailIcon.svg";
@@ -11,66 +15,98 @@ const RegistrationForm = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [firstName, setFirstName] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
-    setFirstName("");
+  const initialValues = {
+    email: "",
+    password: "",
+    confirmPassword: "",
+    firstName: "",
   };
+
+  const handleSubmit = (values, { resetForm }) => {
+    // Obsługa wysłania formularza, można dodać tutaj logikę przetwarzania danych
+
+    // Po zakończeniu przetwarzania zresetuj formularz
+    resetForm(initialValues);
+  };
+
   return (
     <div className={styles.register}>
       <div className={styles.register__header}>
         <img src={wallet} alt="Wallet" />
         <h2>Wallet</h2>
       </div>
-      <form className={styles.register__form} onSubmit={handleSubmit}>
-        <label>
-          <img src={emailIcon} alt="email" />
-          <input
-            type="email"
-            value={email}
-            placeholder="E-mail"
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          <img src={lockIcon} alt="lock" />
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            placeholder="Password"
-          />
-        </label>
-        <label>
-          <img src={lockIcon} alt="lock" />
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-            placeholder="Confirm password"
-          />
-        </label>
-        <label>
-          <img src={personIcon} alt="person" />
-          <input
-            type="text"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            required
-            placeholder="First name"
-          />
-        </label>
-        <button className={styles.register__signup} type="submit">
-          REGISTER
-        </button>
-        <button className={styles.register__signin}>LOG IN</button>
-      </form>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        {() => (
+          <Form className={styles.register__form}>
+            <div className={styles.field}>
+              <img src={emailIcon} alt="email" />
+              <Field
+                className={styles.register__field}
+                type="email"
+                name="email"
+                placeholder="E-mail"
+              />
+              <ErrorMessage
+                name="email"
+                component="div"
+                className={styles.error}
+              />
+            </div>
+            <div className={styles.field}>
+              <img src={lockIcon} alt="lock" />
+              <Field
+                className={styles.register__field}
+                type="password"
+                name="password"
+                placeholder="Password"
+              />
+              <ErrorMessage
+                name="password"
+                component="div"
+                className={styles.error}
+              />
+            </div>
+            <div className={styles.field}>
+              <img src={lockIcon} alt="lock" />
+              <Field
+                className={styles.register__field}
+                type="password"
+                name="confirmPassword"
+                placeholder="Confirm password"
+              />
+              <ErrorMessage
+                name="confirmPassword"
+                component="div"
+                className={styles.error}
+              />
+            </div>
+            <div className={styles.field}>
+              <img src={personIcon} alt="person" />
+              <Field
+                className={styles.register__field}
+                type="text"
+                name="firstName"
+                placeholder="First name"
+              />
+              <ErrorMessage
+                name="firstName"
+                component="div"
+                className={styles.error}
+              />
+            </div>
+            <button className={styles.register__signup} type="submit">
+              REGISTER
+            </button>
+            <Link to="./LoginPage">
+              <button className={styles.register__signin}>LOG IN</button>
+            </Link>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };

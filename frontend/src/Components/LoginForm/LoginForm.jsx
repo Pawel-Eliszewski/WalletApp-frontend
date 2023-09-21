@@ -1,18 +1,22 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import validationSchema from "../../Utils/yupValidationSchema";
 import styles from "./LoginForm.module.css";
 import wallet from "../../assets/mini-wallet.svg";
 import emailIcon from "../../assets/emailIcon.svg";
 import lockIcon from "../../assets/lockIcon.svg";
 
 const LoginForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const initialValues = {
+    email: "",
+    password: "",
+  };
+  const handleSubmit = (values, { resetForm }) => {
+    // Obsługa wysłania formularza, można dodać tutaj logikę uwierzytelniania
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    setEmail("");
-    setPassword("");
+    // Po zakończeniu przetwarzania zresetuj formularz
+    resetForm(initialValues);
   };
 
   return (
@@ -21,34 +25,50 @@ const LoginForm = () => {
         <img src={wallet} alt="Wallet" />
         <h2>Wallet</h2>
       </div>
-      <form className={styles.login__form} onSubmit={handleSubmit}>
-        <label>
-          <img src={emailIcon} alt="email" />
-          <input
-            type="email"
-            value={email}
-            placeholder="E-mail"
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          <img src={lockIcon} alt="lock" />
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            placeholder="Password"
-          />
-        </label>
-        <button className={styles.login__signin} type="submit">
-          LOG IN
-        </button>
-        <button className={styles.login__signup} type="submit">
-          REGISTER
-        </button>
-      </form>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        {() => (
+          <Form className={styles.login__form}>
+            <div className={styles.field}>
+              <img src={emailIcon} alt="email" />
+              <Field
+                className={styles.login__field}
+                type="email"
+                name="email"
+                placeholder="E-mail"
+              />
+              <ErrorMessage
+                name="email"
+                component="div"
+                className={styles.error}
+              />
+            </div>
+            <div className={styles.field}>
+              <img src={lockIcon} alt="lock" />
+              <Field
+                className={styles.login__field}
+                type="password"
+                name="password"
+                placeholder="Password"
+              />
+              <ErrorMessage
+                name="password"
+                component="div"
+                className={styles.error}
+              />
+            </div>
+            <button className={styles.login__signin} type="submit">
+              LOG IN
+            </button>
+            <Link to="./RegistrationPage">
+              <button className={styles.login__signup}>REGISTER</button>
+            </Link>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };
