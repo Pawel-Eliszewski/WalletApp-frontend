@@ -16,4 +16,6 @@
 body {
   color: #000000;
   font-family: 'Circe', sans-serif, 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
 }
