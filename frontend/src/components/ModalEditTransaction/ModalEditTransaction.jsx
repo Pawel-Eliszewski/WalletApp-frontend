@@ -1,34 +1,78 @@
 import PropTypes from "prop-types";
-import { Header } from "../Header/Header";
-import { Calendar } from "../ModalAddTransaction/Calendar/Calendar";
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { selectIsModalEditTransactionOpen } from "../../redux/global/selectors";
+import { setIsModalEditTransactionOpen } from "../../redux/global/globalSlice";
+import { updateTransaction } from "../../redux/finance/operations";
+import { Header } from "../Header/Header";
+import { DropdownMenu } from "../DropdownMenu/DropdownMenu";
+import { Calendar } from "../ModalAddTransaction/Calendar/Calendar";
 import { Show } from "@chakra-ui/react";
 import css from "./ModalEditTransaction.module.css";
 
 export const ModalEditTransaction = ({ userName, transactionDetails }) => {
-  const [isModalEditTransactionOpen, setIsModalEditTransactionOpen] =
-    useState(true);
+  const dispatch = useDispatch();
 
-  // TO DO jeśli category !== "null" odpal onSubmit
+  const isModalEditTransactionOpen = useSelector(
+    selectIsModalEditTransactionOpen
+  );
 
   // roboczo, bo nie ma propsów
   transactionDetails = {
     type: "expense",
     category: "Car",
-    sum: 5000,
+    amount: "5000",
     date: "20.09.2023",
     comment: "test",
   };
 
-  const { type, category, sum, date, comment } = transactionDetails;
+  const { type, category, amount, date, comment } = transactionDetails;
+
+  const [updatedCategory, setUpdatedCategory] = useState(category);
+  const [updatedDate, setUpdatedDate] = useState(date);
+
+  const handleUpdatedCategory = (category) => {
+    setUpdatedCategory(category);
+  };
+
+  const handleUpdatedDate = (newDate) => {
+    setUpdatedDate(newDate.format("DD.MM.YYYY"));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const updatedAmount = form.elements.amount.value;
+    const updatedComment = form.elements.comment.value;
+    dispatch(
+      updateTransaction({
+        type: type,
+        category: updatedCategory || "income",
+        amount: updatedAmount,
+        date: updatedDate,
+        comment: updatedComment,
+      })
+    );
+    console.log({
+      type: type,
+      category: updatedCategory,
+      amount: updatedAmount,
+      date: updatedDate,
+      comment: updatedComment,
+    });
+    form.reset();
+    dispatch(setIsModalEditTransactionOpen(false));
+  };
 
   const handleModalClose = () => {
-    setIsModalEditTransactionOpen(false);
+    dispatch(setIsModalEditTransactionOpen(false));
   };
 
   const incomeClass = type === "income" ? css.income : "";
   const expenseClass = type === "expense" ? css.expense : "";
-  const backdropClass = isModalEditTransactionOpen
+
+  // zmienić wykrzyknik jak już będą propsy!!
+  const backdropClass = !isModalEditTransactionOpen
     ? css.backdropIsOpen
     : css.backdrop;
 
@@ -45,30 +89,31 @@ export const ModalEditTransaction = ({ userName, transactionDetails }) => {
           <p className={expenseClass}>Expense</p>
         </div>
         <form className={css.form}>
-          {/* {!isIncome ? (
-            <DropdownMenu
-              expenseCategory={expenseCategory}
-              onClick={handleExpenseCategory}
-            />
-          ) : null} */}
           {type === "expense" ? (
-            <input placeholder={category} className={css.category}></input>
+            <DropdownMenu
+              category={updatedCategory}
+              onClick={handleUpdatedCategory}
+            />
           ) : null}
           <div className={css.formInnerBox}>
             <input
-              name="Sum"
+              name="Amount"
               className={css.money}
-              placeholder={sum}
+              placeholder={amount}
               required
             ></input>
-            <Calendar date={date} />
+            <Calendar date={updatedDate} onChange={handleUpdatedDate} />
           </div>
           <textarea
             name="Comment"
             className={css.comment}
             placeholder={comment}
           ></textarea>
-          <button type="submit" className={css.btnGreen}>
+          <button
+            onSubmit={handleSubmit}
+            type="submit"
+            className={css.btnGreen}
+          >
             SAVE
           </button>
         </form>

@@ -61,15 +61,6 @@
     gap: 30px;
 }
 
-.category {
-    width: 280px;
-    padding: 5px;
-    padding-left: 12px;
-    background: white;
-    border: none;
-    border-bottom: 1px solid gray;
-}
-
 .money {
     width: 280px;
     border: none;
@@ -178,11 +169,8 @@
     .formInnerBox {
         display: flex;
         flex-direction: row;
+        font-weight: 600;
         width: 394px
-    }
-
-    .category {
-        width: 394px;
     }
 
     .money {
@@ -196,5 +184,4 @@
         width: 394px;
         height: 32px;
     }
-
 }
