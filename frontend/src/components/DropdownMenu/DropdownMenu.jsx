@@ -2,10 +2,10 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import css from "./DropdownMenu.module.css";
 
-export const DropdownMenu = ({ expenseCategory, onClick }) => {
+export const DropdownMenu = ({ category, onClick }) => {
   const [isActive, setIsActive] = useState(false);
 
-  let expenseCategories = [
+  let categories = [
     "Main expenses",
     "Products",
     "Car",
@@ -20,9 +20,7 @@ export const DropdownMenu = ({ expenseCategory, onClick }) => {
 
   const iconArrowClass = isActive ? css.iconArrowUp : css.iconArrowDown;
   const categoryClass =
-    expenseCategory !== "Select a category"
-      ? css.dropdownBtnActive
-      : css.dropdownBtn;
+    category !== "Select a category" ? css.dropdownBtnActive : css.dropdownBtn;
 
   return (
     <div className={css.dropdown}>
@@ -32,14 +30,14 @@ export const DropdownMenu = ({ expenseCategory, onClick }) => {
         }}
         className={categoryClass}
       >
-        {expenseCategory}
+        {category}
         <img className={iconArrowClass} src="./assets/icon-arrow.svg"></img>
       </div>
       <div
         className={css.dropdownContent}
         style={{ display: isActive ? "block" : "none" }}
       >
-        {expenseCategories.map((category) => (
+        {categories.map((category) => (
           <div
             key={category}
             onClick={() => {
@@ -57,6 +55,6 @@ export const DropdownMenu = ({ expenseCategory, onClick }) => {
 };
 
 DropdownMenu.propTypes = {
-  expenseCategory: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
 };
