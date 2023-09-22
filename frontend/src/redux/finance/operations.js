@@ -44,6 +44,21 @@ export const deleteTransaction = createAsyncThunk(
   }
 );
 
+export const updateTransaction = createAsyncThunk(
+  "finance/updateTransaction",
+  async (data, thunkAPI) => {
+    try {
+      const response = await axios.patch(
+        `/users/${data.userId}/transactions/${data.transactionId}`,
+        data.transactionData
+      );
+      return response.data;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.message);
+    }
+  }
+);
+
 export const fetchBalance = createAsyncThunk(
   "finance/fetchBalance",
   async (userId, thunkAPI) => {

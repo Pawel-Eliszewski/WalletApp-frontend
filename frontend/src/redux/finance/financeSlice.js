@@ -4,6 +4,7 @@ import {
   fetchTransactions,
   addTransaction,
   deleteTransaction,
+  updateTransaction,
   fetchBalance,
 } from "./operations";
 
@@ -43,6 +44,14 @@ const financeSlice = createSlice({
         state.data.splice(index, 1);
       })
       .addCase(deleteTransaction.rejected, handleRejected)
+      .addCase(updateTransaction.fulfilled, (state, action) => {
+        state.error = null;
+        const index = state.data.findIndex(
+          (transaction) => transaction.id === action.payload.id
+        );
+        state.data.splice(index, 1, action.payload);
+      })
+      .addCase(updateTransaction.rejected, handleRejected)
       .addCase(fetchBalance.fulfilled, (state, action) => {
         state.error = null;
         state.totalBalance = action.payload;
