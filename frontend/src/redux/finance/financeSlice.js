@@ -9,9 +9,8 @@ import {
 
 const initialState = {
   totalBalance: 0,
-  transactions: [],
+  data: [],
   error: null,
-  data: {},
 };
 
 const handleRejected = (state, action) => {
@@ -28,20 +27,20 @@ const financeSlice = createSlice({
     builder
       .addCase(fetchTransactions.fulfilled, (state, action) => {
         state.error = null;
-        state.transactions = action.payload;
+        state.data = action.payload;
       })
       .addCase(fetchTransactions.rejected, handleRejected)
       .addCase(addTransaction.fulfilled, (state, action) => {
         state.error = null;
-        state.transactions.push(action.payload);
+        state.data.push(action.payload);
       })
       .addCase(addTransaction.rejected, handleRejected)
       .addCase(deleteTransaction.fulfilled, (state, action) => {
         state.error = null;
-        const index = state.transactions.findIndex(
+        const index = state.data.findIndex(
           (transaction) => transaction.id === action.payload.id
         );
-        state.transactions.splice(index, 1);
+        state.data.splice(index, 1);
       })
       .addCase(deleteTransaction.rejected, handleRejected)
       .addCase(fetchBalance.fulfilled, (state, action) => {
