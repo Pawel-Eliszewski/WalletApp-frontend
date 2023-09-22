@@ -52,4 +52,4 @@ const financeSlice = createSlice({
   },
 });
 
-export const financeReduser = financeSlice.reducer;
+export const financeReducer = financeSlice.reducer;
