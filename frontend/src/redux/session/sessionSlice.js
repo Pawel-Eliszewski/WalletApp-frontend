@@ -12,7 +12,7 @@ const initialState = {
   isRefreshing: false,
   error: null,
   token: null,
-  user: { name: null, email: null },
+  user: null,
 };
 
 const sessionSlice = createSlice({

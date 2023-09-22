@@ -1,4 +1,8 @@
 import PropTypes from "prop-types";
+import { useSelector, useDispatch } from "react-redux";
+import { selectIsModalAddTransactionOpen } from "../../redux/global/selectors";
+import { setIsModalAddTransactionOpen } from "../../redux/global/globalSlice";
+import { addTransaction } from "../../redux/finance/operations";
 import { Header } from "../Header/Header";
 import { Calendar } from "./Calendar/Calendar";
 import { useState } from "react";
@@ -8,36 +12,48 @@ import { Show } from "@chakra-ui/react";
 import css from "./ModalAddTransaction.module.css";
 
 export const ModalAddTransaction = ({ userName }) => {
+  const dispatch = useDispatch();
+
+  const isModalAddTransactionOpen = useSelector(
+    selectIsModalAddTransactionOpen
+  );
+
   const today = new Date();
-  const [isModalAddTransactionOpen, setIsModalAddTransactionOpen] =
-    useState(true);
   const [date, setDate] = useState(today.toLocaleDateString());
-  const [isIncome, setIsIncome] = useState(false);
-  const [expenseCategory, setExpenseCategory] = useState("Select a category");
+  const [type, setType] = useState("expense");
+  const [category, setCategory] = useState("Select a category");
 
   const handleNewDate = (newDate) => {
     setDate(newDate.format("DD.MM.YYYY"));
   };
 
-  const handleIsIncome = () => {
-    setIsIncome((current) => !current);
+  const handleType = () => {
+    type === "expense" ? setType("income") : setType("expense");
   };
 
-  const handleExpenseCategory = (category) => {
-    setExpenseCategory(category);
+  const handleCategory = (category) => {
+    setCategory(category);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const amount = form.elements.amount.value;
+    const comment = form.elements.comment.value;
+    dispatch(addTransaction({ type, category, amount, date, comment }));
+    dispatch(setIsModalAddTransactionOpen(false));
   };
 
   const handleModalClose = () => {
-    setIsModalAddTransactionOpen(false);
+    dispatch(setIsModalAddTransactionOpen(false));
   };
 
-  const incomeClass = isIncome ? css.income : "";
-  const expenseClass = !isIncome ? css.expense : "";
+  const incomeClass = type === "income" ? css.income : "";
+  const expenseClass = type === "expense" ? css.expense : "";
+
   const backdropClass = isModalAddTransactionOpen
     ? css.backdropIsOpen
     : css.backdrop;
-
-  // jeśli category !== "null" odpal onSubmit
 
   return (
     <div className={backdropClass}>
@@ -48,22 +64,32 @@ export const ModalAddTransaction = ({ userName }) => {
         <h2 className={css.title}>Add transaction</h2>
         <div className={css.switchContainer}>
           <p className={incomeClass}>Income</p>
-          <CustomizedMuiSwitch onChange={handleIsIncome} />
+          <CustomizedMuiSwitch onChange={handleType} />
           <p className={expenseClass}>Expense</p>
         </div>
         <form className={css.form}>
-          {!isIncome ? (
-            <DropdownMenu
-              expenseCategory={expenseCategory}
-              onClick={handleExpenseCategory}
-            />
+          {type === "expense" ? (
+            <DropdownMenu category={category} onClick={handleCategory} />
           ) : null}
           <div className={css.formInnerBox}>
-            <input className={css.money} placeholder="0.00" required></input>
+            <input
+              name="amount"
+              className={css.money}
+              placeholder="0.00"
+              required
+            ></input>
             <Calendar date={date} onChange={handleNewDate} />
           </div>
-          <textarea className={css.comment} placeholder="Comment"></textarea>
-          <button type="submit" className={css.btnGreen}>
+          <textarea
+            name="comment"
+            className={css.comment}
+            placeholder="Comment"
+          ></textarea>
+          <button
+            type="submit"
+            onSubmit={handleSubmit}
+            className={css.btnGreen}
+          >
             ADD
           </button>
         </form>

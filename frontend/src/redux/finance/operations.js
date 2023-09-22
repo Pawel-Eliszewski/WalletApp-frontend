@@ -7,8 +7,8 @@ export const fetchTransactions = createAsyncThunk(
   "finance/fetchAllTransactions",
   async (userId, thunkAPI) => {
     try {
-      const responce = await axios.get(`/users/${userId}/transactions`);
-      return responce.data;
+      const response = await axios.get(`/users/${userId}/transactions`);
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -19,11 +19,11 @@ export const addTransaction = createAsyncThunk(
   "finance/addTransaction",
   async (data, thunkAPI) => {
     try {
-      const responce = await axios.post(
+      const response = await axios.post(
         `/users/${data.userId}/transactions`,
         data.transaction
       );
-      return responce.data;
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -48,8 +48,8 @@ export const fetchBalance = createAsyncThunk(
   "finance/fetchBalance",
   async (userId, thunkAPI) => {
     try {
-      const responce = await axios.get(`/users/${userId}/balance`);
-      return responce.data;
+      const response = await axios.get(`/users/${userId}/balance`);
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
