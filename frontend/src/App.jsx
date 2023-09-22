@@ -1,5 +1,6 @@
 import { ToastContainer } from "react-toastify";
 // import { ModalAddTransaction } from "./components/ModalAddTransaction/ModalAddTransaction";
+import { ModalEditTransaction } from "./components/ModalEditTransaction/ModalEditTransaction";
 import "./App.css";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         theme="colored"
       />
       {/* <ModalAddTransaction /> */}
+      <ModalEditTransaction />
     </>
   );
 }
