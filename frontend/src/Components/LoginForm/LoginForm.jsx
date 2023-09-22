@@ -12,11 +12,24 @@ const LoginForm = () => {
     email: "",
     password: "",
   };
-  const handleSubmit = (values, { resetForm }) => {
-    // Obsługa wysłania formularza, można dodać tutaj logikę uwierzytelniania
+  const handleSubmit = async (values, { resetForm }) => {
+    const formData = {
+      email: values.email,
+      password: values.password,
+    };
 
-    // Po zakończeniu przetwarzania zresetuj formularz
-    resetForm(initialValues);
+    try {
+      const response = await axios.post("/api/login", formData);
+
+      if (response.status === 200) {
+        alert("Login Success");
+        resetForm();
+      } else {
+        alert("Login error");
+      }
+    } catch (error) {
+      alert("An error occurred while processing the request.");
+    }
   };
 
   return (
@@ -63,9 +76,9 @@ const LoginForm = () => {
             <button className={styles.login__signin} type="submit">
               LOG IN
             </button>
-            <Link to="./RegistrationPage">
-              <button className={styles.login__signup}>REGISTER</button>
-            </Link>
+            {/*<Link to="./RegistrationPage">*/}
+            <button className={styles.login__signup}>REGISTER</button>
+            {/*</Link>*/}
           </Form>
         )}
       </Formik>

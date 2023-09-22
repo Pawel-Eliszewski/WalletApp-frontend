@@ -4,7 +4,6 @@
   align-items: center;
   flex-direction: column;
   position: relative;
-  max-width: 1300px;
 }
 .register__form {
   display: flex;
@@ -22,7 +21,6 @@
   border: none;
   outline: none;
   background-color: transparent;
-  width: 300px;
 }
 .register__form label img {
   margin-right: 40px;
@@ -49,17 +47,15 @@
   width: 250px;
   height: 45px;
   background-color: transparent;
-  border: 1px solid rgb(20, 85, 146);
-  color: rgb(20, 85, 146);
+  border: 1px solid #4a56e2;
+  color: #4a56e2;
   letter-spacing: 2px;
   border-radius: 20px;
   cursor: pointer;
 }
 .error {
-  position: absolute;
   color: red;
-  right: -50px;
-  top: 0;
+  font-size: 12px;
 }
 @media (min-width: 768px) {
   .register {
@@ -76,7 +72,7 @@
     display: flex;
     align-items: center;
   }
-  .register__form label {
+  .register__field {
     width: 380px;
   }
 }

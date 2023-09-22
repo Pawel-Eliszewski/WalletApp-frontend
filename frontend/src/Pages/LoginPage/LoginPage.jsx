@@ -15,7 +15,7 @@ const LoginPage = () => {
           <img src={frametablet} alt="frametablet" />
         )}
 
-        <h3>Finance App</h3>
+        <h3 className={styles.finance}>Finance App</h3>
         <div className={styles.firstelipse}></div>
         <div className={styles.secondelipse}></div>
       </div>

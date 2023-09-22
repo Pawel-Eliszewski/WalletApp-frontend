@@ -7,6 +7,11 @@
 .secondelipse {
   display: none;
 }
+.finance {
+  font-size: 30px;
+  line-height: 45px;
+  font-weight: 400;
+}
 
 @media (min-width: 768px) {
   .register__container {
@@ -24,7 +29,8 @@
     display: flex;
     align-items: center;
     margin-bottom: 40px;
-    margin-right: 175px;
+    justify-content: space-between;
+    width: 520px;
     z-index: 9;
   }
   .firstelipse {
@@ -78,6 +84,6 @@
     top: 420px;
   }
   .firstelipse {
-    box-shadow: 0 0 30px var(--car-diagram-color);
+    box-shadow: 0 0 30px 50px var(--car-diagram-color);
   }
 }

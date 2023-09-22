@@ -1,7 +1,7 @@
 .login {
   display: flex;
   min-width: 320px;
-  max-width: 1300px;
+
   align-items: center;
   flex-direction: column;
   position: relative;
@@ -28,7 +28,6 @@
   border: none;
   outline: none;
   background-color: transparent;
-  width: 300px;
 }
 .login__form label img {
   margin-right: 40px;
@@ -41,8 +40,8 @@
   outline: none;
   border: none;
   background-color: transparent;
-  border: 1px solid rgb(20, 85, 146);
-  color: rgb(20, 85, 146);
+  border: 1px solid #4a56e2;
+  color: #4a56e2;
   cursor: pointer;
 }
 .login__signin {
@@ -58,10 +57,8 @@
   margin-bottom: 20px;
 }
 .error {
-  position: absolute;
   color: red;
-  right: -50px;
-  top: 0;
+  font-size: 12px;
 }
 @media (min-width: 768px) {
   .login {
@@ -78,7 +75,7 @@
     display: flex;
     align-items: center;
   }
-  .login__form label {
+  .login__field {
     width: 380px;
   }
 }

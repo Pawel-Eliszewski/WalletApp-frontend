@@ -2,6 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import axios from "axios";
 
 import validationSchema from "../../Utils/yupValidationSchema";
 import styles from "./RegisterForm.module.css";
@@ -9,12 +10,8 @@ import wallet from "../../assets/mini-wallet.svg";
 import emailIcon from "../../assets/emailIcon.svg";
 import lockIcon from "../../assets/lockIcon.svg";
 import personIcon from "../../assets/personIcon.svg";
-const RegistrationForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
 
+const RegistrationForm = () => {
   const initialValues = {
     email: "",
     password: "",
@@ -22,11 +19,26 @@ const RegistrationForm = () => {
     firstName: "",
   };
 
-  const handleSubmit = (values, { resetForm }) => {
-    // Obsługa wysłania formularza, można dodać tutaj logikę przetwarzania danych
+  const handleSubmit = async (values, { resetForm }) => {
+    const formData = {
+      email: values.email,
+      password: values.password,
+      confirmPassword: values.confirmPassword,
+      firstName: values.firstName,
+    };
 
-    // Po zakończeniu przetwarzania zresetuj formularz
-    resetForm(initialValues);
+    try {
+      const response = await axios.post("/api/register", formData);
+
+      if (response.status === 200) {
+        alert("Registration Success");
+        resetForm();
+      } else {
+        alert("Registration error");
+      }
+    } catch (error) {
+      alert("An error occurred while processing the request.");
+    }
   };
 
   return (
@@ -101,9 +113,9 @@ const RegistrationForm = () => {
             <button className={styles.register__signup} type="submit">
               REGISTER
             </button>
-            <Link to="./LoginPage">
-              <button className={styles.register__signin}>LOG IN</button>
-            </Link>
+            {/*<Link to="./LoginPage">*/}
+            <button className={styles.register__signin}>LOG IN</button>
+            {/* </Link>*/}
           </Form>
         )}
       </Formik>

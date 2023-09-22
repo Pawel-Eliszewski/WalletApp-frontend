@@ -1,15 +1,15 @@
 import * as Yup from "yup";
 const validationSchema = Yup.object().shape({
   email: Yup.string()
-    .email("Nieprawidłowy format adresu email")
-    .required("Pole jest wymagane"),
+    .email("Invalid email address format")
+    .required("The field is required"),
   password: Yup.string()
-    .min(6, "Hasło musi zawierać co najmniej 6 znaków")
-    .max(12, "Hasło musi zawierać maksymalnie 12 znaków")
-    .required("Pole jest wymagane"),
+    .min(6, "The password must contain at least 6 characters")
+    .max(12, "The password must contain a maximum of 12 characters")
+    .required("The field is required"),
   confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password"), null], "Hasła muszą być identyczne")
-    .required("Pole jest wymagane"),
-  firstName: Yup.string().required("Pole jest wymagane"),
+    .oneOf([Yup.ref("password"), null], "Passwords must be identical")
+    .required("The field is required"),
+  firstName: Yup.string().required("The field is required"),
 });
 export default validationSchema;
