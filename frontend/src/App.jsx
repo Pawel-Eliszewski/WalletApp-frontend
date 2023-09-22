@@ -1,11 +1,13 @@
-import { ToastContainer } from "react-toastify";
-// import { ModalAddTransaction } from "./components/ModalAddTransaction/ModalAddTransaction";
-import "./App.css";
 import { useEffect, lazy } from "react";
+import { ToastContainer } from "react-toastify";
+// import Chart from "./components/Chart/Chart";
+// import { ModalAddTransaction } from "./components/ModalAddTransaction/ModalAddTransaction";
+// import { ModalEditTransaction } from "./components/ModalEditTransaction/ModalEditTransaction";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsRefreshing } from "./redux/session/selectors";
 import { refreshUser } from "./redux/session/operations";
 import Loader from "./components/Loader/Loader";
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -13,7 +15,7 @@ function App() {
 
   useEffect(() => {
     const func = async () => {
-      await dispatch(refreshUser());
+      dispatch(refreshUser());
     };
     func();
   }, []);
@@ -35,6 +37,8 @@ function App() {
         theme="colored"
       />
       {/* <ModalAddTransaction /> */}
+      {/* <ModalEditTransaction /> */}
+      {/* <Chart /> */}
     </>
   );
 }

@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectIsModalAddTransactionOpen } from "../../redux/global/selectors";
 import { setIsModalAddTransactionOpen } from "../../redux/global/globalSlice";
 import { addTransaction } from "../../redux/finance/operations";
 import { Header } from "../Header/Header";
 import { Calendar } from "./Calendar/Calendar";
-import { useState } from "react";
 import { CustomizedMuiSwitch } from "./CustomizedMuiSwitch/CustomizedMuiSwitch";
 import { DropdownMenu } from "../DropdownMenu/DropdownMenu";
 import { Show } from "@chakra-ui/react";
@@ -37,10 +37,21 @@ export const ModalAddTransaction = ({ userName }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const selectedCategory =
+      category === "Select a category" ? "income" : category;
     const form = e.target;
     const amount = form.elements.amount.value;
     const comment = form.elements.comment.value;
-    dispatch(addTransaction({ type, category, amount, date, comment }));
+    dispatch(
+      addTransaction({
+        type: type,
+        category: selectedCategory,
+        amount: amount,
+        date: date,
+        comment: comment,
+      })
+    );
+    form.reset();
     dispatch(setIsModalAddTransactionOpen(false));
   };
 
@@ -51,7 +62,8 @@ export const ModalAddTransaction = ({ userName }) => {
   const incomeClass = type === "income" ? css.income : "";
   const expenseClass = type === "expense" ? css.expense : "";
 
-  const backdropClass = isModalAddTransactionOpen
+  // zmienić wykrzyknik jak już będą propsy!!
+  const backdropClass = !isModalAddTransactionOpen
     ? css.backdropIsOpen
     : css.backdrop;
 

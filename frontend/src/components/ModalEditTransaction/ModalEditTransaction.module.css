@@ -22,10 +22,11 @@
 
 .switchContainer {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     width: 257px;
     padding-block: 30px;
     color: gray;
+    font-weight: 600;
 }
 
 .switchContainer label {
@@ -34,12 +35,14 @@
 
 .income {
     color: var(--primary-income-color);
-    font-weight: 600;
+}
+
+.slash {
+    padding-inline: 10px;
 }
 
 .expense {
     color: var(--primary-expanse-color);
-    font-weight: 600;
 }
 
 .form {
@@ -64,7 +67,6 @@
     padding-left: 12px;
     padding-bottom: 5px;
     border-bottom: 1px solid gray;
-    font-weight: 600;
 }
 
 .comment {
@@ -167,6 +169,7 @@
     .formInnerBox {
         display: flex;
         flex-direction: row;
+        font-weight: 600;
         width: 394px
     }
 
