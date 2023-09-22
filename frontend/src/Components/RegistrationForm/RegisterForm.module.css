@@ -1,0 +1,78 @@
+.register {
+  display: flex;
+  min-width: 320px;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+.register__form {
+  display: flex;
+  flex-direction: column;
+  color: grey;
+}
+.field {
+  border-bottom: 1px solid grey;
+  margin-bottom: 30px;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+.register__field {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+.register__form label img {
+  margin-right: 40px;
+}
+.register__header {
+  display: flex;
+}
+.register__header img {
+  margin-right: 10px;
+}
+.register__signup {
+  width: 250px;
+  height: 45px;
+  background-color: var(--primary-income-color);
+  color: white;
+  letter-spacing: 2px;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.register__signin {
+  width: 250px;
+  height: 45px;
+  background-color: transparent;
+  border: 1px solid #4a56e2;
+  color: #4a56e2;
+  letter-spacing: 2px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.error {
+  color: red;
+  font-size: 12px;
+}
+@media (min-width: 768px) {
+  .register {
+    width: 533px;
+    height: 616px;
+    border-radius: 8px;
+    background-color: white;
+    z-index: 9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .register__form {
+    display: flex;
+    align-items: center;
+  }
+  .register__field {
+    width: 380px;
+  }
+}
