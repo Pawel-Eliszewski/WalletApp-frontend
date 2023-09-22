@@ -16,10 +16,10 @@
 .login__form {
   display: flex;
   flex-direction: column;
-  color: grey;
+  color: rgba(189, 189, 189, 0.7);
 }
 .field {
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid rgba(189, 189, 189, 0.7);
   margin-bottom: 30px;
   padding-bottom: 5px;
   position: relative;
@@ -60,13 +60,17 @@
   color: red;
   font-size: 12px;
 }
+.h2 {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 45px;
+}
 @media (min-width: 768px) {
   .login {
     width: 520px;
     height: 468px;
     border-radius: 8px;
-    background-color: white;
-
+    background-color: rgba(255, 255, 255, 1);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -77,5 +81,11 @@
   }
   .login__field {
     width: 380px;
+  }
+  .register__header {
+    margin-top: -70px;
+  }
+  .field {
+    margin-bottom: 50px;
   }
 }

@@ -33,7 +33,7 @@ const LoginForm = () => {
     <div className={styles.login}>
       <div className={styles.login__header}>
         <img src="/assets/icon-wallet.svg" alt="Wallet" />
-        <h2>Wallet</h2>
+        <h2 className={styles.h2}>Wallet</h2>
       </div>
       <Formik
         initialValues={initialValues}

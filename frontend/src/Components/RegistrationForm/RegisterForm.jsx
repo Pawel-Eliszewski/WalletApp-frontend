@@ -1,15 +1,9 @@
-import * as React from "react";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 
 import validationSchema from "../../Utils/yupValidationSchema";
 import styles from "./RegisterForm.module.css";
-import wallet from "../../assets/mini-wallet.svg";
-import emailIcon from "../../assets/emailIcon.svg";
-import lockIcon from "../../assets/lockIcon.svg";
-import personIcon from "../../assets/personIcon.svg";
 
 const RegistrationForm = () => {
   const initialValues = {
@@ -44,8 +38,8 @@ const RegistrationForm = () => {
   return (
     <div className={styles.register}>
       <div className={styles.register__header}>
-        <img src={wallet} alt="Wallet" />
-        <h2>Wallet</h2>
+        <img src="/assets/icon-wallet.svg" alt="Wallet" />
+        <h2 className={styles.h2}>Wallet</h2>
       </div>
       <Formik
         initialValues={initialValues}
@@ -55,7 +49,7 @@ const RegistrationForm = () => {
         {() => (
           <Form className={styles.register__form}>
             <div className={styles.field}>
-              <img src={emailIcon} alt="email" />
+              <img src="/assets/emailIcon.svg" alt="email" />
               <Field
                 className={styles.register__field}
                 type="email"
@@ -69,7 +63,7 @@ const RegistrationForm = () => {
               />
             </div>
             <div className={styles.field}>
-              <img src={lockIcon} alt="lock" />
+              <img src="/assets/lockIcon.svg" alt="lock" />
               <Field
                 className={styles.register__field}
                 type="password"
@@ -83,7 +77,7 @@ const RegistrationForm = () => {
               />
             </div>
             <div className={styles.field}>
-              <img src={lockIcon} alt="lock" />
+              <img src="/assets/lockIcon.svg" alt="lock" />
               <Field
                 className={styles.register__field}
                 type="password"
@@ -97,7 +91,7 @@ const RegistrationForm = () => {
               />
             </div>
             <div className={styles.field}>
-              <img src={personIcon} alt="person" />
+              <img src="/assets/personIcon.svg" alt="person" />
               <Field
                 className={styles.register__field}
                 type="text"
