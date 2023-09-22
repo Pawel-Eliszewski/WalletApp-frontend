@@ -1,0 +1,184 @@
+.container {
+    width: 100%;
+    max-width: 540px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    background-color: white;
+    padding-bottom: 25px;
+}
+
+.title {
+    font-family: Poppins;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 35px;
+    letter-spacing: 0em;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.switchContainer {
+    display: flex;
+    justify-content: space-around;
+    width: 257px;
+    padding-block: 30px;
+    color: gray;
+}
+
+.switchContainer label {
+    margin: 0;
+}
+
+.income {
+    color: var(--primary-income-color);
+    font-weight: 600;
+}
+
+.expense {
+    color: var(--primary-expanse-color);
+    font-weight: 600;
+}
+
+.form {
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 15px;
+}
+
+.formInnerBox {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.money {
+    width: 280px;
+    border: none;
+    padding-left: 12px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid gray;
+}
+
+.comment {
+    resize: none;
+    width: 280px;
+    height: 84px;
+    border: none;
+    padding-left: 12px;
+    border-bottom: 1px solid gray;
+}
+
+.money:focus,
+.comment:focus {
+    outline: none;
+    border-bottom: 1px solid black;
+}
+
+.btnGreen {
+    background-color: var(--primary-income-color);
+    width: 300px;
+    height: 50px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    transform: scale(1);
+    transition: 250ms;
+}
+
+.btnGreen:hover,
+.btnGreen:focus,
+.btnCancel:hover,
+.btnCancel:focus {
+    transform: scale(1.1);
+    transition: 250ms;
+}
+
+.btnCancel {
+    background: none;
+    width: 300px;
+    height: 50px;
+    border-radius: 20px;
+    border: 1px solid var(--household-products-diagram-color);
+    cursor: pointer;
+    color: var(--household-products-diagram-color);
+    transform: scale(1);
+    transition: 250ms;
+}
+
+@media screen and (min-width: 768px) {
+    .backdrop {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        transform: scale(0);
+        transition-duration: 250ms;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    .backdropIsOpen {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        visibility: visible;
+        z-index: 3;
+        transform: scale(1);
+        background-color: rgba(0, 0, 0, 0.25);
+        transition-duration: 250ms;
+        pointer-events: all;
+        transform: none;
+    }
+
+    .container {
+        position: fixed;
+        z-index: 4;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 20px;
+        padding-top: 40px;
+        padding-bottom: 60px;
+    }
+
+    .title {
+        font-size: 30px;
+    }
+
+    .form {
+        width: 394px;
+        font-size: 18px;
+    }
+
+    .formInnerBox {
+        display: flex;
+        flex-direction: row;
+        width: 394px
+    }
+
+    .money {
+        width: 190px;
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .comment {
+        text-align: start;
+        width: 394px;
+        height: 32px;
+    }
+
+}

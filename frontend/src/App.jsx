@@ -1,5 +1,6 @@
-import "./App.css";
 import { ToastContainer } from "react-toastify";
+import { ModalAddTransaction } from "./components/ModalAddTransaction/ModalAddTransaction";
+import "./App.css";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         pauseOnHover
         theme="colored"
       />
+      <ModalAddTransaction />
     </>
   );
 }
