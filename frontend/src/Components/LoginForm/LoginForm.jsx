@@ -1,11 +1,8 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import validationSchema from "../../Utils/yupValidationSchema";
 import styles from "./LoginForm.module.css";
-import wallet from "../../assets/mini-wallet.svg";
-import emailIcon from "../../assets/emailIcon.svg";
-import lockIcon from "../../assets/lockIcon.svg";
+import axios from "axios";
 
 const LoginForm = () => {
   const initialValues = {
@@ -35,7 +32,7 @@ const LoginForm = () => {
   return (
     <div className={styles.login}>
       <div className={styles.login__header}>
-        <img src={wallet} alt="Wallet" />
+        <img src="/assets/icon-wallet.svg" alt="Wallet" />
         <h2>Wallet</h2>
       </div>
       <Formik
@@ -46,7 +43,7 @@ const LoginForm = () => {
         {() => (
           <Form className={styles.login__form}>
             <div className={styles.field}>
-              <img src={emailIcon} alt="email" />
+              <img src="/assets/emailIcon.svg" alt="email" />
               <Field
                 className={styles.login__field}
                 type="email"
@@ -60,7 +57,7 @@ const LoginForm = () => {
               />
             </div>
             <div className={styles.field}>
-              <img src={lockIcon} alt="lock" />
+              <img src="assets/lockIcon.svg" alt="lock" />
               <Field
                 className={styles.login__field}
                 type="password"

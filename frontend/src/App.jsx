@@ -1,8 +1,9 @@
 import { ToastContainer } from "react-toastify";
 // import { ModalAddTransaction } from "./components/ModalAddTransaction/ModalAddTransaction";
 import "./App.css";
-import LoginPage from "./Pages/LoginPage/LoginPage.jsx";
-import RegistrationPage from "./Pages/RegistrationPage/RegistrationPage.jsx";
+import RegistrationPage from "./Pages/RegistrationPage/RegistrationPage";
+// import LoginPage from "./Pages/LoginPage/LoginPage.jsx";
+// import RegistrationPage from "./Pages/RegistrationPage/RegistrationPage.jsx";
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
         pauseOnHover
         theme="colored"
       />
+      {/* <LoginPage /> */}
+      <RegistrationPage />
       {/* <ModalAddTransaction /> */}
     </>
   );

@@ -1,18 +1,14 @@
-import * as React from "react";
-import { useState } from "react";
 import LoginForm from "../../Components/LoginForm/LoginForm";
 import styles from "./LoginPage.module.css";
-import frametablet from "../../assets/tablet-frame.svg";
-import framedesktop from "../../assets/desktop-frame.svg";
 
 const LoginPage = () => {
   return (
     <div className={styles.login__container}>
       <div className={styles.login__tablet}>
         {window.innerWidth > 1200 ? (
-          <img src={framedesktop} alt="framedesktop" />
+          <img src="/assets/tablet-frame.svg" alt="framedesktop" />
         ) : (
-          <img src={frametablet} alt="frametablet" />
+          <img src="/assets/desktop-frame.svg" alt="frametablet" />
         )}
 
         <h3 className={styles.finance}>Finance App</h3>

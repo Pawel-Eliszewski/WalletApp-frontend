@@ -1,18 +1,14 @@
-import * as React from "react";
-import { useState } from "react";
 import RegistrationForm from "../../Components/RegistrationForm/RegisterForm";
 import styles from "./RegistrationPage.module.css";
-import frametablet from "../../assets/tablet-frame.svg";
-import framedesktop from "../../assets/desktop-frame.svg";
 
 const RegistrationPage = () => {
   return (
     <div className={styles.register__container}>
       <div className={styles.register__tablet}>
         {window.innerWidth > 1200 ? (
-          <img src={framedesktop} alt="framedesktop" />
+          <img src="/assets/desktop-frame.svg" alt="framedesktop" />
         ) : (
-          <img src={frametablet} alt="frametablet" />
+          <img src="/assets/tablet-frame.svg" alt="frametablet" />
         )}
 
         <h3 className={styles.finance}>Finance App</h3>
