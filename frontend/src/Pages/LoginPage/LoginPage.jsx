@@ -6,9 +6,9 @@ const LoginPage = () => {
     <div className={styles.login__container}>
       <div className={styles.login__tablet}>
         {window.innerWidth > 1200 ? (
-          <img src="/assets/tablet-frame.svg" alt="framedesktop" />
+          <img src="/assets/desktop-frame.svg" alt="framedesktop" />
         ) : (
-          <img src="/assets/desktop-frame.svg" alt="frametablet" />
+          <img src="/assets/tablet-frame.svg" alt="frametablet" />
         )}
 
         <h3 className={styles.finance}>Finance App</h3>

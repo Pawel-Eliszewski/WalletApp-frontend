@@ -17,7 +17,8 @@
   .login__container {
     width: 100vw;
 
-    background-color: rgba(255, 255, 255, 0.4);
+    height: 100vh;
+    background-color: rgba(231, 234, 242, 1);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -41,7 +42,7 @@
     height: 547px;
     top: -153px;
     right: -200px;
-    background-color: rgba(231, 234, 242, 1);
+    background-color: rgba(255, 216, 208, 1);
     border-radius: 50%;
     transform: rotate(-21.94deg);
     z-index: -1;

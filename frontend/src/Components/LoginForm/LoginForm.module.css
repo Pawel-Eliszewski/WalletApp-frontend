@@ -24,6 +24,10 @@
   padding-bottom: 5px;
   position: relative;
 }
+.field img {
+  margin-right: 20px;
+  margin-left: 10px;
+}
 .login__field {
   border: none;
   outline: none;

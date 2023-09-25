@@ -30,9 +30,7 @@
   font-size: 18px;
   color: rgba(189, 189, 189, 1);
 }
-.register__form label img {
-  margin-right: 40px;
-}
+
 .register__header {
   display: flex;
   margin-bottom: 40px;
@@ -86,7 +84,7 @@
   position: absolute;
   background-color: rgba(36, 204, 167, 1);
   height: 4px;
-  width: 30%;
+  width: 40%;
   top: 0;
   border-radius: 2px;
 }
