@@ -22,7 +22,6 @@ function App() {
     };
     func();
   }, []);
-
   return isRefreshing ? (
     <Loader />
   ) : (
