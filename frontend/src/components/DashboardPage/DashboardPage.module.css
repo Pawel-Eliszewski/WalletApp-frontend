@@ -1,0 +1,40 @@
+.mobileWrapper {
+    background-color: #e7eaf2;
+    width: 100%;
+    max-width: 768px;
+    height: 100vh;
+  }
+  
+  .othersWrapper {
+    background-color: #e7eaf2;
+    height: 100vh;
+    max-width: 1268px;
+  }
+  .othersWrapper::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    left: 0;
+    height: 100%;
+    background-image: image-set(
+        url("../../../public/assets/violet-ellipse.png") 1x,
+        url("../../../public/assets/violet-ellipse@2x.png") 2x
+      ),
+      image-set(
+        url("../../../public/assets/pink-ellipse.png") 1x,
+        url("../../../public/assets/pink-ellipse@2x.png") 2x
+      );
+    background-position: left bottom, right top;
+    background-repeat: no-repeat, no-repeat;
+    filter: blur(50px);
+  }
+  
+  @media screen and (min-width: 1268px) {
+    .othersWrapper {
+      max-width: 100%;
+    }
+  }
+  
+  
+  
+  
