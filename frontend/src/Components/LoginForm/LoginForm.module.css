@@ -59,6 +59,8 @@
 .error {
   color: red;
   font-size: 12px;
+  position: absolute;
+  top: 40px;
 }
 .h2 {
   font-weight: 700;

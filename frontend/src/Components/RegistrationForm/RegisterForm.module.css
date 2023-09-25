@@ -27,6 +27,8 @@
   border: none;
   outline: none;
   background-color: transparent;
+  font-size: 18px;
+  color: rgba(189, 189, 189, 1);
 }
 .register__form label img {
   margin-right: 40px;
@@ -63,12 +65,30 @@
 }
 .error {
   color: red;
-  font-size: 12px;
+  font-size: 10px;
+  position: absolute;
+  top: 40px;
 }
 .h2 {
   font-weight: 700;
   font-size: 30px;
   line-height: 45px;
+}
+.meter {
+  position: absolute;
+  background-color: rgba(229, 241, 239, 1);
+  height: 4px;
+  width: 100%;
+  top: 37px;
+  border-radius: 2px;
+}
+.meter__element {
+  position: absolute;
+  background-color: rgba(36, 204, 167, 1);
+  height: 4px;
+  width: 30%;
+  top: 0;
+  border-radius: 2px;
 }
 @media (min-width: 768px) {
   .register {

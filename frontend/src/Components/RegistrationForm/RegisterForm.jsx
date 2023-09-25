@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 
@@ -89,6 +90,9 @@ const RegistrationForm = () => {
                 component="div"
                 className={styles.error}
               />
+              <div className={styles.meter}>
+                <div className={styles.meter__element}></div>
+              </div>
             </div>
             <div className={styles.field}>
               <img src="/assets/personIcon.svg" alt="person" />
