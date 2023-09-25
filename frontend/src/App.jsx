@@ -1,5 +1,8 @@
 import { useEffect, lazy } from "react";
 import { ToastContainer } from "react-toastify";
+import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
+import { RestrictedRoute } from "./components/RestrictedRoute/RestrictedRoute";
+import { Route, Routes, Navigate } from "react-router-dom";
 // import Chart from "./components/Chart/Chart";
 // import { ModalAddTransaction } from "./components/ModalAddTransaction/ModalAddTransaction";
 // import { ModalEditTransaction } from "./components/ModalEditTransaction/ModalEditTransaction";
@@ -36,6 +39,28 @@ function App() {
         pauseOnHover
         theme="colored"
       />
+      <Routes>
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
+          }
+        />
+        <Route
+          path="/login"
+          element={<RestrictedRoute redirectTo="/" component={<LoginPage />} />}
+        />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute redirectTo="/login" component={<DashboardPage />} />
+          }
+        >
+          <Route index element={<HomeTab />} />
+          <Route path="statistics" element={<DiagramTab />} />
+        </Route>
+        <Route path="*" element={<Navigate to={"/login"} />} />
+      </Routes>
       {/* <ModalAddTransaction /> */}
       {/* <ModalEditTransaction /> */}
       {/* <Chart /> */}
