@@ -1,7 +1,7 @@
 import { ToastContainer } from "react-toastify";
 // import { ModalAddTransaction } from "./components/ModalAddTransaction/ModalAddTransaction";
 import "./App.css";
-import RegistrationPage from "./Pages/RegistrationPage/RegistrationPage";
+//import RegistrationPage from "./Pages/RegistrationPage/RegistrationPage";
 import LoginPage from "./Pages/LoginPage/LoginPage.jsx";
 // import RegistrationPage from "./Pages/RegistrationPage/RegistrationPage.jsx";
 
