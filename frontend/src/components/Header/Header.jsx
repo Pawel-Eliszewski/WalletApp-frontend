@@ -1,7 +1,7 @@
 import css from "./Header.module.css";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux/es/hooks/useSelector";
-import { selectIsModalLogoutOpen } from "../../redux/global/selectors";
+// import { selectIsModalLogoutOpen } from "../../redux/global/selectors";
 import { setIsModalLogoutOpen } from "../../redux/global/globalSlice";
 import { selectUser } from "../../redux/session/selectors";
 
