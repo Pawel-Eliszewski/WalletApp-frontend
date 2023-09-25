@@ -1,7 +1,7 @@
-import RegistrationForm from "../../components/RegistrationForm/RegisterForm";
-import styles from "./RegistrationPage.module.css";
+import RegistrationForm from "../../components/RegisterForm/RegisterForm";
+import styles from "./RegisterPage.module.css";
 
-const RegistrationPage = () => {
+const RegisterPage = () => {
   return (
     <div className={styles.register__container}>
       <div className={styles.register__tablet}>
@@ -24,4 +24,4 @@ const RegistrationPage = () => {
   );
 };
 
-export default RegistrationPage;
+export default RegisterPage;

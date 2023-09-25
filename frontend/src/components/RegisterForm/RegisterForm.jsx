@@ -3,10 +3,10 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 
-import validationSchema from "../../Utils/yupValidationSchema";
+import validationSchema from "../Utils/yupValidationSchema";
 import styles from "./RegisterForm.module.css";
 
-const RegistrationForm = () => {
+const RegisterForm = () => {
   const initialValues = {
     email: "",
     password: "",
@@ -120,4 +120,4 @@ const RegistrationForm = () => {
     </div>
   );
 };
-export default RegistrationForm;
+export default RegisterForm;

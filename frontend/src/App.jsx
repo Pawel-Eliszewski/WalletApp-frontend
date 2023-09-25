@@ -9,6 +9,8 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsRefreshing } from "./redux/session/selectors";
 import { refreshUser } from "./redux/session/operations";
+import LoginPage from "./Pages/LoginPage/LoginPage";
+import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 import Loader from "./components/Loader/Loader";
 import "./App.css";
 
@@ -49,15 +51,15 @@ function App() {
           path="/login"
           element={<RestrictedRoute redirectTo="/" component={<LoginPage />} />}
         />
-        <Route
+        {/*<Route
           path="/"
           element={
             <ProtectedRoute redirectTo="/login" component={<DashboardPage />} />
           }
-        >
-          <Route index element={<HomeTab />} />
-          <Route path="statistics" element={<DiagramTab />} />
-        </Route>
+        >*/}
+        {/*<Route index element={<HomeTab />} />*/}
+        {/*<Route path="statistics" element={<DiagramTab />} />*/}
+        {/*</Route>*/}
         <Route path="*" element={<Navigate to={"/login"} />} />
       </Routes>
       {/* <ModalAddTransaction /> */}
