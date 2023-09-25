@@ -22,7 +22,6 @@ function App() {
     };
     func();
   }, []);
-console.log( window.innerWidth)
   return isRefreshing ? (
     <Loader />
   ) : (
