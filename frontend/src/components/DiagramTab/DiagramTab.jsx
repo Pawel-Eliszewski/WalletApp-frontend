@@ -1,12 +1,13 @@
 import React from "react";
-import { transactionsSelectors } from "../../redux/finance/selectors-transaction";
+import {
+  selectTransactions,
+  selectTransactionsCategories,
+} from "../../redux/finance/selectors";
 import { useSelector } from "react-redux";
 import styles from "./DiagramTab.module.css";
 
 export default function DiagramTab({ allArray }) {
-  const categoriesFromState = useSelector(
-    transactionsSelectors.getAllCategoriesFromTransactions
-  );
+  const categoriesFromState = useSelector(selectTransactionsCategories);
 
   return (
     <div className={styles.container}>
