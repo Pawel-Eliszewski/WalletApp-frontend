@@ -1,3 +1,5 @@
+/* eslint-disable react-refresh/only-export-components */
+
 import { createTheme } from "@material-ui/core/styles";
 
 export default createTheme({
