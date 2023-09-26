@@ -32,7 +32,7 @@ const LoginForm = () => {
   return (
     <div className={styles.login}>
       <div className={styles.login__header}>
-        <img src="/assets/icon-wallet.svg" alt="Wallet" />
+        <img src="/assets/icon-miniwallet.svg" alt="Wallet" />
         <h2 className={styles.h2}>Wallet</h2>
       </div>
       <Formik
@@ -43,7 +43,11 @@ const LoginForm = () => {
         {() => (
           <Form className={styles.login__form}>
             <div className={styles.field}>
-              <img src="/assets/emailIcon.svg" alt="email" />
+              <img
+                className={styles.email}
+                src="/assets/icon-email.svg"
+                alt="email"
+              />
               <Field
                 className={styles.login__field}
                 type="email"
@@ -57,7 +61,11 @@ const LoginForm = () => {
               />
             </div>
             <div className={styles.field}>
-              <img src="assets/lockIcon.svg" alt="lock" />
+              <img
+                className={styles.fieldimg}
+                src="assets/icon-lock.svg"
+                alt="lock"
+              />
               <Field
                 className={styles.login__field}
                 type="password"
@@ -73,7 +81,7 @@ const LoginForm = () => {
             <button className={styles.login__signin} type="submit">
               LOG IN
             </button>
-            <Link to="./register">
+            <Link to="/register">
               <button className={styles.login__signup}>REGISTER</button>
             </Link>
           </Form>

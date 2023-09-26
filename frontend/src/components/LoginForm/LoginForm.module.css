@@ -1,14 +1,17 @@
 .login {
   display: flex;
   min-width: 320px;
-
+  height: 568px;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   position: relative;
   z-index: 9;
 }
 .login__header {
   display: flex;
+  margin-top: -40px;
+  margin-bottom: 20px;
 }
 .login__header img {
   margin-right: 10px;
@@ -24,14 +27,20 @@
   padding-bottom: 5px;
   position: relative;
 }
-.field img {
+.fieldimg {
   margin-right: 20px;
+  margin-left: 15px;
+}
+.email {
+  margin-right: 15px;
   margin-left: 10px;
 }
 .login__field {
   border: none;
   outline: none;
   background-color: transparent;
+  font-size: 18px;
+  color: rgba(189, 189, 189, 1);
 }
 .login__form label img {
   margin-right: 40px;
@@ -71,6 +80,7 @@
   font-size: 30px;
   line-height: 45px;
 }
+
 @media (min-width: 768px) {
   .login {
     width: 520px;
@@ -93,5 +103,8 @@
   }
   .field {
     margin-bottom: 50px;
+    padding-bottom: 15px;
+    width: 409px;
+    display: flex;
   }
 }

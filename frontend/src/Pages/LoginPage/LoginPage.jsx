@@ -13,7 +13,9 @@ const LoginPage = () => {
 
         <h3 className={styles.finance}>Finance App</h3>
         <div className={styles.firstelipse}></div>
-        <div className={styles.secondelipse}></div>
+        <div className={styles.secondelipse}>
+          <img src="/assets/ellipse.svg" alt="ellipse" />
+        </div>
       </div>
       <div className={styles.login__desktop}>
         <LoginForm />
