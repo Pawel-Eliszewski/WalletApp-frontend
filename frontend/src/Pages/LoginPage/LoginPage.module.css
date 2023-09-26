@@ -50,14 +50,10 @@
   .secondelipse {
     display: block;
     position: absolute;
-    width: 618px;
-    height: 547px;
-    top: 585px;
-    left: -153.33px;
-    background-color: #c5baff;
-    border-radius: 50%;
-    transform: rotate(16.14deg);
+    left: 0px;
+    bottom: -4px;
     z-index: -1;
+    margin: 0;
   }
 }
 @media (min-width: 1200px) {
@@ -72,6 +68,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-left: 50px;
   }
   .login__desktop {
     background-color: #ffffff66;
@@ -81,12 +78,10 @@
     justify-content: center;
     align-items: center;
   }
-  .secondelipse {
-    transform: rotate(-16.14deg);
-    top: 420px;
-    left: -105px;
-  }
+
   .firstelipse {
     box-shadow: 0 0 30px 50px var(--car-diagram-color);
+    top: -190px;
+    right: -112px;
   }
 }

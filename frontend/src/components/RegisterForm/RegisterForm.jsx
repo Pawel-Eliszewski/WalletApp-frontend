@@ -39,7 +39,7 @@ const RegisterForm = () => {
   return (
     <div className={styles.register}>
       <div className={styles.register__header}>
-        <img src="/assets/icon-wallet.svg" alt="Wallet" />
+        <img src="/assets/icon-miniwallet.svg" alt="Wallet" />
         <h2 className={styles.h2}>Wallet</h2>
       </div>
       <Formik
@@ -50,7 +50,11 @@ const RegisterForm = () => {
         {() => (
           <Form className={styles.register__form}>
             <div className={styles.field}>
-              <img src="/assets/emailIcon.svg" alt="email" />
+              <img
+                className={styles.email}
+                src="/assets/icon-email.svg"
+                alt="email"
+              />
               <Field
                 className={styles.register__field}
                 type="email"
@@ -64,7 +68,11 @@ const RegisterForm = () => {
               />
             </div>
             <div className={styles.field}>
-              <img src="/assets/lockIcon.svg" alt="lock" />
+              <img
+                className={styles.fieldimg}
+                src="/assets/icon-lock.svg"
+                alt="lock"
+              />
               <Field
                 className={styles.register__field}
                 type="password"
@@ -78,7 +86,11 @@ const RegisterForm = () => {
               />
             </div>
             <div className={styles.field}>
-              <img src="/assets/lockIcon.svg" alt="lock" />
+              <img
+                className={styles.fieldimg}
+                src="/assets/icon-lock.svg"
+                alt="lock"
+              />
               <Field
                 className={styles.register__field}
                 type="password"
@@ -95,7 +107,11 @@ const RegisterForm = () => {
               </div>
             </div>
             <div className={styles.field}>
-              <img src="/assets/personIcon.svg" alt="person" />
+              <img
+                className={styles.fieldimg}
+                src="/assets/icon-person.svg"
+                alt="person"
+              />
               <Field
                 className={styles.register__field}
                 type="text"
