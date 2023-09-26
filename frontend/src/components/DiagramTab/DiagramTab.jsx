@@ -1,11 +1,13 @@
-import React from "react";
+import PropTypes from "prop-types";
 import { transactionsSelectors } from "../../redux/finance/selectors-transaction";
 import { useSelector } from "react-redux";
 import styles from "./DiagramTab.module.css";
 
-export default function DiagramTab({ allArray }) {
-  const categoriesFromState = useSelector(
-    transactionsSelectors.getAllCategoriesFromTransactions
+function DiagramTab({ allArray, categories, sum }) {
+  const categoriesFromState = useSelector((state) =>
+    categories
+      ? { categories, consumption: sum }
+      : transactionsSelectors.getAllCategoriesFromTransactions(state)
   );
 
   return (
@@ -19,7 +21,7 @@ export default function DiagramTab({ allArray }) {
         {allArray?.length > 0 ? (
           allArray.map(({ value, sum, color }) => {
             return (
-              <li className={styles.elementTransaction}>
+              <li className={styles.elementTransaction} key={value}>
                 <div
                   style={{
                     backgroundColor: `${color}`,
@@ -58,3 +60,11 @@ export default function DiagramTab({ allArray }) {
     </div>
   );
 }
+
+DiagramTab.propTypes = {
+  allArray: PropTypes.array.isRequired,
+  categories: PropTypes.array,
+  sum: PropTypes.number, 
+};
+
+export default DiagramTab;

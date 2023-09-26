@@ -13,7 +13,7 @@ ul {
 }
 
 .listNames {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Circe', sans-serif;
   display: flex;
   justify-content: space-between;
   height: 58px;
@@ -25,7 +25,7 @@ ul {
 }
 
 .nameElement {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Circe', sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
