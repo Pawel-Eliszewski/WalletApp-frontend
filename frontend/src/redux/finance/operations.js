@@ -70,3 +70,15 @@ export const fetchBalance = createAsyncThunk(
     }
   }
 );
+
+export const updateBalance = createAsyncThunk(
+  "finance/updateBalance",
+  async (data, thunkAPI) => {
+    try {
+      const response = await axios.patch(`/users/${data.userId}/balance`, data.balance);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+)
