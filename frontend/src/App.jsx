@@ -59,6 +59,9 @@ function App() {
         >*/}
         {/*<Route index element={<HomeTab />} />*/}
         {/*<Route path="statistics" element={<DiagramTab />} />*/}
+        {/*{if(window.innerWidth < 768) {
+        <Route path="currency" element={<Currency>} />
+        }} */}
         {/*</Route>*/}
         <Route path="*" element={<Navigate to={"/login"} />} />
       </Routes>
