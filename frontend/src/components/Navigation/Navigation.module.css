@@ -1,0 +1,60 @@
+.nav {
+	display: flex;
+	justify-content: space-evenly;
+	padding-left: 0;
+	list-style: none;
+}
+
+.logo {
+	height: 44px;
+	border-radius: 10px;
+	overflow: hidden;
+	transition: box-shadow 0.3s ease-in-out;
+}
+
+.logo:active,
+.logo:focus,
+.logo:hover {
+	box-shadow: 0px 0px 5px 0px rgba(66, 68, 90, 1);
+	fill: var(--household-products-diagram-color);
+}
+
+.description {
+	display: none;
+}
+
+@media (min-width: 768px) {
+	.nav {
+		flex-direction: column;
+		padding-left: 32px;
+	}
+
+	.item {
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+		transition: font-weight 0.3s ease-in-out;
+	}
+
+	.item:active,
+	.item:focus,
+	.item:hover {
+		font-weight: bold;
+	}
+
+	.logo {
+		height: 18px;
+		border-radius: 3px;
+	}
+
+	.description {
+		display: inline-block;
+		padding-left: 20px;
+		size: 18px;
+		line-height: 27px;
+	}
+
+	.dolar {
+		display: none;
+	}
+}
