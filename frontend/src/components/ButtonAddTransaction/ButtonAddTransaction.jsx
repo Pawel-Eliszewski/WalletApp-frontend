@@ -1,6 +1,8 @@
 import AddIcon from "@material-ui/icons/Add";
 import Fab from "@material-ui/core/Fab";
 import { makeStyles } from "@material-ui/core/styles";
+import { useDispatch } from "react-redux";
+import { setIsModalAddTransactionOpen } from "../../redux/global/globalSlice";
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -14,8 +16,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ButtonAddTransactions({ openModal }) {
+export default function ButtonAddTransactions() {
+  const dispatch = useDispatch;
   const classes = useStyles();
+  const openModal = () => {
+    dispatch(setIsModalAddTransactionOpen(true));
+  };
   return (
     <>
       <Fab onClick={openModal} aria-label="add" className={classes.margin}>

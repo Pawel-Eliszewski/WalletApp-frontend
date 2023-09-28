@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useDispatch } from "react-redux";
 import validationSchema from "../../Utils/yupValidationSchema";
 import styles from "./LoginForm.module.css";
 import axios from "axios";
+import { login } from "../../redux/session/operations";
 
 const LoginForm = () => {
+  const dispatch = useDispatch;
   const initialValues = {
     email: "",
     password: "",
@@ -16,7 +19,8 @@ const LoginForm = () => {
     };
 
     try {
-      const response = await axios.post("/api/login", formData);
+      /*const response = await axios.post("/api/login", formData);*/
+     const response = dispatch(login(formData));
 
       if (response.status === 200) {
         alert("Login Success");

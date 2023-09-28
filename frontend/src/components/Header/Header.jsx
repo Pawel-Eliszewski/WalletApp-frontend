@@ -8,7 +8,7 @@ import { selectUser } from "../../redux/session/selectors";
 export const Header = () => {
   const dispatch = useDispatch();
   // const isModalLogoutOpen = useSelector(selectIsModalLogoutOpen);
-  const userName = useSelector(selectUser);
+  const user = useSelector(selectUser);
 
   const handleOpenModalLogout = () => {
     dispatch(setIsModalLogoutOpen(true));
@@ -25,7 +25,7 @@ export const Header = () => {
           <img className={css.appName} src="/assets/icon-wallet-text.png" />
         </div>
         <div className={css.nav}>
-          <p className={css.userName}>{userName}</p>
+          <p className={css.userName}>{user.email}</p>
           <div className={css.boxExit} onClick={handleOpenModalLogout}>
             <img className={css.iconExit} src="/assets/icon-exit-doors.png" />
             <p className={css.textExit}>Exit</p>

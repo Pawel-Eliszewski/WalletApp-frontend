@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 
 import validationSchema from "../../Utils/yupValidationSchema";
 import styles from "./RegisterForm.module.css";
+import { register } from "../../redux/session/operations";
 
 const RegisterForm = () => {
+  const dispatch = useDispatch;
   const initialValues = {
     email: "",
     password: "",
@@ -23,7 +26,8 @@ const RegisterForm = () => {
     };
 
     try {
-      const response = await axios.post("/api/register", formData);
+      /*const response = await axios.post("/api/register", formData);*/
+      const response = dispatch(register(formData));
 
       if (response.status === 200) {
         alert("Registration Success");
