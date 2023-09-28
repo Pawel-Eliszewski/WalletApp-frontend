@@ -23,7 +23,10 @@ const RegisterForm = () => {
     };
 
     try {
-      const response = await axios.post("/api/register", formData);
+      const response = await axios.post(
+        "https://wallet-app-18x3.onrender.com/api/register",
+        formData
+      );
 
       if (response.status === 200) {
         alert("Registration Success");

@@ -1,10 +1,27 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import validationSchema from "../../Utils/yupValidationSchema";
 import styles from "./LoginForm.module.css";
 import axios from "axios";
+//
+import GogLogin from "../GoogleLogin/GoogleLogin";
+import GogLogout from "../../GoogleLogout/GoogleLogout";
+import { gapi } from "gapi-script";
+const clientId =
+  "609849944733-kcufeaglgkhndbv7vlkhsr244pt313tt.apps.googleusercontent.com";
 
 const LoginForm = () => {
+  //googleauth
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId: clientId,
+        scope: "",
+      });
+    }
+    gapi.load("client:auth2", start);
+  });
   const initialValues = {
     email: "",
     password: "",
@@ -16,7 +33,10 @@ const LoginForm = () => {
     };
 
     try {
-      const response = await axios.post("/api/login", formData);
+      const response = await axios.post(
+        "https://wallet-app-18x3.onrender.com/api/login",
+        formData
+      );
 
       if (response.status === 200) {
         alert("Login Success");
@@ -78,6 +98,8 @@ const LoginForm = () => {
                 className={styles.error}
               />
             </div>
+            <GogLogin />
+            <GogLogout />
             <button className={styles.login__signin} type="submit">
               LOG IN
             </button>
