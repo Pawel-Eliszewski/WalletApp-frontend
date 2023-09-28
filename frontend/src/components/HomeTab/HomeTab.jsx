@@ -2,23 +2,19 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useMedia } from "react-use";
 import { fixDate } from "helpers/fixDate";
-import { useGetTransactionsQuery } from "../../redux/transactionsSlice";
 import { PaginatedItems } from "../Pagination/Pagination";
 import { Balance } from "components/balance/balance";
 import { ButtonAddTransaction } from "../ButtonAddTransaction/ButtonAddTransaction";
 import styles from "./HomeTab.module.css";
+import { selectTransactions } from "../../redux/finance/selectors";
 
 const HomeTab = () => {
   const isMobile = useMedia("(max-width: 767px)");
   const [itemOffset, setItemOffset] = useState(0);
 
-  const { data } = useGetTransactionsQuery(itemOffset);
+  const transactions = useSelector(selectTransactions);
+  let length = transactions.length;
 
-  if (!data) {
-    return null;
-  }
-
-  let { transactions, length } = data;
   const itemsPerPage = 5;
   const pageCount = Math.ceil(length / itemsPerPage);
 
