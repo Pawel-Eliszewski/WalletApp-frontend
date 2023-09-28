@@ -1,27 +1,12 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import validationSchema from "../../Utils/yupValidationSchema";
 import styles from "./LoginForm.module.css";
 import axios from "axios";
-//
-import GogLogin from "../GoogleLogin/GoogleLogin";
-import GogLogout from "../../GoogleLogout/GoogleLogout";
-import { gapi } from "gapi-script";
-const clientId =
-  "609849944733-kcufeaglgkhndbv7vlkhsr244pt313tt.apps.googleusercontent.com";
+import { GoogleLogin } from "@react-oauth/google";
 
 const LoginForm = () => {
-  //googleauth
-  useEffect(() => {
-    function start() {
-      gapi.client.init({
-        clientId: clientId,
-        scope: "",
-      });
-    }
-    gapi.load("client:auth2", start);
-  });
   const initialValues = {
     email: "",
     password: "",
@@ -98,8 +83,15 @@ const LoginForm = () => {
                 className={styles.error}
               />
             </div>
-            <GogLogin />
-            <GogLogout />
+            <GoogleLogin
+              onSuccess={(credentialResponse) => {
+                console.log(credentialResponse);
+              }}
+              onError={() => {
+                console.log("Login Failed");
+              }}
+            />
+            ;
             <button className={styles.login__signin} type="submit">
               LOG IN
             </button>
