@@ -1,27 +1,23 @@
-import { useDispatch } from "react-redux";
-// import { clearReduxStore } from "./redux/actions";
-import { toast } from "react-toastify";
-import PropTypes from "prop-types";
-import css from "./ModalLogout.module.css";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setIsModalLogoutOpen } from "../../redux/global/globalSlice";
+import { logout } from "../../redux/session/operations";
+import PropTypes from "prop-types";
+import { toast } from "react-toastify";
+import css from "./ModalLogout.module.css";
 
-const ModalLogout = ({ isOpen, onClose }) => {
+const ModalLogout = () => {
 	const dispatch = useDispatch();
 
 	const handleNoClick = () => {
-		onClose();
+		dispatch(setIsModalLogoutOpen(false));
 	};
 
 	const handleYesClick = () => {
-		// Wylogowanie użytkownika
-		// Dodać kod do wylogowania użytkownika (wywołując odpowiednią akcję Redux lub API)
 		try {
-			// Po udanym wylogowaniu, czyszczenie Redux store w initial state
-			dispatch(clearReduxStore());
-			onClose();
+			dispatch(logout());
 		} catch (error) {
-			toast.error("Błąd podczas wylogowywania");
-			onClose();
+			toast.error("Error logging out");
 		}
 	};
 
@@ -40,23 +36,19 @@ const ModalLogout = ({ isOpen, onClose }) => {
 	}, []);
 
 	return (
-		<>
-			{isOpen && (
-				<div className={css.overlay} onClick={handleNoClick}>
-					<div className={css.modal}>
-						<p className={css.question}>Are you sure you want to leave?</p>
-						<div className={css.buttons}>
-							<button className={css["item-yes"]} onClick={handleYesClick}>
-								Yes
-							</button>
-							<button className={css["item-no"]} onClick={handleNoClick}>
-								No
-							</button>
-						</div>
-					</div>
+		<div className={css.overlay} onClick={handleNoClick}>
+			<div className={css.modal}>
+				<p className={css.question}>Are you sure you want to leave?</p>
+				<div className={css.buttons}>
+					<button className={css["item-yes"]} onClick={handleYesClick}>
+						Yes
+					</button>
+					<button className={css["item-no"]} onClick={handleNoClick}>
+						No
+					</button>
 				</div>
-			)}
-		</>
+			</div>
+		</div>
 	);
 };
 
