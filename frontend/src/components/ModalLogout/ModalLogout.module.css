@@ -1,0 +1,51 @@
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+}
+
+.modal {
+	background-color: var(--secondary-gray-font-color);
+	height: 15%;
+	width: 30%;
+	border-radius: 5px;
+}
+
+.question {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.buttons {
+	display: flex;
+	justify-content: space-around;
+}
+
+.item-yes {
+	width: 60px;
+	height: 35px;
+	background-color: transparent;
+	border: 1px solid var(--other-expenses-diagram-color);
+	color: var(--other-expenses-diagram-color);
+	border-radius: 15px;
+	cursor: pointer;
+}
+
+.item-no {
+	width: 60px;
+	height: 35px;
+	background-color: transparent;
+	border: 1px solid rgba(230, 62, 62, 0.769);
+	color: rgba(230, 62, 62, 0.769);
+	border-radius: 15px;
+	cursor: pointer;
+}

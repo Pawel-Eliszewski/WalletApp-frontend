@@ -6,6 +6,7 @@ import {
   deleteTransaction,
   updateTransaction,
   fetchBalance,
+  updateBalance,
 } from "./operations";
 
 const initialState = {
@@ -56,7 +57,12 @@ const financeSlice = createSlice({
         state.error = null;
         state.totalBalance = action.payload;
       })
-      .addCase(fetchBalance.rejected, handleRejected);
+      .addCase(fetchBalance.rejected, handleRejected)
+      .addCase(updateBalance.fulfilled, (state, action) => {
+        state.error = null;
+        state.totalBalance = action.payload;
+      })
+      .addCase(updateBalance.rejected, handleRejected);
   },
 });
 

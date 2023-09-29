@@ -1,0 +1,226 @@
+@media screen and (min-width: 768px) {
+  .homeWrapper {
+    padding-top: 10px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .homeWrapper {
+    flex-shrink: 0;
+    flex-grow: 1;
+  }
+}
+
+table.tableWrapper {
+  width: 100%;
+  max-width: 320px;
+  overflow: hidden scroll;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  table.tableWrapper {
+    margin: 0 auto;
+    max-width: 704px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  table.tableWrapper {
+    max-width: 715px;
+    max-height: 65vh;
+    margin-left: 69px;
+  }
+}
+
+tr.tableHead {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  line-height: 27px;
+  height: 58px;
+  padding: 0px 7.5px;
+  border-radius: 30px;
+  background-color: white;
+}
+
+th.tableHeadItem {
+  padding: 10px;
+  width: 50px;
+}
+
+th.tableHeadItem:nth-child(1) {
+  margin-right: 45px;
+}
+
+th.tableHeadItem:nth-child(2) {
+  margin-right: 40px;
+}
+
+th.tableHeadItem:nth-child(3) {
+  margin-right: 85px;
+}
+
+th.tableHeadItem:nth-child(4) {
+  margin-right: 125px;
+}
+
+th.tableHeadItem:nth-child(5) {
+  margin-right: 43px;
+}
+
+tr.data {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  word-wrap: break-word;
+  padding: 0px 15px;
+  font-size: 16px;
+  line-height: 24px;
+  min-height: 52px;
+  padding-right: 0;
+}
+
+tr.data:not(:last-child)::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 10px;
+  bottom: 0;
+  width: 680px;
+  border: 1px solid #dcdcdf;
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+}
+
+td.dataItem {
+  padding: 8px 10px;
+  color: var(--primary-text-color);
+  font-weight: 400;
+  font-size: 16px;
+  padding-right: 5px;
+}
+
+@media screen and (min-width: 320px) {
+  td.dataItem:nth-child(1) {
+    width: 70px;
+    padding-inline: 0;
+    margin-right: 10px;
+  }
+
+  td.dataItem:nth-child(2) {
+    width: 80px;
+    margin-right: 25px;
+  }
+
+  td.dataItem:nth-child(3) {
+    width: 80px;
+    margin-right: 60px;
+  }
+
+  td.dataItem:nth-child(4) {
+    width: 100px;
+    margin-right: 40px;
+  }
+
+  td.dataItem:nth-child(5) {
+    width: 80px;
+    margin-right: 10px;
+  }
+
+  td.dataItem:nth-child(6) {
+    width: 90px;
+    margin-left: 25px;
+  }
+}
+
+span.dataComment {
+  width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre-line;
+}
+
+span.dataSum[data-type="income"] {
+  color: var(--primary-income-color);
+}
+
+span.dataSum[data-type="expense"] {
+  color: var(--primary-expense-color);
+}
+
+ul.dataMob {
+  width: 290px;
+  padding: 0;
+  border-radius: 10px;
+  border-left: 5px solid var(--accent-color-green);
+  gap: 20px;
+}
+
+ul.dataMob:not(:last-child) {
+  margin: 0 auto 8px;
+}
+
+span.headItemMob {
+  display: block;
+  text-align: end;
+  max-width: 110px;
+  white-space: nowrap;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+li.dataItemMob {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  background-color: white;
+  padding-inline: 15px;
+  width: 100%;
+  border-radius: 20px;
+}
+
+li.dataItemMob:not(:last-child) {
+  border-bottom: 1px solid #dcdcdf;
+}
+
+li.dataItemMob {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: space-between;
+  height: 47px;
+  line-height: calc(24 / 16);
+}
+
+.dataItemBtnEdit {
+  background: none;
+  border: none;
+  transform: scale(1);
+  transition: 300ms;
+}
+
+.dataItemBtnEdit:hover {
+  transform: scale(1.2);
+  transition: 300ms;
+  outline: none;
+}
+
+.dataItemBtnEdit:focus {
+  outline: none;
+  border: none;
+}
+
+
+.dataItemBtnDelete {
+  background-color: var(--primary-income-color);
+  font-size: 12px;
+  width: 67px;
+  height: 26px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: 300ms;
+}

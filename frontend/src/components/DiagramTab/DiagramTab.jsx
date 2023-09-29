@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import React from "react";
 import { selectTransactionsCategoriesSummary } from "../../redux/finance/selectors";
 import { useSelector } from "react-redux";
 import styles from "./DiagramTab.module.css";

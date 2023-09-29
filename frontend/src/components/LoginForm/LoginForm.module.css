@@ -1,0 +1,134 @@
+.login {
+  display: flex;
+  min-width: 320px;
+  height: 568px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  z-index: 9;
+}
+
+.login__header {
+  display: flex;
+  margin-top: -40px;
+  margin-bottom: 20px;
+}
+
+.login__header img {
+  margin-right: 10px;
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  color: rgba(189, 189, 189, 0.7);
+}
+
+.field {
+  border-bottom: 1px solid rgba(189, 189, 189, 0.7);
+  margin-bottom: 30px;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+.fieldimg {
+  margin-right: 20px;
+  margin-left: 15px;
+}
+
+.email {
+  margin-right: 15px;
+  margin-left: 10px;
+}
+
+.login__field {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 18px;
+  color: rgba(189, 189, 189, 1);
+}
+
+.login__form label img {
+  margin-right: 40px;
+}
+
+.login__signup {
+  width: 250px;
+  height: 45px;
+  letter-spacing: 2px;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  border: none;
+  outline: 1px solid var(--household-products-diagram-color);
+  cursor: pointer;
+  color: var(--household-products-diagram-color);
+  transition: 300ms;
+}
+
+.login__signup:hover {
+  transition: 300ms;
+  color: black;
+}
+
+.login__signin {
+  width: 250px;
+  height: 45px;
+  outline: none;
+  border: none;
+  background-color: var(--primary-income-color);
+  color: white;
+  letter-spacing: 2px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: 300ms;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  position: absolute;
+  top: 40px;
+}
+
+.h2 {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 45px;
+}
+
+@media (min-width: 768px) {
+  .login {
+    width: 520px;
+    height: 468px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .login__form {
+    display: flex;
+    align-items: center;
+  }
+
+  .login__field {
+    width: 380px;
+  }
+
+  .register__header {
+    margin-top: -70px;
+  }
+
+  .field {
+    margin-bottom: 50px;
+    padding-bottom: 15px;
+    width: 409px;
+    display: flex;
+  }
+}

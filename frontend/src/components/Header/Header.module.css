@@ -6,7 +6,11 @@
   align-items: center;
   flex-direction: column;
   height: 100%;
-  padding: 20px 15px;
+  padding: 20px 32px;
+  /* position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 10; */
 }
 
 .header {
