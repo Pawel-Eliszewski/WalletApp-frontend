@@ -11,7 +11,7 @@ import { Calendar } from "../ModalAddTransaction/Calendar/Calendar";
 import { Show } from "@chakra-ui/react";
 import css from "./ModalEditTransaction.module.css";
 
-export const ModalEditTransaction = ({ userName, transactionDetails }) => {
+export const ModalEditTransaction = ({ userName }) => {
   const dispatch = useDispatch();
 
   const isModalEditTransactionOpen = useSelector(
@@ -19,7 +19,7 @@ export const ModalEditTransaction = ({ userName, transactionDetails }) => {
   );
 
   // roboczo, bo nie ma propsów
-  transactionDetails = {
+  let transactionDetails = {
     type: "expense",
     category: "Car",
     amount: "5000",

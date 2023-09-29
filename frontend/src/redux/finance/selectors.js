@@ -19,7 +19,7 @@ export const selectTransactionsCategoriesSummary = (state) => {
   };
 
   transactions.forEach((transaction) => {
-    if (transaction.category === "income") {
+    if (transaction.type === "income") {
       categoriesSummary.income + transaction.amount;
     } else {
       categoriesSummary.expense + transaction.amount;

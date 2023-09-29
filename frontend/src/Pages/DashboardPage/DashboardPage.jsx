@@ -8,7 +8,8 @@ import { ButtonAddTransaction } from "../../components/ButtonAddTransaction/Butt
 import { ModalAddTransaction } from "../../components/ModalAddTransaction/ModalAddTransaction";
 import { HomeTab } from "../../components/HomeTab/HomeTab";
 import css from "./DashboardPage.module.css";
-import { Currency } from "../../components/Currency/Currency";
+// import { Currency } from "../../components/Currency/Currency";
+import { ModalEditTransaction } from "../../components/ModalEditTransaction/ModalEditTransaction";
 
 const MobileDashboard = () => {
   return (
@@ -20,6 +21,7 @@ const MobileDashboard = () => {
         <HomeTab />
         <ButtonAddTransaction />
         <ModalAddTransaction />
+        <ModalEditTransaction />
         <Suspense fallback={null}>
           <Outlet />
         </Suspense>
@@ -43,6 +45,7 @@ const TabletDashboard = () => {
         <HomeTab />
         <ButtonAddTransaction />
         <ModalAddTransaction />
+        <ModalEditTransaction />
         <Suspense fallback={null}>
           <Outlet />
         </Suspense>
@@ -64,6 +67,7 @@ const DesktopDashboard = () => {
         <HomeTab />
         <ButtonAddTransaction />
         <ModalAddTransaction />
+        <ModalEditTransaction />
         <Suspense fallback={null}>
           <Outlet />
         </Suspense>
