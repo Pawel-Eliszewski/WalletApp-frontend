@@ -30,7 +30,7 @@ export const HomeTab = () => {
       _id: "2",
       date: "21.01.20",
       type: "expense",
-      category: "car",
+      category: "Car",
       comment: "paliwo",
       sum: "1000",
     },
@@ -38,7 +38,7 @@ export const HomeTab = () => {
       _id: "3",
       date: "21.01.20",
       type: "income",
-      category: "car",
+      category: "Household products",
       comment: "fajki",
       sum: "100",
     },
@@ -46,7 +46,7 @@ export const HomeTab = () => {
       _id: "4",
       date: "21.01.20",
       type: "income",
-      category: "car",
+      category: "Other expenses",
       comment: "paliwo",
       sum: "1000",
     },
@@ -322,7 +322,7 @@ export const HomeTab = () => {
                 <th className={styles.tableHeadItem}>Sum</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className={styles.tbody}>
               {transactions.map(
                 ({ _id, date, type, category, comment, sum }) => (
                   <tr key={_id} className={styles.data}>
