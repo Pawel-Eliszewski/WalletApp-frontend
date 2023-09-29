@@ -29,9 +29,9 @@ export const addTransaction = createAsyncThunk(
 
 export const deleteTransaction = createAsyncThunk(
   "finance/deleteTransaction",
-  async (data, thunkAPI) => {
+  async (transactionID, thunkAPI) => {
     try {
-      const response = await axios.delete("/transaction", data);
+      const response = await axios.delete(`/${transactionID}`);
       return response.data;
     } catch (err) {
       return thunkAPI.rejectWithValue(err.message);
