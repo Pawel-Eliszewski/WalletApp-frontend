@@ -10,7 +10,9 @@ export const ButtonAddTransaction = () => {
   };
   return (
     <>
-      <button className={css.btn} onClick={openModal}></button>
+      <button className={css.btn} onClick={openModal}>
+        <img className={css.icon} src={"/assets/icon-btn-income.png"}></img>
+      </button>
     </>
   );
 };
