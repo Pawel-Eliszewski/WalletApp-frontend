@@ -1,21 +1,26 @@
 :root {
-  --primary-gray-font-color: #bdbdbd;
-  --secondary-gray-font-color: #e0e0e0;
-  --primary-expanse-color: #ff6596;
-  --primary-income-color: #24cca7;
-  --main-expanses-diagram-color: #fed057;
-  --products-diagram-color: #ffd8d0;
-  --car-diagram-color: #ffd8d0;
-  --self-care-diagram-color: #ffd8d0;
-  --child-care-diagram-color: #6e78e8;
-  --household-products-diagram-color: #4a56e2;
-  --education-diagram-color: #81e1ff;
-  --other-expanses-diagram-color: #00ad84;
+	--primary-gray-font-color: #bdbdbd;
+	--secondary-gray-font-color: #e0e0e0;
+	--primary-expanse-color: #ff6596;
+	--primary-income-color: #24cca7;
+	--main-expanses-diagram-color: #fed057;
+	--products-diagram-color: #ffd8d0;
+	--car-diagram-color: #ffd8d0;
+	--self-care-diagram-color: #ffd8d0;
+	--child-care-diagram-color: #6e78e8;
+	--household-products-diagram-color: #4a56e2;
+	--education-diagram-color: #81e1ff;
+	--other-expanses-diagram-color: #00ad84;
 }
 
 body {
-  color: #000000;
-  font-family: "Circe", sans-serif, "Poppins", sans-serif;
-  margin: 0;
-  padding: 0;
+	color: #000000;
+	font-family: "Circe", sans-serif, "Poppins", sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	color: #000000;
 }
