@@ -1,14 +1,10 @@
 import PropTypes from "prop-types";
-import { getAllCategoriesFromTransactions } from "../../redux/finance/selectors-transaction";
+import { selectTransactionsCategoriesSummary } from "../../redux/finance/selectors";
 import { useSelector } from "react-redux";
 import styles from "./DiagramTab.module.css";
 
 function DiagramTab({ allArray, categories, sum }) {
-  const categoriesFromState = useSelector((state) =>
-    categories
-      ? { categories, consumption: sum }
-      : getAllCategoriesFromTransactions(state)
-  );
+  const categoriesFromState = useSelector(selectTransactionsCategoriesSummary);
 
   return (
     <div className={styles.container}>
@@ -64,7 +60,7 @@ function DiagramTab({ allArray, categories, sum }) {
 DiagramTab.propTypes = {
   allArray: PropTypes.array.isRequired,
   categories: PropTypes.array,
-  sum: PropTypes.number, 
+  sum: PropTypes.number,
 };
 
 export default DiagramTab;
