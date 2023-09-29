@@ -6,16 +6,18 @@ import {
 } from "../../redux/finance/operations";
 import { useMedia } from "react-use";
 import { PaginatedItems } from "../Pagination/Pagination";
-// import { selectTransactions } from "../../redux/finance/selectors";
+import paginateTransactions from "../../Utils/pagination";
 import styles from "./HomeTab.module.css";
 
 export const HomeTab = () => {
   const isMobile = useMedia("(max-width: 767px)");
-  const [itemOffset, setItemOffset] = useState(0);
+  const [itemOffset, setItemOffset] = useState(1);
 
   const dispatch = useDispatch();
 
-  // const transactions = useSelector(selectTransactions);
+  // let paginationData = paginateTransactions(itemOffset);
+  // let transactions = paginationData.paginatedTransactions;
+  // let pageCount = paginationData.pages;
 
   const transactions = [
     {

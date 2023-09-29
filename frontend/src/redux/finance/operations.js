@@ -4,10 +4,10 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 axios.defaults.baseURL = "#";
 
 export const fetchTransactions = createAsyncThunk(
-  "finance/fetchAllTransactions",
+  "finance/fetchTransactions",
   async (userId, thunkAPI) => {
     try {
-      const response = await axios.get(`/users/${userId}/transactions`);
+      const response = await axios.get(`/user/${userId}/transactions`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -19,10 +19,7 @@ export const addTransaction = createAsyncThunk(
   "finance/addTransaction",
   async (data, thunkAPI) => {
     try {
-      const response = await axios.post(
-        `/users/${data.userId}/transactions`,
-        data.transaction
-      );
+      const response = await axios.post("/transaction", data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -34,9 +31,7 @@ export const deleteTransaction = createAsyncThunk(
   "finance/deleteTransaction",
   async (data, thunkAPI) => {
     try {
-      const response = await axios.delete(
-        `/users/${data.userId}/transactions/${data.transactionId}`
-      );
+      const response = await axios.delete("/transaction", data);
       return response.data;
     } catch (err) {
       return thunkAPI.rejectWithValue(err.message);
@@ -48,37 +43,10 @@ export const updateTransaction = createAsyncThunk(
   "finance/updateTransaction",
   async (data, thunkAPI) => {
     try {
-      const response = await axios.patch(
-        `/users/${data.userId}/transactions/${data.transactionId}`,
-        data.transactionData
-      );
+      const response = await axios.patch("/transaction", data);
       return response.data;
     } catch (err) {
       return thunkAPI.rejectWithValue(err.message);
     }
   }
 );
-
-export const fetchBalance = createAsyncThunk(
-  "finance/fetchBalance",
-  async (userId, thunkAPI) => {
-    try {
-      const response = await axios.get(`/users/${userId}/balance`);
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-export const updateBalance = createAsyncThunk(
-  "finance/updateBalance",
-  async (data, thunkAPI) => {
-    try {
-      const response = await axios.patch(`/users/${data.userId}/balance`, data.balance);
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-)
