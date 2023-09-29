@@ -1,6 +1,6 @@
 export const fetchCurrency = async (query) => {
   const response = await fetch(
-    `http://api.nbp.pl/api/exchangerates/rates/c/${query}/last/`
+    `http://api.nbp.pl/api/exchangerates/rates/c/${query}/today/`
   );
 
   if (!response.ok) {
@@ -9,11 +9,12 @@ export const fetchCurrency = async (query) => {
 
   const data = await response.json();
 
-  const transformedData = data.rates.map((rate) => ({
-    ccy: rate.currency,
-    buy: rate.ask,
-    sale: rate.bid,
-  }));
+  const transformedData = data.rates.map((rate) => {
+    return {
+      buy: rate.ask,
+      sale: rate.bid,
+    };
+  });
 
   return transformedData;
 };
