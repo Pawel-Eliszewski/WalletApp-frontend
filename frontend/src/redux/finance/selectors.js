@@ -13,20 +13,20 @@ export const selectTransactionsCategories = (state) => {
 export const selectTransactionsCategoriesSummary = (state) => {
   const transactions = selectTransactions(state);
 
-  let categoriesSumary = {
-    consumption: 0,
+  let categoriesSummary = {
+    expense: 0,
     income: 0,
   };
 
   transactions.forEach((transaction) => {
     if (transaction.category === "income") {
-      categoriesSumary.income + transaction.amount;
+      categoriesSummary.income + transaction.amount;
     } else {
-      categoriesSumary.consumption + transaction.amount;
+      categoriesSummary.expense + transaction.amount;
     }
   });
 
-  return categoriesSumary;
+  return categoriesSummary;
 };
 
 export const selectBalance = (state) => state.finance.totalBalance;

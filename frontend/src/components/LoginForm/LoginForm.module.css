@@ -71,7 +71,7 @@
 
 .login__signup:hover {
   transition: 300ms;
-  color: black
+  color: black;
 }
 
 .login__signin {

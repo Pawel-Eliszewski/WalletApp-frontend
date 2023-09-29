@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsModalAddTransactionOpen } from "../../redux/global/selectors";
+import { selectUser } from "../../redux/session/selectors";
 import { setIsModalAddTransactionOpen } from "../../redux/global/globalSlice";
 import { addTransaction } from "../../redux/finance/operations";
 import { Header } from "../Header/Header";
@@ -17,6 +18,8 @@ export const ModalAddTransaction = ({ userName }) => {
   const isModalAddTransactionOpen = useSelector(
     selectIsModalAddTransactionOpen
   );
+
+  const user = useSelector(selectUser);
 
   const today = new Date();
   const [date, setDate] = useState(today.toLocaleDateString());
@@ -49,6 +52,7 @@ export const ModalAddTransaction = ({ userName }) => {
         amount: amount,
         date: date,
         comment: comment,
+        owner: user._id,
       })
     );
     form.reset();

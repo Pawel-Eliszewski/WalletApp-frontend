@@ -7,6 +7,11 @@
   background-color: rgba(231, 234, 242, 1);
 }
 
+.tabletContainer {
+  height: calc(100vh - 70px);
+  background-image: url(/assets/dashboard-background.png);
+}
+
 .desktopContainer {
   display: flex;
   height: calc(100vh - 70px);
@@ -16,11 +21,11 @@
   background-image: url(/assets/dashboard-background.png);
   background-position: center;
   background-repeat: no-repeat;
+  padding-inline: 20px;
+  padding-top: 30px;
 }
 
-/* .innerWrapper {
-  dis
-} */
+
 
 @media screen and (min-width: 1268px) {
   .desktopContainer {

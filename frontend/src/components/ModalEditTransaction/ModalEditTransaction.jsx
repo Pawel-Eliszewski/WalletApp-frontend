@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { selectUser } from "../../redux/session/selectors";
 import { selectIsModalEditTransactionOpen } from "../../redux/global/selectors";
 import { setIsModalEditTransactionOpen } from "../../redux/global/globalSlice";
 import { updateTransaction } from "../../redux/finance/operations";
@@ -31,6 +32,8 @@ export const ModalEditTransaction = ({ userName, transactionDetails }) => {
   const [updatedCategory, setUpdatedCategory] = useState(category);
   const [updatedDate, setUpdatedDate] = useState(date);
 
+  const user = useSelector(selectUser);
+
   const handleUpdatedCategory = (category) => {
     setUpdatedCategory(category);
   };
@@ -51,15 +54,9 @@ export const ModalEditTransaction = ({ userName, transactionDetails }) => {
         amount: updatedAmount,
         date: updatedDate,
         comment: updatedComment,
+        owner: user._id,
       })
     );
-    console.log({
-      type: type,
-      category: updatedCategory,
-      amount: updatedAmount,
-      date: updatedDate,
-      comment: updatedComment,
-    });
     form.reset();
     dispatch(setIsModalEditTransactionOpen(false));
   };
@@ -71,8 +68,7 @@ export const ModalEditTransaction = ({ userName, transactionDetails }) => {
   const incomeClass = type === "income" ? css.income : "";
   const expenseClass = type === "expense" ? css.expense : "";
 
-  // zmienić wykrzyknik jak już będą propsy!!
-  const backdropClass = !isModalEditTransactionOpen
+  const backdropClass = isModalEditTransactionOpen
     ? css.backdropIsOpen
     : css.backdrop;
 

@@ -1,5 +1,9 @@
 import { useState } from "react";
-// import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import {
+  updateTransaction,
+  deleteTransaction,
+} from "../../redux/finance/operations";
 import { useMedia } from "react-use";
 import { PaginatedItems } from "../Pagination/Pagination";
 // import { selectTransactions } from "../../redux/finance/selectors";
@@ -8,6 +12,8 @@ import styles from "./HomeTab.module.css";
 export const HomeTab = () => {
   const isMobile = useMedia("(max-width: 767px)");
   const [itemOffset, setItemOffset] = useState(0);
+
+  const dispatch = useDispatch();
 
   // const transactions = useSelector(selectTransactions);
 
@@ -91,6 +97,14 @@ export const HomeTab = () => {
   const itemsPerPage = 5;
   const pageCount = Math.ceil(length / itemsPerPage);
 
+  const handleEdit = (transactionId) => {
+    dispatch(updateTransaction(transactionId));
+  };
+
+  const handleDelete = (transactionId) => {
+    dispatch(deleteTransaction(transactionId));
+  };
+
   return (
     <div className={styles.homeWrapper}>
       <table
@@ -140,16 +154,23 @@ export const HomeTab = () => {
                       className={styles.dataItem}
                       style={{ textAlign: "right" }}
                     >
-                      <button key={_id} className={styles.dataItemBtnEdit}>
+                      <button
+                        onClick={() => handleEdit(_id)}
+                        key={_id}
+                        className={styles.dataItemBtnEdit}
+                      >
                         <img src={"./assets/icon-pen.svg"} />
                       </button>
                     </td>
-
                     <td
                       className={styles.dataItem}
                       style={{ textAlign: "right" }}
                     >
-                      <button key={_id} className={styles.dataItemBtnDelete}>
+                      <button
+                        key={_id}
+                        onClick={() => handleDelete(_id)}
+                        className={styles.dataItemBtnDelete}
+                      >
                         Delete
                       </button>
                     </td>
@@ -191,8 +212,21 @@ export const HomeTab = () => {
                   {sum}
                 </span>
               </li>
+              <li className={styles.dataItem} style={{ textAlign: "right" }}>
+                <button
+                  onClick={() => handleEdit(_id)}
+                  key={_id}
+                  className={styles.dataItemBtnEdit}
+                >
+                  <img src={"./assets/icon-pen.svg"} />
+                </button>
+              </li>
               <li className={styles.dataItemMob}>
-                <button key={_id} className={styles.headItemMob}>
+                <button
+                  key={_id}
+                  onClick={() => handleDelete(_id)}
+                  className={styles.headItemMob}
+                >
                   Delete
                 </button>
               </li>
