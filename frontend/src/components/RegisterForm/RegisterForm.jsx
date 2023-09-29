@@ -41,7 +41,7 @@ const RegisterForm = () => {
   return (
     <div className={styles.register}>
       <div className={styles.register__header}>
-        <img src="/assets/icon-miniwallet.svg" alt="Wallet" />
+        <img src="/assets/icon-wallet-small.svg" alt="Wallet" />
         <h2 className={styles.h2}>Wallet</h2>
       </div>
       <Formik
