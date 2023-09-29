@@ -4,6 +4,7 @@
   list-style: none;
   cursor: pointer;
   margin-top: 15px;
+  padding: 0;
 }
 
 @media screen and (max-width: 767px) {
@@ -23,15 +24,20 @@
 
 @media screen and (min-width: 1280px) {
   .pagination {
-    margin-left: 69px;
+    /* margin-left: 69px; */
   }
 }
 
 .pagination a {
   padding: 8px;
   border-radius: 5px;
-  border: 1px solid #6c7ac9;
-  color: #6c7ac9;
+  outline: 1px solid grey;
+  color: black;
+}
+
+.pagination a:hover,
+.pagination a:focus {
+  outline: 1px solid black;
 }
 
 @media screen and (min-width: 768px) {
@@ -42,7 +48,7 @@
 
 .paginationLinkActive a {
   color: #fff;
-  background: #6c7ac9;
+  background: var(--primary-income-color);
 }
 
 .paginationLinkDisabled a {

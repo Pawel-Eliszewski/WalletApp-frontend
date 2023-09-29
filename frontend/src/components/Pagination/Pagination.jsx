@@ -14,8 +14,8 @@ export const PaginatedItems = ({ pageCount, setItemOffset }) => {
         onPageChange={handlePageClick}
         pageRangeDisplayed={2}
         pageCount={pageCount}
-        previousLabel={"← Previous"}
-        nextLabel={"Next →"}
+        previousLabel={" ← "}
+        nextLabel={" → "}
         renderOnZeroPageCount={null}
         containerClassName={css.pagination}
         previousLinkClassName={css.paginationLink}

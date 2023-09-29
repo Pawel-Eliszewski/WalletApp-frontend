@@ -23,7 +23,7 @@ export const HomeTab = () => {
     {
       _id: "2",
       date: "21.01.20",
-      type: "income",
+      type: "expense",
       category: "car",
       comment: "paliwo",
       sum: "1000",
@@ -55,7 +55,7 @@ export const HomeTab = () => {
     {
       _id: "6",
       date: "21.01.20",
-      type: "income",
+      type: "expense",
       category: "car",
       comment: "paliwo",
       sum: "1000",
@@ -71,7 +71,7 @@ export const HomeTab = () => {
     {
       _id: "8",
       date: "21.01.20",
-      type: "income",
+      type: "expense",
       category: "car",
       comment: "paliwo",
       sum: "100",
@@ -83,30 +83,6 @@ export const HomeTab = () => {
       category: "car",
       comment: "paliwo",
       sum: "1000",
-    },
-    {
-      _id: "10",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "kebab",
-      sum: "10",
-    },
-    {
-      _id: "11",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "piwo",
-      sum: "100",
-    },
-    {
-      _id: "12",
-      date: "21.01.20",
-      type: "income",
-      category: "dragi",
-      comment: "paliwo",
-      sum: "10000",
     },
   ];
 
@@ -156,17 +132,27 @@ export const HomeTab = () => {
                       className={styles.dataItem}
                       style={{ textAlign: "right", fontWeight: "700" }}
                     >
-                      <span
-                        className={styles.dataSum}
-                        data-type={type.toString()}
-                      >
+                      <span className={styles.dataSum} data-type={type}>
                         {sum}
                       </span>
                     </td>
                     <td
                       className={styles.dataItem}
                       style={{ textAlign: "right" }}
-                    ></td>
+                    >
+                      <button key={_id} className={styles.dataItemBtnEdit}>
+                        <img src={"./assets/icon-pen.svg"} />
+                      </button>
+                    </td>
+
+                    <td
+                      className={styles.dataItem}
+                      style={{ textAlign: "right" }}
+                    >
+                      <button key={_id} className={styles.dataItemBtnDelete}>
+                        Delete
+                      </button>
+                    </td>
                   </tr>
                 )
               )}
@@ -204,6 +190,11 @@ export const HomeTab = () => {
                 <span className={styles.dataSum} data-type={type.toString()}>
                   {sum}
                 </span>
+              </li>
+              <li className={styles.dataItemMob}>
+                <button key={_id} className={styles.headItemMob}>
+                  Delete
+                </button>
               </li>
             </ul>
           ))}

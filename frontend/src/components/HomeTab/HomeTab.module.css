@@ -72,12 +72,14 @@ th.tableHeadItem:nth-child(5) {
 tr.data {
   position: relative;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   word-wrap: break-word;
   padding: 0px 15px;
   font-size: 16px;
   line-height: 24px;
   min-height: 52px;
+  padding-right: 0;
 }
 
 tr.data:not(:last-child)::after {
@@ -138,12 +140,12 @@ span.dataComment {
   white-space: pre-line;
 }
 
-span.dataSum[data-type="true"] {
-  color: var(--accent-color-green);
+span.dataSum[data-type="income"] {
+  color: var(--primary-income-color);
 }
 
-span.dataSum[data-type="false"] {
-  color: var(--accent-color-red);
+span.dataSum[data-type="expense"] {
+  color: var(--primary-expense-color);
 }
 
 ul.dataMob {
@@ -189,4 +191,35 @@ li.dataItemMob {
   justify-content: space-between;
   height: 47px;
   line-height: calc(24 / 16);
+}
+
+.dataItemBtnEdit {
+  background: none;
+  border: none;
+  transform: scale(1);
+  transition: 300ms;
+}
+
+.dataItemBtnEdit:hover {
+  transform: scale(1.2);
+  transition: 300ms;
+  outline: none;
+}
+
+.dataItemBtnEdit:focus {
+  outline: none;
+  border: none;
+}
+
+
+.dataItemBtnDelete {
+  background-color: var(--primary-income-color);
+  font-size: 12px;
+  width: 67px;
+  height: 26px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: 300ms;
 }

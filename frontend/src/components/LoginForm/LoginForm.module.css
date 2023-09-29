@@ -62,11 +62,16 @@
   outline: none;
   border: none;
   background-color: transparent;
-  border: 1px solid #4a56e2;
-  color: #4a56e2;
+  border: none;
+  outline: 1px solid var(--household-products-diagram-color);
   cursor: pointer;
-  transform: scale(1);
+  color: var(--household-products-diagram-color);
   transition: 300ms;
+}
+
+.login__signup:hover {
+  transition: 300ms;
+  color: black
 }
 
 .login__signin {
@@ -80,13 +85,6 @@
   border-radius: 20px;
   cursor: pointer;
   margin-bottom: 20px;
-  transform: scale(1);
-  transition: 300ms;
-}
-
-.login__signup:hover,
-.login__signin:hover {
-  transform: scale(1.05);
   transition: 300ms;
 }
 

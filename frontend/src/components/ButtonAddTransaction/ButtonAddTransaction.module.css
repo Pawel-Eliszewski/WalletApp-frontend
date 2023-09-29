@@ -15,9 +15,12 @@
     transition: 300ms;
 }
 
-.btn:hover {
+.btn:hover,
+.btn:focus {
     transform: scale(1.2);
     transition: 300ms;
+    border: none;
+    outline: none;
 }
 
 .icon {

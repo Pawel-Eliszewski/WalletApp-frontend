@@ -34,8 +34,8 @@
 	width: 60px;
 	height: 35px;
 	background-color: transparent;
-	border: 1px solid var(--other-expanses-diagram-color);
-	color: var(--other-expanses-diagram-color);
+	border: 1px solid var(--other-expenses-diagram-color);
+	color: var(--other-expenses-diagram-color);
 	border-radius: 15px;
 	cursor: pointer;
 }
