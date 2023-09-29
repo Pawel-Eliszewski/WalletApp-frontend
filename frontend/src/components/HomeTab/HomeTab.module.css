@@ -1,6 +1,13 @@
 @media screen and (min-width: 768px) {
   .homeWrapper {
-    padding-top: 10px;
+    max-width: 728px;
+    padding-top: 20px;
+    width: 100%;
+  }
+
+  .data {
+    max-width: 728px;
+
   }
 }
 
@@ -12,8 +19,6 @@
 }
 
 table.tableWrapper {
-  width: 100%;
-  max-width: 320px;
   overflow: hidden scroll;
   text-align: center;
 }
@@ -21,7 +26,6 @@ table.tableWrapper {
 @media screen and (min-width: 768px) {
   table.tableWrapper {
     margin: 0 auto;
-    max-width: 704px;
   }
 }
 
@@ -150,11 +154,21 @@ span.dataSum[data-type="expense"] {
 }
 
 ul.dataMob {
+  list-style: none;
   width: 290px;
   padding: 0;
   border-radius: 10px;
-  border-left: 5px solid var(--accent-color-green);
-  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+ul.dataMob[data-type="expense"] {
+  border-left: 5px solid var(--primary-expense-color);
+}
+
+ul.dataMob[data-type="income"] {
+  border-left: 5px solid var(--primary-income-color);
 }
 
 ul.dataMob:not(:last-child) {
@@ -178,7 +192,13 @@ li.dataItemMob {
   background-color: white;
   padding-inline: 15px;
   width: 100%;
-  border-radius: 20px;
+}
+
+li.dataItemMob:first-child {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 li.dataItemMob:not(:last-child) {
@@ -212,7 +232,6 @@ li.dataItemMob {
   border: none;
 }
 
-
 .dataItemBtnDelete {
   background-color: var(--primary-income-color);
   font-size: 12px;
@@ -223,4 +242,23 @@ li.dataItemMob {
   cursor: pointer;
   color: white;
   transition: 300ms;
+}
+
+.buttonsWrapper {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: space-between;
+  height: 47px;
+  line-height: calc(24 / 16);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: white;
+  padding-inline: 15px;
+}
+
+.btnIcon {
+  margin-right: 10px;
 }

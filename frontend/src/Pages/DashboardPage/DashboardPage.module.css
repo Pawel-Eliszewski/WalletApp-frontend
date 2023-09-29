@@ -5,11 +5,13 @@
   align-items: center;
   width: 100%;
   background-color: rgba(231, 234, 242, 1);
+  padding-top: 15px;
 }
 
 .tabletContainer {
   height: calc(100vh - 70px);
   background-image: url(/assets/dashboard-background.png);
+  padding-inline: 20px;
 }
 
 .desktopContainer {

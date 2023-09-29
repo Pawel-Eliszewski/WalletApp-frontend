@@ -4,9 +4,9 @@
   background-color: white;
   border-radius: 30px;
   padding: 8px 32px;
-  width: 100%;
-  max-width: 280px;
+  width: 280px;
   height: 80px;
+  margin-bottom: 20px;
 }
 
 .balance__text {

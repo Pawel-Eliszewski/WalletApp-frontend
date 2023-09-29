@@ -4,7 +4,7 @@
   list-style: none;
   cursor: pointer;
   margin-top: 15px;
-  padding: 0;
+  padding-inline: 30px;
 }
 
 @media screen and (max-width: 767px) {

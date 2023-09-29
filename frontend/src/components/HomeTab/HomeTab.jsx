@@ -90,6 +90,206 @@ export const HomeTab = () => {
       comment: "paliwo",
       sum: "1000",
     },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
   ];
 
   let length = transactions.length;
@@ -185,11 +385,7 @@ export const HomeTab = () => {
       {isMobile && (
         <>
           {transactions.map(({ _id, date, type, category, comment, sum }) => (
-            <ul
-              key={_id}
-              className={styles.dataMob}
-              data-type={type.toString()}
-            >
+            <ul key={_id} className={styles.dataMob} data-type={type}>
               <li className={styles.dataItemMob}>
                 <span className={styles.headItemMob}>Date</span>
                 {date}
@@ -212,24 +408,26 @@ export const HomeTab = () => {
                   {sum}
                 </span>
               </li>
-              <li className={styles.dataItem} style={{ textAlign: "right" }}>
+              <div className={styles.buttonsWrapper}>
+                <button
+                  key={_id}
+                  onClick={() => handleDelete(_id)}
+                  className={styles.dataItemBtnDelete}
+                >
+                  Delete
+                </button>
                 <button
                   onClick={() => handleEdit(_id)}
                   key={_id}
                   className={styles.dataItemBtnEdit}
                 >
-                  <img src={"./assets/icon-pen.svg"} />
+                  <img
+                    className={styles.btnIcon}
+                    src={"./assets/icon-pen.svg"}
+                  />
+                  Edit
                 </button>
-              </li>
-              <li className={styles.dataItemMob}>
-                <button
-                  key={_id}
-                  onClick={() => handleDelete(_id)}
-                  className={styles.headItemMob}
-                >
-                  Delete
-                </button>
-              </li>
+              </div>
             </ul>
           ))}
         </>
