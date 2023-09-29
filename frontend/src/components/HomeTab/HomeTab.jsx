@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import {
-  updateTransaction,
-  deleteTransaction,
-} from "../../redux/finance/operations";
+import { setIsModalEditTransactionOpen } from "../../redux/global/globalSlice";
+
+import { deleteTransaction } from "../../redux/finance/operations";
 import { useMedia } from "react-use";
 import { PaginatedItems } from "../Pagination/Pagination";
+import { fakeTransactions } from "../../utils/fakeData";
 // import { selectTransactions } from "../../redux/finance/selectors";
 import styles from "./HomeTab.module.css";
 
@@ -17,292 +17,19 @@ export const HomeTab = () => {
 
   // const transactions = useSelector(selectTransactions);
 
-  const transactions = [
-    {
-      _id: "1",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "blanty",
-      sum: "1000",
-    },
-    {
-      _id: "2",
-      date: "21.01.20",
-      type: "expense",
-      category: "Car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "3",
-      date: "21.01.20",
-      type: "income",
-      category: "Household products",
-      comment: "fajki",
-      sum: "100",
-    },
-    {
-      _id: "4",
-      date: "21.01.20",
-      type: "income",
-      category: "Other expenses",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "5",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "meta",
-      sum: "10000",
-    },
-    {
-      _id: "6",
-      date: "21.01.20",
-      type: "expense",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "7",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "wóda",
-      sum: "100",
-    },
-    {
-      _id: "8",
-      date: "21.01.20",
-      type: "expense",
-      category: "car",
-      comment: "paliwo",
-      sum: "100",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-    {
-      _id: "9",
-      date: "21.01.20",
-      type: "income",
-      category: "car",
-      comment: "paliwo",
-      sum: "1000",
-    },
-  ];
+  const transactions = fakeTransactions;
 
   let length = transactions.length;
 
   const itemsPerPage = 5;
   const pageCount = Math.ceil(length / itemsPerPage);
 
-  const handleEdit = (transactionId) => {
-    dispatch(updateTransaction(transactionId));
-  };
-
   const handleDelete = (transactionId) => {
     dispatch(deleteTransaction(transactionId));
+  };
+
+  const openModalEditTransaction = () => {
+    dispatch(setIsModalEditTransactionOpen(true));
   };
 
   return (
@@ -354,25 +81,23 @@ export const HomeTab = () => {
                       className={styles.dataItem}
                       style={{ textAlign: "right" }}
                     >
-                      <button
-                        onClick={() => handleEdit(_id)}
-                        key={_id}
-                        className={styles.dataItemBtnEdit}
-                      >
-                        <img src={"./assets/icon-pen.svg"} />
-                      </button>
-                    </td>
-                    <td
-                      className={styles.dataItem}
-                      style={{ textAlign: "right" }}
-                    >
-                      <button
-                        key={_id}
-                        onClick={() => handleDelete(_id)}
-                        className={styles.dataItemBtnDelete}
-                      >
-                        Delete
-                      </button>
+                      <div className={styles.buttonsWrapper}>
+                        <button
+                          onClick={openModalEditTransaction}
+                          className={styles.dataItemBtnEdit}
+                        >
+                          <img
+                            className={styles.btnIcon}
+                            src={"./assets/icon-pen.svg"}
+                          />
+                        </button>
+                        <button
+                          onClick={() => handleDelete(_id)}
+                          className={styles.dataItemBtnDelete}
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 )
@@ -408,7 +133,7 @@ export const HomeTab = () => {
                   {sum}
                 </span>
               </li>
-              <div className={styles.buttonsWrapper}>
+              <div className={styles.buttonsWrapperMob}>
                 <button
                   key={_id}
                   onClick={() => handleDelete(_id)}
@@ -417,7 +142,7 @@ export const HomeTab = () => {
                   Delete
                 </button>
                 <button
-                  onClick={() => handleEdit(_id)}
+                  onClick={openModalEditTransaction()}
                   key={_id}
                   className={styles.dataItemBtnEdit}
                 >

@@ -50,28 +50,16 @@ tr.tableHead {
   border-radius: 30px;
   background-color: white;
   width: 728px;
-  padding-left: 10px;
-  padding-right: 210px;
-}
-
-th.tableHeadItem {
-  width: 50px;
-}
-
-th.tableHeadItem:nth-child(1) {
-  margin-right: 40px;
+  padding-left: 20px;
+  padding-right: 155px;
 }
 
 th.tableHeadItem:nth-child(2) {
-  margin-right: 20px;
-}
-
-th.tableHeadItem:nth-child(3) {
-  margin-right: 45px;
+  padding-left: 10px;
 }
 
 th.tableHeadItem:nth-child(4) {
-  margin-right: 80px;
+  margin-right: 60px;
 }
 
 tr.data {
@@ -107,25 +95,23 @@ td.dataItem {
 @media screen and (min-width: 320px) {
   td.dataItem:nth-child(1) {
     width: 70px;
-    padding-inline: 0;
   }
 
   td.dataItem:nth-child(2) {
-    width: 80px;
-    text-align: center;
+    width: 20px;
   }
 
   td.dataItem:nth-child(3) {
     width: 80px;
+    /* padding-left: 10px; */
   }
 
   td.dataItem:nth-child(4) {
-    width: 100px;
-    padding-left: 10px;
+    width: 110px;
   }
 
   td.dataItem:nth-child(5) {
-    width: 80px;
+    width: 70px;
   }
 
   td.dataItem:nth-child(6) {
@@ -134,11 +120,12 @@ td.dataItem {
 }
 
 span.dataComment {
-  width: 80px;
+  width: 120px;
   text-align: end;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: pre-line;
+  padding-block: 5px;
 }
 
 span.dataSum[data-type="income"] {
@@ -206,7 +193,7 @@ li.dataItemMob {
   flex-grow: 1;
   align-items: center;
   justify-content: space-between;
-  height: 47px;
+  min-height: 47px;
   line-height: calc(24 / 16);
 }
 
@@ -240,7 +227,7 @@ li.dataItemMob {
   transition: 300ms;
 }
 
-.buttonsWrapper {
+.buttonsWrapperMob {
   display: flex;
   flex-grow: 1;
   align-items: center;
@@ -253,6 +240,10 @@ li.dataItemMob {
   border-bottom-right-radius: 10px;
   background-color: white;
   padding-inline: 15px;
+}
+
+.buttonsWrapper {
+  display: flex;
 }
 
 .btnIcon {

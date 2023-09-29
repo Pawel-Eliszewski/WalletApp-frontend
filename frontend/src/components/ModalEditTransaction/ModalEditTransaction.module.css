@@ -92,15 +92,6 @@
     border: none;
     cursor: pointer;
     color: white;
-    transform: scale(1);
-    transition: 300ms;
-}
-
-.btnGreen:hover,
-.btnGreen:focus,
-.btnCancel:hover,
-.btnCancel:focus {
-    transform: scale(1.05);
     transition: 300ms;
 }
 
@@ -109,11 +100,17 @@
     width: 300px;
     height: 50px;
     border-radius: 20px;
-    border: 1px solid var(--household-products-diagram-color);
+    border: none;
+    outline: 1px solid var(--household-products-diagram-color);
     cursor: pointer;
     color: var(--household-products-diagram-color);
-    transform: scale(1);
     transition: 300ms;
+}
+
+.btnCancel:hover,
+.btnCancel:focus {
+    transition: 300ms;
+    color: black
 }
 
 @media screen and (min-width: 768px) {
