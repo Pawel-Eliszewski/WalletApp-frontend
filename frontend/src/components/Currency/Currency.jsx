@@ -3,12 +3,13 @@ import { fetchCurrency } from "../../utils/currencyExchange";
 import s from "./Currency.module.css";
 
 export function Currency() {
-  const [currency, setCurrency] = useState([]);
+  const [currencyData, setCurrencyData] = useState([]);
 
   const fetchData = async () => {
     try {
-      const data = await fetchCurrency("EUR");
-      setCurrency(data);
+      const dataEUR = await fetchCurrency("EUR");
+      const dataUSD = await fetchCurrency("USD");
+      setCurrencyData([...dataEUR, ...dataUSD]); // Łączy dane dla obu walut w jednej tablicy
     } catch (error) {
       console.error(error);
     }
@@ -34,7 +35,7 @@ export function Currency() {
           </tr>
         </thead>
         <tbody className={s.currency_body}>
-          {currency.map((element) => (
+          {currencyData.map((element) => (
             <tr key={element.ccy}>
               <td className={s.currency_name}>{element.ccy}</td>
               <td className={s.currency_item}>
