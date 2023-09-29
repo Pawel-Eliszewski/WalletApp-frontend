@@ -1,9 +1,8 @@
-import React, { useEffect, useCallback } from "react";
-import styles from "./Balance.module.css";
 import { useSelector } from "react-redux";
 import { selectBalance } from "../../redux/finance/selectors";
+import styles from "./Balance.module.css";
 
-function Balance() {
+export function Balance() {
   const balance = useSelector(selectBalance);
 
   return (
@@ -15,5 +14,3 @@ function Balance() {
     </div>
   );
 }
-
-export default Balance;

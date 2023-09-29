@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import axios from "axios";
-
-import validationSchema from "../../Utils/yupValidationSchema";
-import styles from "./RegisterForm.module.css";
+import validationSchema from "../../utils/yupValidationSchema";
 import { register } from "../../redux/session/operations";
+import styles from "./RegisterForm.module.css";
+// import axios from "axios";
 
 const RegisterForm = () => {
   const dispatch = useDispatch;

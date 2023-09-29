@@ -10,7 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectIsRefreshing } from "./redux/session/selectors";
 import { refreshUser } from "./redux/session/operations";
 import LoginPage from "./Pages/LoginPage/LoginPage";
-import RegisterPage from "./Pages/RegisterPage/RegisterPage";
+// import RegisterPage from "./Pages/RegisterPage/RegisterPage";
+import { DashboardPage } from "./Pages/DashboardPage/DashboardPage";
 import Loader from "./components/Loader/Loader";
 import "./App.css";
 
@@ -40,11 +41,12 @@ function App() {
         pauseOnHover
         theme="colored"
       />
+
       <Routes>
         <Route
           path="/register"
           element={
-            <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
+            <RestrictedRoute redirectTo="/" component={<DashboardPage />} />
           }
         />
         <Route

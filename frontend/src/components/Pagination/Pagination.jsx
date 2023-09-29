@@ -1,7 +1,7 @@
 import ReactPaginate from "react-paginate";
-import "./pagination.scss";
+import css from "./Pagination.module.css";
 
-export function PaginatedItems({ pageCount, setItemOffset }) {
+export const PaginatedItems = ({ pageCount, setItemOffset }) => {
   const handlePageClick = (event) => {
     setItemOffset(event.selected);
   };
@@ -12,17 +12,17 @@ export function PaginatedItems({ pageCount, setItemOffset }) {
       <ReactPaginate
         breakLabel="..."
         onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
+        pageRangeDisplayed={2}
         pageCount={pageCount}
         previousLabel={"← Previous"}
         nextLabel={"Next →"}
         renderOnZeroPageCount={null}
-        containerClassName={"pagination"}
-        previousLinkClassName={"pagination__link"}
-        nextLinkClassName={"pagination__link"}
-        disabledClassName={"pagination__link--disabled"}
-        activeClassName={"pagination__link--active"}
+        containerClassName={css.pagination}
+        previousLinkClassName={css.paginationLink}
+        nextLinkClassName={css.paginationLink}
+        disabledClassName={css.paginationLinkDisabled}
+        activeClassName={css.paginationLinkActive}
       />
     </>
   );
-}
+};

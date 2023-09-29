@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectIsModalAddTransactionOpen } from "../../redux/global/selectors";
 import { setIsModalAddTransactionOpen } from "../../redux/global/globalSlice";
 import { addTransaction } from "../../redux/finance/operations";
@@ -59,13 +59,12 @@ export const ModalAddTransaction = ({ userName }) => {
     dispatch(setIsModalAddTransactionOpen(false));
   };
 
-  const incomeClass = type === "income" ? css.income : "";
-  const expenseClass = type === "expense" ? css.expense : "";
-
-  // zmienić wykrzyknik jak już będą propsy!!
-  const backdropClass = !isModalAddTransactionOpen
+  const backdropClass = isModalAddTransactionOpen
     ? css.backdropIsOpen
     : css.backdrop;
+
+  const incomeClass = type === "income" ? css.income : "";
+  const expenseClass = type === "expense" ? css.expense : "";
 
   return (
     <div className={backdropClass}>
@@ -113,6 +112,7 @@ export const ModalAddTransaction = ({ userName }) => {
   );
 };
 
+//dodać .isRequired
 ModalAddTransaction.propTypes = {
-  userName: PropTypes.string.isRequired,
+  userName: PropTypes.string,
 };

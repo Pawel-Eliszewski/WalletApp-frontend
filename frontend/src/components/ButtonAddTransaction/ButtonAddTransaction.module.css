@@ -1,0 +1,15 @@
+.btn {
+    background: none;
+    background-image: url(assets/icon-btn-income.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    border: none;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    padding: 0;
+}

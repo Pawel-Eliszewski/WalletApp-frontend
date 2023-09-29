@@ -4,25 +4,19 @@
   list-style: none;
   cursor: pointer;
   margin-top: 15px;
-}
 
-@media screen and (max-width: 767px) {
-  .pagination {
+  @media screen and (max-width: 767px) {
     margin-top: 25px;
     margin-left: auto;
     margin-right: auto;
     width: 290px;
   }
-}
 
-@media screen and (min-width: 768px) {
-  .pagination {
+  @media screen and (min-width: 768px) {
     justify-content: center;
   }
-}
 
-@media screen and (min-width: 1280px) {
-  .pagination {
+  @media screen and (min-width: 1280px) {
     margin-left: 69px;
   }
 }
@@ -34,20 +28,18 @@
   color: #6c7ac9;
 }
 
-@media screen and (min-width: 768px) {
-  .pagination li {
+.pagination li {
+  @media screen and (min-width: 768px) {
     margin-left: 10px;
   }
 }
 
-.paginationLinkActive a {
+.pagination__link--active a {
   color: #fff;
   background: #6c7ac9;
 }
 
-.paginationLinkDisabled a {
+.pagination__link--disabled a {
   color: rgb(198, 197, 202);
   border: 1px solid rgb(198, 197, 202);
 }
-
-/*# sourceMappingURL=Pagination.module.css.map */

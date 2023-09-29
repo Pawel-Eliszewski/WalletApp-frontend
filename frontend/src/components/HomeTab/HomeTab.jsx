@@ -1,18 +1,115 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+// import { useSelector } from "react-redux";
 import { useMedia } from "react-use";
-import { fixDate } from "helpers/fixDate";
 import { PaginatedItems } from "../Pagination/Pagination";
-import { Balance } from "components/balance/balance";
-import { ButtonAddTransaction } from "../ButtonAddTransaction/ButtonAddTransaction";
+// import { selectTransactions } from "../../redux/finance/selectors";
 import styles from "./HomeTab.module.css";
-import { selectTransactions } from "../../redux/finance/selectors";
 
-const HomeTab = () => {
+export const HomeTab = () => {
   const isMobile = useMedia("(max-width: 767px)");
   const [itemOffset, setItemOffset] = useState(0);
 
-  const transactions = useSelector(selectTransactions);
+  // const transactions = useSelector(selectTransactions);
+
+  const transactions = [
+    {
+      _id: "1",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "blanty",
+      sum: "1000",
+    },
+    {
+      _id: "2",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "3",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "fajki",
+      sum: "100",
+    },
+    {
+      _id: "4",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "5",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "meta",
+      sum: "10000",
+    },
+    {
+      _id: "6",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "7",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "wóda",
+      sum: "100",
+    },
+    {
+      _id: "8",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "100",
+    },
+    {
+      _id: "9",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "paliwo",
+      sum: "1000",
+    },
+    {
+      _id: "10",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "kebab",
+      sum: "10",
+    },
+    {
+      _id: "11",
+      date: "21.01.20",
+      type: "income",
+      category: "car",
+      comment: "piwo",
+      sum: "100",
+    },
+    {
+      _id: "12",
+      date: "21.01.20",
+      type: "income",
+      category: "dragi",
+      comment: "paliwo",
+      sum: "10000",
+    },
+  ];
+
   let length = transactions.length;
 
   const itemsPerPage = 5;
@@ -20,7 +117,6 @@ const HomeTab = () => {
 
   return (
     <div className={styles.homeWrapper}>
-      <Balance />
       <table
         className={styles.tableWrapper}
         style={{ maxHeight: isMobile ? "60vh" : "auto", overflowY: "auto" }}
@@ -34,16 +130,15 @@ const HomeTab = () => {
                 <th className={styles.tableHeadItem}>Category</th>
                 <th className={styles.tableHeadItem}>Comment</th>
                 <th className={styles.tableHeadItem}>Sum</th>
-                <th className={styles.tableHeadItem}>Balance</th>
               </tr>
             </thead>
             <tbody>
               {transactions.map(
-                ({ _id, date, type, category, comment, sum, balance }) => (
+                ({ _id, date, type, category, comment, sum }) => (
                   <tr key={_id} className={styles.data}>
-                    <td className={styles.dataItem}>{fixDate(date)}</td>
+                    <td className={styles.dataItem}>{date}</td>
                     <td className={styles.dataItem}>
-                      {type === true ? "+" : "-"}
+                      {type === "income" ? "+" : "-"}
                     </td>
                     <td
                       className={styles.dataItem}
@@ -71,9 +166,7 @@ const HomeTab = () => {
                     <td
                       className={styles.dataItem}
                       style={{ textAlign: "right" }}
-                    >
-                      {balance}
-                    </td>
+                    ></td>
                   </tr>
                 )
               )}
@@ -84,55 +177,42 @@ const HomeTab = () => {
 
       {isMobile && (
         <>
-          {transactions.map(
-            ({ _id, date, type, category, comment, sum, balance }) => (
-              <ul
-                key={_id}
-                className={styles.dataMob}
-                data-type={type.toString()}
-              >
-                <li className={styles.dataItemMob}>
-                  <span className={styles.headItemMob}>Date</span>
-                  {fixDate(date)}
-                </li>
-                <li className={styles.dataItemMob}>
-                  <span className={styles.headItemMob}>Type</span>
-                  {type === true ? "+" : "-"}
-                </li>
-                <li className={styles.dataItemMob}>
-                  <span className={styles.headItemMob}>Category</span>
-                  {category}
-                </li>
-                <li className={styles.dataItemMob}>
-                  <span className={styles.headItemMob}>Comment</span>
-                  <span className={styles.dataComment}>{comment}</span>
-                </li>
-                <li
-                  className={styles.dataItemMob}
-                  style={{ fontWeight: "700" }}
-                >
-                  <span className={styles.headItemMob}>Sum</span>
-                  <span className={styles.dataSum} data-type={type.toString()}>
-                    {sum}
-                  </span>
-                </li>
-                <li className={styles.dataItemMob}>
-                  <span className={styles.headItemMob}>Balance</span>
-                  {balance}
-                </li>
-              </ul>
-            )
-          )}
+          {transactions.map(({ _id, date, type, category, comment, sum }) => (
+            <ul
+              key={_id}
+              className={styles.dataMob}
+              data-type={type.toString()}
+            >
+              <li className={styles.dataItemMob}>
+                <span className={styles.headItemMob}>Date</span>
+                {date}
+              </li>
+              <li className={styles.dataItemMob}>
+                <span className={styles.headItemMob}>Type</span>
+                {type === "income" ? "+" : "-"}
+              </li>
+              <li className={styles.dataItemMob}>
+                <span className={styles.headItemMob}>Category</span>
+                {category}
+              </li>
+              <li className={styles.dataItemMob}>
+                <span className={styles.headItemMob}>Comment</span>
+                <span className={styles.dataComment}>{comment}</span>
+              </li>
+              <li className={styles.dataItemMob} style={{ fontWeight: "700" }}>
+                <span className={styles.headItemMob}>Sum</span>
+                <span className={styles.dataSum} data-type={type.toString()}>
+                  {sum}
+                </span>
+              </li>
+            </ul>
+          ))}
         </>
       )}
 
       {pageCount > 1 && (
         <PaginatedItems pageCount={pageCount} setItemOffset={setItemOffset} />
       )}
-
-      <ButtonAddTransaction />
     </div>
   );
 };
-
-export default HomeTab;
