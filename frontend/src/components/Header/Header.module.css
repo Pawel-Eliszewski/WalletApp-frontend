@@ -53,6 +53,7 @@
   font-family: "Circe", sans-serif;
   font-size: 18px;
   line-height: 27px;
+  display: none;
 }
 
 .iconExit {
@@ -79,6 +80,7 @@
 
 @media screen and (min-width: 768px) {
   .userName {
+    display: inline;
     padding-right: 12px;
     border-right: 1px solid var(--primary-gray-font-color);
   }
