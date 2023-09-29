@@ -6,10 +6,10 @@ import { Navigation } from "../../components/Navigation/Navigation";
 import { Balance } from "../../components/Balance/Balance";
 import { ButtonAddTransaction } from "../../components/ButtonAddTransaction/ButtonAddTransaction";
 import { ModalAddTransaction } from "../../components/ModalAddTransaction/ModalAddTransaction";
-import { HomeTab } from "../../components/HomeTab/HomeTab";
-import css from "./DashboardPage.module.css";
-// import { Currency } from "../../components/Currency/Currency";
 import { ModalEditTransaction } from "../../components/ModalEditTransaction/ModalEditTransaction";
+import { HomeTab } from "../../components/HomeTab/HomeTab";
+import { Currency } from "../../components/Currency/Currency";
+import css from "./DashboardPage.module.css";
 
 const MobileDashboard = () => {
   return (

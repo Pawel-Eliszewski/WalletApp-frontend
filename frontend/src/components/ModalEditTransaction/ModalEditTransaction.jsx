@@ -121,6 +121,7 @@ export const ModalEditTransaction = ({ userName }) => {
   );
 };
 
+//zmienić na isRequired !!
 ModalEditTransaction.propTypes = {
-  userName: PropTypes.string.isRequired,
+  userName: PropTypes.string,
 };
