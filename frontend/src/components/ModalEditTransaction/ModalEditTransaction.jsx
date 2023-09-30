@@ -63,6 +63,7 @@ export const ModalEditTransaction = ({ userName }) => {
 
   const handleModalClose = () => {
     dispatch(setIsModalEditTransactionOpen(false));
+    document.body.style.overflow = "unset";
   };
 
   const incomeClass = type === "income" ? css.income : "";

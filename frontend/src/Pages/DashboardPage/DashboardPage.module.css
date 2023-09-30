@@ -44,9 +44,3 @@
   background-position: center;
   padding-top: 30px;
 }
-
-@media screen and (min-width: 1268px) {
-  .desktopContainer {
-    max-width: 100%;
-  }
-}

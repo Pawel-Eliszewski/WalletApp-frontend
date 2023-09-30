@@ -7,6 +7,7 @@ export const ButtonAddTransaction = () => {
 
   const openModalAddTransaction = () => {
     dispatch(setIsModalAddTransactionOpen(true));
+    document.body.style.overflow = "hidden";
   };
   return (
     <>

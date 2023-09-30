@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setIsModalEditTransactionOpen } from "../../redux/global/globalSlice";
-
 import { deleteTransaction } from "../../redux/finance/operations";
 import { useMedia } from "react-use";
 import { PaginatedItems } from "../Pagination/Pagination";
@@ -32,6 +31,7 @@ export const HomeTab = () => {
 
   const openModalEditTransaction = () => {
     dispatch(setIsModalEditTransactionOpen(true));
+    document.body.style.overflow = "hidden";
   };
 
   return (
@@ -144,7 +144,7 @@ export const HomeTab = () => {
                   Delete
                 </button>
                 <button
-                  onClick={openModalEditTransaction()}
+                  onClick={openModalEditTransaction}
                   key={_id}
                   className={styles.dataItemBtnEdit}
                 >
