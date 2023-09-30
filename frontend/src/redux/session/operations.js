@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "https://wallet-app-18x3.onrender.com";
+// axios.defaults.baseURL = "https://wallet-app-18x3.onrender.com";
 
 const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -15,9 +15,12 @@ export const register = createAsyncThunk(
   "session/register",
   async (credentials, thunkAPI) => {
     try {
-      const responce = await axios.post("/user/register", credentials);
-      setAuthHeader(responce.data.token);
-      return responce.data;
+      const response = await axios.post(
+        "https://wallet-app-18x3.onrender.com/user/register",
+        credentials
+      );
+      setAuthHeader(response.data.token);
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -28,9 +31,13 @@ export const login = createAsyncThunk(
   "session/login",
   async (credentials, thunkAPI) => {
     try {
-      const responce = await axios.post("/user/login", credentials);
-      setAuthHeader(responce.data.token);
-      return responce.data;
+      console.log(credentials);
+      const response = await axios.post(
+        "https://wallet-app-18x3.onrender.com/user/login",
+        credentials
+      );
+      setAuthHeader(response.data.token);
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -61,8 +68,8 @@ export const refreshUser = createAsyncThunk(
 
     try {
       setAuthHeader(persistedToken);
-      const responce = await axios.get("/user/current");
-      return responce.data;
+      const response = await axios.get("/user/current");
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

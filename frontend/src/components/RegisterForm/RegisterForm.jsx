@@ -4,35 +4,32 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import validationSchema from "../../utils/yupValidationSchema";
 import { register } from "../../redux/session/operations";
 import styles from "./RegisterForm.module.css";
-// import axios from "axios";
 
 const RegisterForm = () => {
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   const initialValues = {
     email: "",
     password: "",
     confirmPassword: "",
-    firstName: "",
   };
 
-  const handleSubmit = async (values, { resetForm }) => {
+  const handleSubmit = async (values) => {
     const formData = {
       email: values.email,
       password: values.password,
-      confirmPassword: values.confirmPassword,
-      firstName: values.firstName,
     };
 
-    try {
-      /*const response = await axios.post("/api/register", formData);*/
-      const response = dispatch(register(formData));
+    console.log(formData);
 
-      if (response.status === 200) {
-        alert("Registration Success");
-        resetForm();
-      } else {
-        alert("Registration error");
-      }
+    try {
+      dispatch(register(formData));
+
+      // if (response.status === 200) {
+      //   alert("Registration Success");
+      //   resetForm();
+      // } else {
+      //   alert("Registration error");
+      // }
     } catch (error) {
       alert("An error occurred while processing the request.");
     }
@@ -114,12 +111,6 @@ const RegisterForm = () => {
                 src="/assets/icon-person.svg"
                 alt="person"
               />
-              <Field
-                className={styles.register__field}
-                type="text"
-                name="firstName"
-                placeholder="First name"
-              />
               <ErrorMessage
                 name="firstName"
                 component="div"
@@ -129,7 +120,7 @@ const RegisterForm = () => {
             <button className={styles.register__signup} type="submit">
               REGISTER
             </button>
-            <Link to="./login">
+            <Link to="/login">
               <button className={styles.register__signin}>LOG IN</button>
             </Link>
           </Form>
