@@ -5,9 +5,8 @@ import {
   addTransaction,
   deleteTransaction,
   updateTransaction,
-  fetchBalance,
-  updateBalance,
 } from "./operations";
+import { register, login, logout, refreshUser } from "../session/operations";
 
 const initialState = {
   totalBalance: 0,
@@ -53,16 +52,21 @@ const financeSlice = createSlice({
         state.data.splice(index, 1, action.payload);
       })
       .addCase(updateTransaction.rejected, handleRejected)
-      .addCase(fetchBalance.fulfilled, (state, action) => {
+      .addCase(register.fulfilled, (state, action) => {
+        state.totalBalance = action.payload.userBalance;
         state.error = null;
-        state.totalBalance = action.payload;
       })
-      .addCase(fetchBalance.rejected, handleRejected)
-      .addCase(updateBalance.fulfilled, (state, action) => {
+      .addCase(login.fulfilled, (state, action) => {
+        state.totalBalance = action.payload.userBalance;
         state.error = null;
-        state.totalBalance = action.payload;
       })
-      .addCase(updateBalance.rejected, handleRejected);
+      .addCase(refreshUser.fulfilled, (state, action) => {
+        state.totalBalance = action.payload.userBalance;
+        state.error = null;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state = initialState;
+      });
   },
 });
 
