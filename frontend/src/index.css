@@ -11,7 +11,7 @@
 	--household-products-diagram-color: #4a56e2;
 	--education-diagram-color: #81e1ff;
 	--other-expenses-diagram-color: #00ad84;
-	--btn-green-hoover: #1eb191;
+	--btn-green-hover: #1eb191;
 }
 
 body {
@@ -33,9 +33,17 @@ a {
 	color: #000000;
 }
 
+ul:focus-visible {
+	outline: none;
+}
+
 button:hover,
 button:focus {
 	transition: 300ms;
 	cursor: pointer;
-	background-color: var(--btn-green-hoover);
+}
+
+button:focus-visible {
+	outline: none;
+	border: none;
 }

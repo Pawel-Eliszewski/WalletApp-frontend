@@ -164,9 +164,11 @@ li.dataItemMob {
   transition: 200ms;
 }
 
-.dataItemBtnEdit:focus {
+.dataItemBtnEdit:focus,
+.dataItemBtnEdit:hover {
   outline: none;
   border: none;
+  background: none;
 }
 
 .dataItemBtnDelete {
@@ -179,6 +181,11 @@ li.dataItemMob {
   cursor: pointer;
   color: white;
   transition: 300ms;
+}
+
+.dataItemBtnDelete:focus,
+.dataItemBtnDelete:hover {
+  background-color: var(--btn-green-hover);
 }
 
 .buttonsWrapperMob {

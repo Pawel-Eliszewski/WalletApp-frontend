@@ -93,6 +93,11 @@
     transition: 300ms;
 }
 
+.btnGreen:hover,
+.btnGreen:focus {
+    background-color: var(--btn-green-hover);
+}
+
 .btnCancel {
     background: none;
     width: 300px;

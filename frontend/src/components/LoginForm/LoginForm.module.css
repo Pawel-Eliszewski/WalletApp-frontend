@@ -74,7 +74,8 @@
   transition: 300ms;
 }
 
-.login__signup:hover {
+.login__signup:hover,
+.login__signup:focus {
   transition: 300ms;
   outline: 1px solid black;
   color: black;
@@ -94,6 +95,11 @@
   margin-bottom: 20px;
   margin-top: 10px;
   transition: 300ms;
+}
+
+.login__signin:hover,
+.login__signin:focus {
+  background-color: var(--btn-green-hover);
 }
 
 .error {

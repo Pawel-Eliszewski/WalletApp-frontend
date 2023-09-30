@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
-import validationSchema from "../../utils/yupValidationSchema";
 import { login } from "../../redux/session/operations";
+import validationSchema from "../../utils/yupValidationSchema";
 import styles from "./LoginForm.module.css";
 // import axios from "axios";
 
