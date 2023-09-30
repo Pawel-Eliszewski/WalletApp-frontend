@@ -1,9 +1,11 @@
 import { store } from "../redux/store";
+import { fakeTransactions } from "./fakeData";
 import { selectTransactions } from "../redux/finance/selectors";
 
-const paginateTransactions = (page) => {
+export const paginateTransactions = (page) => {
   const state = store.getState();
-  const transactions = selectTransactions(state);
+  // const transactions = selectTransactions(state);
+  const transactions = fakeTransactions;
   const length = transactions.length;
   const pages = Math.ceil(length / 9);
 
@@ -28,5 +30,3 @@ const paginateTransactions = (page) => {
 
   return paginationData;
 };
-
-export default paginateTransactions;

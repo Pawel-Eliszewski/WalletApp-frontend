@@ -142,6 +142,7 @@
     transition-duration: 250ms;
     pointer-events: all;
     transform: none;
+    overflow-y: scroll;
 }
 
 @media screen and (min-width: 768px) {
@@ -169,7 +170,6 @@
     .formInnerBox {
         display: flex;
         flex-direction: row;
-        font-weight: 600;
         width: 394px
     }
 
@@ -177,6 +177,7 @@
         width: 190px;
         padding-left: 0;
         text-align: center;
+        font-weight: 600;
     }
 
     .comment {

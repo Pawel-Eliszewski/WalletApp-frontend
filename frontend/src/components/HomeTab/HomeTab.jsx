@@ -4,8 +4,9 @@ import { setIsModalEditTransactionOpen } from "../../redux/global/globalSlice";
 import { deleteTransaction } from "../../redux/finance/operations";
 import { useMedia } from "react-use";
 import { PaginatedItems } from "../Pagination/Pagination";
-import paginateTransactions from "../../Utils/pagination";
+// import { paginateTransactions } from "../../utils/pagination";
 import { fakeTransactions } from "../../utils/fakeData";
+import { nanoid } from "nanoid";
 import styles from "./HomeTab.module.css";
 
 export const HomeTab = () => {
@@ -43,7 +44,7 @@ export const HomeTab = () => {
         {!isMobile && (
           <>
             <thead>
-              <tr className={styles.tableHead}>
+              <tr key={nanoid()} className={styles.tableHead}>
                 <th className={styles.tableHeadItem}>Date</th>
                 <th className={styles.tableHeadItem}>Type</th>
                 <th className={styles.tableHeadItem}>Category</th>
@@ -54,7 +55,7 @@ export const HomeTab = () => {
             <tbody className={styles.tbody}>
               {transactions.map(
                 ({ _id, date, type, category, comment, sum }) => (
-                  <tr key={_id} className={styles.data}>
+                  <tr key={nanoid()} className={styles.data}>
                     <td className={styles.dataItem}>{date}</td>
                     <td className={styles.dataItem}>
                       {type === "income" ? "+" : "-"}
@@ -112,7 +113,7 @@ export const HomeTab = () => {
       {isMobile && (
         <>
           {transactions.map(({ _id, date, type, category, comment, sum }) => (
-            <ul key={_id} className={styles.dataMob} data-type={type}>
+            <ul key={nanoid()} className={styles.dataMob} data-type={type}>
               <li className={styles.dataItemMob}>
                 <span className={styles.headItemMob}>Date</span>
                 {date}
@@ -137,7 +138,6 @@ export const HomeTab = () => {
               </li>
               <div className={styles.buttonsWrapperMob}>
                 <button
-                  key={_id}
                   onClick={() => handleDelete(_id)}
                   className={styles.dataItemBtnDelete}
                 >
@@ -145,7 +145,6 @@ export const HomeTab = () => {
                 </button>
                 <button
                   onClick={openModalEditTransaction}
-                  key={_id}
                   className={styles.dataItemBtnEdit}
                 >
                   <img
