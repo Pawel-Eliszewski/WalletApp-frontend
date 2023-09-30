@@ -8,7 +8,7 @@ export const paginateTransactions = (page) => {
 
   const transactions = fakeTransactions;
   const length = transactions.length;
-  const pages = Math.ceil(length / 5);
+  const pages = Math.ceil(length / 7);
 
   let currentPage;
   if (!page) {
@@ -19,8 +19,8 @@ export const paginateTransactions = (page) => {
     currentPage = page;
   }
 
-  let start = (currentPage - 1) * 5;
-  let end = currentPage * 5;
+  let start = (currentPage - 1) * 7;
+  let end = currentPage * 7;
 
   const paginatedTransactions = transactions.slice(start, end);
 

@@ -5,6 +5,31 @@
   cursor: pointer;
   margin-top: 15px;
   padding-inline: 30px;
+  margin-bottom: 30px;
+}
+
+.pagination a {
+  /* padding: 10px; */
+  width: 50px;
+  height: 50px;
+  border-radius: 100px;
+  outline: 1px solid grey;
+  color: black;
+}
+
+.pagination a:hover,
+.pagination a:focus {
+  outline: 1px solid black;
+}
+
+.paginationLinkActive a {
+  color: #fff;
+  background: var(--primary-income-color);
+}
+
+.paginationLinkDisabled a {
+  color: rgb(198, 197, 202);
+  border: 1px solid rgb(198, 197, 202);
 }
 
 @media screen and (max-width: 767px) {
@@ -19,41 +44,18 @@
 @media screen and (min-width: 768px) {
   .pagination {
     justify-content: center;
+    margin-top: 30px;
   }
-}
 
-@media screen and (min-width: 1280px) {
-  .pagination {
-    /* margin-left: 69px; */
-  }
-}
-
-.pagination a {
-  padding: 8px;
-  border-radius: 5px;
-  outline: 1px solid grey;
-  color: black;
-}
-
-.pagination a:hover,
-.pagination a:focus {
-  outline: 1px solid black;
-}
-
-@media screen and (min-width: 768px) {
   .pagination li {
     margin-left: 10px;
   }
 }
 
-.paginationLinkActive a {
-  color: #fff;
-  background: var(--primary-income-color);
-}
-
-.paginationLinkDisabled a {
-  color: rgb(198, 197, 202);
-  border: 1px solid rgb(198, 197, 202);
+@media screen and (min-width: 1280px) {
+  .pagination {
+    /* margin-top: 40px; */
+  }
 }
 
 /*# sourceMappingURL=Pagination.module.css.map */

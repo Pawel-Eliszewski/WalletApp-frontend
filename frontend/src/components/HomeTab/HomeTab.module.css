@@ -223,7 +223,8 @@ li.dataItemMob {
     padding-inline: 0;
   }
 
-  .dataItemBtnEdit:hover {
+  .dataItemBtnEdit:hover,
+  .dataItemBtnEdit:focus {
     transform: scale(1.1);
     transition: 200ms;
     outline: none;

@@ -33,7 +33,6 @@
 	.nav {
 		padding-top: 10px;
 		flex-direction: column;
-		padding-left: 20px;
 		padding-bottom: 10px;
 		gap: 10px;
 	}
@@ -81,7 +80,7 @@
 		box-shadow: 0px 0px 5px 0px rgba(66, 68, 90, 1);
 	}
 
-	.dolar {
+	.dollar {
 		display: none;
 	}
 

@@ -1,16 +1,9 @@
 .wrapper {
   width: 100%;
-  max-width: 768px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-direction: column;
   height: 100%;
-  padding: 20px 32px;
-  /* position: sticky;
-  top: 0;
-  background-color: white;
-  z-index: 10; */
+  padding: 20px 20px;
 }
 
 .header {
@@ -78,25 +71,25 @@
   cursor: pointer;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 480px) {
   .userName {
     display: inline;
     padding-right: 12px;
     border-right: 1px solid var(--primary-gray-font-color);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    padding-inline: 20px;
   }
 
   .textExit {
     color: var(--primary-gray-font-color);
     display: block;
   }
-
-  .wrapper {
-    max-width: 1280px;
-  }
 }
 
 @media screen and (min-width: 1280px) {
-  .wrapper {
-    max-width: 100%;
-  }
+  .wrapper {}
 }

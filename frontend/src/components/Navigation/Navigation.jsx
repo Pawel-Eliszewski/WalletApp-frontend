@@ -7,7 +7,7 @@ export const Navigation = () => {
   const navItems = [
     { path: "/register", label: "Home", icon: "icon-home.svg" },
     { path: "/statistics", label: "Statistics", icon: "icon-statistics.svg" },
-    { path: "/currency", label: "Dolar", icon: "icon-dolar.svg" },
+    { path: "/currency", label: "Dollar", icon: "icon-dollar.svg" },
   ];
 
   return (
