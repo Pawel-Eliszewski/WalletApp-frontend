@@ -9,10 +9,29 @@
 }
 
 .tabletContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
   background-image: url(/assets/dashboard-background-tablet.png);
   padding-inline: 20px;
   background-size: cover;
   background-position: center;
+  height: calc(100vh - 70px);
+}
+
+.tabletWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 25px;
+}
+
+.tabletInnerBox {
+  display: flex;
+  flex-direction: column;
 }
 
 .desktopContainer {

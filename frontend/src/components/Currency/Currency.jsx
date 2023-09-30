@@ -50,7 +50,7 @@ export function Currency() {
         </thead>
         <tbody className={s.currency_body}>
           {currencyData.map((element) => (
-            <tr key={nanoid()>
+            <tr key={nanoid()}>
               <td className={s.currency_item}>{element.currency}</td>
               <td className={s.currency_item}>
                 {Math.floor(element.buy * 100) / 100}
