@@ -11,13 +11,11 @@ export function Currency() {
       const dataEUR = await fetchCurrency("EUR");
       const dataUSD = await fetchCurrency("USD");
 
-      // Zamień currency na EUR dla danych z Euro
       const modifiedDataEUR = dataEUR.map((element) => ({
         ...element,
         currency: "EUR",
       }));
 
-      // Zamień currency na USD dla danych z Dolara
       const modifiedDataUSD = dataUSD.map((element) => ({
         ...element,
         currency: "USD",
