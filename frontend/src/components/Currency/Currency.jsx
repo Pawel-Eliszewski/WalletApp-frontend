@@ -10,7 +10,20 @@ export function Currency() {
     try {
       const dataEUR = await fetchCurrency("EUR");
       const dataUSD = await fetchCurrency("USD");
-      setCurrencyData([...dataEUR, ...dataUSD]); // Łączy dane dla obu walut w jednej tablicy
+
+      // Zamień currency na EUR dla danych z Euro
+      const modifiedDataEUR = dataEUR.map((element) => ({
+        ...element,
+        currency: "EUR",
+      }));
+
+      // Zamień currency na USD dla danych z Dolara
+      const modifiedDataUSD = dataUSD.map((element) => ({
+        ...element,
+        currency: "USD",
+      }));
+
+      setCurrencyData([...modifiedDataEUR, ...modifiedDataUSD]);
     } catch (error) {
       console.error(error);
     }
@@ -37,8 +50,8 @@ export function Currency() {
         </thead>
         <tbody className={s.currency_body}>
           {currencyData.map((element) => (
-            <tr key={nanoid()}>
-              <td className={s.currency_name}>{element.ccy}</td>
+            <tr key={nanoid()>
+              <td className={s.currency_item}>{element.currency}</td>
               <td className={s.currency_item}>
                 {Math.floor(element.buy * 100) / 100}
               </td>
