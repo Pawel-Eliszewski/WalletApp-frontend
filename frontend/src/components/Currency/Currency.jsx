@@ -9,7 +9,7 @@ export function Currency() {
   useEffect(() => {
     const isDataFetched = localStorage.getItem("isDataFetched");
 
-    if (!isDataFetched) {
+    if (isDataFetched !== "true") {
       fetchData();
       localStorage.setItem("isDataFetched", "true");
     } else {
@@ -49,17 +49,6 @@ export function Currency() {
       console.error(error);
     }
   };
-
-  useEffect(() => {
-    fetchData();
-    const intervalId = setInterval(() => {
-      fetchData();
-    }, 3600000);
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
 
   return (
     <div className={s.currency_sidebar}>
