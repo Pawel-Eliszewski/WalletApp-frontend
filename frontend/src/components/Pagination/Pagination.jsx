@@ -1,7 +1,8 @@
+import PropTypes from "prop-types";
 import ReactPaginate from "react-paginate";
 import css from "./Pagination.module.css";
 
-export const PaginatedItems = ({ pageCount, setItemOffset }) => {
+export const Pagination = ({ pageCount, setItemOffset }) => {
   const handlePageClick = (event) => {
     setItemOffset(event.selected);
   };
@@ -12,7 +13,7 @@ export const PaginatedItems = ({ pageCount, setItemOffset }) => {
       <ReactPaginate
         breakLabel="..."
         onPageChange={handlePageClick}
-        pageRangeDisplayed={10}
+        pageRangeDisplayed={2}
         pageCount={pageCount}
         previousLabel={" ← "}
         nextLabel={" → "}
@@ -25,4 +26,9 @@ export const PaginatedItems = ({ pageCount, setItemOffset }) => {
       />
     </>
   );
+};
+
+Pagination.propTypes = {
+  pageCount: PropTypes.number,
+  setItemOffset: PropTypes.func,
 };

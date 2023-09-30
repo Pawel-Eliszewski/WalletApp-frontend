@@ -3,9 +3,8 @@ import { useDispatch } from "react-redux";
 import { setIsModalEditTransactionOpen } from "../../redux/global/globalSlice";
 import { deleteTransaction } from "../../redux/finance/operations";
 import { useMedia } from "react-use";
-import { PaginatedItems } from "../Pagination/Pagination";
-// import { paginateTransactions } from "../../utils/pagination";
-import { fakeTransactions } from "../../utils/fakeData";
+import { Pagination } from "../Pagination/Pagination";
+import { paginateTransactions } from "../../utils/pagination";
 import { nanoid } from "nanoid";
 import styles from "./HomeTab.module.css";
 
@@ -15,16 +14,9 @@ export const HomeTab = () => {
 
   const dispatch = useDispatch();
 
-  // let paginationData = paginateTransactions(itemOffset);
-  // let transactions = paginationData.paginatedTransactions;
-  // let pageCount = paginationData.pages;
-
-  const transactions = fakeTransactions;
-
-  let length = transactions.length;
-
-  const itemsPerPage = 5;
-  const pageCount = Math.ceil(length / itemsPerPage);
+  let paginationData = paginateTransactions(itemOffset);
+  let transactions = paginationData.paginatedTransactions;
+  let pageCount = paginationData.pages;
 
   const handleDelete = (transactionId) => {
     dispatch(deleteTransaction(transactionId));
@@ -160,7 +152,7 @@ export const HomeTab = () => {
       )}
 
       {pageCount > 1 && (
-        <PaginatedItems pageCount={pageCount} setItemOffset={setItemOffset} />
+        <Pagination pageCount={pageCount} setItemOffset={setItemOffset} />
       )}
     </div>
   );

@@ -1,13 +1,14 @@
-import { store } from "../redux/store";
+// import { store } from "../redux/store";
+// import { selectTransactions } from "../redux/finance/selectors";
 import { fakeTransactions } from "./fakeData";
-import { selectTransactions } from "../redux/finance/selectors";
 
 export const paginateTransactions = (page) => {
-  const state = store.getState();
+  // const state = store.getState();
   // const transactions = selectTransactions(state);
+
   const transactions = fakeTransactions;
   const length = transactions.length;
-  const pages = Math.ceil(length / 9);
+  const pages = Math.ceil(length / 5);
 
   let currentPage;
   if (!page) {
@@ -18,8 +19,8 @@ export const paginateTransactions = (page) => {
     currentPage = page;
   }
 
-  let start = (currentPage - 1) * 9;
-  let end = currentPage * 9;
+  let start = (currentPage - 1) * 5;
+  let end = currentPage * 5;
 
   const paginatedTransactions = transactions.slice(start, end);
 
