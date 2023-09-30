@@ -6,37 +6,49 @@ import s from "./Currency.module.css";
 export function Currency() {
   const [currencyData, setCurrencyData] = useState([]);
 
-  const fetchData = async () => {
-    try {
-      const dataEUR = await fetchCurrency("EUR");
-      const dataUSD = await fetchCurrency("USD");
-
-      // Zamień currency na EUR dla danych z Euro
-      const modifiedDataEUR = dataEUR.map((element) => ({
-        ...element,
-        currency: "EUR",
-      }));
-
-      // Zamień currency na USD dla danych z Dolara
-      const modifiedDataUSD = dataUSD.map((element) => ({
-        ...element,
-        currency: "USD",
-      }));
-
-      setCurrencyData([...modifiedDataEUR, ...modifiedDataUSD]);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   useEffect(() => {
-    fetchData();
-    const intervalId = setInterval(fetchData, 300000);
+    const isDataFetched = localStorage.getItem("isDataFetched");
+
+    if (isDataFetched !== "true") {
+      fetchData();
+      localStorage.setItem("isDataFetched", "true");
+    } else {
+      const cachedData = JSON.parse(localStorage.getItem("currencyData"));
+      if (cachedData) {
+        setCurrencyData(cachedData);
+      }
+    }
+
+    const intervalId = setInterval(fetchData, 3600000);
 
     return () => {
       clearInterval(intervalId);
     };
   }, []);
+
+  const fetchData = async () => {
+    try {
+      const dataEUR = await fetchCurrency("EUR");
+      const dataUSD = await fetchCurrency("USD");
+
+      const modifiedDataEUR = dataEUR.map((element) => ({
+        ...element,
+        currency: "EUR",
+      }));
+
+      const modifiedDataUSD = dataUSD.map((element) => ({
+        ...element,
+        currency: "USD",
+      }));
+
+      const combinedData = [...modifiedDataEUR, ...modifiedDataUSD];
+      setCurrencyData(combinedData);
+
+      localStorage.setItem("currencyData", JSON.stringify(combinedData));
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className={s.currency_sidebar}>
