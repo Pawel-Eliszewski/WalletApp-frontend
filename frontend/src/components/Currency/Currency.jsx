@@ -6,6 +6,26 @@ import s from "./Currency.module.css";
 export function Currency() {
   const [currencyData, setCurrencyData] = useState([]);
 
+  useEffect(() => {
+    const isDataFetched = localStorage.getItem("isDataFetched");
+
+    if (!isDataFetched) {
+      fetchData();
+      localStorage.setItem("isDataFetched", "true");
+    } else {
+      const cachedData = JSON.parse(localStorage.getItem("currencyData"));
+      if (cachedData) {
+        setCurrencyData(cachedData);
+      }
+    }
+
+    const intervalId = setInterval(fetchData, 3600000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
+
   const fetchData = async () => {
     try {
       const dataEUR = await fetchCurrency("EUR");
@@ -21,7 +41,10 @@ export function Currency() {
         currency: "USD",
       }));
 
-      setCurrencyData([...modifiedDataEUR, ...modifiedDataUSD]);
+      const combinedData = [...modifiedDataEUR, ...modifiedDataUSD];
+      setCurrencyData(combinedData);
+
+      localStorage.setItem("currencyData", JSON.stringify(combinedData));
     } catch (error) {
       console.error(error);
     }
@@ -29,7 +52,9 @@ export function Currency() {
 
   useEffect(() => {
     fetchData();
-    const intervalId = setInterval(fetchData, 300000);
+    const intervalId = setInterval(() => {
+      fetchData();
+    }, 3600000);
 
     return () => {
       clearInterval(intervalId);
