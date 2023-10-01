@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { registerValidationSchema } from "../../utils/yupValidationSchema";
 import { register } from "../../redux/session/operations";
-import validationSchema from "../../utils/yupValidationSchema";
 import styles from "./RegisterForm.module.css";
 
 const RegisterForm = () => {
@@ -34,7 +34,7 @@ const RegisterForm = () => {
       </div>
       <Formik
         initialValues={initialValues}
-        validationSchema={validationSchema}
+        validationSchema={registerValidationSchema}
         onSubmit={handleSubmit}
       >
         {() => (

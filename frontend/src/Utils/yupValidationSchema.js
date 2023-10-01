@@ -1,5 +1,5 @@
 import * as Yup from "Yup";
-const validationSchema = Yup.object().shape({
+export const registerValidationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email address")
     .required("Email is required"),
@@ -11,5 +11,12 @@ const validationSchema = Yup.object().shape({
     .oneOf([Yup.ref("password"), null], "Passwords must match")
     .required("Confirm Password is required"),
 });
-
-export default validationSchema;
+export const loginValidationSchema = Yup.object().shape({
+  email: Yup.string()
+    .email("Invalid email address")
+    .required("Email is required"),
+  password: Yup.string()
+    .min(6, "Password must be at least 6 characters")
+    .max(12, "Password must not exceed 12 characters")
+    .required("Password is required"),
+});
