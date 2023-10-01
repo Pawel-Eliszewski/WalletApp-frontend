@@ -23,18 +23,25 @@ const sessionSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isAuth = true;
+        state.user = {
+          email: action.payload.data.email,
+          id: action.payload.data._id,
+        };
+        state.error = null;
       })
       .addCase(register.rejected, handleRejected)
       .addCase(login.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.user = {
+          id: action.payload.data.ID,
+          email: action.payload.data.email,
+        };
+        state.token = action.payload.data.token;
         state.isAuth = true;
+        state.error = null;
       })
       .addCase(login.rejected, handleRejected)
       .addCase(logout.fulfilled, (state) => {
+        localStorage.clear();
         state = initialState;
       })
       .addCase(logout.rejected, handleRejected)
@@ -42,9 +49,14 @@ const sessionSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.user = {
+          id: action.payload.data._id,
+          email: action.payload.data.email,
+        };
+        state.token = action.payload.data.token;
         state.isAuth = true;
         state.isRefreshing = false;
+        state.error = null;
       })
       .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;

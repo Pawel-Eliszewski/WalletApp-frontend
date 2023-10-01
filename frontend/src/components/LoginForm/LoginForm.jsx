@@ -19,12 +19,6 @@ const LoginForm = () => {
     };
     try {
       dispatch(login(formData));
-      // if (response.status === 200) {
-      //   alert("Registration Success");
-      //   resetForm();
-      // } else {
-      //   alert("Registration error");
-      // }
     } catch (error) {
       alert("An error occurred while processing the request.");
     }
