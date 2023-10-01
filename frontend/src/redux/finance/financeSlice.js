@@ -33,7 +33,6 @@ const financeSlice = createSlice({
       .addCase(fetchTransactions.rejected, handleRejected)
       .addCase(addTransaction.fulfilled, (state, action) => {
         state.error = null;
-        console.log(action.payload.data);
         state.data.push(action.payload.data);
       })
       .addCase(addTransaction.rejected, handleRejected)

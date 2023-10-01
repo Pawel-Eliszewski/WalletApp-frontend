@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import validationSchema from "../../utils/yupValidationSchema";
 import { register } from "../../redux/session/operations";
+import validationSchema from "../../utils/yupValidationSchema";
 import styles from "./RegisterForm.module.css";
 
 const RegisterForm = () => {
@@ -18,8 +18,6 @@ const RegisterForm = () => {
       email: values.email,
       password: values.password,
     };
-
-    console.log(formData);
 
     try {
       dispatch(register(formData));
