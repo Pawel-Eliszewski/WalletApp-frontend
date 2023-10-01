@@ -26,6 +26,6 @@ export const paginateTransactions = (page) => {
     pages,
     paginatedTransactions,
   };
-
+  console.log(paginationData);
   return paginationData;
 };

@@ -4,7 +4,8 @@ import css from "./Pagination.module.css";
 
 export const Pagination = ({ pageCount, setItemOffset }) => {
   const handlePageClick = (event) => {
-    setItemOffset(event.selected);
+    setItemOffset(event.selected + 1);
+    console.log(event.selected);
   };
 
   return (
@@ -13,7 +14,7 @@ export const Pagination = ({ pageCount, setItemOffset }) => {
       <ReactPaginate
         breakLabel="..."
         onPageChange={handlePageClick}
-        pageRangeDisplayed={2}
+        pageRangeDisplayed={10}
         pageCount={pageCount}
         previousLabel={" ← "}
         nextLabel={" → "}

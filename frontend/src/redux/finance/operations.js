@@ -8,7 +8,6 @@ export const fetchTransactions = createAsyncThunk(
       const response = await instance.get(
         `/user/${userId}/transactions?userId=${userId}`
       );
-      console.log(response);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -21,6 +20,7 @@ export const addTransaction = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const response = await instance.post("/transaction", data);
+      console.log(data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
