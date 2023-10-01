@@ -43,12 +43,16 @@ export const ModalAddTransaction = () => {
       category === "Select a category" ? "income" : category;
     const form = e.target;
     const amount = form.elements.amount.value;
+    const cleanedAmount = amount.replace(/\s/g, "").replace(",", ".");
+    const numberAmount = parseFloat(cleanedAmount);
+
     const comment = form.elements.comment.value;
+
     dispatch(
       addTransaction({
         type: type,
         category: selectedCategory,
-        amount: amount,
+        amount: numberAmount,
         date: date,
         comment: comment,
         owner: user._id,
@@ -63,21 +67,21 @@ export const ModalAddTransaction = () => {
     document.body.style.overflow = "unset";
   };
 
-  const handleBackdropClick = () => {
-    dispatch(setIsModalAddTransactionOpen(false));
-  };
+  // const handleBackdropClick = () => {
+  //   dispatch(setIsModalAddTransactionOpen(false));
+  // };
 
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") {
-        handleBackdropClick();
-      }
-    };
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const handleKeyDown = (e) => {
+  //     if (e.key === "Escape") {
+  //       handleBackdropClick();
+  //     }
+  //   };
+  //   document.addEventListener("keydown", handleKeyDown);
+  //   return () => {
+  //     document.removeEventListener("keydown", handleKeyDown);
+  //   };
+  // }, []);
 
   const incomeClass = type === "income" ? css.income : "";
   const expenseClass = type === "expense" ? css.expense : "";

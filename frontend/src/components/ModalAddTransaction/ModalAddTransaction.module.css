@@ -141,7 +141,6 @@
     overflow-y: scroll;
     opacity: 1;
     visibility: visible;
-    /* z-index: 1; */
     transform: scale(1);
     background-color: rgba(0, 0, 0, 0.25);
     transition-duration: 250ms;

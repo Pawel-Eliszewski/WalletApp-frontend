@@ -64,21 +64,21 @@ export const ModalEditTransaction = () => {
     document.body.style.overflow = "unset";
   };
 
-  const handleBackdropClick = () => {
-    dispatch(setIsModalEditTransactionOpen(false));
-  };
+  // const handleBackdropClick = () => {
+  //   dispatch(setIsModalEditTransactionOpen(false));
+  // };
 
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") {
-        handleBackdropClick();
-      }
-    };
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const handleKeyDown = (e) => {
+  //     if (e.key === "Escape") {
+  //       handleBackdropClick();
+  //     }
+  //   };
+  //   document.addEventListener("keydown", handleKeyDown);
+  //   return () => {
+  //     document.removeEventListener("keydown", handleKeyDown);
+  //   };
+  // }, []);
 
   const incomeClass = type === "income" ? css.income : "";
   const expenseClass = type === "expense" ? css.expense : "";
