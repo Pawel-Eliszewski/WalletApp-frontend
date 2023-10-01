@@ -32,7 +32,7 @@ export const deleteTransaction = createAsyncThunk(
   "finance/deleteTransaction",
   async (transactionID, thunkAPI) => {
     try {
-      const response = await instance.delete(`/${transactionID}`);
+      const response = await instance.delete(`/transaction/${transactionID}`);
       return response.data;
     } catch (err) {
       return thunkAPI.rejectWithValue(err.message);

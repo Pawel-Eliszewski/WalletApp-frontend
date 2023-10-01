@@ -24,13 +24,22 @@ export const HomeTab = () => {
   const user = useSelector(selectUser);
   const data = useSelector(selectTransactions);
 
+  let paginationData = paginateTransactions(itemOffset);
+  let transactions = paginationData.paginatedTransactions;
+  let pageCount = paginationData.pages;
+
   useEffect(() => {
     dispatch(fetchTransactions(user.id));
   }, []);
 
-  let paginationData = paginateTransactions(itemOffset);
-  let transactions = paginationData.paginatedTransactions;
-  let pageCount = paginationData.pages;
+  const formatDate = (inputDate) => {
+    const date = new Date(inputDate);
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const year = date.getFullYear().toString().slice(2);
+
+    return `${day}.${month}.${year}`;
+  };
 
   const handleDelete = (transactionId) => {
     dispatch(deleteTransaction(transactionId));
@@ -62,7 +71,7 @@ export const HomeTab = () => {
               {transactions.map(
                 ({ _id, date, type, category, comment, amount }) => (
                   <tr key={nanoid()} className={styles.data}>
-                    <td className={styles.dataItem}>{date.toString()}</td>
+                    <td className={styles.dataItem}>{formatDate(date)}</td>
                     <td className={styles.dataItem}>
                       {type === "income" ? "+" : "-"}
                     </td>
@@ -83,7 +92,7 @@ export const HomeTab = () => {
                       style={{ textAlign: "right", fontWeight: "700" }}
                     >
                       <span className={styles.dataSum} data-type={type}>
-                        {amount}
+                        {amount.toFixed(2)}
                       </span>
                     </td>
                     <td
@@ -124,7 +133,7 @@ export const HomeTab = () => {
               <ul key={nanoid()} className={styles.dataMob} data-type={type}>
                 <li className={styles.dataItemMob}>
                   <span className={styles.headItemMob}>Date</span>
-                  {date}
+                  {formatDate(date)}
                 </li>
                 <li className={styles.dataItemMob}>
                   <span className={styles.headItemMob}>Type</span>
@@ -144,7 +153,7 @@ export const HomeTab = () => {
                 >
                   <span className={styles.headItemMob}>Sum</span>
                   <span className={styles.dataSum} data-type={type.toString()}>
-                    {amount}
+                    {amount.toFixed(2)}
                   </span>
                 </li>
                 <div className={styles.buttonsWrapperMob}>
