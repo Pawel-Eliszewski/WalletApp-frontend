@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setIsModalLogoutOpen } from "../../redux/global/globalSlice";
@@ -48,9 +47,4 @@ export const ModalLogout = () => {
       </div>
     </div>
   );
-};
-
-ModalLogout.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
 };

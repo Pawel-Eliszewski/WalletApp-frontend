@@ -1,5 +1,4 @@
-import PropTypes from "prop-types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "../../redux/session/selectors";
 import { selectIsModalEditTransactionOpen } from "../../redux/global/selectors";
@@ -11,7 +10,7 @@ import { Calendar } from "../ModalAddTransaction/Calendar/Calendar";
 import { Show } from "@chakra-ui/react";
 import css from "./ModalEditTransaction.module.css";
 
-export const ModalEditTransaction = ({ userName }) => {
+export const ModalEditTransaction = () => {
   const dispatch = useDispatch();
 
   const isModalEditTransactionOpen = useSelector(
@@ -65,6 +64,22 @@ export const ModalEditTransaction = ({ userName }) => {
     document.body.style.overflow = "unset";
   };
 
+  const handleBackdropClick = () => {
+    dispatch(setIsModalEditTransactionOpen(false));
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        handleBackdropClick();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   const incomeClass = type === "income" ? css.income : "";
   const expenseClass = type === "expense" ? css.expense : "";
 
@@ -76,7 +91,7 @@ export const ModalEditTransaction = ({ userName }) => {
     <div className={backdropClass}>
       <div className={css.container}>
         <Show breakpoint="(max-width: 767px)">
-          <Header userName={userName} />
+          <Header userName={user.email} />
         </Show>
         <h2 className={css.title}>Edit transaction</h2>
         <div className={css.switchContainer}>
@@ -115,9 +130,4 @@ export const ModalEditTransaction = ({ userName }) => {
       </div>
     </div>
   );
-};
-
-//zmienić na isRequired !!
-ModalEditTransaction.propTypes = {
-  userName: PropTypes.string,
 };

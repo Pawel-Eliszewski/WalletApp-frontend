@@ -8,6 +8,7 @@
     margin: 0 auto;
     background-color: white;
     padding-bottom: 25px;
+    z-index: 100;
 }
 
 .title {
@@ -140,7 +141,7 @@
     overflow-y: scroll;
     opacity: 1;
     visibility: visible;
-    z-index: 3;
+    /* z-index: 1; */
     transform: scale(1);
     background-color: rgba(0, 0, 0, 0.25);
     transition-duration: 250ms;
