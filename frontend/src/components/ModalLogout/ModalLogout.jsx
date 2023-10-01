@@ -19,6 +19,7 @@ export const ModalLogout = () => {
   const handleYesClick = () => {
     try {
       dispatch(logout());
+      dispatch(setIsModalLogoutOpen(false));
     } catch (error) {
       toast.error("Error logging out");
     }
@@ -46,7 +47,7 @@ export const ModalLogout = () => {
 
   return (
     <div className={backdropClass} onClick={handleBackdropClick}>
-      <div className={css.modal} ref={modalRef}>
+      <div className={css.container} ref={modalRef}>
         <p className={css.question}>Are you sure you want to leave?</p>
         <div className={css.buttons}>
           <button className={css["item-yes"]} onClick={handleYesClick}>
