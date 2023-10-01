@@ -1,69 +1,3 @@
-.container {
-	position: fixed;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	width: 300px;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	flex-direction: column;
-	margin: 0 auto;
-	background-color: white;
-	padding-bottom: 25px;
-	z-index: 9999;
-	border-radius: 20px;
-}
-
-.question {
-	display: flex;
-	justify-content: center;
-	margin-top: 20px;
-	margin-bottom: 30px;
-}
-
-.buttons {
-	display: flex;
-	justify-content: space-evenly;
-	width: 100%;
-}
-
-.item-yes {
-	background-color: var(--primary-income-color);
-	width: 100px;
-	height: 40px;
-	border-radius: 20px;
-	border: none;
-	cursor: pointer;
-	color: white;
-	transition: 300ms;
-}
-
-.item-yes:hover,
-.item-yes:focus {
-	background-color: var(--btn-green-hover);
-}
-
-.item-no {
-	background: none;
-	width: 100px;
-	height: 40px;
-	border-radius: 20px;
-	border: none;
-	outline: 1px solid var(--household-products-diagram-color);
-	cursor: pointer;
-	color: var(--household-products-diagram-color);
-	transition: 300ms;
-}
-
-.item-no:hover,
-.item-no:focus {
-	outline: 1px solid black;
-	transition: 300ms;
-	color: black;
-	background: none;
-}
-
 .backdrop {
 	position: fixed;
 	left: 0;
@@ -91,18 +25,47 @@
 	transition-duration: 250ms;
 	pointer-events: all;
 	transform: none;
-	z-index: 9999;
 }
 
-@media screen and (min-width: 768px) {
-	.container {
-		position: fixed;
-		z-index: 4;
-		left: 50%;
-		top: 50%;
-		transform: translate(-50%, -50%);
-		border-radius: 20px;
-		padding-top: 40px;
-		padding-bottom: 60px;
-	}
+.modal {
+	display: flex;
+	justify-content: space-around;
+	flex-direction: column;
+	align-items: center;
+	background-color: var(--secondary-gray-font-color);
+	height: 15%;
+	width: 30%;
+	border-radius: 10px;
+}
+
+.question {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.buttons {
+	display: flex;
+	justify-content: space-around;
+}
+
+.item-yes {
+	width: 60px;
+	height: 35px;
+	background-color: transparent;
+	border: 1px solid var(--other-expenses-diagram-color);
+	color: var(--other-expenses-diagram-color);
+	border-radius: 15px;
+	cursor: pointer;
+}
+
+.item-no {
+	width: 60px;
+	height: 35px;
+	background-color: transparent;
+	border: 1px solid rgba(230, 62, 62, 0.769);
+	color: rgba(230, 62, 62, 0.769);
+	border-radius: 15px;
+	cursor: pointer;
 }

@@ -8,8 +8,6 @@ import {
   deleteTransaction,
 } from "../../redux/finance/operations";
 import { selectUser } from "../../redux/session/selectors";
-import { selectTransactions } from "../../redux/finance/selectors";
-import { ModalEditTransaction } from "../../components/ModalEditTransaction/ModalEditTransaction";
 import { Pagination } from "../Pagination/Pagination";
 import { paginateTransactions } from "../../utils/pagination";
 import { nanoid } from "nanoid";
@@ -22,7 +20,6 @@ export const HomeTab = () => {
   const dispatch = useDispatch();
 
   const user = useSelector(selectUser);
-  const data = useSelector(selectTransactions);
 
   useEffect(() => {
     dispatch(fetchTransactions(user.id));
@@ -60,9 +57,9 @@ export const HomeTab = () => {
             </thead>
             <tbody className={styles.tbody}>
               {transactions.map(
-                ({ _id, date, type, category, comment, amount }) => (
+                ({ _id, date, type, category, comment, sum }) => (
                   <tr key={nanoid()} className={styles.data}>
-                    <td className={styles.dataItem}>{date.toString()}</td>
+                    <td className={styles.dataItem}>{date}</td>
                     <td className={styles.dataItem}>
                       {type === "income" ? "+" : "-"}
                     </td>
@@ -83,7 +80,7 @@ export const HomeTab = () => {
                       style={{ textAlign: "right", fontWeight: "700" }}
                     >
                       <span className={styles.dataSum} data-type={type}>
-                        {amount}
+                        {sum}
                       </span>
                     </td>
                     <td
@@ -100,7 +97,6 @@ export const HomeTab = () => {
                             src={"./assets/icon-pen.svg"}
                           />
                         </button>
-                        {/* <ModalEditTransaction transaction={_id} /> */}
                         <button
                           onClick={() => handleDelete(_id)}
                           className={styles.dataItemBtnDelete}
@@ -119,55 +115,50 @@ export const HomeTab = () => {
 
       {isMobile && (
         <>
-          {transactions.map(
-            ({ _id, date, type, category, comment, amount }) => (
-              <ul key={nanoid()} className={styles.dataMob} data-type={type}>
-                <li className={styles.dataItemMob}>
-                  <span className={styles.headItemMob}>Date</span>
-                  {date}
-                </li>
-                <li className={styles.dataItemMob}>
-                  <span className={styles.headItemMob}>Type</span>
-                  {type === "income" ? "+" : "-"}
-                </li>
-                <li className={styles.dataItemMob}>
-                  <span className={styles.headItemMob}>Category</span>
-                  {category}
-                </li>
-                <li className={styles.dataItemMob}>
-                  <span className={styles.headItemMob}>Comment</span>
-                  <span className={styles.dataComment}>{comment}</span>
-                </li>
-                <li
-                  className={styles.dataItemMob}
-                  style={{ fontWeight: "700" }}
+          {transactions.map(({ _id, date, type, category, comment, sum }) => (
+            <ul key={nanoid()} className={styles.dataMob} data-type={type}>
+              <li className={styles.dataItemMob}>
+                <span className={styles.headItemMob}>Date</span>
+                {date}
+              </li>
+              <li className={styles.dataItemMob}>
+                <span className={styles.headItemMob}>Type</span>
+                {type === "income" ? "+" : "-"}
+              </li>
+              <li className={styles.dataItemMob}>
+                <span className={styles.headItemMob}>Category</span>
+                {category}
+              </li>
+              <li className={styles.dataItemMob}>
+                <span className={styles.headItemMob}>Comment</span>
+                <span className={styles.dataComment}>{comment}</span>
+              </li>
+              <li className={styles.dataItemMob} style={{ fontWeight: "700" }}>
+                <span className={styles.headItemMob}>Sum</span>
+                <span className={styles.dataSum} data-type={type.toString()}>
+                  {sum}
+                </span>
+              </li>
+              <div className={styles.buttonsWrapperMob}>
+                <button
+                  onClick={() => handleDelete(_id)}
+                  className={styles.dataItemBtnDelete}
                 >
-                  <span className={styles.headItemMob}>Sum</span>
-                  <span className={styles.dataSum} data-type={type.toString()}>
-                    {amount}
-                  </span>
-                </li>
-                <div className={styles.buttonsWrapperMob}>
-                  <button
-                    onClick={() => handleDelete(_id)}
-                    className={styles.dataItemBtnDelete}
-                  >
-                    Delete
-                  </button>
-                  <button
-                    onClick={openModalEditTransaction}
-                    className={styles.dataItemBtnEdit}
-                  >
-                    <img
-                      className={styles.btnIcon}
-                      src={"./assets/icon-pen.svg"}
-                    />
-                    Edit
-                  </button>
-                </div>
-              </ul>
-            )
-          )}
+                  Delete
+                </button>
+                <button
+                  onClick={openModalEditTransaction}
+                  className={styles.dataItemBtnEdit}
+                >
+                  <img
+                    className={styles.btnIcon}
+                    src={"./assets/icon-pen.svg"}
+                  />
+                  Edit
+                </button>
+              </div>
+            </ul>
+          ))}
         </>
       )}
 

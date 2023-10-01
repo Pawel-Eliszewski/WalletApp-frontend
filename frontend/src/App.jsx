@@ -13,7 +13,6 @@ import Loader from "./components/Loader/Loader";
 import { Currency } from "./components/Currency/Currency";
 import { DiagramTab } from "./components/DiagramTab/DiagramTab";
 import "./App.css";
-import { HomeTab } from "./components/HomeTab/HomeTab";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,7 +29,7 @@ function App() {
     <Loader />
   ) : (
     <>
-      {/* <ToastContainer
+      <ToastContainer
         position="top-right"
         autoClose={3000}
         hideProgressBar={false}
@@ -42,7 +41,7 @@ function App() {
         pauseOnHover
         theme="colored"
         style={{ width: "400px", height: "100px" }}
-      /> */}
+      />
       <Routes>
         <Route
           path="/register"
@@ -60,11 +59,10 @@ function App() {
             <ProtectedRoute redirectTo="/login" component={<DashboardPage />} />
           }
         >
-          <Route path="/" element={<HomeTab />} />
-          <Route path="/statistics" element={<DiagramTab />} />
-          <Route path="/currency" element={<Currency />} />
-          {/* {window.innerWidth < 768 && (
-          )} */}
+          <Route path="statistics" element={<DiagramTab />} />
+          {window.innerWidth < 768 && (
+            <Route path="currency" element={<Currency />} />
+          )}
         </Route>
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>

@@ -5,6 +5,8 @@ export const paginateTransactions = (page) => {
   const state = store.getState();
   const transactions = selectTransactions(state);
 
+  console.log(transactions);
+
   const length = transactions.length;
   const pages = Math.ceil(length / 7);
 

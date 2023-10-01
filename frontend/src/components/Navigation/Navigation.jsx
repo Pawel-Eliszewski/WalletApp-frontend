@@ -5,9 +5,9 @@ export const Navigation = () => {
   const location = useLocation();
 
   const navItems = [
-    { path: "/", label: "Home", icon: "icon-home.svg" },
+    { path: "/register", label: "Home", icon: "icon-home.svg" },
     { path: "/statistics", label: "Statistics", icon: "icon-statistics.svg" },
-    { path: "/currency", label: "Currency", icon: "icon-dollar.svg" },
+    { path: "/currency", label: "Dollar", icon: "icon-dollar.svg" },
   ];
 
   return (

@@ -9,25 +9,20 @@ import { ModalAddTransaction } from "../../components/ModalAddTransaction/ModalA
 import { ModalEditTransaction } from "../../components/ModalEditTransaction/ModalEditTransaction";
 import { HomeTab } from "../../components/HomeTab/HomeTab";
 import { Currency } from "../../components/Currency/Currency";
-import { ModalLogout } from "../../components/ModalLogout/ModalLogout";
 import css from "./DashboardPage.module.css";
-
-import { DiagramTab } from "../../components/DiagramTab/DiagramTab";
 
 const MobileDashboard = () => {
   return (
     <>
       <Header />
       <div className={css.mobileContainer}>
+        <Navigation />
+        <Balance />
+        <HomeTab />
+        <ButtonAddTransaction />
+        <ModalAddTransaction />
+        <ModalEditTransaction />
         <Suspense fallback={null}>
-          <Navigation />
-          {/* <Balance /> */}
-          {/* <HomeTab /> */}
-          {/* <DiagramTab /> */}
-          <ButtonAddTransaction />
-          <ModalLogout />
-          <ModalAddTransaction />
-          <ModalEditTransaction />
           <Outlet />
         </Suspense>
       </div>
@@ -40,19 +35,18 @@ const TabletDashboard = () => {
     <>
       <Header />
       <div className={css.tabletContainer}>
-        <Suspense fallback={null}>
-          <div className={css.tabletWrapper}>
-            <div className={css.tabletInnerBox}>
-              <Navigation />
-              <Balance />
-            </div>
-            <Currency />
+        <div className={css.tabletWrapper}>
+          <div className={css.tabletInnerBox}>
+            <Navigation />
+            <Balance />
           </div>
-          {/* <HomeTab /> */}
-          <ModalLogout />
-          <ButtonAddTransaction />
-          <ModalAddTransaction />
-          <ModalEditTransaction />
+          <Currency />
+        </div>
+        <HomeTab />
+        <ButtonAddTransaction />
+        <ModalAddTransaction />
+        <ModalEditTransaction />
+        <Suspense fallback={null}>
           <Outlet />
         </Suspense>
       </div>
@@ -65,16 +59,16 @@ const DesktopDashboard = () => {
     <>
       <Header />
       <div className={css.desktopContainer}>
+        <div className={css.innerWrapper}>
+          <Navigation />
+          <Balance />
+          <Currency />
+        </div>
+        <HomeTab />
+        <ButtonAddTransaction />
+        <ModalAddTransaction />
+        <ModalEditTransaction />
         <Suspense fallback={null}>
-          <div className={css.innerWrapper}>
-            <Navigation />
-            <Balance />
-            <Currency />
-          </div>
-          <ModalLogout />
-          <ButtonAddTransaction />
-          <ModalAddTransaction />
-          <ModalEditTransaction />
           <Outlet />
         </Suspense>
       </div>

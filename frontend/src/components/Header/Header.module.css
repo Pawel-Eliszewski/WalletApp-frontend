@@ -38,10 +38,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--primary-gray-font-color);
 }
 
 .userName {
+  color: var(--primary-gray-font-color);
   margin: 0;
   font-family: "Circe", sans-serif;
   font-size: 18px;
@@ -85,6 +85,11 @@
   }
 
   .textExit {
+    color: var(--primary-gray-font-color);
     display: block;
   }
+}
+
+@media screen and (min-width: 1280px) {
+  .wrapper {}
 }
