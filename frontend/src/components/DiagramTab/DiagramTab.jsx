@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Doughnut } from "react-chartjs-2";
+import Select from "react-select";
 import "chart.js/auto";
 
 import styles from "./DiagramTab.module.css";
@@ -8,7 +9,36 @@ import { fakeTransactions } from "../../utils/fakeData";
 export function DiagramTab() {
   const [selectedMonth, setSelectedMonth] = useState("All");
   const [selectedYear, setSelectedYear] = useState("All");
+  const options = [
+    { value: "01", label: "January" },
+    { value: "02", label: "February" },
+    { value: "03", label: "March" },
+    { value: "04", label: "April" },
+  ];
+  const optionsYear = [
+    { value: "2023", label: "2023" },
+    { value: "2022", label: "2022" },
+    { value: "2021", label: "2021" },
+  ];
 
+  const customStyles = {
+    control: (baseStyles) => ({
+      ...baseStyles,
+      width: "280px",
+      height: "50px",
+      backgroundColor: "transparent",
+      borderRadius: "30px",
+      border: "1px solid black",
+      color: "black",
+      cursor: "pointer",
+      outline: "none",
+      paddingLeft: "20px",
+      fontSize: "16px",
+      fontWeight: "400",
+      lineHeight: "24px",
+      letterSpacing: "0em",
+    }),
+  };
   let filteredTransactions = fakeTransactions;
 
   if (selectedMonth !== "All") {
@@ -46,57 +76,27 @@ export function DiagramTab() {
       filteredTransactions.find((t) => t.category === category)?.color
   );
 
-  const incomeCategories = filteredTransactions
-    .filter((transaction) => transaction.type === "income")
-    .reduce((categories, transaction) => {
-      categories[transaction.category] =
-        (categories[transaction.category] || 0) + parseFloat(transaction.sum);
-      return categories;
-    }, {});
-
-  const incomeLabels = Object.keys(incomeCategories);
-  const incomeData = Object.values(incomeCategories);
-  const incomeColors = incomeLabels.map(
-    (category) =>
-      filteredTransactions.find((t) => t.category === category)?.color
-  );
-
   const chartOptions = {
-    legend: {
-      display: true,
-      position: "right",
+    cutout: "70%",
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+    elements: {
+      arc: {
+        borderWidth: 0,
+      },
     },
   };
 
   return (
     <div className={styles.container}>
-      <div className={styles.selectContainer}>
-        <label>
-          Select Month:
-          <select
-            value={selectedMonth}
-            onChange={(e) => setSelectedMonth(e.target.value)}
-          >
-            <option value="All">All</option>
-            <option value="01">January</option>
-            <option value="02">February</option>
-          </select>
-        </label>
-        <label>
-          Select Year:
-          <select
-            value={selectedYear}
-            onChange={(e) => setSelectedYear(e.target.value)}
-          >
-            <option value="All">All</option>
-            <option value="2023">2023</option>
-            <option value="2022">2022</option>
-          </select>
-        </label>
-      </div>
-
       <div className={styles.chartContainer}>
-        <h2>Expenses Chart</h2>
+        <h2 className={styles.statistics__header}>Statistics</h2>
+        <div className={styles.diagram__expenses}>
+          ${expensesSum.toFixed(2)}
+        </div>
         <Doughnut
           data={{
             labels: expensesLabels,
@@ -111,20 +111,29 @@ export function DiagramTab() {
         />
       </div>
 
-      <div className={styles.chartContainer}>
-        <h2>Income Chart</h2>
-        <Doughnut
-          data={{
-            labels: incomeLabels,
-            datasets: [
-              {
-                data: incomeData,
-                backgroundColor: incomeColors,
-              },
-            ],
-          }}
-          options={chartOptions}
-        />
+      <div className={styles.selectContainer}>
+        <label className={styles.select__month}>
+          <Select
+            styles={customStyles}
+            options={options}
+            value={options.find((option) => option.value === selectedMonth)}
+            onChange={(selectedOption) =>
+              setSelectedMonth(selectedOption.value)
+            }
+            placeholder="January"
+            isSearchable={false}
+          />
+        </label>
+        <label className={styles.select__year}>
+          <Select
+            styles={customStyles}
+            options={optionsYear}
+            value={optionsYear.find((option) => option.value === selectedYear)}
+            onChange={(selectedOption) => setSelectedYear(selectedOption.value)}
+            placeholder="2023"
+            isSearchable={false}
+          />
+        </label>
       </div>
 
       <ul className={styles.listNames}>
@@ -134,20 +143,16 @@ export function DiagramTab() {
 
       <ul className={styles.listTransaction}>
         {filteredTransactions?.length > 0 ? (
-          filteredTransactions.map(({ _id, category, sum, type, color }) => (
+          filteredTransactions.map(({ _id, category, sum, color }) => (
             <li key={_id} className={styles.elementTransaction}>
               <div
+                className={styles.icon}
                 style={{
                   backgroundColor: `${color}`,
-                  width: "24px",
-                  minHeight: "24px",
-                  borderRadius: "12px",
-                  marginRight: "15px",
                 }}
               ></div>
               <div className={styles.category}>{category}</div>
               <div className={styles.sum}>{sum}</div>
-              <div className={styles.type}>{type}</div>
             </li>
           ))
         ) : (

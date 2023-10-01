@@ -3,15 +3,13 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { selectIsModalLogoutOpen } from "../../redux/global/selectors";
 import { setIsModalLogoutOpen } from "../../redux/global/globalSlice";
-// import { selectUser } from "../../redux/session/selectors";
+import { selectUser } from "../../redux/session/selectors";
 import { ModalLogout } from "../ModalLogout/ModalLogout";
 
 export const Header = () => {
   const dispatch = useDispatch();
   const isModalLogoutOpen = useSelector(selectIsModalLogoutOpen);
-  // const user = useSelector(selectUser);
-
-  let user = { email: "dev@dev.com" };
+  const user = useSelector(selectUser);
 
   const handleOpenModalLogout = () => {
     dispatch(setIsModalLogoutOpen(true));

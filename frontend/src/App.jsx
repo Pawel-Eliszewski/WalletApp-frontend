@@ -3,7 +3,6 @@ import { ToastContainer } from "react-toastify";
 import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
 import { RestrictedRoute } from "./components/RestrictedRoute/RestrictedRoute";
 import { Route, Routes, Navigate } from "react-router-dom";
-// import Chart from "./components/Chart/Chart";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsRefreshing } from "./redux/session/selectors";
 import { refreshUser } from "./redux/session/operations";
@@ -11,6 +10,8 @@ import LoginPage from "./Pages/LoginPage/LoginPage";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 import { DashboardPage } from "./Pages/DashboardPage/DashboardPage";
 import Loader from "./components/Loader/Loader";
+import { Currency } from "./components/Currency/Currency";
+import { DiagramTab } from "./components/DiagramTab/DiagramTab";
 import "./App.css";
 
 function App() {
@@ -22,7 +23,8 @@ function App() {
       dispatch(refreshUser());
     };
     func();
-  }, []);
+  }, [dispatch]);
+
   return isRefreshing ? (
     <Loader />
   ) : (
@@ -38,6 +40,7 @@ function App() {
         draggable
         pauseOnHover
         theme="colored"
+        style={{ width: "400px", height: "100px" }}
       />
       <Routes>
         <Route
@@ -56,12 +59,12 @@ function App() {
             <ProtectedRoute redirectTo="/login" component={<DashboardPage />} />
           }
         >
-          {/*<Route path="statistics" element={<DiagramTab />} />*/}
-          {/*{if(window.innerWidth < 768) {
-        <Route path="currency" element={<Currency>} />
-        }} */}
+          <Route path="statistics" element={<DiagramTab />} />
+          {window.innerWidth < 768 && (
+            <Route path="currency" element={<Currency />} />
+          )}
         </Route>
-        <Route path="*" element={<Navigate to={"/login"} />} />
+        <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </>
   );

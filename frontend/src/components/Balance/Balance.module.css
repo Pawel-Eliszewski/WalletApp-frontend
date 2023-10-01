@@ -1,5 +1,4 @@
 /*Mobile*/
-
 .balance {
   background-color: white;
   border-radius: 30px;
@@ -10,7 +9,7 @@
 }
 
 .balance__text {
-  color: var(--placeholder-color);
+  color: var(--primary-gray-font-color);
   font-family: "Circe";
   font-style: normal;
   font-weight: 400;
@@ -20,7 +19,6 @@
 }
 
 .balance__amount {
-  color: var(--dark-text-color);
   font-family: "Poppins";
   font-weight: 700;
   font-size: 30px;

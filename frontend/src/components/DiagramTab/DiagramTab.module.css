@@ -10,10 +10,11 @@ ul {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
 }
 
 .listNames {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   display: flex;
   justify-content: space-between;
   height: 58px;
@@ -25,7 +26,7 @@ ul {
 }
 
 .nameElement {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
@@ -45,18 +46,22 @@ ul {
   padding-left: 16px;
   padding-right: 16px;
   align-items: center;
-  border-bottom: 1px solid #2121fd;
+  border-bottom: 1px solid rgba(220, 220, 223, 1);
 }
 
 .sum {
   margin-left: auto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0em;
 }
 
 .category {
-  font-style: normal;
-  font-weight: normal;
   font-size: 16px;
-  line-height: 24px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0em;
 }
 
 .listAll {
@@ -69,6 +74,7 @@ ul {
 .elementListAll {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .elementAllText {
@@ -83,7 +89,7 @@ ul {
   font-weight: bold;
   font-size: 16px;
   line-height: 24px;
-  color: #e02b3a;
+  color: rgba(255, 101, 150, 1);
 }
 
 .elementAllIncome {
@@ -91,5 +97,49 @@ ul {
   font-weight: bold;
   font-size: 16px;
   line-height: 24px;
-  color: #0c942a;
+  color: rgba(36, 204, 167, 1);
+}
+.selectContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.statistics__header {
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 45px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.select__month {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.select__year {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.diagram__expenses {
+  position: absolute;
+  top: 245px;
+  left: 120px;
+
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 27px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+.icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 1px;
+  margin-right: 10px;
 }

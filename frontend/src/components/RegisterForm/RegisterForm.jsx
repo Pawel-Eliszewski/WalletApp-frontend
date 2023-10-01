@@ -19,8 +19,6 @@ const RegisterForm = () => {
       password: values.password,
     };
 
-    console.log(formData);
-
     try {
       dispatch(register(formData));
     } catch (error) {
