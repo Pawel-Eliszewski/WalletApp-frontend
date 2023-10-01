@@ -35,6 +35,7 @@ const financeSlice = createSlice({
         state.error = null;
         console.log(action.payload.data);
         state.data.push(action.payload.data);
+        state.totalBalance = action.payload.userBalance;
       })
       .addCase(addTransaction.rejected, handleRejected)
       .addCase(deleteTransaction.fulfilled, (state, action) => {
@@ -43,6 +44,7 @@ const financeSlice = createSlice({
           (transaction) => transaction.id === action.payload.data.id
         );
         state.data.splice(index, 1);
+        state.totalBalance = action.payload.userBalance;
       })
       .addCase(deleteTransaction.rejected, handleRejected)
       .addCase(updateTransaction.fulfilled, (state, action) => {
@@ -51,6 +53,7 @@ const financeSlice = createSlice({
           (transaction) => transaction.id === action.payload.data.id
         );
         state.data.splice(index, 1, action.payload.data);
+        state.totalBalance = action.payload.userBalance;
       })
       .addCase(updateTransaction.rejected, handleRejected)
       .addCase(register.fulfilled, (state, action) => {
