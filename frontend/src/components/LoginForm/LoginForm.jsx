@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/session/operations";
-// import validationSchema from "../../utils/yupValidationSchema";
+import { loginValidationSchema } from "../../utils/yupValidationSchema";
 import styles from "./LoginForm.module.css";
 
 const LoginForm = () => {
@@ -32,7 +32,7 @@ const LoginForm = () => {
       </div>
       <Formik
         initialValues={initialValues}
-        // validationSchema={validationSchema}
+        validationSchema={loginValidationSchema}
         onSubmit={handleSubmit}
       >
         {() => (
