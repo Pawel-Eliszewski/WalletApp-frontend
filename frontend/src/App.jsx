@@ -40,7 +40,6 @@ function App() {
         theme="colored"
       />
       <Routes>
-        <Route index element={<DashboardPage />} />
         <Route
           path="/register"
           element={
