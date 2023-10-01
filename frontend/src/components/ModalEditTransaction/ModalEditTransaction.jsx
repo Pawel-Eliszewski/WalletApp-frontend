@@ -57,7 +57,6 @@ export const ModalEditTransaction = ({ userName }) => {
         owner: user._id,
       })
     );
-    form.reset();
     dispatch(setIsModalEditTransactionOpen(false));
   };
 
@@ -85,7 +84,7 @@ export const ModalEditTransaction = ({ userName }) => {
           <p className={css.slash}>/</p>
           <p className={expenseClass}>Expense</p>
         </div>
-        <form className={css.form}>
+        <form className={css.form} onSubmit={handleSubmit}>
           {type === "expense" ? (
             <DropdownMenu
               category={updatedCategory}
@@ -106,11 +105,7 @@ export const ModalEditTransaction = ({ userName }) => {
             className={css.comment}
             placeholder={comment}
           ></textarea>
-          <button
-            onSubmit={handleSubmit}
-            type="submit"
-            className={css.btnGreen}
-          >
+          <button type="submit" className={css.btnGreen}>
             SAVE
           </button>
         </form>

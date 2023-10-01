@@ -55,7 +55,7 @@ export const ModalAddTransaction = ({ userName }) => {
         owner: user._id,
       })
     );
-    form.reset();
+    // form.reset();
     dispatch(setIsModalAddTransactionOpen(false));
   };
 
@@ -83,7 +83,7 @@ export const ModalAddTransaction = ({ userName }) => {
           <CustomizedMuiSwitch onChange={handleType} />
           <p className={expenseClass}>Expense</p>
         </div>
-        <form className={css.form}>
+        <form className={css.form} onSubmit={handleSubmit}>
           {type === "expense" ? (
             <DropdownMenu category={category} onClick={handleCategory} />
           ) : null}
@@ -101,11 +101,7 @@ export const ModalAddTransaction = ({ userName }) => {
             className={css.comment}
             placeholder="Comment"
           ></textarea>
-          <button
-            type="submit"
-            onSubmit={handleSubmit}
-            className={css.btnGreen}
-          >
+          <button type="submit" className={css.btnGreen}>
             ADD
           </button>
         </form>

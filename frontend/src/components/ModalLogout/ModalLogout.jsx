@@ -1,8 +1,8 @@
+import PropTypes from "prop-types";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setIsModalLogoutOpen } from "../../redux/global/globalSlice";
 import { logout } from "../../redux/session/operations";
-import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 import css from "./ModalLogout.module.css";
 
@@ -27,9 +27,7 @@ export const ModalLogout = () => {
         handleNoClick();
       }
     };
-
     document.addEventListener("keydown", handleKeyDown);
-
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };

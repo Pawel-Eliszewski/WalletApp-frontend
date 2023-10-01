@@ -1,4 +1,3 @@
-import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { instance } from "../session/operations";
 
@@ -19,8 +18,10 @@ export const addTransaction = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const response = await instance.post("/transaction", data);
+      console.log(response.data);
       return response.data;
     } catch (error) {
+      console.log(error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
