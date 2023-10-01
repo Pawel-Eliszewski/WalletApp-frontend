@@ -41,8 +41,11 @@ const sessionSlice = createSlice({
       })
       .addCase(login.rejected, handleRejected)
       .addCase(logout.fulfilled, (state) => {
-        localStorage.clear();
-        state = initialState;
+        state.isAuth = false;
+        state.isRefreshing = false;
+        state.error = null;
+        state.token = null;
+        state.user = null;
       })
       .addCase(logout.rejected, handleRejected)
       .addCase(refreshUser.pending, (state) => {
