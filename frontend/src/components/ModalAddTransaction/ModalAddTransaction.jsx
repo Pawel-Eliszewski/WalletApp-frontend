@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../redux/session/selectors";
 import { selectIsModalAddTransactionOpen } from "../../redux/global/selectors";
@@ -12,6 +12,7 @@ import { Show } from "@chakra-ui/react";
 import css from "./ModalAddTransaction.module.css";
 
 export const ModalAddTransaction = () => {
+  const modalRef = useRef(null);
   const dispatch = useDispatch();
 
   const isModalAddTransactionOpen = useSelector(
@@ -45,7 +46,6 @@ export const ModalAddTransaction = () => {
     const amount = form.elements.amount.value;
     const cleanedAmount = amount.replace(/\s/g, "").replace(",", ".");
     const numberAmount = parseFloat(cleanedAmount);
-
     const comment = form.elements.comment.value;
 
     dispatch(
@@ -55,10 +55,9 @@ export const ModalAddTransaction = () => {
         amount: numberAmount,
         date: date,
         comment: comment,
-        owner: user._id,
+        owner: user.id,
       })
     );
-    // form.reset();
     dispatch(setIsModalAddTransactionOpen(false));
   };
 
@@ -67,21 +66,23 @@ export const ModalAddTransaction = () => {
     document.body.style.overflow = "unset";
   };
 
-  // const handleBackdropClick = () => {
-  //   dispatch(setIsModalAddTransactionOpen(false));
-  // };
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        dispatch(setIsModalAddTransactionOpen(false));
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
-  // useEffect(() => {
-  //   const handleKeyDown = (e) => {
-  //     if (e.key === "Escape") {
-  //       handleBackdropClick();
-  //     }
-  //   };
-  //   document.addEventListener("keydown", handleKeyDown);
-  //   return () => {
-  //     document.removeEventListener("keydown", handleKeyDown);
-  //   };
-  // }, []);
+  const handleBackdropClick = (e) => {
+    if (modalRef.current && !modalRef.current.contains(e.target)) {
+      dispatch(setIsModalAddTransactionOpen(false));
+    }
+  };
 
   const incomeClass = type === "income" ? css.income : "";
   const expenseClass = type === "expense" ? css.expense : "";
@@ -91,8 +92,8 @@ export const ModalAddTransaction = () => {
     : css.backdrop;
 
   return (
-    <div className={backdropClass}>
-      <div className={css.container}>
+    <div className={backdropClass} onClick={handleBackdropClick}>
+      <div className={css.container} ref={modalRef}>
         <Show breakpoint="(max-width: 767px)">
           <Header userName={user.email} />
         </Show>
