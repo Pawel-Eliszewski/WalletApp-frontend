@@ -1,13 +1,8 @@
 import { Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import {
-  selectIsAuth,
-  selectIsRefreshing,
-} from "../../redux/session/selectors";
+import { useAuth } from "../../hooks/useAuth";
 
 export const ProtectedRoute = ({ component: Component, redirectTo = "/" }) => {
-  const isAuth = useSelector(selectIsAuth);
-  const isRefreshing = useSelector(selectIsRefreshing);
+  const { isAuth, isRefreshing } = useAuth();
   const shouldRedirect = !isAuth && !isRefreshing;
 
   return shouldRedirect ? <Navigate to={redirectTo} /> : Component;
