@@ -23,6 +23,8 @@
   font-weight: 700;
   font-size: 30px;
   line-height: 1.5;
+  display: flex;
+  overflow: hidden;
 }
 
 .balance__currency {

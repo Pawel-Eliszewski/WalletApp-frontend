@@ -2,7 +2,8 @@ import { useSelector } from "react-redux";
 import { selectBalance } from "../../redux/finance/selectors";
 import { useState } from "react";
 import { Doughnut } from "react-chartjs-2";
-import Select from "react-select";
+import { DropdownSelectY } from "../DropdownSelect/DropdownSelect";
+import { DropdownSelect } from "../DropdownSelect/DropdownSelect";
 import "chart.js/auto";
 
 import styles from "./DiagramTab.module.css";
@@ -10,51 +11,18 @@ import { fakeTransactions } from "../../utils/fakeData";
 
 export function DiagramTab() {
   const balance = useSelector(selectBalance);
-  const [selectedMonth, setSelectedMonth] = useState("All");
-  const [selectedYear, setSelectedYear] = useState("All");
-  const options = [
-    { value: "01", label: "January" },
-    { value: "02", label: "February" },
-    { value: "03", label: "March" },
-    { value: "04", label: "April" },
-  ];
-  const optionsYear = [
-    { value: "2023", label: "2023" },
-    { value: "2022", label: "2022" },
-    { value: "2021", label: "2021" },
-  ];
+  const [selectedMonth, setSelectedMonth] = useState("Month");
+  const [selectedYear, setSelectedYear] = useState("Year");
 
-  const customStyles = {
-    control: (baseStyles) => ({
-      ...baseStyles,
-      width: "280px",
-      height: "50px",
-      backgroundColor: "transparent",
-      borderRadius: "30px",
-      border: "1px solid black",
-      color: "black",
-      cursor: "pointer",
-      outline: "none",
-      paddingLeft: "20px",
-      fontSize: "16px",
-      fontWeight: "400",
-      lineHeight: "24px",
-      letterSpacing: "0em",
-    }),
-  };
   let filteredTransactions = fakeTransactions;
 
-  if (selectedMonth !== "All") {
-    filteredTransactions = filteredTransactions.filter(
-      (transaction) => transaction.date.split(".")[1] === selectedMonth
-    );
-  }
+  const handleMonthSelect = (month) => {
+    setSelectedMonth(month);
+  };
 
-  if (selectedYear !== "All") {
-    filteredTransactions = filteredTransactions.filter(
-      (transaction) => transaction.date.split(".")[2] === selectedYear
-    );
-  }
+  const handleYearSelect = (year) => {
+    setSelectedYear(year);
+  };
 
   const expensesSum = filteredTransactions
     .filter((transaction) => transaction.type === "expense")
@@ -95,88 +63,84 @@ export function DiagramTab() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.chartContainer}>
+      <div className={styles.chart__container}>
         <h2 className={styles.statistics__header}>Statistics</h2>
+
         <div className={styles.diagram__expenses}>{balance}</div>
-        <Doughnut
-          data={{
-            labels: expensesLabels,
-            datasets: [
-              {
-                data: expensesData,
-                backgroundColor: expensesColors,
-              },
-            ],
-          }}
-          options={chartOptions}
-        />
-      </div>
-
-      <div className={styles.selectContainer}>
-        <label className={styles.select__month}>
-          <Select
-            styles={customStyles}
-            options={options}
-            value={options.find((option) => option.value === selectedMonth)}
-            onChange={(selectedOption) =>
-              setSelectedMonth(selectedOption.value)
-            }
-            placeholder="January"
-            isSearchable={false}
+        <div className={styles.doughnut}>
+          <Doughnut
+            data={{
+              labels: expensesLabels,
+              datasets: [
+                {
+                  data: expensesData,
+                  backgroundColor: expensesColors,
+                },
+              ],
+            }}
+            options={chartOptions}
           />
-        </label>
-        <label className={styles.select__year}>
-          <Select
-            styles={customStyles}
-            options={optionsYear}
-            value={optionsYear.find((option) => option.value === selectedYear)}
-            onChange={(selectedOption) => setSelectedYear(selectedOption.value)}
-            placeholder="2023"
-            isSearchable={false}
-          />
-        </label>
+        </div>
       </div>
+      <div className={styles.tablet__container}>
+        <div className={styles.selectContainer}>
+          <label className={styles.select__month}>
+            <DropdownSelect
+              selectedMonth={selectedMonth}
+              onSelect={handleMonthSelect}
+            />
+          </label>
+          <label className={styles.select__year}>
+            <DropdownSelectY
+              selectedYear={selectedYear}
+              onSelect={handleYearSelect}
+            />
+          </label>
+        </div>
 
-      <ul className={styles.listNames}>
-        <li className={styles.nameElement}>Category</li>
-        <li className={styles.nameElement}>Sum</li>
-      </ul>
+        <ul className={styles.listNames}>
+          <li className={styles.nameElement}>Category</li>
+          <li className={styles.nameElement}>Sum</li>
+        </ul>
 
-      <ul className={styles.listTransaction}>
-        {filteredTransactions?.length > 0 ? (
-          filteredTransactions.map(({ _id, category, sum, color }) => (
-            <li key={_id} className={styles.elementTransaction}>
-              <div
-                className={styles.icon}
-                style={{
-                  backgroundColor: `${color}`,
-                }}
-              ></div>
-              <div className={styles.category}>{category}</div>
-              <div className={styles.sum}>{sum}</div>
+        <ul className={styles.listTransaction}>
+          {filteredTransactions?.length > 0 ? (
+            filteredTransactions.map(({ _id, category, sum, color }) => (
+              <li key={_id} className={styles.elementTransaction}>
+                <div
+                  className={styles.icon}
+                  style={{
+                    backgroundColor: `${color}`,
+                  }}
+                ></div>
+                <div className={styles.category}>{category}</div>
+                <div className={styles.sum}>{sum}</div>
+              </li>
+            ))
+          ) : (
+            <li className={styles.elementTransaction}>
+              <div className={styles.category}>
+                <p>Here is nothing :(</p>
+              </div>
             </li>
-          ))
-        ) : (
-          <li className={styles.elementTransaction}>
-            <div className={styles.category}>
-              <p>Here is nothing :(</p>
+          )}
+        </ul>
+
+        <ul className={styles.listAll}>
+          <li className={styles.elementListAll}>
+            <div className={styles.elementAllText}>Expenses:</div>
+            <div className={styles.elementAllExpenses}>
+              {expensesSum.toFixed(2)}
             </div>
           </li>
-        )}
-      </ul>
-
-      <ul className={styles.listAll}>
-        <li className={styles.elementListAll}>
-          <div className={styles.elementAllText}>Expenses:</div>
-          <div className={styles.elementAllExpenses}>
-            {expensesSum.toFixed(2)}
-          </div>
-        </li>
-        <li className={styles.elementListAll}>
-          <div className={styles.elementAllText}>Income:</div>
-          <div className={styles.elementAllIncome}>{incomeSum.toFixed(2)}</div>
-        </li>
-      </ul>
+          <li className={styles.elementListAll}>
+            <div className={styles.elementAllText}>Income:</div>
+            <div className={styles.elementAllIncome}>
+              {incomeSum.toFixed(2)}
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }
