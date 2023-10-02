@@ -48,6 +48,7 @@ const financeSlice = createSlice({
       .addCase(deleteTransaction.rejected, handleRejected)
       .addCase(updateTransaction.fulfilled, (state, action) => {
         state.error = null;
+        console.log(action.payload);
         const index = state.data.findIndex(
           (transaction) => transaction.id === action.payload.data._id
         );

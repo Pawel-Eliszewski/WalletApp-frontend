@@ -25,10 +25,12 @@ export const ModalEditTransaction = ({ transactionId }) => {
     (transaction) => transaction._id === transactionId
   );
 
-  const { _id, type, category, amount, date, comment } = selectedTransaction;
+  console.log(selectedTransaction);
 
-  const [updatedCategory, setUpdatedCategory] = useState(category);
-  const [updatedDate, setUpdatedDate] = useState(date);
+  const [updatedCategory, setUpdatedCategory] = useState(
+    selectedTransaction.category
+  );
+  const [updatedDate, setUpdatedDate] = useState(selectedTransaction.date);
 
   const isModalEditTransactionOpen = useSelector(
     selectIsModalEditTransactionOpen
@@ -65,13 +67,13 @@ export const ModalEditTransaction = ({ transactionId }) => {
 
     dispatch(
       updateTransaction({
-        id: _id,
-        type: type,
+        transactionId: selectedTransaction._id,
+        type: selectedTransaction.type,
         category: updatedCategory,
         amount: numberUpdatedAmount,
         date: updatedDate,
         comment: updatedComment || "",
-        owner: user.id,
+        owner: selectedTransaction.owner,
       })
     );
 
@@ -105,8 +107,9 @@ export const ModalEditTransaction = ({ transactionId }) => {
     }
   };
 
-  const incomeClass = type === "income" ? css.income : "";
-  const expenseClass = type === "expense" ? css.expense : "";
+  const incomeClass = selectedTransaction.type === "income" ? css.income : "";
+  const expenseClass =
+    selectedTransaction.type === "expense" ? css.expense : "";
 
   const backdropClass = isModalEditTransactionOpen
     ? css.backdropIsOpen
@@ -125,22 +128,28 @@ export const ModalEditTransaction = ({ transactionId }) => {
           <p className={expenseClass}>Expense</p>
         </div>
         <form id="form" className={css.form} onSubmit={handleSubmit}>
-          {type === "expense" ? (
-            <DropdownMenu category={category} onClick={handleUpdatedCategory} />
+          {selectedTransaction.type === "expense" ? (
+            <DropdownMenu
+              category={selectedTransaction.category}
+              onClick={handleUpdatedCategory}
+            />
           ) : null}
           <div className={css.formInnerBox}>
             <input
               name="amount"
               type="number"
               className={css.money}
-              placeholder={amount}
+              placeholder={selectedTransaction.amount}
             ></input>
-            <Calendar date={formatDate(date)} onChange={handleUpdatedDate} />
+            <Calendar
+              date={formatDate(selectedTransaction.date)}
+              onChange={handleUpdatedDate}
+            />
           </div>
           <textarea
             name="comment"
             className={css.comment}
-            placeholder={comment}
+            placeholder={selectedTransaction.comment}
           ></textarea>
           <button type="submit" className={css.btnGreen}>
             SAVE
