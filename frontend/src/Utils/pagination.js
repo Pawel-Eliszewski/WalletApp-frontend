@@ -5,6 +5,14 @@ export const paginateTransactions = (page) => {
   const state = store.getState();
   const transactions = selectTransactions(state);
 
+  if (!transactions || transactions.length === 0) {
+    // Jeżeli nie ma transakcji, zwróć pustą stronę
+    return {
+      pages: 0,
+      paginatedTransactions: [],
+    };
+  }
+
   const length = transactions.length;
   const pages = Math.ceil(length / 7);
 

@@ -12,7 +12,7 @@ import { Currency } from "../../components/Currency/Currency";
 import { ModalLogout } from "../../components/ModalLogout/ModalLogout";
 import css from "./DashboardPage.module.css";
 
-import { DiagramTab } from "../../components/DiagramTab/DiagramTab";
+// import { DiagramTab } from "../../components/DiagramTab/DiagramTab";
 
 const MobileDashboard = () => {
   return (
@@ -21,9 +21,8 @@ const MobileDashboard = () => {
       <div className={css.mobileContainer}>
         <Suspense fallback={null}>
           <Navigation />
-          {/* <Balance /> */}
-          {/* <HomeTab /> */}
-          {/* <DiagramTab /> */}
+          <Balance />
+          <HomeTab />
           <ButtonAddTransaction />
           <ModalLogout />
           <ModalAddTransaction />

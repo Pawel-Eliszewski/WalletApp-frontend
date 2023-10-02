@@ -102,6 +102,12 @@ const RegisterForm = () => {
                 src="/assets/icon-person.svg"
                 alt="person"
               />
+              <Field
+                className={styles.register__field}
+                type="First name"
+                name="First name"
+                placeholder="First Name"
+              />
               <ErrorMessage
                 name="firstName"
                 component="div"

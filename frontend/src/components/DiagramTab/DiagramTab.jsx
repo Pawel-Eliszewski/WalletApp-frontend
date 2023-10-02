@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+import { selectBalance } from "../../redux/finance/selectors";
 import { useState } from "react";
 import { Doughnut } from "react-chartjs-2";
 import Select from "react-select";
@@ -7,6 +9,7 @@ import styles from "./DiagramTab.module.css";
 import { fakeTransactions } from "../../utils/fakeData";
 
 export function DiagramTab() {
+  const balance = useSelector(selectBalance);
   const [selectedMonth, setSelectedMonth] = useState("All");
   const [selectedYear, setSelectedYear] = useState("All");
   const options = [
@@ -94,9 +97,7 @@ export function DiagramTab() {
     <div className={styles.container}>
       <div className={styles.chartContainer}>
         <h2 className={styles.statistics__header}>Statistics</h2>
-        <div className={styles.diagram__expenses}>
-          ${expensesSum.toFixed(2)}
-        </div>
+        <div className={styles.diagram__expenses}>{balance}</div>
         <Doughnut
           data={{
             labels: expensesLabels,
