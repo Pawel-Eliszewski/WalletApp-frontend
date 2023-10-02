@@ -13,11 +13,16 @@ import { ModalLogout } from "../../components/ModalLogout/ModalLogout";
 import css from "./DashboardPage.module.css";
 
 import { ModalEditTransaction } from "../../components/ModalEditTransaction/ModalEditTransaction";
-import { selectIsModalEditTransactionOpen } from "../../redux/global/selectors";
+import {
+  selectIsModalEditTransactionOpen,
+  selectTransactionId,
+} from "../../redux/global/selectors";
 import { useSelector } from "react-redux";
 
 const MobileDashboard = () => {
   const modalEditOpen = useSelector(selectIsModalEditTransactionOpen);
+  const transactionId = useSelector(selectTransactionId);
+  console.log(transactionId);
 
   const location = useLocation();
   const isDiagramPage = location.pathname === "/statistics";
@@ -32,7 +37,9 @@ const MobileDashboard = () => {
           {!isDiagramPage && !isCurrencyPage && <HomeTab />}
           {!isDiagramPage && !isCurrencyPage && <ButtonAddTransaction />}
           {!isDiagramPage && <ModalAddTransaction />}
-          {modalEditOpen === true ? <ModalEditTransaction /> : null}
+          {modalEditOpen === true ? (
+            <ModalEditTransaction transactionId={transactionId} />
+          ) : null}
           <ModalLogout />
           <Outlet />
         </Suspense>
@@ -43,6 +50,7 @@ const MobileDashboard = () => {
 
 const TabletDashboard = () => {
   const modalEditOpen = useSelector(selectIsModalEditTransactionOpen);
+  const transactionId = useSelector(selectTransactionId);
 
   const location = useLocation();
   const isDiagramPage = location.pathname === "/statistics";
@@ -61,7 +69,9 @@ const TabletDashboard = () => {
           {!isDiagramPage && <HomeTab />}
           {!isDiagramPage && <ButtonAddTransaction />}
           {!isDiagramPage && <ModalAddTransaction />}
-          {modalEditOpen === true ? <ModalEditTransaction /> : null}
+          {modalEditOpen === true ? (
+            <ModalEditTransaction transactionId={transactionId} />
+          ) : null}
           <ModalLogout />
           <Outlet />
         </Suspense>
@@ -72,6 +82,7 @@ const TabletDashboard = () => {
 
 const DesktopDashboard = () => {
   const modalEditOpen = useSelector(selectIsModalEditTransactionOpen);
+  const transactionId = useSelector(selectTransactionId);
 
   const location = useLocation();
   const isDiagramPage = location.pathname === "/statistics";
@@ -88,7 +99,9 @@ const DesktopDashboard = () => {
           {!isDiagramPage && <HomeTab />}
           {!isDiagramPage && <ButtonAddTransaction />}
           {!isDiagramPage && <ModalAddTransaction />}
-          {modalEditOpen === true ? <ModalEditTransaction /> : null}
+          {modalEditOpen === true ? (
+            <ModalEditTransaction transactionId={transactionId} />
+          ) : null}
           <ModalLogout />
           <Outlet />
         </Suspense>
