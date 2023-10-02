@@ -66,8 +66,8 @@ export function DiagramTab() {
       <div className={styles.chart__container}>
         <h2 className={styles.statistics__header}>Statistics</h2>
 
-        <div className={styles.diagram__expenses}>{balance}</div>
         <div className={styles.doughnut}>
+          <span className={styles.diagram__expenses}>{balance}</span>
           <Doughnut
             data={{
               labels: expensesLabels,

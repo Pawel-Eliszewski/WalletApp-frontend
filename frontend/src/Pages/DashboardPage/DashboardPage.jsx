@@ -1,4 +1,5 @@
 import Media from "react-media";
+import { useLocation } from "react-router-dom";
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import { Header } from "../../components/Header/Header";
@@ -14,17 +15,20 @@ import css from "./DashboardPage.module.css";
 // import { DiagramTab } from "../../components/DiagramTab/DiagramTab";
 
 const MobileDashboard = () => {
+  const location = useLocation();
+  const isDiagramPage = location.pathname === "/statistics";
+  const isCurrencyPage = location.pathname === "/currency";
   return (
     <>
       <Header />
       <div className={css.mobileContainer}>
         <Suspense fallback={null}>
           <Navigation />
-          <Balance />
-          <HomeTab />
-          <ButtonAddTransaction />
+          {!isDiagramPage && !isCurrencyPage && <Balance />}
+          {!isDiagramPage && !isCurrencyPage && <HomeTab />}
+          {!isDiagramPage && !isCurrencyPage && <ButtonAddTransaction />}
           <ModalLogout />
-          <ModalAddTransaction />
+          {!isDiagramPage && <ModalAddTransaction />}
           <Outlet />
         </Suspense>
       </div>
@@ -33,6 +37,8 @@ const MobileDashboard = () => {
 };
 
 const TabletDashboard = () => {
+  const location = useLocation();
+  const isDiagramPage = location.pathname === "/statistics";
   return (
     <>
       <Header />
@@ -45,10 +51,10 @@ const TabletDashboard = () => {
             </div>
             <Currency />
           </div>
-          {/* <HomeTab /> */}
+          {!isDiagramPage && <HomeTab />}
           <ModalLogout />
-          <ButtonAddTransaction />
-          <ModalAddTransaction />
+          {!isDiagramPage && <ButtonAddTransaction />}
+          {!isDiagramPage && <ModalAddTransaction />}
           <Outlet />
         </Suspense>
       </div>
@@ -57,6 +63,8 @@ const TabletDashboard = () => {
 };
 
 const DesktopDashboard = () => {
+  const location = useLocation();
+  const isDiagramPage = location.pathname === "/statistics";
   return (
     <>
       <Header />
@@ -67,9 +75,10 @@ const DesktopDashboard = () => {
             <Balance />
             <Currency />
           </div>
+          {!isDiagramPage && <HomeTab />}
           <ModalLogout />
-          <ButtonAddTransaction />
-          <ModalAddTransaction />
+          {!isDiagramPage && <ButtonAddTransaction />}
+          {!isDiagramPage && <ModalAddTransaction />}
           <Outlet />
         </Suspense>
       </div>
