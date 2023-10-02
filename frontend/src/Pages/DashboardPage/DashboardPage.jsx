@@ -37,6 +37,8 @@ const MobileDashboard = () => {
 };
 
 const TabletDashboard = () => {
+  const location = useLocation();
+  const isDiagramPage = location.pathname === "/statistics";
   return (
     <>
       <Header />
@@ -49,10 +51,10 @@ const TabletDashboard = () => {
             </div>
             <Currency />
           </div>
-          <HomeTab />
+          {!isDiagramPage && <HomeTab />}
           <ModalLogout />
-          <ButtonAddTransaction />
-          <ModalAddTransaction />
+          {!isDiagramPage && <ButtonAddTransaction />}
+          {!isDiagramPage && <ModalAddTransaction />}
           <Outlet />
         </Suspense>
       </div>
@@ -61,6 +63,8 @@ const TabletDashboard = () => {
 };
 
 const DesktopDashboard = () => {
+  const location = useLocation();
+  const isDiagramPage = location.pathname === "/statistics";
   return (
     <>
       <Header />
@@ -71,9 +75,10 @@ const DesktopDashboard = () => {
             <Balance />
             <Currency />
           </div>
+          {!isDiagramPage && <HomeTab />}
           <ModalLogout />
-          <ButtonAddTransaction />
-          <ModalAddTransaction />
+          {!isDiagramPage && <ButtonAddTransaction />}
+          {!isDiagramPage && <ModalAddTransaction />}
           <Outlet />
         </Suspense>
       </div>

@@ -5,13 +5,16 @@ ul {
   margin-left: 0;
   padding-left: 0;
 }
-
+.doughnut {
+  position: relative;
+}
 .container {
   display: block;
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
 }
 
 .listNames {
@@ -129,15 +132,14 @@ ul {
 }
 .diagram__expenses {
   position: absolute;
-  top: 245px;
-
+  top: 150px;
   left: 120px;
-
   font-size: 18px;
   font-weight: 700;
   line-height: 27px;
   letter-spacing: 0em;
   text-align: center;
+  color: #000;
 }
 .icon {
   width: 24px;

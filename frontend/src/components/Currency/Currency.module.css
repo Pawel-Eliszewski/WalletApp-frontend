@@ -3,12 +3,14 @@
   justify-content: center;
   width: 280px;
   height: 174px;
+  background-image: url(/assets/currency-vector-mobile.svg);
   background-color: rgba(74, 86, 226, 1);
-  background-image: url(/assets/gradient.svg);
+
   background-repeat: no-repeat;
   background-position: bottom;
   color: white;
   border-radius: 30px;
+  margin-top: 25px;
 }
 .currency_table {
   width: 100%;
@@ -31,6 +33,7 @@
   .currency_sidebar {
     width: 336px;
     height: 182px;
+    background-image: url(/assets/gradient.svg);
   }
 
   .currency_table {
