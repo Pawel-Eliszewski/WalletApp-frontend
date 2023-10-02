@@ -49,7 +49,7 @@ const financeSlice = createSlice({
       .addCase(updateTransaction.fulfilled, (state, action) => {
         state.error = null;
         const index = state.data.findIndex(
-          (transaction) => transaction.id === action.payload.data.id
+          (transaction) => transaction.id === action.payload.data._id
         );
         state.data.splice(index, 1, action.payload.data);
         state.totalBalance = action.payload.userBalance;

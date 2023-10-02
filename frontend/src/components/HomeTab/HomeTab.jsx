@@ -21,8 +21,6 @@ export const HomeTab = () => {
   const [itemOffset, setItemOffset] = useState(1);
   const [transactionId, setTransactionId] = useState(null);
 
-  // console.log(transactionId);
-
   const dispatch = useDispatch();
 
   const user = useSelector(selectUser);
@@ -36,14 +34,14 @@ export const HomeTab = () => {
     dispatch(fetchTransactions(user.id));
   }, []);
 
-  const formatDate = (inputDate) => {
+  function formatDate(inputDate) {
     const date = new Date(inputDate);
     const day = date.getDate().toString().padStart(2, "0");
     const month = (date.getMonth() + 1).toString().padStart(2, "0");
     const year = date.getFullYear().toString().slice(2);
 
-    return `${day}.${month}.${year}`;
-  };
+    return `${month}.${day}.${year}`;
+  }
 
   const handleDelete = (transactionId) => {
     try {

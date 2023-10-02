@@ -121,7 +121,6 @@ export const ModalAddTransaction = () => {
           <div className={css.formInnerBox}>
             <input
               name="amount"
-              type="number"
               className={css.money}
               placeholder="0.00"
             ></input>

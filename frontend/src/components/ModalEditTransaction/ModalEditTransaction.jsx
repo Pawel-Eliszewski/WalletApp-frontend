@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "../../redux/session/selectors";
@@ -21,11 +22,10 @@ export const ModalEditTransaction = ({ transactionId }) => {
   const allTransactions = useSelector(selectTransactions);
 
   const selectedTransaction = allTransactions.find(
-    (transaction) => transaction.id === transactionId
+    (transaction) => transaction._id === transactionId
   );
 
   const { _id, type, category, amount, date, comment } = selectedTransaction;
-  console.log(selectedTransaction);
 
   const [updatedCategory, setUpdatedCategory] = useState(category);
   const [updatedDate, setUpdatedDate] = useState(date);
@@ -34,14 +34,14 @@ export const ModalEditTransaction = ({ transactionId }) => {
     selectIsModalEditTransactionOpen
   );
 
-  const formatDate = (inputDate) => {
+  function formatDate(inputDate) {
     const date = new Date(inputDate);
     const day = date.getDate().toString().padStart(2, "0");
     const month = (date.getMonth() + 1).toString().padStart(2, "0");
-    const year = date.getFullYear().toString().slice(4);
+    const year = date.getFullYear().toString();
 
-    return `${day}.${month}.${year}`;
-  };
+    return `${month}.${day}.${year}`;
+  }
 
   const handleUpdatedCategory = (category) => {
     setUpdatedCategory(category);
@@ -55,13 +55,12 @@ export const ModalEditTransaction = ({ transactionId }) => {
     e.preventDefault();
     const form = e.target;
     const updatedAmount = form.elements.amount.value;
-    const updatedComment = form.elements.comment;
+    const updatedComment = form.elements.comment.value;
 
     if (!updatedAmount || isNaN(updatedAmount)) {
       Notify.info("Please provide a valid amount.");
       return;
     }
-
     const numberUpdatedAmount = parseFloat(updatedAmount);
 
     dispatch(
@@ -131,7 +130,7 @@ export const ModalEditTransaction = ({ transactionId }) => {
           ) : null}
           <div className={css.formInnerBox}>
             <input
-              name="Amount"
+              name="amount"
               type="number"
               className={css.money}
               placeholder={amount}
@@ -139,7 +138,7 @@ export const ModalEditTransaction = ({ transactionId }) => {
             <Calendar date={formatDate(date)} onChange={handleUpdatedDate} />
           </div>
           <textarea
-            name="Comment"
+            name="comment"
             className={css.comment}
             placeholder={comment}
           ></textarea>
@@ -153,4 +152,8 @@ export const ModalEditTransaction = ({ transactionId }) => {
       </div>
     </div>
   );
+};
+
+ModalEditTransaction.propTypes = {
+  transactionId: PropTypes.string,
 };
