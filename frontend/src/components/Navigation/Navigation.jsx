@@ -4,12 +4,12 @@ import css from "./Navigation.module.css";
 
 export const Navigation = () => {
   const location = useLocation();
-  const isMax768px = useMediaQuery("(max-width: 768px)");
+  const isMax767px = useMediaQuery("(max-width: 767px)");
 
   const navItems = [
     { path: "/", label: "Home", icon: "icon-home.svg" },
     { path: "/statistics", label: "Statistics", icon: "icon-statistics.svg" },
-    ...(isMax768px
+    ...(isMax767px
       ? [{ path: "/currency", label: "Currency", icon: "icon-dollar.svg" }]
       : []),
   ];
