@@ -57,7 +57,7 @@ export const ModalAddTransaction = () => {
     dispatch(
       addTransaction({
         type: type,
-        category: category === "Select a category" ? "Income" : category,
+        category: type === "income" ? "Income" : category,
         amount: numberAmount,
         date: date,
         comment: comment,
