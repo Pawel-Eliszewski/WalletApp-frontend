@@ -43,7 +43,10 @@ export const updateTransaction = createAsyncThunk(
   "finance/updateTransaction",
   async (data, thunkAPI) => {
     try {
-      const response = await instance.patch("/transaction", data);
+      const response = await instance.patch(
+        `/transaction/${data.transactionId}`,
+        data
+      );
       return response.data;
     } catch (err) {
       return thunkAPI.rejectWithValue(err.message);

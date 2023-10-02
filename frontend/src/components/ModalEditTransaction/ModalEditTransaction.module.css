@@ -1,4 +1,8 @@
 .container {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
     max-width: 540px;
     display: flex;
@@ -8,6 +12,7 @@
     margin: 0 auto;
     background-color: white;
     padding-bottom: 25px;
+    border-radius: 20px;
 }
 
 .title {
@@ -146,7 +151,6 @@
     transition-duration: 250ms;
     pointer-events: all;
     transform: none;
-    overflow-y: scroll;
     z-index: 10;
 }
 
@@ -158,7 +162,6 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        border-radius: 20px;
         padding-top: 40px;
         padding-bottom: 60px;
     }

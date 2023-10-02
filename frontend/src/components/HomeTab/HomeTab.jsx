@@ -117,9 +117,7 @@ export const HomeTab = () => {
                             src={"./assets/icon-pen.svg"}
                           />
                         </button>
-                        {transactionId ? (
-                          <ModalEditTransaction transactionId={transactionId} />
-                        ) : null}
+
                         <button
                           onClick={() => handleDelete(_id)}
                           className={styles.dataItemBtnDelete}
@@ -128,6 +126,9 @@ export const HomeTab = () => {
                         </button>
                       </div>
                     </td>
+                    {transactionId !== null ? (
+                      <ModalEditTransaction transactionId={transactionId} />
+                    ) : null}
                   </tr>
                 )
               )}
@@ -174,7 +175,7 @@ export const HomeTab = () => {
                     Delete
                   </button>
                   <button
-                    onClick={openModalEditTransaction}
+                    onClick={() => openModalEditTransaction(_id)}
                     className={styles.dataItemBtnEdit}
                   >
                     <img
@@ -184,6 +185,9 @@ export const HomeTab = () => {
                     Edit
                   </button>
                 </div>
+                {transactionId !== null ? (
+                  <ModalEditTransaction transactionId={transactionId} />
+                ) : null}
               </ul>
             )
           )}
