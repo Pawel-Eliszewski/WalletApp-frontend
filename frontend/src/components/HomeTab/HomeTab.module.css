@@ -239,7 +239,7 @@ li.dataItemMob {
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1280px) {
   .homeWrapper {
     padding-top: 10px;
     flex-shrink: 0;

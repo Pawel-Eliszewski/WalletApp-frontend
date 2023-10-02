@@ -193,7 +193,7 @@ ul {
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1280px) {
   .doughnut {
     width: 288px;
     height: 288px;

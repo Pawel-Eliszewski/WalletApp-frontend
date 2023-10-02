@@ -40,7 +40,7 @@
 }
 
 /*Desktop*/
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1280px) {
   .balance {
     width: 395px;
     margin-top: 5px;
