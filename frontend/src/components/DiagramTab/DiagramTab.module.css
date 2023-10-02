@@ -191,6 +191,9 @@ ul {
     width: 336px;
     height: 336px;
   }
+  .diagram__expenses {
+    top: 150px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -200,12 +203,17 @@ ul {
   }
 
   .container {
-    width: 710px;
+    max-width: 775px;
     border-left: 1px solid rgba(231, 229, 242, 1);
+    padding-left: 40px;
   }
 
   .tablet__container {
     margin-top: 70px;
     margin-left: 40px;
+  }
+  .diagram__expenses {
+    top: 135px;
+    left: 105px;
   }
 }
