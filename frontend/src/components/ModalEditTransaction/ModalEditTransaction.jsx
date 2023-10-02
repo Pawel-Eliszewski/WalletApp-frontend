@@ -11,6 +11,8 @@ import { Calendar } from "../ModalAddTransaction/Calendar/Calendar";
 import { Notify } from "notiflix";
 import css from "./ModalEditTransaction.module.css";
 
+import { fetchTransactions } from "../../redux/finance/operations";
+
 export const ModalEditTransaction = ({ transactionId }) => {
   const modalRef = useRef(null);
   const dispatch = useDispatch();
@@ -73,9 +75,10 @@ export const ModalEditTransaction = ({ transactionId }) => {
         owner: selectedTransaction.owner,
       })
     );
-
+    document.body.style.overflow = "unset";
     Notify.success("Transaction updated successfully.");
     form.reset();
+    dispatch(fetchTransactions(user.id));
     dispatch(setIsModalEditTransactionOpen(false));
   };
 
@@ -90,6 +93,7 @@ export const ModalEditTransaction = ({ transactionId }) => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
         dispatch(setIsModalEditTransactionOpen(false));
+        document.body.style.overflow = "unset";
       }
     };
     document.addEventListener("keydown", handleKeyDown);
@@ -100,6 +104,7 @@ export const ModalEditTransaction = ({ transactionId }) => {
 
   const handleBackdropClick = (e) => {
     if (modalRef.current && !modalRef.current.contains(e.target)) {
+      document.body.style.overflow = "unset";
       dispatch(setIsModalEditTransactionOpen(false));
     }
   };
@@ -109,8 +114,8 @@ export const ModalEditTransaction = ({ transactionId }) => {
     selectedTransaction.type === "expense" ? css.expense : "";
 
   const backdropClass = isModalEditTransactionOpen
-    ? css.backdropIsOpen
-    : css.backdrop;
+    ? css.backdropEditIsOpen
+    : css.backdropEdit;
 
   return (
     <div className={backdropClass} onClick={handleBackdropClick}>

@@ -12,9 +12,13 @@ import { Currency } from "../../components/Currency/Currency";
 import { ModalLogout } from "../../components/ModalLogout/ModalLogout";
 import css from "./DashboardPage.module.css";
 
-// import { DiagramTab } from "../../components/DiagramTab/DiagramTab";
+import { ModalEditTransaction } from "../../components/ModalEditTransaction/ModalEditTransaction";
+import { selectIsModalEditTransactionOpen } from "../../redux/global/selectors";
+import { useSelector } from "react-redux";
 
 const MobileDashboard = () => {
+  const modalEditOpen = useSelector(selectIsModalEditTransactionOpen);
+
   const location = useLocation();
   const isDiagramPage = location.pathname === "/statistics";
   const isCurrencyPage = location.pathname === "/currency";
@@ -27,8 +31,9 @@ const MobileDashboard = () => {
           {!isDiagramPage && !isCurrencyPage && <Balance />}
           {!isDiagramPage && !isCurrencyPage && <HomeTab />}
           {!isDiagramPage && !isCurrencyPage && <ButtonAddTransaction />}
-          <ModalLogout />
           {!isDiagramPage && <ModalAddTransaction />}
+          {modalEditOpen === true ? <ModalEditTransaction /> : null}
+          <ModalLogout />
           <Outlet />
         </Suspense>
       </div>
@@ -37,6 +42,8 @@ const MobileDashboard = () => {
 };
 
 const TabletDashboard = () => {
+  const modalEditOpen = useSelector(selectIsModalEditTransactionOpen);
+
   const location = useLocation();
   const isDiagramPage = location.pathname === "/statistics";
   return (
@@ -52,9 +59,10 @@ const TabletDashboard = () => {
             <Currency />
           </div>
           {!isDiagramPage && <HomeTab />}
-          <ModalLogout />
           {!isDiagramPage && <ButtonAddTransaction />}
           {!isDiagramPage && <ModalAddTransaction />}
+          {modalEditOpen === true ? <ModalEditTransaction /> : null}
+          <ModalLogout />
           <Outlet />
         </Suspense>
       </div>
@@ -63,6 +71,8 @@ const TabletDashboard = () => {
 };
 
 const DesktopDashboard = () => {
+  const modalEditOpen = useSelector(selectIsModalEditTransactionOpen);
+
   const location = useLocation();
   const isDiagramPage = location.pathname === "/statistics";
   return (
@@ -76,9 +86,10 @@ const DesktopDashboard = () => {
             <Currency />
           </div>
           {!isDiagramPage && <HomeTab />}
-          <ModalLogout />
           {!isDiagramPage && <ButtonAddTransaction />}
           {!isDiagramPage && <ModalAddTransaction />}
+          {modalEditOpen === true ? <ModalEditTransaction /> : null}
+          <ModalLogout />
           <Outlet />
         </Suspense>
       </div>

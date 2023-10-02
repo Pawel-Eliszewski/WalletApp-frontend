@@ -126,9 +126,6 @@ export const HomeTab = () => {
                         </button>
                       </div>
                     </td>
-                    {transactionId !== null ? (
-                      <ModalEditTransaction transactionId={transactionId} />
-                    ) : null}
                   </tr>
                 )
               )}

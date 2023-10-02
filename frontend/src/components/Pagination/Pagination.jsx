@@ -5,7 +5,6 @@ import css from "./Pagination.module.css";
 export const Pagination = ({ pageCount, setItemOffset }) => {
   const handlePageClick = (event) => {
     setItemOffset(event.selected + 1);
-    console.log(event.selected);
   };
 
   return (

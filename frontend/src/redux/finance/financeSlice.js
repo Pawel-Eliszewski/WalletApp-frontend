@@ -29,7 +29,6 @@ const financeSlice = createSlice({
       .addCase(fetchTransactions.fulfilled, (state, action) => {
         state.error = null;
         state.data = action.payload.data;
-        state.totalBalance = action.payload.userBalance;
       })
       .addCase(fetchTransactions.rejected, handleRejected)
       .addCase(addTransaction.fulfilled, (state, action) => {
@@ -41,7 +40,7 @@ const financeSlice = createSlice({
       .addCase(deleteTransaction.fulfilled, (state, action) => {
         state.error = null;
         const index = state.data.findIndex(
-          (transaction) => transaction.id === action.payload.data._id
+          (transaction) => transaction._id === action.payload.data._id
         );
         state.data.splice(index, 1);
         state.totalBalance = action.payload.userBalance;
@@ -49,11 +48,11 @@ const financeSlice = createSlice({
       .addCase(deleteTransaction.rejected, handleRejected)
       .addCase(updateTransaction.fulfilled, (state, action) => {
         state.error = null;
-        console.log(action.payload);
-        const index = state.data.findIndex(
-          (transaction) => transaction.id === action.payload.data._id
-        );
-        state.data.splice(index, 1, action.payload.data);
+        state.data.map((transaction) => {
+          if (transaction.id === action.payload.data._id) {
+            transaction = action.payload.data;
+          }
+        });
         state.totalBalance = action.payload.userBalance;
       })
       .addCase(updateTransaction.rejected, handleRejected)

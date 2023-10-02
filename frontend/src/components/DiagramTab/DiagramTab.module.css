@@ -1,13 +1,16 @@
 li {
   list-style-type: none;
 }
+
 ul {
   margin-left: 0;
   padding-left: 0;
 }
+
 .doughnut {
   position: relative;
 }
+
 .container {
   display: block;
   margin-left: auto;
@@ -103,12 +106,14 @@ ul {
   line-height: 24px;
   color: rgba(36, 204, 167, 1);
 }
+
 .selectContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 .statistics__header {
   font-size: 30px;
   font-weight: 400;
@@ -124,29 +129,36 @@ ul {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
 .select__year {
   display: flex;
   justify-content: space-around;
   align-items: center;
   margin-bottom: 20px;
 }
+
 .diagram__expenses {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  top: 150px;
+  top: 135px;
   left: 120px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 27px;
   letter-spacing: 0em;
   text-align: center;
   color: #000;
 }
+
 .icon {
   width: 24px;
   height: 24px;
   border-radius: 1px;
   margin-right: 10px;
 }
+
 @media screen and (min-width: 768px) {
   .container {
     display: flex;
@@ -155,35 +167,43 @@ ul {
     width: 100vw;
     height: 100%;
   }
+
   .chart__container {
     width: 300px;
     height: 600px;
   }
+
   .tablet__container {
     width: 336px;
   }
+
   .selectContainer {
     flex-direction: row;
   }
+
   .select__year {
     margin-top: 20px;
     margin-left: 20px;
   }
+
   .doughnut {
     width: 336px;
     height: 336px;
   }
 }
+
 @media screen and (min-width: 1200px) {
   .doughnut {
     width: 288px;
     height: 288px;
   }
+
   .container {
     width: 897px;
     border-left: 1px solid rgba(231, 229, 242, 1);
     padding-left: 20px;
   }
+
   .tablet__container {
     margin-top: 70px;
     margin-left: 40px;

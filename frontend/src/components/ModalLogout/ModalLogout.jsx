@@ -14,6 +14,7 @@ export const ModalLogout = () => {
 
   const handleNoClick = () => {
     dispatch(setIsModalLogoutOpen(false));
+    document.body.style.overflow = "unset";
   };
 
   const handleYesClick = () => {
@@ -29,6 +30,7 @@ export const ModalLogout = () => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
         dispatch(setIsModalLogoutOpen(false));
+        document.body.style.overflow = "unset";
       }
     };
     document.addEventListener("keydown", handleKeyDown);
@@ -39,6 +41,7 @@ export const ModalLogout = () => {
 
   const handleBackdropClick = (event) => {
     if (modalRef.current && !modalRef.current.contains(event.target)) {
+      document.body.style.overflow = "unset";
       dispatch(setIsModalLogoutOpen(false));
     }
   };

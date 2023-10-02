@@ -53,7 +53,6 @@ export const ModalAddTransaction = () => {
       Notify.info("Please provide the correct amount.");
       return;
     }
-
     dispatch(
       addTransaction({
         type: type,
@@ -64,15 +63,16 @@ export const ModalAddTransaction = () => {
         owner: user.id,
       })
     );
+    document.body.style.overflow = "unset";
     Notify.success("Transaction added successfully.");
     form.reset();
     dispatch(setIsModalAddTransactionOpen(false));
   };
 
   const handleModalClose = () => {
+    document.body.style.overflow = "unset";
     const form = document.getElementById("form");
     form.reset();
-    document.body.style.overflow = "unset";
     dispatch(setIsModalAddTransactionOpen(false));
   };
 
@@ -80,6 +80,7 @@ export const ModalAddTransaction = () => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
         dispatch(setIsModalAddTransactionOpen(false));
+        document.body.style.overflow = "unset";
       }
     };
     document.addEventListener("keydown", handleKeyDown);
@@ -90,6 +91,7 @@ export const ModalAddTransaction = () => {
 
   const handleBackdropClick = (e) => {
     if (modalRef.current && !modalRef.current.contains(e.target)) {
+      document.body.style.overflow = "unset";
       dispatch(setIsModalAddTransactionOpen(false));
     }
   };
