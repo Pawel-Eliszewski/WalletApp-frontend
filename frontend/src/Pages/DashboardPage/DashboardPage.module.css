@@ -14,11 +14,11 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
+  min-height: 100vh;
   background-image: url(/assets/dashboard-background-tablet.png);
   padding-inline: 20px;
   background-size: cover;
   background-position: center;
-  height: calc(100vh - 70px);
 }
 
 .tabletWrapper {
