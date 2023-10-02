@@ -29,6 +29,7 @@ const financeSlice = createSlice({
       .addCase(fetchTransactions.fulfilled, (state, action) => {
         state.error = null;
         state.data = action.payload.data;
+        state.totalBalance = action.payload.userBalance;
       })
       .addCase(fetchTransactions.rejected, handleRejected)
       .addCase(addTransaction.fulfilled, (state, action) => {

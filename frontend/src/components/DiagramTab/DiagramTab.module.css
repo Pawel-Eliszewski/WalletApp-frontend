@@ -130,7 +130,9 @@ ul {
 .diagram__expenses {
   position: absolute;
   top: 245px;
+
   left: 120px;
+
   font-size: 18px;
   font-weight: 700;
   line-height: 27px;

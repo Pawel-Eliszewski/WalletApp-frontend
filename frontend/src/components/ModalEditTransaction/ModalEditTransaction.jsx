@@ -6,10 +6,8 @@ import { selectIsModalEditTransactionOpen } from "../../redux/global/selectors";
 import { selectTransactions } from "../../redux/finance/selectors";
 import { setIsModalEditTransactionOpen } from "../../redux/global/globalSlice";
 import { updateTransaction } from "../../redux/finance/operations";
-import { Header } from "../Header/Header";
 import { DropdownMenu } from "../DropdownMenu/DropdownMenu";
 import { Calendar } from "../ModalAddTransaction/Calendar/Calendar";
-import { Show } from "@chakra-ui/react";
 import { Notify } from "notiflix";
 import css from "./ModalEditTransaction.module.css";
 
@@ -24,8 +22,6 @@ export const ModalEditTransaction = ({ transactionId }) => {
   const selectedTransaction = allTransactions.find(
     (transaction) => transaction._id === transactionId
   );
-
-  console.log(selectedTransaction);
 
   const [updatedCategory, setUpdatedCategory] = useState(
     selectedTransaction.category
@@ -59,11 +55,12 @@ export const ModalEditTransaction = ({ transactionId }) => {
     const updatedAmount = form.elements.amount.value;
     const updatedComment = form.elements.comment.value;
 
-    if (!updatedAmount || isNaN(updatedAmount)) {
+    if (!updatedAmount || undefined) {
       Notify.info("Please provide a valid amount.");
       return;
     }
-    const numberUpdatedAmount = parseFloat(updatedAmount);
+    const cleanedAmount = updatedAmount.replace(/\s/g, "").replace(",", ".");
+    const numberUpdatedAmount = parseFloat(cleanedAmount);
 
     dispatch(
       updateTransaction({
@@ -118,9 +115,6 @@ export const ModalEditTransaction = ({ transactionId }) => {
   return (
     <div className={backdropClass} onClick={handleBackdropClick}>
       <div className={css.container} ref={modalRef}>
-        <Show breakpoint="(max-width: 767px)">
-          <Header userName={user.email} />
-        </Show>
         <h2 className={css.title}>Edit transaction</h2>
         <div className={css.switchContainer}>
           <p className={incomeClass}>Income</p>
@@ -130,14 +124,18 @@ export const ModalEditTransaction = ({ transactionId }) => {
         <form id="form" className={css.form} onSubmit={handleSubmit}>
           {selectedTransaction.type === "expense" ? (
             <DropdownMenu
-              category={selectedTransaction.category}
+              category={updatedCategory}
               onClick={handleUpdatedCategory}
             />
           ) : null}
           <div className={css.formInnerBox}>
             <input
               name="amount"
-              type="number"
+              type="text"
+              pattern="[0-9]+([,\\.][0-9]+)?"
+              onInput={(e) => {
+                e.target.value = e.target.value.replace(/[^0-9,\\.]/g, "");
+              }}
               className={css.money}
               placeholder={selectedTransaction.amount}
             ></input>

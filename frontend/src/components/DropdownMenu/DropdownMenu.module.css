@@ -7,7 +7,7 @@
 
 .dropdown,
 .dropdown * {
-    z-index: 10;
+    z-index: 100;
 }
 
 .dropdown .dropdownBtn {
@@ -51,6 +51,7 @@
     padding-left: 30px;
     cursor: pointer;
     background: rgba(255, 255, 255, 0.8);
+    text-align: start;
 }
 
 .dropdownContent .item:last-child {

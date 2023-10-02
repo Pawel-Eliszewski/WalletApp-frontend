@@ -11,8 +11,8 @@
 	margin: 0 auto;
 	background-color: white;
 	padding-bottom: 25px;
-	z-index: 9999;
 	border-radius: 20px;
+	z-index: 10;
 }
 
 .question {

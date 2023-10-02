@@ -4,11 +4,9 @@ import { selectUser } from "../../redux/session/selectors";
 import { selectIsModalAddTransactionOpen } from "../../redux/global/selectors";
 import { setIsModalAddTransactionOpen } from "../../redux/global/globalSlice";
 import { addTransaction } from "../../redux/finance/operations";
-import { Header } from "../Header/Header";
 import { Calendar } from "./Calendar/Calendar";
 import { CustomizedMuiSwitch } from "./CustomizedMuiSwitch/CustomizedMuiSwitch";
 import { DropdownMenu } from "../DropdownMenu/DropdownMenu";
-import { Show } from "@chakra-ui/react";
 import { Notify } from "notiflix";
 import css from "./ModalAddTransaction.module.css";
 
@@ -23,7 +21,8 @@ export const ModalAddTransaction = () => {
   const user = useSelector(selectUser);
 
   const today = new Date();
-  const [date, setDate] = useState(today.toLocaleDateString());
+  const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+  const [date, setDate] = useState(today.toLocaleDateString("pl-PL", options));
   const [type, setType] = useState("expense");
   const [category, setCategory] = useState("Select a category");
 
@@ -105,9 +104,6 @@ export const ModalAddTransaction = () => {
   return (
     <div className={backdropClass} onClick={handleBackdropClick}>
       <div className={css.container} ref={modalRef}>
-        <Show breakpoint="(max-width: 767px)">
-          <Header userName={user.email} />
-        </Show>
         <h2 className={css.title}>Add transaction</h2>
         <div className={css.switchContainer}>
           <p className={incomeClass}>Income</p>
@@ -121,6 +117,11 @@ export const ModalAddTransaction = () => {
           <div className={css.formInnerBox}>
             <input
               name="amount"
+              type="text"
+              pattern="[0-9]+([,\\.][0-9]+)?"
+              onInput={(e) => {
+                e.target.value = e.target.value.replace(/[^0-9,\\.]/g, "");
+              }}
               className={css.money}
               placeholder="0.00"
             ></input>
