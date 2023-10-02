@@ -61,7 +61,6 @@ function App() {
           }
         >
           {" "}
-          <Route path="/" element={<HomeTab />} />
           <Route path="/statistics" element={<DiagramTab />} />
           <Route path="/currency" element={<Currency />} />
         </Route>
