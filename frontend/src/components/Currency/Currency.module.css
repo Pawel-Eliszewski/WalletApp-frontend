@@ -69,7 +69,7 @@
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1200px) {
   .currency_sidebar {
     height: 331px;
     width: 393px;

@@ -1,20 +1,26 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectBalance } from "../../redux/finance/selectors";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { selectUser } from "../../redux/session/selectors";
+import { selectTransactions } from "../../redux/finance/selectors";
+import { fetchTransactions } from "../../redux/finance/operations";
+import { assignColorsToTransactions } from "../../utils/assignColorsToTransactions";
 import { Doughnut } from "react-chartjs-2";
 import { DropdownSelectY } from "../DropdownSelect/DropdownSelect";
 import { DropdownSelect } from "../DropdownSelect/DropdownSelect";
 import "chart.js/auto";
 
 import styles from "./DiagramTab.module.css";
-import { fakeTransactions } from "../../utils/fakeData";
 
 export function DiagramTab() {
   const balance = useSelector(selectBalance);
   const [selectedMonth, setSelectedMonth] = useState("Month");
   const [selectedYear, setSelectedYear] = useState("Year");
-
-  let filteredTransactions = fakeTransactions;
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+  const transactions = useSelector(selectTransactions);
+  const [transactionColors, setTransactionColors] = useState({});
+  const [coloredTransactions, setColoredTransactions] = useState([]);
 
   const handleMonthSelect = (month) => {
     setSelectedMonth(month);
@@ -24,28 +30,51 @@ export function DiagramTab() {
     setSelectedYear(year);
   };
 
-  const expensesSum = filteredTransactions
+  useEffect(() => {
+    dispatch(fetchTransactions(user.id));
+  }, [dispatch, user.id]);
+
+  useEffect(() => {
+    const colors = assignColorsToTransactions(transactions);
+    setTransactionColors(colors);
+
+    const transactionsWithColors = transactions.map((transaction) => ({
+      ...transaction,
+      color: colors[transaction.category] || "#000000",
+    }));
+
+    setColoredTransactions(transactionsWithColors);
+  }, [transactions]);
+
+  useEffect(() => {
+    console.log("Transakcje z kolorami:", coloredTransactions);
+  }, [coloredTransactions]);
+
+  const expensesamount = coloredTransactions
     .filter((transaction) => transaction.type === "expense")
-    .reduce((sum, transaction) => sum + parseFloat(transaction.sum), 0);
+    .reduce(
+      (amount, transaction) => amount + parseFloat(transaction.amount),
+      0
+    );
 
-  const incomeSum = filteredTransactions
+  const incomeamount = coloredTransactions
     .filter((transaction) => transaction.type === "income")
-    .reduce((sum, transaction) => sum + parseFloat(transaction.sum), 0);
+    .reduce(
+      (amount, transaction) => amount + parseFloat(transaction.amount),
+      0
+    );
 
-  const expensesCategories = filteredTransactions
+  const expensesCategories = coloredTransactions
     .filter((transaction) => transaction.type === "expense")
     .reduce((categories, transaction) => {
       categories[transaction.category] =
-        (categories[transaction.category] || 0) + parseFloat(transaction.sum);
+        (categories[transaction.category] || 0) +
+        parseFloat(transaction.amount);
       return categories;
     }, {});
 
   const expensesLabels = Object.keys(expensesCategories);
   const expensesData = Object.values(expensesCategories);
-  const expensesColors = expensesLabels.map(
-    (category) =>
-      filteredTransactions.find((t) => t.category === category)?.color
-  );
 
   const chartOptions = {
     cutout: "70%",
@@ -67,14 +96,16 @@ export function DiagramTab() {
         <h2 className={styles.statistics__header}>Statistics</h2>
 
         <div className={styles.doughnut}>
-          <span className={styles.diagram__expenses}>{balance}</span>
+          <span className={styles.diagram__expenses}>{balance} €</span>
           <Doughnut
             data={{
               labels: expensesLabels,
               datasets: [
                 {
                   data: expensesData,
-                  backgroundColor: expensesColors,
+                  backgroundColor: expensesLabels.map(
+                    (category) => transactionColors[category] || "#black"
+                  ),
                 },
               ],
             }}
@@ -100,12 +131,12 @@ export function DiagramTab() {
 
         <ul className={styles.listNames}>
           <li className={styles.nameElement}>Category</li>
-          <li className={styles.nameElement}>Sum</li>
+          <li className={styles.nameElement}>amount</li>
         </ul>
 
         <ul className={styles.listTransaction}>
-          {filteredTransactions?.length > 0 ? (
-            filteredTransactions.map(({ _id, category, sum, color }) => (
+          {coloredTransactions?.length > 0 ? (
+            coloredTransactions.map(({ _id, category, amount, color }) => (
               <li key={_id} className={styles.elementTransaction}>
                 <div
                   className={styles.icon}
@@ -114,7 +145,7 @@ export function DiagramTab() {
                   }}
                 ></div>
                 <div className={styles.category}>{category}</div>
-                <div className={styles.sum}>{sum}</div>
+                <div className={styles.amount}>{amount}€</div>
               </li>
             ))
           ) : (
@@ -130,13 +161,13 @@ export function DiagramTab() {
           <li className={styles.elementListAll}>
             <div className={styles.elementAllText}>Expenses:</div>
             <div className={styles.elementAllExpenses}>
-              {expensesSum.toFixed(2)}
+              {expensesamount.toFixed(2)}€
             </div>
           </li>
           <li className={styles.elementListAll}>
             <div className={styles.elementAllText}>Income:</div>
             <div className={styles.elementAllIncome}>
-              {incomeSum.toFixed(2)}
+              {incomeamount.toFixed(2)}€
             </div>
           </li>
         </ul>

@@ -47,6 +47,7 @@ ul {
 }
 
 .elementTransaction {
+  position: relative;
   color: #000;
   display: flex;
   height: 54px;
@@ -56,7 +57,7 @@ ul {
   border-bottom: 1px solid rgba(220, 220, 223, 1);
 }
 
-.sum {
+.amount {
   margin-left: auto;
   font-size: 16px;
   font-weight: 400;
@@ -199,9 +200,8 @@ ul {
   }
 
   .container {
-    width: 897px;
+    width: 710px;
     border-left: 1px solid rgba(231, 229, 242, 1);
-    padding-left: 20px;
   }
 
   .tablet__container {

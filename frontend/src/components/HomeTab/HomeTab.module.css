@@ -239,17 +239,17 @@ li.dataItemMob {
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1200px) {
   .homeWrapper {
     padding-top: 10px;
     flex-shrink: 0;
     flex-grow: 1;
     border-left: 1px solid rgba(231, 229, 242, 1);
     padding-right: 20px;
+    width: 889px;
   }
 
   table.tableWrapper {
-    max-width: 715px;
     max-height: 65vh;
   }
 }
