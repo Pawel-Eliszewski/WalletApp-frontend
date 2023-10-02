@@ -60,11 +60,10 @@ function App() {
             <ProtectedRoute redirectTo="/login" component={<DashboardPage />} />
           }
         >
-          <Route path="/" element={<HomeTab />} />
+          {" "}
+          <Route path="/hometab" element={<HomeTab />} />
           <Route path="/statistics" element={<DiagramTab />} />
           <Route path="/currency" element={<Currency />} />
-          {/* {window.innerWidth < 768 && (
-          )} */}
         </Route>
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>

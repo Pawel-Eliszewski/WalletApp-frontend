@@ -74,14 +74,6 @@
   transition: 300ms;
 }
 
-.login__signup:hover,
-.login__signup:focus {
-  transition: 300ms;
-  outline: 1px solid black;
-  color: black;
-  background: none;
-}
-
 .login__signin {
   width: 250px;
   height: 45px;
@@ -95,11 +87,6 @@
   margin-bottom: 20px;
   margin-top: 10px;
   transition: 300ms;
-}
-
-.login__signin:hover,
-.login__signin:focus {
-  background-color: var(--btn-green-hover);
 }
 
 .error {
@@ -144,5 +131,8 @@
     padding-bottom: 15px;
     width: 409px;
     display: flex;
+  }
+  .error {
+    top: 45px;
   }
 }
