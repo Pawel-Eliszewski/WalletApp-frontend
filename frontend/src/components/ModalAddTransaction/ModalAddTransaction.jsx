@@ -9,6 +9,7 @@ import { Calendar } from "./Calendar/Calendar";
 import { CustomizedMuiSwitch } from "./CustomizedMuiSwitch/CustomizedMuiSwitch";
 import { DropdownMenu } from "../DropdownMenu/DropdownMenu";
 import { Show } from "@chakra-ui/react";
+import { Notify } from "notiflix";
 import css from "./ModalAddTransaction.module.css";
 
 export const ModalAddTransaction = () => {
@@ -40,30 +41,40 @@ export const ModalAddTransaction = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const selectedCategory =
-      category === "Select a category" ? "income" : category;
     const form = e.target;
     const amount = form.elements.amount.value;
     const cleanedAmount = amount.replace(/\s/g, "").replace(",", ".");
     const numberAmount = parseFloat(cleanedAmount);
     const comment = form.elements.comment.value;
 
+    if (type === "expense" && category === "Select a category") {
+      Notify.info("Please select a category before submitting.");
+      return;
+    } else if (amount === "" || undefined) {
+      Notify.info("Please provide the correct amount.");
+      return;
+    }
+
     dispatch(
       addTransaction({
         type: type,
-        category: selectedCategory,
+        category: category,
         amount: numberAmount,
         date: date,
         comment: comment,
         owner: user.id,
       })
     );
+    Notify.success("Transaction added successfully.");
+    form.reset();
     dispatch(setIsModalAddTransactionOpen(false));
   };
 
   const handleModalClose = () => {
-    dispatch(setIsModalAddTransactionOpen(false));
+    const form = document.getElementById("form");
+    form.reset();
     document.body.style.overflow = "unset";
+    dispatch(setIsModalAddTransactionOpen(false));
   };
 
   useEffect(() => {
@@ -103,16 +114,16 @@ export const ModalAddTransaction = () => {
           <CustomizedMuiSwitch onChange={handleType} />
           <p className={expenseClass}>Expense</p>
         </div>
-        <form className={css.form} onSubmit={handleSubmit}>
+        <form id="form" className={css.form} onSubmit={handleSubmit}>
           {type === "expense" ? (
             <DropdownMenu category={category} onClick={handleCategory} />
           ) : null}
           <div className={css.formInnerBox}>
             <input
               name="amount"
+              type="number"
               className={css.money}
               placeholder="0.00"
-              required
             ></input>
             <Calendar date={date} onChange={handleNewDate} />
           </div>

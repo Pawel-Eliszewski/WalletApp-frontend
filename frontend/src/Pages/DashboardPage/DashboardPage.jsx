@@ -6,7 +6,6 @@ import { Navigation } from "../../components/Navigation/Navigation";
 import { Balance } from "../../components/Balance/Balance";
 import { ButtonAddTransaction } from "../../components/ButtonAddTransaction/ButtonAddTransaction";
 import { ModalAddTransaction } from "../../components/ModalAddTransaction/ModalAddTransaction";
-import { ModalEditTransaction } from "../../components/ModalEditTransaction/ModalEditTransaction";
 import { HomeTab } from "../../components/HomeTab/HomeTab";
 import { Currency } from "../../components/Currency/Currency";
 import { ModalLogout } from "../../components/ModalLogout/ModalLogout";
@@ -27,7 +26,6 @@ const MobileDashboard = () => {
           <ButtonAddTransaction />
           <ModalLogout />
           <ModalAddTransaction />
-          <ModalEditTransaction />
           <Outlet />
         </Suspense>
       </div>
@@ -52,7 +50,6 @@ const TabletDashboard = () => {
           <ModalLogout />
           <ButtonAddTransaction />
           <ModalAddTransaction />
-          <ModalEditTransaction />
           <Outlet />
         </Suspense>
       </div>
@@ -74,7 +71,6 @@ const DesktopDashboard = () => {
           <ModalLogout />
           <ButtonAddTransaction />
           <ModalAddTransaction />
-          <ModalEditTransaction />
           <Outlet />
         </Suspense>
       </div>

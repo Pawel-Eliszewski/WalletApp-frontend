@@ -21,6 +21,7 @@
     "modern-normalize": "^2.0.0",
     "moment": "^2.29.4",
     "nanoid": "^5.0.1",
+    "notiflix": "^3.2.6",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",

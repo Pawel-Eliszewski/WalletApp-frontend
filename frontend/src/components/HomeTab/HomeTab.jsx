@@ -13,11 +13,15 @@ import { ModalEditTransaction } from "../../components/ModalEditTransaction/Moda
 import { Pagination } from "../Pagination/Pagination";
 import { paginateTransactions } from "../../utils/pagination";
 import { nanoid } from "nanoid";
+import { Notify } from "notiflix";
 import styles from "./HomeTab.module.css";
 
 export const HomeTab = () => {
   const isMobile = useMedia("(max-width: 767px)");
   const [itemOffset, setItemOffset] = useState(1);
+  const [transactionId, setTransactionId] = useState(null);
+
+  // console.log(transactionId);
 
   const dispatch = useDispatch();
 
@@ -42,10 +46,16 @@ export const HomeTab = () => {
   };
 
   const handleDelete = (transactionId) => {
-    dispatch(deleteTransaction(transactionId));
+    try {
+      dispatch(deleteTransaction(transactionId));
+      Notify.success("Transaction deleted successfully.");
+    } catch (e) {
+      console.error(e);
+    }
   };
 
-  const openModalEditTransaction = () => {
+  const openModalEditTransaction = (_id) => {
+    setTransactionId(_id);
     dispatch(setIsModalEditTransactionOpen(true));
     document.body.style.overflow = "hidden";
   };
@@ -101,7 +111,7 @@ export const HomeTab = () => {
                     >
                       <div className={styles.buttonsWrapper}>
                         <button
-                          onClick={openModalEditTransaction}
+                          onClick={() => openModalEditTransaction(_id)}
                           className={styles.dataItemBtnEdit}
                         >
                           <img
@@ -109,7 +119,9 @@ export const HomeTab = () => {
                             src={"./assets/icon-pen.svg"}
                           />
                         </button>
-                        {/* <ModalEditTransaction transaction={_id} /> */}
+                        {transactionId ? (
+                          <ModalEditTransaction transactionId={transactionId} />
+                        ) : null}
                         <button
                           onClick={() => handleDelete(_id)}
                           className={styles.dataItemBtnDelete}

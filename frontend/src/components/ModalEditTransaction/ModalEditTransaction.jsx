@@ -2,37 +2,46 @@ import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "../../redux/session/selectors";
 import { selectIsModalEditTransactionOpen } from "../../redux/global/selectors";
+import { selectTransactions } from "../../redux/finance/selectors";
 import { setIsModalEditTransactionOpen } from "../../redux/global/globalSlice";
 import { updateTransaction } from "../../redux/finance/operations";
 import { Header } from "../Header/Header";
 import { DropdownMenu } from "../DropdownMenu/DropdownMenu";
 import { Calendar } from "../ModalAddTransaction/Calendar/Calendar";
 import { Show } from "@chakra-ui/react";
+import { Notify } from "notiflix";
 import css from "./ModalEditTransaction.module.css";
 
-export const ModalEditTransaction = () => {
+export const ModalEditTransaction = ({ transactionId }) => {
   const modalRef = useRef(null);
   const dispatch = useDispatch();
+
+  const user = useSelector(selectUser);
+
+  const allTransactions = useSelector(selectTransactions);
+
+  const selectedTransaction = allTransactions.find(
+    (transaction) => transaction.id === transactionId
+  );
+
+  const { _id, type, category, amount, date, comment } = selectedTransaction;
+  console.log(selectedTransaction);
+
+  const [updatedCategory, setUpdatedCategory] = useState(category);
+  const [updatedDate, setUpdatedDate] = useState(date);
 
   const isModalEditTransactionOpen = useSelector(
     selectIsModalEditTransactionOpen
   );
 
-  // roboczo, bo nie ma propsów
-  let transactionDetails = {
-    type: "expense",
-    category: "Car",
-    amount: "5000",
-    date: "20.09.2023",
-    comment: "test",
+  const formatDate = (inputDate) => {
+    const date = new Date(inputDate);
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const year = date.getFullYear().toString().slice(4);
+
+    return `${day}.${month}.${year}`;
   };
-
-  const { type, category, amount, date, comment } = transactionDetails;
-
-  const [updatedCategory, setUpdatedCategory] = useState(category);
-  const [updatedDate, setUpdatedDate] = useState(date);
-
-  const user = useSelector(selectUser);
 
   const handleUpdatedCategory = (category) => {
     setUpdatedCategory(category);
@@ -46,28 +55,37 @@ export const ModalEditTransaction = () => {
     e.preventDefault();
     const form = e.target;
     const updatedAmount = form.elements.amount.value;
-    const cleanedUpdatedAmount = updatedAmount
-      .replace(/\s/g, "")
-      .replace(",", ".");
-    const numberUpdatedAmount = parseFloat(cleanedUpdatedAmount);
-    const updatedComment = form.elements.comment.value;
+    const updatedComment = form.elements.comment;
+
+    if (!updatedAmount || isNaN(updatedAmount)) {
+      Notify.info("Please provide a valid amount.");
+      return;
+    }
+
+    const numberUpdatedAmount = parseFloat(updatedAmount);
 
     dispatch(
       updateTransaction({
+        id: _id,
         type: type,
-        category: updatedCategory || "income",
+        category: updatedCategory,
         amount: numberUpdatedAmount,
         date: updatedDate,
-        comment: updatedComment,
+        comment: updatedComment || "",
         owner: user.id,
       })
     );
+
+    Notify.success("Transaction updated successfully.");
+    form.reset();
     dispatch(setIsModalEditTransactionOpen(false));
   };
 
   const handleModalClose = () => {
-    dispatch(setIsModalEditTransactionOpen(false));
+    const form = document.getElementById("form");
+    form.reset();
     document.body.style.overflow = "unset";
+    dispatch(setIsModalEditTransactionOpen(false));
   };
 
   useEffect(() => {
@@ -107,21 +125,18 @@ export const ModalEditTransaction = () => {
           <p className={css.slash}>/</p>
           <p className={expenseClass}>Expense</p>
         </div>
-        <form className={css.form} onSubmit={handleSubmit}>
+        <form id="form" className={css.form} onSubmit={handleSubmit}>
           {type === "expense" ? (
-            <DropdownMenu
-              category={updatedCategory}
-              onClick={handleUpdatedCategory}
-            />
+            <DropdownMenu category={category} onClick={handleUpdatedCategory} />
           ) : null}
           <div className={css.formInnerBox}>
             <input
               name="Amount"
+              type="number"
               className={css.money}
               placeholder={amount}
-              required
             ></input>
-            <Calendar date={updatedDate} onChange={handleUpdatedDate} />
+            <Calendar date={formatDate(date)} onChange={handleUpdatedDate} />
           </div>
           <textarea
             name="Comment"
