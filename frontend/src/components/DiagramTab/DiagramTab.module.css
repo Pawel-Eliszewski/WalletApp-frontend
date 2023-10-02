@@ -149,6 +149,7 @@ ul {
     justify-content: space-around;
     margin: 0;
     width: 100vw;
+    height: 100%;
   }
   .chart__container {
     width: 300px;
@@ -163,5 +164,24 @@ ul {
   .select__year {
     margin-top: 20px;
     margin-left: 20px;
+  }
+  .doughnut {
+    width: 336px;
+    height: 336px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .doughnut {
+    width: 288px;
+    height: 288px;
+  }
+  .container {
+    width: 897px;
+    border-left: 1px solid rgba(231, 229, 242, 1);
+    padding-left: 20px;
+  }
+  .tablet__container {
+    margin-top: 70px;
+    margin-left: 40px;
   }
 }

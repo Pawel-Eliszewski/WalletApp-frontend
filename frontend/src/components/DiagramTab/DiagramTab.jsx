@@ -65,18 +65,20 @@ export function DiagramTab() {
         <div className={styles.diagram__expenses}>
           ${expensesSum.toFixed(2)}
         </div>
-        <Doughnut
-          data={{
-            labels: expensesLabels,
-            datasets: [
-              {
-                data: expensesData,
-                backgroundColor: expensesColors,
-              },
-            ],
-          }}
-          options={chartOptions}
-        />
+        <div className={styles.doughnut}>
+          <Doughnut
+            data={{
+              labels: expensesLabels,
+              datasets: [
+                {
+                  data: expensesData,
+                  backgroundColor: expensesColors,
+                },
+              ],
+            }}
+            options={chartOptions}
+          />
+        </div>
       </div>
       <div className={styles.tablet__container}>
         <div className={styles.selectContainer}>

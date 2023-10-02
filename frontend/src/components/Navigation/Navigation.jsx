@@ -1,13 +1,17 @@
 import { NavLink, useLocation } from "react-router-dom";
+import { useMediaQuery } from "@react-hook/media-query";
 import css from "./Navigation.module.css";
 
 export const Navigation = () => {
   const location = useLocation();
+  const isMax768px = useMediaQuery("(max-width: 768px)");
 
   const navItems = [
     { path: "/", label: "Home", icon: "icon-home.svg" },
     { path: "/statistics", label: "Statistics", icon: "icon-statistics.svg" },
-    { path: "/currency", label: "Currency", icon: "icon-dollar.svg" },
+    ...(isMax768px
+      ? [{ path: "/currency", label: "Currency", icon: "icon-dollar.svg" }]
+      : []),
   ];
 
   return (
