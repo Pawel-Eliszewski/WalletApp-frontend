@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { ToastContainer } from "react-toastify";
 import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
 import { RestrictedRoute } from "./components/RestrictedRoute/RestrictedRoute";
 import { Route, Routes, Navigate } from "react-router-dom";
@@ -29,19 +28,6 @@ function App() {
     <Loader />
   ) : (
     <>
-      {/* <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-        style={{ width: "400px", height: "100px" }}
-      /> */}
       <Routes>
         <Route
           path="/register"
@@ -59,7 +45,7 @@ function App() {
             <ProtectedRoute redirectTo="/login" component={<DashboardPage />} />
           }
         >
-          {" "}
+          <Route index path="/" element={<HomeTab />} />
           <Route path="/statistics" element={<DiagramTab />} />
           <Route path="/currency" element={<Currency />} />
         </Route>

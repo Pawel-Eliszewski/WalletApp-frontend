@@ -1,5 +1,4 @@
 import Media from "react-media";
-import { useLocation } from "react-router-dom";
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import { Header } from "../../components/Header/Header";
@@ -7,7 +6,6 @@ import { Navigation } from "../../components/Navigation/Navigation";
 import { Balance } from "../../components/Balance/Balance";
 import { ButtonAddTransaction } from "../../components/ButtonAddTransaction/ButtonAddTransaction";
 import { ModalAddTransaction } from "../../components/ModalAddTransaction/ModalAddTransaction";
-import { HomeTab } from "../../components/HomeTab/HomeTab";
 import { Currency } from "../../components/Currency/Currency";
 import { ModalLogout } from "../../components/ModalLogout/ModalLogout";
 import css from "./DashboardPage.module.css";
@@ -18,19 +16,15 @@ import { useSelector } from "react-redux";
 const MobileDashboard = () => {
   const modalEditOpen = useSelector(selectIsModalEditTransactionOpen);
 
-  const location = useLocation();
-  const isDiagramPage = location.pathname === "/statistics";
-  const isCurrencyPage = location.pathname === "/currency";
   return (
     <>
       <Header />
       <div className={css.mobileContainer}>
         <Suspense fallback={null}>
           <Navigation />
-          {!isDiagramPage && !isCurrencyPage && <Balance />}
-          {!isDiagramPage && !isCurrencyPage && <HomeTab />}
-          {!isDiagramPage && !isCurrencyPage && <ButtonAddTransaction />}
-          {!isDiagramPage && <ModalAddTransaction />}
+          <Balance />
+          <ButtonAddTransaction />
+          <ModalAddTransaction />
           {modalEditOpen === true ? <ModalEditTransaction /> : null}
           <ModalLogout />
           <Outlet />
@@ -42,9 +36,6 @@ const MobileDashboard = () => {
 
 const TabletDashboard = () => {
   const modalEditOpen = useSelector(selectIsModalEditTransactionOpen);
-
-  const location = useLocation();
-  const isDiagramPage = location.pathname === "/statistics";
   return (
     <>
       <Header />
@@ -57,9 +48,8 @@ const TabletDashboard = () => {
             </div>
             <Currency />
           </div>
-          {!isDiagramPage && <HomeTab />}
-          {!isDiagramPage && <ButtonAddTransaction />}
-          {!isDiagramPage && <ModalAddTransaction />}
+          <ButtonAddTransaction />
+          <ModalAddTransaction />
           {modalEditOpen === true ? <ModalEditTransaction /> : null}
           <ModalLogout />
           <Outlet />
@@ -72,8 +62,6 @@ const TabletDashboard = () => {
 const DesktopDashboard = () => {
   const modalEditOpen = useSelector(selectIsModalEditTransactionOpen);
 
-  const location = useLocation();
-  const isDiagramPage = location.pathname === "/statistics";
   return (
     <>
       <Header />
@@ -84,9 +72,8 @@ const DesktopDashboard = () => {
             <Balance />
             <Currency />
           </div>
-          {!isDiagramPage && <HomeTab />}
-          {!isDiagramPage && <ButtonAddTransaction />}
-          {!isDiagramPage && <ModalAddTransaction />}
+          <ButtonAddTransaction />
+          <ModalAddTransaction />
           {modalEditOpen === true ? <ModalEditTransaction /> : null}
           <ModalLogout />
           <Outlet />
@@ -102,7 +89,7 @@ export const DashboardPage = () => {
       queries={{
         mobile: "(max-width: 767px)",
         tablet: "(min-width: 768px) and (max-width: 1279px)",
-        desktop: "(min-width: 1280px)",
+        desktop: "(min-width: 1279px)",
       }}
     >
       {(matches) => (
