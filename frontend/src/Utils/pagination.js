@@ -1,9 +1,8 @@
-import { store } from "../redux/store";
 import { selectTransactions } from "../redux/finance/selectors";
+import { useSelector } from "react-redux";
 
 export const paginateTransactions = (page) => {
-  const state = store.getState();
-  const transactions = selectTransactions(state);
+  const transactions = useSelector(selectTransactions);
 
   if (!transactions || transactions.length === 0) {
     // Jeżeli nie ma transakcji, zwróć pustą stronę

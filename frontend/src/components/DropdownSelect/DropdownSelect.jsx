@@ -2,24 +2,16 @@ import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 
 import css from "./DropdownSelect.module.css";
+import { useSelector } from "react-redux";
+import {
+  selectTransactionsMonths,
+  selectTransactionsYears,
+} from "../../redux/finance/selectors";
 
 export const DropdownSelect = ({ selectedMonth, onSelect }) => {
   const [isActive, setIsActive] = useState(false);
 
-  let months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+  const months = useSelector(selectTransactionsMonths);
 
   const iconArrowClass = isActive ? css.iconArrowUp : css.iconArrowDown;
   const selectedClass =
@@ -81,7 +73,7 @@ export const DropdownSelectY = ({ selectedYear, onSelect }) => {
     };
   }, []);
 
-  let years = ["2023", "2022", "2021", "2020", "2019", "2018"];
+  const years = useSelector(selectTransactionsYears);
 
   const iconArrowClass = isActive ? css.iconArrowUp : css.iconArrowDown;
   const selectedClass =
