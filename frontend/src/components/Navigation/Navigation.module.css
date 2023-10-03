@@ -5,7 +5,8 @@
 	list-style: none;
 	margin: 0;
 	width: 240px;
-	padding-bottom: 10px;
+	padding-bottom: 15px;
+	margin-top: 5px;
 }
 
 .logo {
@@ -25,9 +26,9 @@
 
 @media (min-width: 768px) {
 	.nav {
-		padding-top: 30px;
+		margin-top: 20px;
+		margin-bottom: 10px;
 		flex-direction: column;
-		padding-bottom: 10px;
 		gap: 10px;
 	}
 

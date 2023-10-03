@@ -5,7 +5,6 @@ export const paginateTransactions = (page) => {
   const transactions = useSelector(selectTransactions);
 
   if (!transactions || transactions.length === 0) {
-    // Jeżeli nie ma transakcji, zwróć pustą stronę
     return {
       pages: 0,
       paginatedTransactions: [],

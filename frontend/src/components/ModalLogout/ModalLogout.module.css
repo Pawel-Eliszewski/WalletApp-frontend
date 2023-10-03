@@ -50,9 +50,9 @@
 	height: 40px;
 	border-radius: 20px;
 	border: none;
-	outline: 1px solid var(--primary-gray-font-color);
+	outline: 1px solid var(--household-products-diagram-color);
 	cursor: pointer;
-	color: var(--primary-gray-font-color);
+	color: var(--household-products-diagram-color);
 	transition: 300ms;
 }
 

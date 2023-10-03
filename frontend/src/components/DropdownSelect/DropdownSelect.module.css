@@ -14,10 +14,10 @@
   padding-left: 12px;
   background: transparent;
   width: 280px;
-  height: 50px;
+  height: 40px;
   color: #777;
   padding-right: 12px;
-  border: 1px solid black;
+  outline: 1px solid black;
 }
 
 .dropdownBtnActive {
@@ -28,10 +28,10 @@
   padding: 5px;
   padding-left: 12px;
   background: transparent;
-  border: 1px solid black;
+  outline: 1px solid black;
   border-radius: 30px;
   width: 280px;
-  height: 50px;
+  height: 40px;
   color: black;
   padding-right: 12px;
 }
@@ -83,6 +83,7 @@
 }
 
 @media screen and (min-width: 767px) {
+
   .dropdown,
   .dropdownBtn,
   .dropdownBtnActive {

@@ -95,6 +95,7 @@ export const ModalEditTransaction = () => {
         owner: fakedTransaction.owner,
       })
     );
+    setUpdatedCategory(updatedCategory);
     document.body.style.overflow = "unset";
     Notify.success("Transaction updated successfully.");
     form.reset();
@@ -134,7 +135,7 @@ export const ModalEditTransaction = () => {
         <form id="form" className={css.form} onSubmit={handleSubmit}>
           {fakedTransaction.type === "expense" ? (
             <DropdownMenu
-              category={updatedCategory}
+              category={fakedTransaction.category}
               onClick={handleUpdatedCategory}
             />
           ) : null}
