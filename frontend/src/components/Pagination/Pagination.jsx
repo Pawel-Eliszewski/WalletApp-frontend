@@ -13,7 +13,7 @@ export const Pagination = ({ pageCount, setItemOffset }) => {
       <ReactPaginate
         breakLabel="..."
         onPageChange={handlePageClick}
-        pageRangeDisplayed={10}
+        pageRangeDisplayed={3}
         pageCount={pageCount}
         previousLabel={" ← "}
         nextLabel={" → "}
