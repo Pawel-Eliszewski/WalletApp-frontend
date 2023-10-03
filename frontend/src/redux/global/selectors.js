@@ -9,6 +9,4 @@ export const selectIsModalAddTransactionOpen = (state) =>
 export const selectIsModalEditTransactionOpen = (state) =>
   state.global.isModalEditTransactionOpen;
 
-export const selectTransactionId = (state) => {
-  state.global.transactionId;
-};
+export const selectTransactionId = (state) => state.global.transactionId;

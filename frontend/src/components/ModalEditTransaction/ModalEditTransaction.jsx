@@ -11,15 +11,19 @@ import { Calendar } from "../ModalAddTransaction/Calendar/Calendar";
 import { Notify } from "notiflix";
 import css from "./ModalEditTransaction.module.css";
 
+import { selectTransactionId } from "../../redux/global/selectors";
 import { fetchTransactions } from "../../redux/finance/operations";
 
-export const ModalEditTransaction = ({ transactionId }) => {
+export const ModalEditTransaction = () => {
   const modalRef = useRef(null);
   const dispatch = useDispatch();
 
   const user = useSelector(selectUser);
 
   const allTransactions = useSelector(selectTransactions);
+  const transactionId = useSelector(selectTransactionId);
+
+  console.log(transactionId);
 
   const selectedTransaction = allTransactions.find(
     (transaction) => transaction._id === transactionId
