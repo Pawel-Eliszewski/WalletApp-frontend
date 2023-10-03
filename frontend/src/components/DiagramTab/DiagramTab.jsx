@@ -58,16 +58,12 @@ export function DiagramTab() {
       (transaction) => transaction.type !== "income"
     );
 
-    console.log(expenseTransactions);
-
     const expenseTransactionsOfYear =
       selectedYear !== "Year"
         ? expenseTransactions.filter(
             (transaction) => transaction.date.slice(6, 10) === selectedYear
           )
         : transactions.filter((transaction) => transaction.type !== "income");
-
-    console.log(expenseTransactionsOfYear);
 
     let month;
 
@@ -120,8 +116,6 @@ export function DiagramTab() {
             (transaction) => transaction.date.slice(3, 5) === month
           )
         : transactions.filter((transaction) => transaction.type !== "income");
-
-    console.log(expenseTransactionsOFMonth);
 
     const colors = assignColorsToTransactions(expenseTransactionsOFMonth);
     setTransactionColors(colors);
