@@ -15,8 +15,10 @@ import {paginateTransactions} from "../../utils/pagination";
 import {nanoid} from "nanoid";
 import {Notify} from "notiflix";
 import styles from "./HomeTab.module.css";
+import { setTransactionId } from "../../redux/global/globalSlice";
 
 export const HomeTab = () => {
+
     const isMobile = useMedia("(max-width: 767px)");
     const [itemOffset, setItemOffset] = useState(1);
     const [transactionId, setTransactionId] = useState(null);
@@ -45,6 +47,13 @@ export const HomeTab = () => {
 
         return `${month}.${day}.${year}`;
     }
+
+
+  const openModalEditTransaction = (_id) => {
+    dispatch(setTransactionId(_id));
+    dispatch(setIsModalEditTransactionOpen(true));
+    document.body.style.overflow = "hidden";
+  };
 
     const handleDelete = (transactionId) => {
         try {
@@ -166,6 +175,32 @@ export const HomeTab = () => {
                                     <span className={styles.dataSum} data-type={type.toString()}>
                     {amount.toFixed(2)}
                   </span>
+
+                </li>
+                <div className={styles.buttonsWrapperMob}>
+                  <button
+                    onClick={() => handleDelete(_id)}
+                    className={styles.dataItemBtnDelete}
+                  >
+                    Delete
+                  </button>
+                  <button
+                    onClick={() => openModalEditTransaction(_id)}
+                    className={styles.dataItemBtnEdit}
+                  >
+                    <img
+                      className={styles.btnIcon}
+                      src={"./assets/icon-pen.svg"}
+                    />
+                    Edit
+                  </button>
+                </div>
+              </ul>
+            )
+          )}
+        </>
+      )}
+
                                 </li>
                                 <div className={styles.buttonsWrapperMob}>
                                     <button
