@@ -82,7 +82,6 @@ export const ModalEditTransaction = () => {
     document.body.style.overflow = "unset";
     Notify.success("Transaction updated successfully.");
     form.reset();
-    dispatch(fetchTransactions(user.id));
     dispatch(setIsModalEditTransactionOpen(false));
   };
 

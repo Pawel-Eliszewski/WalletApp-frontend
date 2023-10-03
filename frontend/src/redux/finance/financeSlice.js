@@ -48,11 +48,10 @@ const financeSlice = createSlice({
       .addCase(deleteTransaction.rejected, handleRejected)
       .addCase(updateTransaction.fulfilled, (state, action) => {
         state.error = null;
-        state.data.map((transaction) => {
-          if (transaction.id === action.payload.data._id) {
-            transaction = action.payload.data;
-          }
-        });
+        const index = state.data.findIndex(
+          (transaction) => transaction._id === action.payload.data._id
+        );
+        state.data.splice(index, 1, action.payload.data);
         state.totalBalance = action.payload.userBalance;
       })
       .addCase(updateTransaction.rejected, handleRejected)
