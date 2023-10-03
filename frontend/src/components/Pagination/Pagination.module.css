@@ -9,22 +9,31 @@
 }
 
 .pagination a {
-  /* padding: 10px; */
-  width: 50px;
-  height: 50px;
-  border-radius: 100px;
-  outline: 1px solid grey;
-  color: black;
+  margin: 0 5px;
+  padding: 10px 15px;
+  outline: 1px solid var(--household-products-diagram-color);
+  cursor: pointer;
+  color: var(--household-products-diagram-color);
+  border-radius: 50px;
+  color: #007bff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
 
 .pagination a:hover,
 .pagination a:focus {
-  outline: 1px solid black;
+  background-color: #007bff;
+  color: #fff;
+  transform: scale(1.05);
+  background: var(--primary-income-color);
+  outline: none;
 }
 
 .paginationLinkActive a {
   color: #fff;
   background: var(--primary-income-color);
+  outline: none;
 }
 
 .paginationLinkDisabled a {
@@ -51,11 +60,3 @@
     margin-left: 10px;
   }
 }
-
-@media screen and (min-width: 1280px) {
-  .pagination {
-    /* margin-top: 40px; */
-  }
-}
-
-/*# sourceMappingURL=Pagination.module.css.map */
