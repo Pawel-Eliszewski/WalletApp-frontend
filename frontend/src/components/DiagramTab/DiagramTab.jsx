@@ -45,52 +45,48 @@ export function DiagramTab() {
     return sum;
   }, 0);
 
-  // const expenseTransactions = transactions.filter(
-  //   (transaction) => transaction.category !== "income"
-  // );
-
-  // const colors = assignColorsToTransactions(transactions);
-  // setTransactionColors(colors);
-
-  // const expenseTransactionsColors = expenseTransactions.map((transaction) => ({
-  //   ...transaction,
-  //   color: colors[transaction.category] || "#000000",
-  // }));
-
-  ////////////////////////////////////////////////////////////////////////////////
-
   useEffect(() => {
     dispatch(fetchTransactions(user.id));
   }, [dispatch, user.id]);
 
   useEffect(() => {
     const expenseTransactions = transactions.filter(
-      (transaction) => transaction.category !== "income"
+      (transaction) => transaction.type !== "income"
     );
 
-    const colors = assignColorsToTransactions(transactions);
+    const colors = assignColorsToTransactions(expenseTransactions);
     setTransactionColors(colors);
 
-    const expenseTransactionsColors = expenseTransactions.map(
-      (transaction) => ({
-        ...transaction,
-        color: colors[transaction.category] || "#000000",
-      })
-    );
+    const expenseTransactionsAll = expenseTransactions.map((transaction) => ({
+      ...transaction,
+      color: colors[transaction.category] || "#000000",
+    }));
 
-    setColoredTransactions(expenseTransactionsColors);
+    const categorySum = {};
+    expenseTransactionsAll.forEach((transaction) => {
+      const { _id, category, amount } = transaction;
+
+      if (categorySum[category]) {
+        categorySum[category].amount += amount;
+      } else {
+        categorySum[category] = { ...transaction };
+      }
+    });
+    const summedExpenseTransactions = Object.values(categorySum);
+    setColoredTransactions(summedExpenseTransactions);
   }, [transactions]);
 
   useEffect(() => {}, [coloredTransactions]);
 
-  const expensesCategories = coloredTransactions
-    .filter((transaction) => transaction.type === "expense")
-    .reduce((categories, transaction) => {
+  const expensesCategories = coloredTransactions.reduce(
+    (categories, transaction) => {
       categories[transaction.category] =
         (categories[transaction.category] || 0) +
         parseFloat(transaction.amount);
       return categories;
-    }, {});
+    },
+    {}
+  );
 
   const expensesLabels = Object.keys(expensesCategories);
   const expensesData = Object.values(expensesCategories);
