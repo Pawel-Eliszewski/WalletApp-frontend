@@ -4,18 +4,13 @@ import { Outlet } from "react-router-dom";
 import { Header } from "../../components/Header/Header";
 import { Navigation } from "../../components/Navigation/Navigation";
 import { Balance } from "../../components/Balance/Balance";
-import { ButtonAddTransaction } from "../../components/ButtonAddTransaction/ButtonAddTransaction";
 import { ModalAddTransaction } from "../../components/ModalAddTransaction/ModalAddTransaction";
 import { Currency } from "../../components/Currency/Currency";
 import { ModalLogout } from "../../components/ModalLogout/ModalLogout";
-import css from "./DashboardPage.module.css";
 import { ModalEditTransaction } from "../../components/ModalEditTransaction/ModalEditTransaction";
-import { selectIsModalEditTransactionOpen } from "../../redux/global/selectors";
-import { useSelector } from "react-redux";
+import css from "./DashboardPage.module.css";
 
 const MobileDashboard = () => {
-  const modalEditOpen = useSelector(selectIsModalEditTransactionOpen);
-
   return (
     <>
       <Header />
@@ -23,7 +18,7 @@ const MobileDashboard = () => {
         <Suspense fallback={null}>
           <Navigation />
           <ModalAddTransaction />
-          {modalEditOpen === true ? <ModalEditTransaction /> : null}
+          <ModalEditTransaction />
           <ModalLogout />
           <Outlet />
         </Suspense>
@@ -33,7 +28,6 @@ const MobileDashboard = () => {
 };
 
 const TabletDashboard = () => {
-  const modalEditOpen = useSelector(selectIsModalEditTransactionOpen);
   return (
     <>
       <Header />
@@ -47,7 +41,7 @@ const TabletDashboard = () => {
             <Currency />
           </div>
           <ModalAddTransaction />
-          {modalEditOpen === true ? <ModalEditTransaction /> : null}
+          <ModalEditTransaction />
           <ModalLogout />
           <Outlet />
         </Suspense>
@@ -57,8 +51,6 @@ const TabletDashboard = () => {
 };
 
 const DesktopDashboard = () => {
-  const modalEditOpen = useSelector(selectIsModalEditTransactionOpen);
-
   return (
     <>
       <Header />
@@ -70,7 +62,7 @@ const DesktopDashboard = () => {
             <Currency />
           </div>
           <ModalAddTransaction />
-          {modalEditOpen === true ? <ModalEditTransaction /> : null}
+          <ModalEditTransaction />
           <ModalLogout />
           <Outlet />
         </Suspense>

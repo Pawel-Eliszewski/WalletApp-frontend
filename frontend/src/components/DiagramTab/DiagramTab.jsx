@@ -30,7 +30,6 @@ export function DiagramTab() {
     setSelectedYear(year);
   };
 
-  //////////////////////////////////////////////////////////////////
   const expenseSum = transactions.reduce((sum, transaction) => {
     if (transaction.type === "expense") {
       sum += transaction.amount;
@@ -111,7 +110,7 @@ export function DiagramTab() {
         <h2 className={styles.statistics__header}>Statistics</h2>
 
         <div className={styles.doughnut}>
-          <span className={styles.diagram__expenses}>{balance} €</span>
+          <span className={styles.diagram__expenses}>{balance} PLN</span>
           <Doughnut
             data={{
               labels: expensesLabels,
@@ -132,6 +131,7 @@ export function DiagramTab() {
         <div className={styles.selectContainer}>
           <label className={styles.select__month}>
             <DropdownSelect
+              selectedYear={selectedYear}
               selectedMonth={selectedMonth}
               onSelect={handleMonthSelect}
             />
@@ -160,7 +160,7 @@ export function DiagramTab() {
                   }}
                 ></div>
                 <div className={styles.category}>{category}</div>
-                <div className={styles.amount}>{amount}€</div>
+                <div className={styles.amount}>{amount} PLN</div>
               </li>
             ))
           ) : (
@@ -176,13 +176,13 @@ export function DiagramTab() {
           <li className={styles.elementListAll}>
             <div className={styles.elementAllText}>Expenses:</div>
             <div className={styles.elementAllExpenses}>
-              {expenseSum.toFixed(2)}€
+              {expenseSum.toFixed(2)} PLN
             </div>
           </li>
           <li className={styles.elementListAll}>
             <div className={styles.elementAllText}>Income:</div>
             <div className={styles.elementAllIncome}>
-              {incomeSum.toFixed(2)}€
+              {incomeSum.toFixed(2)} PLN
             </div>
           </li>
         </ul>

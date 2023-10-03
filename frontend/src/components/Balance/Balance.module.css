@@ -28,7 +28,8 @@
 }
 
 .balance__currency {
-  font-weight: 400;
+  font-weight: 600;
+  margin-right: 10px;
 }
 
 /*Tablet*/

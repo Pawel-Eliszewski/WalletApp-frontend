@@ -5,36 +5,54 @@ import { selectUser } from "../../redux/session/selectors";
 import { selectIsModalEditTransactionOpen } from "../../redux/global/selectors";
 import { selectTransactions } from "../../redux/finance/selectors";
 import { setIsModalEditTransactionOpen } from "../../redux/global/globalSlice";
+import { selectTransactionId } from "../../redux/global/selectors";
 import { updateTransaction } from "../../redux/finance/operations";
 import { DropdownMenu } from "../DropdownMenu/DropdownMenu";
 import { Calendar } from "../ModalAddTransaction/Calendar/Calendar";
 import { Notify } from "notiflix";
+import { fakeTransaction } from "../../utils/fakeData";
 import css from "./ModalEditTransaction.module.css";
-
-import { selectTransactionId } from "../../redux/global/selectors";
-import { fetchTransactions } from "../../redux/finance/operations";
 
 export const ModalEditTransaction = () => {
   const modalRef = useRef(null);
   const dispatch = useDispatch();
 
-  const user = useSelector(selectUser);
+  const isModalEditTransactionOpen = useSelector(
+    selectIsModalEditTransactionOpen
+  );
+
+  const transactionId = useSelector(selectTransactionId);
 
   const allTransactions = useSelector(selectTransactions);
-  const transactionId = useSelector(selectTransactionId);
 
   const selectedTransaction = allTransactions.find(
     (transaction) => transaction._id === transactionId
   );
 
-  const [updatedCategory, setUpdatedCategory] = useState(
-    selectedTransaction.category
-  );
-  const [updatedDate, setUpdatedDate] = useState(selectedTransaction.date);
+  const fakedTransaction = selectedTransaction
+    ? selectedTransaction
+    : fakeTransaction;
 
-  const isModalEditTransactionOpen = useSelector(
-    selectIsModalEditTransactionOpen
+  const [updatedCategory, setUpdatedCategory] = useState(
+    fakedTransaction.category
   );
+
+  const [updatedDate, setUpdatedDate] = useState(fakedTransaction.date);
+
+  const user = useSelector(selectUser);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        dispatch(setIsModalEditTransactionOpen(false));
+        document.body.style.overflow = "unset";
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   function formatDate(inputDate) {
     const date = new Date(inputDate);
@@ -68,13 +86,13 @@ export const ModalEditTransaction = () => {
 
     dispatch(
       updateTransaction({
-        transactionId: selectedTransaction._id,
-        type: selectedTransaction.type,
+        transactionId: fakedTransaction._id,
+        type: fakedTransaction.type,
         category: updatedCategory,
         amount: numberUpdatedAmount,
         date: updatedDate,
         comment: updatedComment || "",
-        owner: selectedTransaction.owner,
+        owner: fakedTransaction.owner,
       })
     );
     document.body.style.overflow = "unset";
@@ -90,19 +108,6 @@ export const ModalEditTransaction = () => {
     dispatch(setIsModalEditTransactionOpen(false));
   };
 
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") {
-        dispatch(setIsModalEditTransactionOpen(false));
-        document.body.style.overflow = "unset";
-      }
-    };
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
-
   const handleBackdropClick = (e) => {
     if (modalRef.current && !modalRef.current.contains(e.target)) {
       document.body.style.overflow = "unset";
@@ -110,9 +115,8 @@ export const ModalEditTransaction = () => {
     }
   };
 
-  const incomeClass = selectedTransaction.type === "income" ? css.income : "";
-  const expenseClass =
-    selectedTransaction.type === "expense" ? css.expense : "";
+  const incomeClass = fakedTransaction.type === "income" ? css.income : "";
+  const expenseClass = fakedTransaction.type === "expense" ? css.expense : "";
 
   const backdropClass = isModalEditTransactionOpen
     ? css.backdropEditIsOpen
@@ -128,7 +132,7 @@ export const ModalEditTransaction = () => {
           <p className={expenseClass}>Expense</p>
         </div>
         <form id="form" className={css.form} onSubmit={handleSubmit}>
-          {selectedTransaction.type === "expense" ? (
+          {fakedTransaction.type === "expense" ? (
             <DropdownMenu
               category={updatedCategory}
               onClick={handleUpdatedCategory}
@@ -143,17 +147,17 @@ export const ModalEditTransaction = () => {
                 e.target.value = e.target.value.replace(/[^0-9,\\.]/g, "");
               }}
               className={css.money}
-              placeholder={selectedTransaction.amount}
+              placeholder={fakedTransaction.amount}
             ></input>
             <Calendar
-              date={formatDate(selectedTransaction.date)}
+              date={formatDate(fakedTransaction.date)}
               onChange={handleUpdatedDate}
             />
           </div>
           <textarea
             name="comment"
             className={css.comment}
-            placeholder={selectedTransaction.comment}
+            placeholder={fakedTransaction.comment}
           ></textarea>
           <button type="submit" className={css.btnGreen}>
             SAVE

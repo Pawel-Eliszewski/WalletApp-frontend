@@ -1,21 +1,14 @@
 import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
-
-import css from "./DropdownSelect.module.css";
 import { useSelector } from "react-redux";
-import {
-  selectTransactionsMonths,
-  selectTransactionsYears,
-} from "../../redux/finance/selectors";
+import { selectTransactionsYears } from "../../redux/finance/selectors";
+import { getMonthsForYear } from "../../utils/getMonthsForYear";
+import css from "./DropdownSelect.module.css";
 
-import { getMonthsForYear } from "../../Utils/getMonthsForYear";
-
-export const DropdownSelect = ({ selectedMonth, onSelect }) => {
+export const DropdownSelect = ({ selectedYear, selectedMonth, onSelect }) => {
   const [isActive, setIsActive] = useState(false);
 
-  const year = "2020";
-
-  const months = getMonthsForYear(year);
+  const months = getMonthsForYear(selectedYear);
 
   const iconArrowClass = isActive ? css.iconArrowUp : css.iconArrowDown;
   const selectedClass =

@@ -9,7 +9,8 @@ export function Balance() {
     <div className={styles.balance}>
       <div className={styles.balance__text}>Your balance</div>
       <div className={styles.balance__amount}>
-        <span className={styles.balance__currency}>₴</span> {balance}
+        <span className={styles.balance__currency}></span>
+        {balance} PLN
       </div>
     </div>
   );
