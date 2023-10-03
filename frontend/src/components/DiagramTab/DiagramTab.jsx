@@ -21,6 +21,8 @@ export function DiagramTab() {
   const transactions = useSelector(selectTransactions);
   const [transactionColors, setTransactionColors] = useState({});
   const [coloredTransactions, setColoredTransactions] = useState([]);
+  const [expenseSum, setExpenseSum] = useState(0);
+  const [incomeSum, setIncomeSum] = useState(0);
 
   const handleMonthSelect = (month) => {
     setSelectedMonth(month);
@@ -29,20 +31,6 @@ export function DiagramTab() {
   const handleYearSelect = (year) => {
     setSelectedYear(year);
   };
-
-  const expenseSum = transactions.reduce((sum, transaction) => {
-    if (transaction.type === "expense") {
-      sum += transaction.amount;
-    }
-    return sum;
-  }, 0);
-
-  const incomeSum = transactions.reduce((sum, transaction) => {
-    if (transaction.type === "income") {
-      sum += transaction.amount;
-    }
-    return sum;
-  }, 0);
 
   useEffect(() => {
     dispatch(fetchTransactions(user.id));
@@ -53,16 +41,12 @@ export function DiagramTab() {
       (transaction) => transaction.type !== "income"
     );
 
-    console.log(expenseTransactions);
-
     const expenseTransactionsOfYear =
       selectedYear !== "Year"
         ? expenseTransactions.filter(
             (transaction) => transaction.date.slice(6, 10) === selectedYear
           )
         : transactions.filter((transaction) => transaction.type !== "income");
-
-    console.log(expenseTransactionsOfYear);
 
     let month;
 
@@ -116,7 +100,41 @@ export function DiagramTab() {
           )
         : transactions.filter((transaction) => transaction.type !== "income");
 
-    console.log(expenseTransactionsOFMonth);
+    const incomeTransactions = transactions.filter(
+      (transaction) => transaction.type === "income"
+    );
+
+    const incomeTransactionsOfYear =
+      selectedYear !== "Year"
+        ? incomeTransactions.filter(
+            (transaction) => transaction.date.slice(6, 10) === selectedYear
+          )
+        : transactions.filter((transaction) => transaction.type === "income");
+
+    const incomeTransactionsOFMonth =
+      selectedMonth !== "Month"
+        ? incomeTransactionsOfYear.filter(
+            (transaction) => transaction.date.slice(3, 5) === month
+          )
+        : transactions.filter((transaction) => transaction.type === "income");
+
+    setExpenseSum(
+      expenseTransactionsOFMonth.reduce((sum, transaction) => {
+        if (transaction.type === "expense") {
+          sum += transaction.amount;
+        }
+        return sum;
+      }, 0)
+    );
+
+    setIncomeSum(
+      incomeTransactionsOFMonth.reduce((sum, transaction) => {
+        if (transaction.type === "income") {
+          sum += transaction.amount;
+        }
+        return sum;
+      }, 0)
+    );
 
     const colors = assignColorsToTransactions(expenseTransactionsOFMonth);
     setTransactionColors(colors);
@@ -140,7 +158,7 @@ export function DiagramTab() {
     });
     const summedExpenseTransactions = Object.values(categorySum);
     setColoredTransactions(summedExpenseTransactions);
-  }, [transactions, selectedYear, selectedMonth]);
+  }, [transactions, selectedYear, selectedMonth, expenseSum, incomeSum]);
 
   useEffect(() => {}, [coloredTransactions]);
 
