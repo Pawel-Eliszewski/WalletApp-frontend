@@ -1,7 +1,7 @@
 const categoryColors = {
   "Main expenses": "#fed057",
   Products: "#ffd8d0",
-  Car: "#ffd8d0",
+  Car: "rgba(253, 148, 152, 1)",
   "Self care": "rgba(197, 186, 255, 1)",
   "Child care": "#6e78e8",
   "Household products": "#4a56e2",
