@@ -96,24 +96,6 @@ const RegisterForm = () => {
                 <div className={styles.meter__element}></div>
               </div>
             </div>
-            <div className={styles.field}>
-              <img
-                className={styles.fieldimg}
-                src="/assets/icon-person.svg"
-                alt="person"
-              />
-              <Field
-                className={styles.register__field}
-                type="First name"
-                name="First name"
-                placeholder="First Name"
-              />
-              <ErrorMessage
-                name="firstName"
-                component="div"
-                className={styles.error}
-              />
-            </div>
             <button className={styles.register__signup} type="submit">
               REGISTER
             </button>

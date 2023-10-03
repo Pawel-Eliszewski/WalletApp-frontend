@@ -13,7 +13,6 @@ import Loader from "./components/Loader/Loader";
 import { Currency } from "./components/Currency/Currency";
 import { DiagramTab } from "./components/DiagramTab/DiagramTab";
 import "./App.css";
-import { HomeTab } from "./components/HomeTab/HomeTab";
 
 function App() {
   const dispatch = useDispatch();
