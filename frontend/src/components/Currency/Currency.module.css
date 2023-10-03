@@ -5,30 +5,34 @@
   height: 174px;
   background-image: url(/assets/currency-vector-mobile.svg);
   background-color: rgba(74, 86, 226, 1);
-
   background-repeat: no-repeat;
   background-position: bottom;
   color: white;
   border-radius: 30px;
-  margin-top: 25px;
+  /* margin-top: 25px; */
 }
+
 .currency_table {
   width: 100%;
   border-collapse: collapse;
 }
+
 .currency_head {
   height: 50px;
   background-color: rgba(255, 255, 255, 0.2);
   padding-bottom: 10px;
 }
+
 .currency_body {
   padding-top: 5px;
 }
+
 .currency_item {
   height: 50px;
   padding-left: 20px;
   padding-bottom: 10px;
 }
+
 @media screen and (min-width: 768px) {
   .currency_sidebar {
     width: 336px;

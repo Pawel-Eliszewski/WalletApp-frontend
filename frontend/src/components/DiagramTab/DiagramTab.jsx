@@ -8,9 +8,12 @@ import { assignColorsToTransactions } from "../../utils/assignColorsToTransactio
 import { Doughnut } from "react-chartjs-2";
 import { DropdownSelectY } from "../DropdownSelect/DropdownSelect";
 import { DropdownSelect } from "../DropdownSelect/DropdownSelect";
-import "chart.js/auto";
-
+import {
+  selectTransactionsMonths,
+  selectTransactionsYears,
+} from "../../redux/finance/selectors";
 import styles from "./DiagramTab.module.css";
+import "chart.js/auto";
 
 export function DiagramTab() {
   const balance = useSelector(selectBalance);
@@ -25,6 +28,8 @@ export function DiagramTab() {
   const handleMonthSelect = (month) => {
     setSelectedMonth(month);
   };
+
+  // const transactions = selectTransactionsMonths();
 
   const handleYearSelect = (year) => {
     setSelectedYear(year);

@@ -38,7 +38,6 @@ const financeSlice = createSlice({
       })
       .addCase(addTransaction.rejected, handleRejected)
       .addCase(deleteTransaction.fulfilled, (state, action) => {
-        console.log(action.payload.userBalance);
         state.error = null;
         const index = state.data.findIndex(
           (transaction) => transaction._id === action.payload.data._id
