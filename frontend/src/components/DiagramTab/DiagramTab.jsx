@@ -30,39 +30,58 @@ export function DiagramTab() {
     setSelectedYear(year);
   };
 
+  //////////////////////////////////////////////////////////////////
+  const expenseSum = transactions.reduce((sum, transaction) => {
+    if (transaction.type === "expense") {
+      sum += transaction.amount;
+    }
+    return sum;
+  }, 0);
+
+  const incomeSum = transactions.reduce((sum, transaction) => {
+    if (transaction.type === "income") {
+      sum += transaction.amount;
+    }
+    return sum;
+  }, 0);
+
+  // const expenseTransactions = transactions.filter(
+  //   (transaction) => transaction.category !== "income"
+  // );
+
+  // const colors = assignColorsToTransactions(transactions);
+  // setTransactionColors(colors);
+
+  // const expenseTransactionsColors = expenseTransactions.map((transaction) => ({
+  //   ...transaction,
+  //   color: colors[transaction.category] || "#000000",
+  // }));
+
+  ////////////////////////////////////////////////////////////////////////////////
+
   useEffect(() => {
     dispatch(fetchTransactions(user.id));
   }, [dispatch, user.id]);
 
   useEffect(() => {
+    const expenseTransactions = transactions.filter(
+      (transaction) => transaction.category !== "income"
+    );
+
     const colors = assignColorsToTransactions(transactions);
     setTransactionColors(colors);
 
-    const transactionsWithColors = transactions.map((transaction) => ({
-      ...transaction,
-      color: colors[transaction.category] || "#000000",
-    }));
+    const expenseTransactionsColors = expenseTransactions.map(
+      (transaction) => ({
+        ...transaction,
+        color: colors[transaction.category] || "#000000",
+      })
+    );
 
-    setColoredTransactions(transactionsWithColors);
+    setColoredTransactions(expenseTransactionsColors);
   }, [transactions]);
 
-  useEffect(() => {
-    console.log("Transakcje z kolorami:", coloredTransactions);
-  }, [coloredTransactions]);
-
-  const expensesamount = coloredTransactions
-    .filter((transaction) => transaction.type === "expense")
-    .reduce(
-      (amount, transaction) => amount + parseFloat(transaction.amount),
-      0
-    );
-
-  const incomeamount = coloredTransactions
-    .filter((transaction) => transaction.type === "income")
-    .reduce(
-      (amount, transaction) => amount + parseFloat(transaction.amount),
-      0
-    );
+  useEffect(() => {}, [coloredTransactions]);
 
   const expensesCategories = coloredTransactions
     .filter((transaction) => transaction.type === "expense")
@@ -131,7 +150,7 @@ export function DiagramTab() {
 
         <ul className={styles.listNames}>
           <li className={styles.nameElement}>Category</li>
-          <li className={styles.nameElement}>amount</li>
+          <li className={styles.nameElement}>Amount</li>
         </ul>
 
         <ul className={styles.listTransaction}>
@@ -151,7 +170,7 @@ export function DiagramTab() {
           ) : (
             <li className={styles.elementTransaction}>
               <div className={styles.category}>
-                <p>Here is nothing :(</p>
+                <p>No transactions found</p>
               </div>
             </li>
           )}
@@ -161,13 +180,13 @@ export function DiagramTab() {
           <li className={styles.elementListAll}>
             <div className={styles.elementAllText}>Expenses:</div>
             <div className={styles.elementAllExpenses}>
-              {expensesamount.toFixed(2)}€
+              {expenseSum.toFixed(2)}€
             </div>
           </li>
           <li className={styles.elementListAll}>
             <div className={styles.elementAllText}>Income:</div>
             <div className={styles.elementAllIncome}>
-              {incomeamount.toFixed(2)}€
+              {incomeSum.toFixed(2)}€
             </div>
           </li>
         </ul>

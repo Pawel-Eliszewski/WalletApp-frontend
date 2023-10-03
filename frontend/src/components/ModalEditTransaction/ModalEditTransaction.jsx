@@ -23,8 +23,6 @@ export const ModalEditTransaction = () => {
   const allTransactions = useSelector(selectTransactions);
   const transactionId = useSelector(selectTransactionId);
 
-  console.log(transactionId);
-
   const selectedTransaction = allTransactions.find(
     (transaction) => transaction._id === transactionId
   );

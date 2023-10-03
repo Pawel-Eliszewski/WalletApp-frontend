@@ -47,7 +47,6 @@ export const HomeTab = () => {
   }
 
   const openModalEditTransaction = (_id) => {
-    console.log(_id);
     dispatch(setTransactionId(_id));
     dispatch(setIsModalEditTransactionOpen(true));
     document.body.style.overflow = "hidden";
