@@ -53,13 +53,80 @@ export function DiagramTab() {
       (transaction) => transaction.type !== "income"
     );
 
-    const colors = assignColorsToTransactions(expenseTransactions);
+    console.log(expenseTransactions);
+
+    const expenseTransactionsOfYear =
+      selectedYear !== "Year"
+        ? expenseTransactions.filter(
+            (transaction) => transaction.date.slice(6, 10) === selectedYear
+          )
+        : transactions.filter((transaction) => transaction.type !== "income");
+
+    console.log(expenseTransactionsOfYear);
+
+    let month;
+
+    if (selectedMonth) {
+      switch (selectedMonth) {
+        case "January":
+          month = "01";
+          break;
+        case "February":
+          month = "02";
+          break;
+        case "March":
+          month = "03";
+          break;
+        case "April":
+          month = "04";
+          break;
+        case "May":
+          month = "05";
+          break;
+        case "June":
+          month = "06";
+          break;
+        case "July":
+          month = "07";
+          break;
+        case "August":
+          month = "08";
+          break;
+        case "September":
+          month = "09";
+          break;
+        case "October":
+          month = "10";
+          break;
+        case "November":
+          month = "11";
+          break;
+        case "December":
+          month = "12";
+          break;
+        default:
+          break;
+      }
+    }
+
+    const expenseTransactionsOFMonth =
+      selectedMonth !== "Month"
+        ? expenseTransactionsOfYear.filter(
+            (transaction) => transaction.date.slice(3, 5) === month
+          )
+        : transactions.filter((transaction) => transaction.type !== "income");
+
+    console.log(expenseTransactionsOFMonth);
+
+    const colors = assignColorsToTransactions(expenseTransactionsOFMonth);
     setTransactionColors(colors);
 
-    const expenseTransactionsAll = expenseTransactions.map((transaction) => ({
-      ...transaction,
-      color: colors[transaction.category] || "#000000",
-    }));
+    const expenseTransactionsAll = expenseTransactionsOFMonth.map(
+      (transaction) => ({
+        ...transaction,
+        color: colors[transaction.category] || "#000000",
+      })
+    );
 
     const categorySum = {};
     expenseTransactionsAll.forEach((transaction) => {
@@ -73,7 +140,7 @@ export function DiagramTab() {
     });
     const summedExpenseTransactions = Object.values(categorySum);
     setColoredTransactions(summedExpenseTransactions);
-  }, [transactions]);
+  }, [transactions, selectedYear, selectedMonth]);
 
   useEffect(() => {}, [coloredTransactions]);
 
