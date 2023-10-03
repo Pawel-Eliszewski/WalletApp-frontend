@@ -11,6 +11,7 @@ import { DashboardPage } from "./Pages/DashboardPage/DashboardPage";
 import Loader from "./components/Loader/Loader";
 import { Currency } from "./components/Currency/Currency";
 import { DiagramTab } from "./components/DiagramTab/DiagramTab";
+import { useMedia } from "react-use";
 import "./App.css";
 
 import { HomeTab } from "./components/HomeTab/HomeTab";
@@ -24,6 +25,8 @@ function App() {
     };
     func();
   }, [dispatch]);
+
+  const isMobile = useMedia("(max-width: 767px)");
 
   return isRefreshing ? (
     <Loader />
@@ -48,7 +51,7 @@ function App() {
         >
           <Route index path="/" element={<HomeTab />} />
           <Route path="/statistics" element={<DiagramTab />} />
-          <Route path="/currency" element={<Currency />} />
+          {isMobile && <Route path="/currency" element={<Currency />} />}
         </Route>
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
