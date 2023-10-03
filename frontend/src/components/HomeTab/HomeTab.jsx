@@ -14,8 +14,9 @@ import { paginateTransactions } from "../../utils/pagination";
 import { nanoid } from "nanoid";
 import { Notify } from "notiflix";
 import styles from "./HomeTab.module.css";
-
+import { ButtonAddTransaction } from "../ButtonAddTransaction/ButtonAddTransaction";
 import { setTransactionId } from "../../redux/global/globalSlice";
+import { Balance } from "../Balance/Balance";
 
 export const HomeTab = () => {
   const isMobile = useMedia("(max-width: 767px)");
@@ -63,6 +64,8 @@ export const HomeTab = () => {
 
   return (
     <div className={styles.homeWrapper}>
+      <ButtonAddTransaction />
+      {isMobile && <Balance />}
       <table
         className={styles.tableWrapper}
         style={{ maxHeight: isMobile ? "60vh" : "auto", overflowY: "auto" }}
