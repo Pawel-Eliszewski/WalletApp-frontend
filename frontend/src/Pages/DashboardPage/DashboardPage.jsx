@@ -22,8 +22,6 @@ const MobileDashboard = () => {
       <div className={css.mobileContainer}>
         <Suspense fallback={null}>
           <Navigation />
-          <Balance />
-          <ButtonAddTransaction />
           <ModalAddTransaction />
           {modalEditOpen === true ? <ModalEditTransaction /> : null}
           <ModalLogout />
@@ -48,7 +46,6 @@ const TabletDashboard = () => {
             </div>
             <Currency />
           </div>
-          <ButtonAddTransaction />
           <ModalAddTransaction />
           {modalEditOpen === true ? <ModalEditTransaction /> : null}
           <ModalLogout />
@@ -72,7 +69,6 @@ const DesktopDashboard = () => {
             <Balance />
             <Currency />
           </div>
-          <ButtonAddTransaction />
           <ModalAddTransaction />
           {modalEditOpen === true ? <ModalEditTransaction /> : null}
           <ModalLogout />
