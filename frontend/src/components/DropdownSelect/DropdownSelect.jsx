@@ -8,10 +8,14 @@ import {
   selectTransactionsYears,
 } from "../../redux/finance/selectors";
 
+import { getMonthsForYear } from "../../Utils/getMonthsForYear";
+
 export const DropdownSelect = ({ selectedMonth, onSelect }) => {
   const [isActive, setIsActive] = useState(false);
 
-  const months = useSelector(selectTransactionsMonths);
+  const year = "2020";
+
+  const months = getMonthsForYear(year);
 
   const iconArrowClass = isActive ? css.iconArrowUp : css.iconArrowDown;
   const selectedClass =
