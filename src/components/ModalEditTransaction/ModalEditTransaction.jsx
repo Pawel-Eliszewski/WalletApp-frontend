@@ -19,23 +19,6 @@ export const ModalEditTransaction = () => {
     selectIsModalEditTransactionOpen
   );
 
-  const transactionId = useSelector(selectTransactionId);
-  const allTransactions = useSelector(selectTransactions);
-
-  const selectedTransaction = allTransactions.find(
-    (transaction) => transaction._id === transactionId
-  );
-
-  const fakedTransaction = selectedTransaction
-    ? selectedTransaction
-    : fakeTransaction;
-
-  const [updatedCategory, setUpdatedCategory] = useState(
-    fakedTransaction.category
-  );
-
-  const [updatedDate, setUpdatedDate] = useState(fakedTransaction.date);
-
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
@@ -48,6 +31,23 @@ export const ModalEditTransaction = () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
+
+  const transactionId = useSelector(selectTransactionId);
+  const allTransactions = useSelector(selectTransactions);
+
+  const selectedTransaction = allTransactions.find(
+    (transaction) => transaction._id === transactionId
+  );
+
+  const selectedOrFakeTransaction = selectedTransaction || fakeTransaction;
+
+  const [updatedCategory, setUpdatedCategory] = useState(
+    selectedOrFakeTransaction.category
+  );
+
+  const [updatedDate, setUpdatedDate] = useState(
+    selectedOrFakeTransaction.date
+  );
 
   const handleUpdatedCategory = (category) => {
     setUpdatedCategory(category);
@@ -63,27 +63,24 @@ export const ModalEditTransaction = () => {
     const updatedAmount = form.elements.amount.value;
     const updatedComment = form.elements.comment.value;
 
-    if (!updatedAmount || undefined) {
-      Notify.info("Please provide a valid amount.");
-      return;
-    }
     const cleanedAmount = updatedAmount.replace(/\s/g, "").replace(",", ".");
     const numberUpdatedAmount = parseFloat(cleanedAmount);
 
     dispatch(
       updateTransaction({
-        transactionId: fakedTransaction._id,
-        type: fakedTransaction.type,
+        transactionId: selectedOrFakeTransaction._id,
+        type: selectedOrFakeTransaction.type,
         category: updatedCategory,
-        amount: numberUpdatedAmount,
+        amount: numberUpdatedAmount || selectedOrFakeTransaction.amount,
         date: updatedDate,
-        comment: updatedComment || "",
-        owner: fakedTransaction.owner,
+        comment: updatedComment || selectedOrFakeTransaction.comment,
+        owner: selectedOrFakeTransaction.owner,
       })
     );
+
+    Notify.success("Transaction updated successfully.");
     setUpdatedCategory(updatedCategory);
     document.body.style.overflow = "unset";
-    Notify.success("Transaction updated successfully.");
     form.reset();
     dispatch(setIsModalEditTransactionOpen(false));
   };
@@ -102,8 +99,10 @@ export const ModalEditTransaction = () => {
     }
   };
 
-  const incomeClass = fakedTransaction.type === "income" ? css.income : "";
-  const expenseClass = fakedTransaction.type === "expense" ? css.expense : "";
+  const incomeClass =
+    selectedOrFakeTransaction.type === "income" ? css.income : "";
+  const expenseClass =
+    selectedOrFakeTransaction.type === "expense" ? css.expense : "";
 
   const backdropClass = isModalEditTransactionOpen
     ? css.backdropEditIsOpen
@@ -119,9 +118,9 @@ export const ModalEditTransaction = () => {
           <p className={expenseClass}>Expense</p>
         </div>
         <form id="form" className={css.form} onSubmit={handleSubmit}>
-          {fakedTransaction.type === "expense" ? (
+          {selectedOrFakeTransaction.type === "expense" ? (
             <DropdownMenu
-              category={fakedTransaction.category}
+              category={selectedOrFakeTransaction.category}
               onClick={handleUpdatedCategory}
             />
           ) : null}
@@ -134,18 +133,17 @@ export const ModalEditTransaction = () => {
                 e.target.value = e.target.value.replace(/[^0-9,\\.]/g, "");
               }}
               className={css.money}
-              placeholder={fakedTransaction.amount}
+              placeholder={selectedOrFakeTransaction.amount}
             ></input>
             <Calendar
-              modal="EditTransaction"
-              selectedTransactionDate={fakedTransaction.date}
+              selectedTransactionDate={selectedOrFakeTransaction.date}
               onChange={handleUpdatedDate}
             />
           </div>
           <textarea
             name="comment"
             className={css.comment}
-            placeholder={fakedTransaction.comment}
+            placeholder={selectedOrFakeTransaction.comment}
           ></textarea>
           <button type="submit" className={css.btnGreen}>
             SAVE

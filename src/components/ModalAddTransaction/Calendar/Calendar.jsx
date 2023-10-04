@@ -4,19 +4,23 @@ import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import css from "./Calendar.module.css";
 
-export const Calendar = ({ todayDate, selectedTransactionDate, onChange }) => {
+export const Calendar = ({
+  addTransactionDate,
+  selectedTransactionDate,
+  onChange,
+}) => {
   const [key, setKey] = useState(0);
 
   useEffect(() => {
     setKey((prevKey) => prevKey + 1);
-  }, [selectedTransactionDate]);
+  }, [addTransactionDate, selectedTransactionDate]);
 
   return (
     <div className={css.calendarBox}>
       <Datetime
         key={key}
         className={css.calendar}
-        initialValue={todayDate || selectedTransactionDate}
+        initialValue={addTransactionDate || selectedTransactionDate}
         onChange={(newDate) => onChange(newDate)}
         dateFormat="DD.MM.YYYY"
         timeFormat={false}
@@ -27,7 +31,7 @@ export const Calendar = ({ todayDate, selectedTransactionDate, onChange }) => {
 };
 
 Calendar.propTypes = {
-  todayDate: PropTypes.string,
+  addTransactionDate: PropTypes.string,
   selectedTransactionDate: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
