@@ -21,17 +21,21 @@ export const ModalAddTransaction = () => {
   const user = useSelector(selectUser);
 
   const today = new Date();
-  const options = { year: "numeric", month: "2-digit", day: "2-digit" };
-  const [date, setDate] = useState(today.toLocaleDateString("pl-PL", options));
-  const [type, setType] = useState("expense");
+  const dateOptions = { year: "numeric", month: "2-digit", day: "2-digit" };
+  const [date, setDate] = useState(
+    today.toLocaleDateString("pl-PL", dateOptions)
+  );
+  const [transactionType, setTransactionType] = useState("expense");
   const [category, setCategory] = useState("Select a category");
 
   const handleNewDate = (newDate) => {
     setDate(newDate.format("DD.MM.YYYY"));
   };
 
-  const handleType = () => {
-    type === "expense" ? setType("income") : setType("expense");
+  const handleTransactionType = () => {
+    transactionType === "expense"
+      ? setTransactionType("income")
+      : setTransactionType("expense");
   };
 
   const handleCategory = (category) => {
@@ -46,7 +50,7 @@ export const ModalAddTransaction = () => {
     const numberAmount = parseFloat(cleanedAmount);
     const comment = form.elements.comment.value;
 
-    if (type === "expense" && category === "Select a category") {
+    if (transactionType === "expense" && category === "Select a category") {
       Notify.info("Please select a category before submitting.");
       return;
     } else if (amount === "" || undefined) {
@@ -55,8 +59,8 @@ export const ModalAddTransaction = () => {
     }
     dispatch(
       addTransaction({
-        type: type,
-        category: type === "income" ? "Income" : category,
+        type: transactionType,
+        category: transactionType === "income" ? "Income" : category,
         amount: numberAmount,
         date: date,
         comment: comment,
@@ -96,8 +100,8 @@ export const ModalAddTransaction = () => {
     }
   };
 
-  const incomeClass = type === "income" ? css.income : "";
-  const expenseClass = type === "expense" ? css.expense : "";
+  const incomeClass = transactionType === "income" ? css.income : "";
+  const expenseClass = transactionType === "expense" ? css.expense : "";
 
   const backdropClass = isModalAddTransactionOpen
     ? css.backdropIsOpen
@@ -109,11 +113,11 @@ export const ModalAddTransaction = () => {
         <h2 className={css.title}>Add transaction</h2>
         <div className={css.switchContainer}>
           <p className={incomeClass}>Income</p>
-          <CustomizedMuiSwitch onChange={handleType} />
+          <CustomizedMuiSwitch onChange={handleTransactionType} />
           <p className={expenseClass}>Expense</p>
         </div>
         <form id="form" className={css.form} onSubmit={handleSubmit}>
-          {type === "expense" ? (
+          {transactionType === "expense" ? (
             <DropdownMenu category={category} onClick={handleCategory} />
           ) : null}
           <div className={css.formInnerBox}>
@@ -127,7 +131,7 @@ export const ModalAddTransaction = () => {
               className={css.money}
               placeholder="0.00"
             ></input>
-            <Calendar date={date} onChange={handleNewDate} />
+            <Calendar todayDate={date} onChange={handleNewDate} />
           </div>
           <textarea
             name="comment"

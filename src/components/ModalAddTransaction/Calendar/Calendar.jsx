@@ -1,14 +1,22 @@
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import css from "./Calendar.module.css";
 
-export const Calendar = ({ date, onChange }) => {
+export const Calendar = ({ todayDate, selectedTransactionDate, onChange }) => {
+  const [key, setKey] = useState(0);
+
+  useEffect(() => {
+    setKey((prevKey) => prevKey + 1);
+  }, [selectedTransactionDate]);
+
   return (
     <div className={css.calendarBox}>
       <Datetime
+        key={key}
         className={css.calendar}
-        initialValue={date}
+        initialValue={todayDate || selectedTransactionDate}
         onChange={(newDate) => onChange(newDate)}
         dateFormat="DD.MM.YYYY"
         timeFormat={false}
@@ -19,6 +27,7 @@ export const Calendar = ({ date, onChange }) => {
 };
 
 Calendar.propTypes = {
-  date: PropTypes.string.isRequired,
+  todayDate: PropTypes.string,
+  selectedTransactionDate: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };

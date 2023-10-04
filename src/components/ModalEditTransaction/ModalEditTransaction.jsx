@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import { selectUser } from "../../redux/session/selectors";
 import { selectIsModalEditTransactionOpen } from "../../redux/global/selectors";
 import { selectTransactions } from "../../redux/finance/selectors";
 import { setIsModalEditTransactionOpen } from "../../redux/global/globalSlice";
@@ -16,14 +15,11 @@ export const ModalEditTransaction = () => {
   const modalRef = useRef(null);
   const dispatch = useDispatch();
 
-  // const user = useSelector(selectUser);
-
   const isModalEditTransactionOpen = useSelector(
     selectIsModalEditTransactionOpen
   );
 
   const transactionId = useSelector(selectTransactionId);
-
   const allTransactions = useSelector(selectTransactions);
 
   const selectedTransaction = allTransactions.find(
@@ -52,15 +48,6 @@ export const ModalEditTransaction = () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
-
-  function formatDate(inputDate) {
-    const date = new Date(inputDate);
-    const day = date.getDate().toString().padStart(2, "0");
-    const month = (date.getMonth() + 1).toString().padStart(2, "0");
-    const year = date.getFullYear().toString();
-
-    return `${month}.${day}.${year}`;
-  }
 
   const handleUpdatedCategory = (category) => {
     setUpdatedCategory(category);
@@ -150,7 +137,8 @@ export const ModalEditTransaction = () => {
               placeholder={fakedTransaction.amount}
             ></input>
             <Calendar
-              date={formatDate(fakedTransaction.date)}
+              modal="EditTransaction"
+              selectedTransactionDate={fakedTransaction.date}
               onChange={handleUpdatedDate}
             />
           </div>
