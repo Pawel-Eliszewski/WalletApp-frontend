@@ -8,10 +8,6 @@ import { assignColorsToTransactions } from "../../utils/assignColorsToTransactio
 import { Doughnut } from "react-chartjs-2";
 import { DropdownSelectY } from "../DropdownSelect/DropdownSelect";
 import { DropdownSelect } from "../DropdownSelect/DropdownSelect";
-import {
-  selectTransactionsMonths,
-  selectTransactionsYears,
-} from "../../redux/finance/selectors";
 import styles from "./DiagramTab.module.css";
 import "chart.js/auto";
 
@@ -26,6 +22,7 @@ export function DiagramTab() {
   const [coloredTransactions, setColoredTransactions] = useState([]);
   const [expenseSum, setExpenseSum] = useState(0);
   const [incomeSum, setIncomeSum] = useState(0);
+  const [difference, setDifference] = useState(0);
 
   const handleMonthSelect = (month) => {
     setSelectedMonth(month);
@@ -139,6 +136,9 @@ export function DiagramTab() {
         return sum;
       }, 0)
     );
+
+    setDifference(incomeSum - expenseSum);
+
     const colors = assignColorsToTransactions(expenseTransactionsOFMonth);
     setTransactionColors(colors);
 
@@ -198,7 +198,7 @@ export function DiagramTab() {
         <h2 className={styles.statistics__header}>Statistics</h2>
 
         <div className={styles.doughnut}>
-          <span className={styles.diagram__expenses}>{balance} PLN</span>
+          <span className={styles.diagram__expenses}>{difference} PLN</span>
           <Doughnut
             data={{
               labels: expensesLabels,
