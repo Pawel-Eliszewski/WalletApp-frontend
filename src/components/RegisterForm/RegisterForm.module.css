@@ -61,17 +61,34 @@
   border: none;
   margin-bottom: 20px;
   cursor: pointer;
+  transition: 300ms;
+}
+
+.register__signup:hover,
+.register__signup:focus {
+  background-color: var(--btn-green-hover);
+  transition: 300ms;
 }
 
 .register__signin {
   width: 250px;
   height: 45px;
   background-color: transparent;
-  border: 1px solid #4a56e2;
-  color: #4a56e2;
+  border: none;
+  outline: 1px solid var(--household-products-diagram-color);
+  color: var(--household-products-diagram-color);
   letter-spacing: 2px;
   border-radius: 20px;
   cursor: pointer;
+  transition: 300ms;
+}
+
+.register__signin:hover,
+.register__signin:focus {
+  outline: 1px solid black;
+  transition: 300ms;
+  color: black;
+  background: none;
 }
 
 .error {
@@ -136,6 +153,7 @@
     width: 409px;
     display: flex;
   }
+
   .error {
     top: 50px;
   }

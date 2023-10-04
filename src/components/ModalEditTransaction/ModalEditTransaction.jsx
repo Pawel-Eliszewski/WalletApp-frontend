@@ -1,7 +1,6 @@
-import PropTypes from "prop-types";
 import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectUser } from "../../redux/session/selectors";
+// import { selectUser } from "../../redux/session/selectors";
 import { selectIsModalEditTransactionOpen } from "../../redux/global/selectors";
 import { selectTransactions } from "../../redux/finance/selectors";
 import { setIsModalEditTransactionOpen } from "../../redux/global/globalSlice";
@@ -16,6 +15,8 @@ import css from "./ModalEditTransaction.module.css";
 export const ModalEditTransaction = () => {
   const modalRef = useRef(null);
   const dispatch = useDispatch();
+
+  // const user = useSelector(selectUser);
 
   const isModalEditTransactionOpen = useSelector(
     selectIsModalEditTransactionOpen
@@ -38,8 +39,6 @@ export const ModalEditTransaction = () => {
   );
 
   const [updatedDate, setUpdatedDate] = useState(fakedTransaction.date);
-
-  const user = useSelector(selectUser);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -170,8 +169,4 @@ export const ModalEditTransaction = () => {
       </div>
     </div>
   );
-};
-
-ModalEditTransaction.propTypes = {
-  transactionId: PropTypes.string,
 };

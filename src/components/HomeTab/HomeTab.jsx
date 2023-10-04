@@ -44,7 +44,7 @@ export const HomeTab = () => {
     const month = parts[1].toString().padStart(2, "0");
     const year = parts[2].toString().slice(2);
 
-    return `${month}.${day}.${year}`;
+    return `${day}.${month}.${year}`;
   }
 
   const openModalEditTransaction = (_id) => {

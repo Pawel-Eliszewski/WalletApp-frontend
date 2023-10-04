@@ -42,6 +42,7 @@
 .item-yes:hover,
 .item-yes:focus {
 	background-color: var(--btn-green-hover);
+	transition: 300ms;
 }
 
 .item-no {
