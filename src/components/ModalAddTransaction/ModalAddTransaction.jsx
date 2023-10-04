@@ -101,6 +101,8 @@ export const ModalAddTransaction = () => {
 
   const handleBackdropClick = (e) => {
     if (modalRef.current && !modalRef.current.contains(e.target)) {
+      const form = document.getElementById("form");
+      form.reset();
       document.body.style.overflow = "unset";
       dispatch(setIsModalAddTransactionOpen(false));
     }

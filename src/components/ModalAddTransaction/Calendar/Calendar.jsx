@@ -6,21 +6,21 @@ import css from "./Calendar.module.css";
 
 export const Calendar = ({
   addTransactionDate,
-  selectedTransactionDate,
+  editTransactionDate,
   onChange,
 }) => {
   const [key, setKey] = useState(0);
 
   useEffect(() => {
     setKey((prevKey) => prevKey + 1);
-  }, [addTransactionDate, selectedTransactionDate]);
+  }, [addTransactionDate, editTransactionDate]);
 
   return (
     <div className={css.calendarBox}>
       <Datetime
         key={key}
         className={css.calendar}
-        initialValue={addTransactionDate || selectedTransactionDate}
+        initialValue={addTransactionDate || editTransactionDate}
         onChange={(newDate) => onChange(newDate)}
         dateFormat="DD.MM.YYYY"
         timeFormat={false}
@@ -32,6 +32,6 @@ export const Calendar = ({
 
 Calendar.propTypes = {
   addTransactionDate: PropTypes.string,
-  selectedTransactionDate: PropTypes.string,
+  editTransactionDate: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };

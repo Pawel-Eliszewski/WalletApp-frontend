@@ -94,6 +94,8 @@ export const ModalEditTransaction = () => {
 
   const handleBackdropClick = (e) => {
     if (modalRef.current && !modalRef.current.contains(e.target)) {
+      const form = document.getElementById("form");
+      form.reset();
       document.body.style.overflow = "unset";
       dispatch(setIsModalEditTransactionOpen(false));
     }
@@ -136,7 +138,7 @@ export const ModalEditTransaction = () => {
               placeholder={selectedOrFakeTransaction.amount}
             ></input>
             <Calendar
-              selectedTransactionDate={selectedOrFakeTransaction.date}
+              editTransactionDate={selectedOrFakeTransaction.date}
               onChange={handleUpdatedDate}
             />
           </div>
