@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://pawel-eliszewski.github.io/WalletApp-frontend/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
