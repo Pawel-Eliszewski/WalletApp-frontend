@@ -4,7 +4,7 @@ import { selectUser } from "../../redux/session/selectors";
 import { selectIsModalAddTransactionOpen } from "../../redux/global/selectors";
 import { setIsModalAddTransactionOpen } from "../../redux/global/globalSlice";
 import { addTransaction } from "../../redux/finance/operations";
-import { Calendar } from "./Calendar/Calendar";
+import { Calendar } from "../Calendar/Calendar";
 import { CustomizedMuiSwitch } from "./CustomizedMuiSwitch/CustomizedMuiSwitch";
 import { DropdownMenu } from "../DropdownMenu/DropdownMenu";
 import { Notify } from "notiflix";

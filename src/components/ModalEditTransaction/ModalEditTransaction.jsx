@@ -6,7 +6,7 @@ import { setIsModalEditTransactionOpen } from "../../redux/global/globalSlice";
 import { selectTransactionId } from "../../redux/global/selectors";
 import { updateTransaction } from "../../redux/finance/operations";
 import { DropdownMenu } from "../DropdownMenu/DropdownMenu";
-import { Calendar } from "../ModalAddTransaction/Calendar/Calendar";
+import { Calendar } from "../Calendar/Calendar";
 import { Notify } from "notiflix";
 import { fakeTransaction } from "../../utils/fakeData";
 import css from "./ModalEditTransaction.module.css";

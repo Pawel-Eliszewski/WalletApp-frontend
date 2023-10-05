@@ -21,7 +21,7 @@
 }
 
 .calendar::after {
-    content: url("./assets/icon-calendar.svg");
+    content: url("/assets/icon-calendar.svg");
     top: -1px;
     left: 248px;
     display: block;
