@@ -1,3 +1,11 @@
+.homeWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 380px;
+}
+
 table.tableWrapper {
   overflow: hidden scroll;
   text-align: center;
@@ -98,7 +106,8 @@ span.dataSum[data-type="expense"] {
 
 ul.dataMob {
   list-style: none;
-  width: 290px;
+  width: 100%;
+  min-width: 280px;
   padding: 0;
   border-radius: 10px;
   display: flex;
@@ -115,7 +124,7 @@ ul.dataMob[data-type="income"] {
 }
 
 ul.dataMob:not(:last-child) {
-  margin: 0 auto 8px;
+  margin: 0 auto 10px;
 }
 
 span.headItemMob {
@@ -133,7 +142,8 @@ li.dataItemMob {
   flex-grow: 1;
   align-items: center;
   background-color: white;
-  padding-inline: 15px;
+  padding-right: 15px;
+  padding-left: 10px;
   width: 100%;
 }
 
@@ -153,7 +163,7 @@ li.dataItemMob {
   flex-grow: 1;
   align-items: center;
   justify-content: space-between;
-  min-height: 47px;
+  min-height: 50px;
   line-height: calc(24 / 16);
 }
 
@@ -213,9 +223,8 @@ li.dataItemMob {
 
 @media screen and (min-width: 768px) {
   .homeWrapper {
-    max-width: 728px;
-    padding-top: 20px;
     width: 100%;
+    max-width: 728px;
   }
 
   table.tableWrapper {
@@ -241,11 +250,11 @@ li.dataItemMob {
 
 @media screen and (min-width: 1280px) {
   .homeWrapper {
-    padding-top: 40px;
     flex-shrink: 0;
     flex-grow: 1;
     border-left: 1px solid rgba(231, 229, 242, 1);
     padding-left: 40px;
+    width: 100%;
     max-width: 775px;
   }
 

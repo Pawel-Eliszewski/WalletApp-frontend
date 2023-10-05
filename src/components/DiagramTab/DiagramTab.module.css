@@ -1,21 +1,23 @@
-li {
-  list-style-type: none;
-}
-
-ul {
-  margin-left: 0;
-  padding-left: 0;
+.chart__container {
+  width: 100%;
+  max-width: 380px;
+  max-height: 600px;
 }
 
 .doughnut {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
+  max-width: 380px;
 }
 
 .container {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  flex-direction: column;
   position: relative;
+  width: 100%;
+  max-width: 380px;
 }
 
 .listNames {
@@ -40,19 +42,22 @@ ul {
   padding-right: 20px;
 }
 
-.listTransaction {
-  margin: 0 0 15px 0;
+.listTransaction,
+.listAll,
+.listNames {
+  padding: 0;
+  width: 100%;
 }
 
 .elementTransaction {
   position: relative;
   color: #000;
   display: flex;
+  justify-content: space-between;
   height: 40px;
-  padding-left: 16px;
-  padding-right: 16px;
   align-items: center;
   border-bottom: 1px solid rgba(220, 220, 223, 1);
+  padding-inline: 10px;
 }
 
 .amount {
@@ -70,16 +75,11 @@ ul {
   letter-spacing: 0em;
 }
 
-.listAll {
-  margin: 0;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
 .elementListAll {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
+  padding-inline: 10px;
 }
 
 .elementAllText {
@@ -107,6 +107,8 @@ ul {
 
 .selectContainer {
   display: flex;
+  width: 100%;
+  max-width: 380px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -124,6 +126,7 @@ ul {
 
 .select__month {
   display: flex;
+  width: 100%;
   justify-content: space-around;
   align-items: center;
   margin-top: 20px;
@@ -132,18 +135,17 @@ ul {
 
 .select__year {
   display: flex;
+  width: 100%;
   justify-content: space-around;
   align-items: center;
   margin-bottom: 20px;
 }
 
 .diagram__expenses {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: absolute;
-  top: 135px;
-  left: 120px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   font-size: 20px;
   font-weight: 700;
   line-height: 27px;
@@ -161,19 +163,22 @@ ul {
 
 @media screen and (min-width: 768px) {
   .container {
+    max-width: 100%;
     display: flex;
+    flex-direction: row;
+    align-items: flex-start;
     justify-content: space-around;
     margin: 0;
-    width: 100vw;
   }
 
   .chart__container {
-    width: 300px;
-    height: 600px;
+    width: 100%;
+    max-width: 336px;
   }
 
   .tablet__container {
-    width: 336px;
+    width: 100%;
+    max-width: 336px;
   }
 
   .selectContainer {
@@ -186,16 +191,9 @@ ul {
   }
 
   .doughnut {
-    width: 336px;
+    width: 100%;
+    max-width: 380px;
     height: 336px;
-  }
-
-  .diagram__expenses {
-    top: 150px;
-  }
-
-  .statistics__header {
-    margin-top: 20px;
   }
 }
 
@@ -206,17 +204,17 @@ ul {
   }
 
   .container {
+    justify-content: flex-end;
     max-width: 775px;
     border-left: 1px solid rgba(231, 229, 242, 1);
-    padding-left: 40px;
   }
 
-  .tablet__container {
-    /* margin-top: 70px; */
+  .statistics__header {
+    margin-bottom: 20px;
   }
 
-  .diagram__expenses {
+  /* .diagram__expenses {
     top: 135px;
     left: 105px;
-  }
+  } */
 }

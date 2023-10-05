@@ -4,14 +4,14 @@
     top: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
-    max-width: 320px;
+    max-width: 360px;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
     margin: 0 auto;
     background-color: white;
-    padding-bottom: 25px;
+    padding-block: 25px;
     border-radius: 20px;
 }
 

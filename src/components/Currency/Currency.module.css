@@ -1,15 +1,15 @@
 .currency_sidebar {
   display: flex;
-  justify-content: center;
-  width: 280px;
-  height: 174px;
+  justify-content: space-around;
+  width: 100%;
+  min-width: 280px;
+  min-height: 174px;
   background-image: url(/assets/currency-vector-mobile.svg);
   background-color: rgba(74, 86, 226, 1);
   background-repeat: no-repeat;
   background-position: bottom;
   color: white;
   border-radius: 30px;
-  /* margin-top: 25px; */
 }
 
 .currency_table {
@@ -68,8 +68,8 @@
     line-height: 24px;
     letter-spacing: 0em;
     text-align: left;
-    padding-top: 15px;
-    padding-left: 20px;
+    /* padding-top: 15px;
+    padding-left: 20px; */
   }
 }
 
@@ -79,4 +79,12 @@
     width: 393px;
     background-image: url(/assets/gradient-desktop.svg);
   }
+
+  .currency_body {
+    padding-inline: 30px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .currency_item {}
 }

@@ -5,8 +5,7 @@
 	list-style: none;
 	margin: 0;
 	width: 240px;
-	padding-bottom: 15px;
-	margin-top: 5px;
+	margin-bottom: 20px;
 }
 
 .logo {
@@ -26,10 +25,9 @@
 
 @media (min-width: 768px) {
 	.nav {
-		margin-top: 20px;
-		margin-bottom: 10px;
 		flex-direction: column;
 		gap: 10px;
+		margin-bottom: 25px;
 	}
 
 	.item {
@@ -55,7 +53,7 @@
 		size: 18px;
 		line-height: 27px;
 		margin: 0;
-		transition: font-weight 0.3s linear;
+		/* transition: font-weight 0.3s linear; */
 	}
 
 	.dollar {

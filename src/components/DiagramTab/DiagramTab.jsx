@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from "react-redux";
-import { selectBalance } from "../../redux/finance/selectors";
 import { useState, useEffect } from "react";
 import { selectUser } from "../../redux/session/selectors";
 import { selectTransactions } from "../../redux/finance/selectors";
@@ -8,16 +7,17 @@ import { assignColorsToTransactions } from "../../utils/assignColorsToTransactio
 import { Doughnut } from "react-chartjs-2";
 import { DropdownSelectY } from "../DropdownSelect/DropdownSelect";
 import { DropdownSelect } from "../DropdownSelect/DropdownSelect";
-import styles from "./DiagramTab.module.css";
 import "chart.js/auto";
+import styles from "./DiagramTab.module.css";
 
 export function DiagramTab() {
-  const balance = useSelector(selectBalance);
-  const [selectedMonth, setSelectedMonth] = useState("Month");
-  const [selectedYear, setSelectedYear] = useState("Year");
   const dispatch = useDispatch();
+
   const user = useSelector(selectUser);
   const transactions = useSelector(selectTransactions);
+
+  const [selectedMonth, setSelectedMonth] = useState("Month");
+  const [selectedYear, setSelectedYear] = useState("Year");
   const [transactionColors, setTransactionColors] = useState({});
   const [coloredTransactions, setColoredTransactions] = useState([]);
   const [expenseSum, setExpenseSum] = useState(0);
@@ -27,8 +27,6 @@ export function DiagramTab() {
   const handleMonthSelect = (month) => {
     setSelectedMonth(month);
   };
-
-  // const transactions = selectTransactionsMonths();
 
   const handleYearSelect = (year) => {
     setSelectedYear(year);
@@ -254,7 +252,7 @@ export function DiagramTab() {
           ) : (
             <li className={styles.elementTransaction}>
               <div className={styles.category}>
-                <p>No transactions found</p>
+                <p>No expense transactions found</p>
               </div>
             </li>
           )}

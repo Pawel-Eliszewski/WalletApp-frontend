@@ -37,6 +37,10 @@ ul:focus-visible {
 	outline: none;
 }
 
+li {
+	list-style-type: none;
+}
+
 button:hover,
 button:focus {
 	transition: 300ms;
