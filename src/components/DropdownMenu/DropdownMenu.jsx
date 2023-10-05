@@ -4,6 +4,7 @@ import css from "./DropdownMenu.module.css";
 
 export const DropdownMenu = ({ category, onClick }) => {
   const [isActive, setIsActive] = useState(false);
+  const [updatedCategory, setUpdatedCategory] = useState(null);
 
   let categories = [
     "Main expenses",
@@ -30,7 +31,7 @@ export const DropdownMenu = ({ category, onClick }) => {
         }}
         className={categoryClass}
       >
-        {category}
+        {updatedCategory || category}
         <img className={iconArrowClass} src="./assets/icon-arrow.svg"></img>
       </div>
       <div
@@ -43,6 +44,7 @@ export const DropdownMenu = ({ category, onClick }) => {
             onClick={() => {
               onClick(category);
               setIsActive(!isActive);
+              setUpdatedCategory(category);
             }}
             className={css.item}
           >
