@@ -17,6 +17,7 @@
   font-size: 12px;
   line-height: 1.5;
   text-transform: uppercase;
+  padding-left: 15px;
 }
 
 .balance__amount {
@@ -36,7 +37,7 @@
 /*Tablet*/
 @media screen and (min-width: 768px) {
   .balance {
-    width: 336px;
+    min-width: 336px;
     margin-bottom: 0;
   }
 }
@@ -44,7 +45,7 @@
 /*Desktop*/
 @media screen and (min-width: 1280px) {
   .balance {
-    width: 395px;
+    max-width: 395px;
     margin-top: 5px;
     margin-bottom: 25px;
   }

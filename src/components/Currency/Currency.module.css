@@ -1,8 +1,8 @@
 .currency_sidebar {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   width: 100%;
-  min-width: 280px;
+  max-width: 380px;
   min-height: 174px;
   background-image: url(/assets/currency-vector-mobile.svg);
   background-color: rgba(74, 86, 226, 1);
@@ -29,14 +29,14 @@
 
 .currency_item {
   height: 50px;
-  padding-left: 20px;
+  padding-left: 30px;
   padding-bottom: 10px;
 }
 
 @media screen and (min-width: 768px) {
   .currency_sidebar {
-    width: 336px;
-    height: 182px;
+    max-width: 336px;
+    min-height: 182px;
     background-image: url(/assets/gradient.svg);
   }
 
@@ -57,8 +57,7 @@
     line-height: 27px;
     letter-spacing: 0em;
     text-align: left;
-
-    padding-left: 15px;
+    padding-left: 20px;
   }
 
   .currency_item {
@@ -68,23 +67,23 @@
     line-height: 24px;
     letter-spacing: 0em;
     text-align: left;
-    /* padding-top: 15px;
-    padding-left: 20px; */
+    padding-top: 15px;
+    padding-left: 25px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .currency_sidebar {
-    height: 331px;
-    width: 393px;
+    max-width: 393px;
+    min-height: 331px;
     background-image: url(/assets/gradient-desktop.svg);
   }
 
-  .currency_body {
+  .currency_header {
     padding-inline: 30px;
-    display: flex;
-    justify-content: space-around;
   }
 
-  .currency_item {}
+  .currency_item {
+    padding-left: 35px;
+  }
 }

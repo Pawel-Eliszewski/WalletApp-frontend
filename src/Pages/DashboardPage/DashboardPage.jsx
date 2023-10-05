@@ -56,7 +56,7 @@ const DesktopDashboard = () => {
       <Header />
       <div className={css.desktopContainer}>
         <Suspense fallback={null}>
-          <div className={css.innerWrapper}>
+          <div className={css.desktopInnerWrapper}>
             <Navigation />
             <Balance />
             <Currency />

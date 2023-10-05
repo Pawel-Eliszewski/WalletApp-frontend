@@ -196,7 +196,9 @@ export function DiagramTab() {
         <h2 className={styles.statistics__header}>Statistics</h2>
 
         <div className={styles.doughnut}>
-          <span className={styles.diagram__expenses}>{difference} PLN</span>
+          <span className={styles.diagram__expenses}>
+            {difference.toFixed(2)} PLN
+          </span>
           <Doughnut
             data={{
               labels: expensesLabels,
@@ -246,7 +248,7 @@ export function DiagramTab() {
                   }}
                 ></div>
                 <div className={styles.category}>{category}</div>
-                <div className={styles.amount}>{amount} PLN</div>
+                <div className={styles.amount}>{amount.toFixed(2)} PLN</div>
               </li>
             ))
           ) : (

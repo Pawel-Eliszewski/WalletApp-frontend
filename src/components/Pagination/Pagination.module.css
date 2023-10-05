@@ -4,7 +4,7 @@
   list-style: none;
   cursor: pointer;
   margin-top: 20px;
-  padding-inline: 30px;
+  padding: 0;
 }
 
 .pagination a {

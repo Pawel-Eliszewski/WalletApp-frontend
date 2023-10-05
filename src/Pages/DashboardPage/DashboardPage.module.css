@@ -42,5 +42,13 @@
   background-size: cover;
   background-image: url(/assets/dashboard-background-desktop.png);
   background-position: center;
-  padding: 30px 30px;
+  padding: 40px 40px;
+}
+
+.desktopInnerWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 435px;
 }
