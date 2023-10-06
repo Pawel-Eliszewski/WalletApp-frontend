@@ -1,6 +1,6 @@
 export const fetchCurrency = async (query) => {
   const response = await fetch(
-    `http://api.nbp.pl/api/exchangerates/rates/c/${query}/last/`
+    `https://api.nbp.pl/api/exchangerates/rates/c/${query}/last/`
   );
 
   if (!response.ok) {
