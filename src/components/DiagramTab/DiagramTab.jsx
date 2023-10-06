@@ -190,8 +190,6 @@ export function DiagramTab() {
     },
   };
 
-  console.log(expensesLabels);
-
   return (
     <div className={styles.container}>
       <div className={styles.chart__container}>
