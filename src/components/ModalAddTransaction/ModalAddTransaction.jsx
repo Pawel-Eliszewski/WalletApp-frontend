@@ -21,8 +21,13 @@ export const ModalAddTransaction = () => {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
-        dispatch(setIsModalAddTransactionOpen(false));
+        const form = document.getElementById("form");
+        form.reset();
         document.body.style.overflow = "unset";
+        setTransactionType("expense");
+        setTransactionCategory("Select a category");
+        setAddTransactionDate(formattedTodayDate);
+        dispatch(setIsModalAddTransactionOpen(false));
       }
     };
     document.addEventListener("keydown", handleKeyDown);
@@ -35,9 +40,10 @@ export const ModalAddTransaction = () => {
 
   const today = new Date();
   const dateOptions = { year: "numeric", month: "2-digit", day: "2-digit" };
-  const [addTransactionDate, setAddTransactionDate] = useState(
-    today.toLocaleDateString("pl-PL", dateOptions)
-  );
+  const formattedTodayDate = today.toLocaleDateString("pl-PL", dateOptions);
+  const [addTransactionDate, setAddTransactionDate] =
+    useState(formattedTodayDate);
+
   const [transactionType, setTransactionType] = useState("expense");
   const [transactionCategory, setTransactionCategory] =
     useState("Select a category");
@@ -89,6 +95,8 @@ export const ModalAddTransaction = () => {
     Notify.success("Transaction added successfully.");
     document.body.style.overflow = "unset";
     form.reset();
+    setTransactionType("expense");
+    setTransactionCategory("Select a category");
     dispatch(setIsModalAddTransactionOpen(false));
   };
 
@@ -96,6 +104,9 @@ export const ModalAddTransaction = () => {
     document.body.style.overflow = "unset";
     const form = document.getElementById("form");
     form.reset();
+    setTransactionType("expense");
+    setTransactionCategory("Select a category");
+    setAddTransactionDate(formattedTodayDate);
     dispatch(setIsModalAddTransactionOpen(false));
   };
 
@@ -104,6 +115,9 @@ export const ModalAddTransaction = () => {
       const form = document.getElementById("form");
       form.reset();
       document.body.style.overflow = "unset";
+      setTransactionType("expense");
+      setTransactionCategory("Select a category");
+      setAddTransactionDate(formattedTodayDate);
       dispatch(setIsModalAddTransactionOpen(false));
     }
   };
@@ -121,7 +135,10 @@ export const ModalAddTransaction = () => {
         <h2 className={css.title}>Add transaction</h2>
         <div className={css.switchContainer}>
           <p className={incomeClass}>Income</p>
-          <CustomizedMuiSwitch onChange={handleTransactionTypeChange} />
+          <CustomizedMuiSwitch
+            onChange={handleTransactionTypeChange}
+            transactionType={transactionType}
+          />
           <p className={expenseClass}>Expense</p>
         </div>
         <form id="form" className={css.form} onSubmit={handleSubmit}>

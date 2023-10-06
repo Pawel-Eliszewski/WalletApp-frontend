@@ -47,12 +47,16 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-export const CustomizedMuiSwitch = ({ onChange }) => {
+export const CustomizedMuiSwitch = ({ onChange, transactionType }) => {
   return (
     <FormGroup>
       <FormControlLabel
         control={
-          <MaterialUISwitch sx={{ m: 1 }} defaultChecked onChange={onChange} />
+          <MaterialUISwitch
+            sx={{ m: 1 }}
+            onChange={onChange}
+            checked={transactionType === "expense" ? true : false}
+          />
         }
       />
     </FormGroup>
@@ -61,4 +65,5 @@ export const CustomizedMuiSwitch = ({ onChange }) => {
 
 CustomizedMuiSwitch.propTypes = {
   onChange: PropTypes.func.isRequired,
+  transactionType: PropTypes.string.isRequired,
 };

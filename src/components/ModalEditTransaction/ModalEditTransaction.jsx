@@ -22,8 +22,12 @@ export const ModalEditTransaction = () => {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
-        dispatch(setIsModalEditTransactionOpen(false));
+        const amount = document.getElementById("amount");
+        amount.value = null;
+        const textarea = document.getElementById("textarea");
+        textarea.value = "";
         document.body.style.overflow = "unset";
+        dispatch(setIsModalEditTransactionOpen(false));
       }
     };
     document.addEventListener("keydown", handleKeyDown);
@@ -61,10 +65,10 @@ export const ModalEditTransaction = () => {
     e.preventDefault();
     const form = e.target;
     const updatedAmount = form.elements.amount.value;
-    const updatedComment = form.elements.comment.value;
-
     const cleanedAmount = updatedAmount.replace(/\s/g, "").replace(",", ".");
     const numberUpdatedAmount = parseFloat(cleanedAmount);
+
+    const updatedComment = form.elements.comment.value;
 
     dispatch(
       updateTransaction({
@@ -86,16 +90,20 @@ export const ModalEditTransaction = () => {
   };
 
   const handleModalClose = () => {
-    const form = document.getElementById("form");
-    form.reset();
+    const amount = document.getElementById("amount");
+    amount.value = null;
+    const textarea = document.getElementById("textarea");
+    textarea.value = "";
     document.body.style.overflow = "unset";
     dispatch(setIsModalEditTransactionOpen(false));
   };
 
   const handleBackdropClick = (e) => {
     if (modalRef.current && !modalRef.current.contains(e.target)) {
-      const form = document.getElementById("form");
-      form.reset();
+      const amount = document.getElementById("amount");
+      amount.value = null;
+      const textarea = document.getElementById("textarea");
+      textarea.value = "";
       document.body.style.overflow = "unset";
       dispatch(setIsModalEditTransactionOpen(false));
     }
@@ -128,6 +136,7 @@ export const ModalEditTransaction = () => {
           ) : null}
           <div className={css.formInnerBox}>
             <input
+              id="amount"
               name="amount"
               type="text"
               pattern="[0-9]+([,\\.][0-9]+)?"
@@ -135,7 +144,7 @@ export const ModalEditTransaction = () => {
                 e.target.value = e.target.value.replace(/[^0-9,\\.]/g, "");
               }}
               className={css.money}
-              placeholder={selectedOrFakeTransaction.amount.toFixed(2)}
+              placeholder={selectedOrFakeTransaction.amount.toFixed(2) || ""}
             ></input>
             <Calendar
               editTransactionDate={selectedOrFakeTransaction.date}
@@ -143,6 +152,7 @@ export const ModalEditTransaction = () => {
             />
           </div>
           <textarea
+            id="textarea"
             name="comment"
             className={css.comment}
             placeholder={selectedOrFakeTransaction.comment}
