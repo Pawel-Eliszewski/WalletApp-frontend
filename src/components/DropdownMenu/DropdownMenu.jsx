@@ -31,7 +31,7 @@ export const DropdownMenu = ({ category, onClick }) => {
         }}
         className={categoryClass}
       >
-        {category || updatedCategory}
+        {updatedCategory}
         <img
           className={iconArrowClass}
           src="/assets/icon-arrow.svg"
@@ -42,17 +42,17 @@ export const DropdownMenu = ({ category, onClick }) => {
         className={css.dropdownContent}
         style={{ display: isActive ? "block" : "none" }}
       >
-        {categories.map((category) => (
+        {categories.map((item) => (
           <div
-            key={category}
+            key={item}
             onClick={() => {
-              onClick(category);
+              onClick(item);
               setIsActive(!isActive);
-              setUpdatedCategory(category);
+              setUpdatedCategory(item);
             }}
             className={css.item}
           >
-            {category}
+            {item}
           </div>
         ))}
       </div>
