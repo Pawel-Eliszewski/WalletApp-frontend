@@ -1,10 +1,22 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { selectIsModalEditTransactionOpen } from "../../redux/global/selectors";
 import css from "./DropdownMenu.module.css";
 
 export const DropdownMenu = ({ category, onClick }) => {
   const [isActive, setIsActive] = useState(false);
   const [updatedCategory, setUpdatedCategory] = useState(null);
+
+  const isModalEditTransactionOpen = useSelector(
+    selectIsModalEditTransactionOpen
+  );
+
+  useEffect(() => {
+    !isModalEditTransactionOpen
+      ? setUpdatedCategory(null)
+      : setUpdatedCategory(category);
+  }, [isModalEditTransactionOpen]);
 
   let categories = [
     "Main expenses",
