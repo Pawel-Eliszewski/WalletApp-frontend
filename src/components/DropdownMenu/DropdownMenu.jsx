@@ -24,7 +24,7 @@ export const DropdownMenu = ({ category, onClick }) => {
     category !== "Select a category" ? css.dropdownBtnActive : css.dropdownBtn;
 
   return (
-    <div className={css.dropdown}>
+    <div className={css.dropdown} role="button" aria-expanded>
       <div
         onClick={() => {
           setIsActive(!isActive);
@@ -32,7 +32,11 @@ export const DropdownMenu = ({ category, onClick }) => {
         className={categoryClass}
       >
         {updatedCategory || category}
-        <img className={iconArrowClass} src="./assets/icon-arrow.svg"></img>
+        <img
+          className={iconArrowClass}
+          src="/assets/icon-arrow.svg"
+          aria-hidden="true"
+        ></img>
       </div>
       <div
         className={css.dropdownContent}

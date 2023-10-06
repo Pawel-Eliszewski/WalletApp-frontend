@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useMedia } from "react-use";
-import { setIsModalEditTransactionOpen } from "../../redux/global/globalSlice";
+import {
+  setIsModalEditTransactionOpen,
+  setTransactionId,
+} from "../../redux/global/globalSlice";
 import {
   fetchTransactions,
   deleteTransaction,
@@ -10,13 +13,12 @@ import {
 import { selectUser } from "../../redux/session/selectors";
 import { selectTransactions } from "../../redux/finance/selectors";
 import { Pagination } from "../Pagination/Pagination";
+import { ButtonAddTransaction } from "../ButtonAddTransaction/ButtonAddTransaction";
+import { Balance } from "../Balance/Balance";
 import { paginateTransactions } from "../../utils/pagination";
 import { nanoid } from "nanoid";
 import { Notify } from "notiflix";
 import styles from "./HomeTab.module.css";
-import { ButtonAddTransaction } from "../ButtonAddTransaction/ButtonAddTransaction";
-import { setTransactionId } from "../../redux/global/globalSlice";
-import { Balance } from "../Balance/Balance";
 
 export const HomeTab = () => {
   const isMobile = useMedia("(max-width: 767px)");
@@ -34,6 +36,10 @@ export const HomeTab = () => {
   useEffect(() => {
     dispatch(fetchTransactions(user.id));
   }, []);
+
+  const handleItemOffset = (event) => {
+    setItemOffset(event);
+  };
 
   function formatDate(inputDate) {
     const parts = inputDate.split(".");
@@ -66,10 +72,7 @@ export const HomeTab = () => {
     <div className={styles.homeWrapper}>
       <ButtonAddTransaction />
       {isMobile && <Balance />}
-      <table
-        className={styles.tableWrapper}
-        style={{ maxHeight: isMobile ? "60vh" : "auto", overflowY: "auto" }}
-      >
+      <table className={styles.tableWrapper}>
         {!isMobile && (
           <>
             <thead>
@@ -120,7 +123,7 @@ export const HomeTab = () => {
                         >
                           <img
                             className={styles.btnIcon}
-                            src={"./assets/icon-pen.svg"}
+                            src={"/assets/icon-pen.svg"}
                           />
                         </button>
                         <button
@@ -182,7 +185,7 @@ export const HomeTab = () => {
                   >
                     <img
                       className={styles.btnIcon}
-                      src={"./assets/icon-pen.svg"}
+                      src={"/assets/icon-pen.svg"}
                     />
                     Edit
                   </button>
@@ -194,7 +197,7 @@ export const HomeTab = () => {
       )}
 
       {pageCount > 1 && (
-        <Pagination pageCount={pageCount} setItemOffset={setItemOffset} />
+        <Pagination pageCount={pageCount} setItemOffset={handleItemOffset} />
       )}
     </div>
   );

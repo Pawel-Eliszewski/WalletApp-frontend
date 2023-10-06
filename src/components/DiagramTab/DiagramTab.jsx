@@ -3,10 +3,10 @@ import { useState, useEffect } from "react";
 import { selectUser } from "../../redux/session/selectors";
 import { selectTransactions } from "../../redux/finance/selectors";
 import { fetchTransactions } from "../../redux/finance/operations";
-import { assignColorsToTransactions } from "../../utils/assignColorsToTransactions";
 import { Doughnut } from "react-chartjs-2";
-import { DropdownSelectY } from "../DropdownSelect/DropdownSelect";
-import { DropdownSelect } from "../DropdownSelect/DropdownSelect";
+import { DropdownSelectYear } from "../DropdownSelect/DropdownSelect";
+import { DropdownSelectMonth } from "../DropdownSelect/DropdownSelect";
+import { assignColorsToTransactions } from "../../utils/assignColorsToTransactions";
 import "chart.js/auto";
 import styles from "./DiagramTab.module.css";
 
@@ -218,14 +218,14 @@ export function DiagramTab() {
       <div className={styles.tablet__container}>
         <div className={styles.selectContainer}>
           <label className={styles.select__month}>
-            <DropdownSelect
+            <DropdownSelectMonth
               selectedYear={selectedYear}
               selectedMonth={selectedMonth}
               onSelect={handleMonthSelect}
             />
           </label>
           <label className={styles.select__year}>
-            <DropdownSelectY
+            <DropdownSelectYear
               selectedYear={selectedYear}
               onSelect={handleYearSelect}
             />

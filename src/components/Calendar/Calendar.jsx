@@ -25,6 +25,9 @@ export const Calendar = ({
         dateFormat="DD.MM.YYYY"
         timeFormat={false}
         closeOnSelect="true"
+        inputProps={{
+          readOnly: true,
+        }}
       />
     </div>
   );

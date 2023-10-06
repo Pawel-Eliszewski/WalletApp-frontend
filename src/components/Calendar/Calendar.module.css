@@ -10,9 +10,11 @@
 }
 
 .calendar input {
+    cursor: pointer;
     width: 100%;
     border: none;
     padding-left: 12px;
+    background: transparent;
 }
 
 .calendar input:focus-visible {
@@ -27,16 +29,10 @@
     display: block;
     margin-bottom: 5px;
     position: absolute;
-    cursor: pointer;
+    z-index: -1;
 }
 
 @media screen and (min-width: 767px) {
-
-    .calendarBox,
-    .calendarBox input {
-        width: 181px;
-    }
-
     .calendar::after {
         left: 143px;
     }

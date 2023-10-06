@@ -7,6 +7,7 @@
   --color-four: #110021;
   --light-size: 3px;
 }
+
 .s {
   background-color: #110021;
   width: 100vw;
@@ -101,16 +102,14 @@
 .Loader__Circle:nth-of-type(2) {
   box-shadow: inset 1px 0 0 1px #ff1744, 3px 0px 0 3px #ff1744;
   box-shadow: inset 1px 0 0 1px var(--color-two, #ff1744),
-    var(--light-size, 4px) 0px 0 var(--light-size, 4px)
-      var(--color-two, #ff1744);
+    var(--light-size, 4px) 0px 0 var(--light-size, 4px) var(--color-two, #ff1744);
   transform-origin: 49.5% 49.8%;
 }
 
 .Loader__Circle:nth-of-type(3) {
   box-shadow: inset 1px 0 0 1px #ffff8d, 0 3px 0 3px #ffff8d;
   box-shadow: inset 1px 0 0 1px var(--color-three, #ffff8d),
-    0 var(--light-size, 4px) 0 var(--light-size, 4px)
-      var(--color-three, #ffff8d);
+    0 var(--light-size, 4px) 0 var(--light-size, 4px) var(--color-three, #ffff8d);
   transform-origin: 49.8% 49.8%;
 }
 

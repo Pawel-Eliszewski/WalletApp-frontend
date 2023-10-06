@@ -135,7 +135,7 @@ export const ModalEditTransaction = () => {
                 e.target.value = e.target.value.replace(/[^0-9,\\.]/g, "");
               }}
               className={css.money}
-              placeholder={selectedOrFakeTransaction.amount}
+              placeholder={selectedOrFakeTransaction.amount.toFixed(2)}
             ></input>
             <Calendar
               editTransactionDate={selectedOrFakeTransaction.date}
