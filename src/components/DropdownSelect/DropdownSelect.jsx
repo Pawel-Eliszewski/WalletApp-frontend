@@ -17,17 +17,12 @@ export const DropdownSelectMonth = ({
       const handleKeyDown = (e) => {
         switch (e.key) {
           case "ArrowUp":
-            // Obsługa strzałki w górę - przechodzenie do poprzedniego elementu
-            e.preventDefault(); // Zapobiega przewijaniu strony
-            // Dodaj logikę do przechodzenia do poprzedniego elementu na liście
+            e.preventDefault();
             break;
           case "ArrowDown":
-            // Obsługa strzałki w dół - przechodzenie do następnego elementu
-            e.preventDefault(); // Zapobiega przewijaniu strony
-            // Dodaj logikę do przechodzenia do następnego elementu na liście
+            e.preventDefault();
             break;
           case "Escape":
-            // Obsługa klawisza Escape - zamknięcie menu
             setIsActive(false);
             break;
           default:

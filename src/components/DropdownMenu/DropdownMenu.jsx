@@ -31,7 +31,7 @@ export const DropdownMenu = ({ category, onClick }) => {
         }}
         className={categoryClass}
       >
-        {updatedCategory || category}
+        {category || updatedCategory}
         <img
           className={iconArrowClass}
           src="/assets/icon-arrow.svg"
