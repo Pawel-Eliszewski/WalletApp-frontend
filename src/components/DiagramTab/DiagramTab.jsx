@@ -196,7 +196,7 @@ export function DiagramTab() {
         <h2 className={styles.statistics__header}>Statistics</h2>
 
         <div className={styles.doughnut}>
-          <span className={styles.diagram__expenses}>
+          <span className={styles.diagram__balance}>
             {difference.toFixed(2)} PLN
           </span>
           <Doughnut

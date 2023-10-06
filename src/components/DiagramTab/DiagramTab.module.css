@@ -12,6 +12,10 @@
   max-width: 380px;
 }
 
+.doughnut canvas {
+  z-index: 2;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -141,7 +145,7 @@
   margin-bottom: 20px;
 }
 
-.diagram__expenses {
+.diagram__balance {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -212,9 +216,4 @@
   .statistics__header {
     margin-bottom: 20px;
   }
-
-  /* .diagram__expenses {
-    top: 135px;
-    left: 105px;
-  } */
 }
