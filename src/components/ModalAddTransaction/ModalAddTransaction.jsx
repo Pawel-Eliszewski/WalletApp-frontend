@@ -19,6 +19,15 @@ export const ModalAddTransaction = () => {
   );
 
   useEffect(() => {
+    const form = document.getElementById("form");
+    form.reset();
+    document.body.style.overflow = "unset";
+    setTransactionType("expense");
+    setTransactionCategory("Select a category");
+    setAddTransactionDate(formattedTodayDate);
+  }, [isModalAddTransactionOpen]);
+
+  useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
         const form = document.getElementById("form");

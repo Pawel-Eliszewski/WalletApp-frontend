@@ -1,7 +1,10 @@
 import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { selectIsModalEditTransactionOpen } from "../../redux/global/selectors";
+import {
+  selectIsModalEditTransactionOpen,
+  selectIsModalAddTransactionOpen,
+} from "../../redux/global/selectors";
 import css from "./DropdownMenu.module.css";
 
 export const DropdownMenu = ({ category, onClick }) => {
@@ -11,6 +14,14 @@ export const DropdownMenu = ({ category, onClick }) => {
   const isModalEditTransactionOpen = useSelector(
     selectIsModalEditTransactionOpen
   );
+
+  const isModalAddTransactionOpen = useSelector(
+    selectIsModalAddTransactionOpen
+  );
+
+  useEffect(() => {
+    setUpdatedCategory("Select a category");
+  }, [isModalAddTransactionOpen]);
 
   useEffect(() => {
     !isModalEditTransactionOpen

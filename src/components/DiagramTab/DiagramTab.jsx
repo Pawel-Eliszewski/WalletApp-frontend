@@ -93,7 +93,7 @@ export function DiagramTab() {
       }
     }
 
-    const expenseTransactionsOFMonth =
+    const expenseTransactionsOfMonth =
       selectedMonth !== "Month"
         ? expenseTransactionsOfYear.filter(
             (transaction) => transaction.date.slice(3, 5) === month
@@ -110,7 +110,7 @@ export function DiagramTab() {
           )
         : transactions.filter((transaction) => transaction.type === "income");
 
-    const incomeTransactionsOFMonth =
+    const incomeTransactionsOfMonth =
       selectedMonth !== "Month"
         ? incomeTransactionsOfYear.filter(
             (transaction) => transaction.date.slice(3, 5) === month
@@ -118,7 +118,7 @@ export function DiagramTab() {
         : transactions.filter((transaction) => transaction.type === "income");
 
     setExpenseSum(
-      expenseTransactionsOFMonth.reduce((sum, transaction) => {
+      expenseTransactionsOfMonth.reduce((sum, transaction) => {
         if (transaction.type === "expense") {
           sum += transaction.amount;
         }
@@ -127,7 +127,7 @@ export function DiagramTab() {
     );
 
     setIncomeSum(
-      incomeTransactionsOFMonth.reduce((sum, transaction) => {
+      incomeTransactionsOfMonth.reduce((sum, transaction) => {
         if (transaction.type === "income") {
           sum += transaction.amount;
         }
@@ -137,10 +137,10 @@ export function DiagramTab() {
 
     setDifference(incomeSum - expenseSum);
 
-    const colors = assignColorsToTransactions(expenseTransactionsOFMonth);
+    const colors = assignColorsToTransactions(expenseTransactionsOfMonth);
     setTransactionColors(colors);
 
-    const expenseTransactionsAll = expenseTransactionsOFMonth.map(
+    const expenseTransactionsAll = expenseTransactionsOfMonth.map(
       (transaction) => ({
         ...transaction,
         color: colors[transaction.category] || "#000000",
@@ -190,6 +190,8 @@ export function DiagramTab() {
     },
   };
 
+  console.log(expensesLabels);
+
   return (
     <div className={styles.container}>
       <div className={styles.chart__container}>
@@ -201,12 +203,12 @@ export function DiagramTab() {
           </span>
           <Doughnut
             data={{
-              labels: expensesLabels,
+              labels: expensesLabels.length > 0 ? expensesLabels : ["Income"],
               datasets: [
                 {
-                  data: expensesData,
+                  data: expensesData.length > 0 ? expensesData : [incomeSum],
                   backgroundColor: expensesLabels.map(
-                    (category) => transactionColors[category] || "#black"
+                    (category) => transactionColors[category]
                   ),
                 },
               ],
