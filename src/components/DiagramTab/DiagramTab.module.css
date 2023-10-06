@@ -1,0 +1,220 @@
+.chart__container {
+  width: 100%;
+  max-width: 380px;
+  max-height: 600px;
+}
+
+.doughnut {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  max-width: 380px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+}
+
+.listNames {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  margin-top: 0;
+  margin-bottom: 9px;
+  border-radius: 29px;
+  align-items: center;
+  background-color: #fff;
+}
+
+.nameElement {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 27px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.listTransaction,
+.listAll,
+.listNames {
+  padding: 0;
+  width: 100%;
+}
+
+.elementTransaction {
+  position: relative;
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  align-items: center;
+  border-bottom: 1px solid rgba(220, 220, 223, 1);
+  padding-inline: 10px;
+}
+
+.amount {
+  margin-left: auto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0em;
+}
+
+.category {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0em;
+}
+
+.elementListAll {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding-inline: 10px;
+}
+
+.elementAllText {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.elementAllExpenses {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(255, 101, 150, 1);
+}
+
+.elementAllIncome {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(36, 204, 167, 1);
+}
+
+.selectContainer {
+  display: flex;
+  width: 100%;
+  max-width: 380px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.statistics__header {
+  margin: 0 auto;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 45px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.select__month {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.select__year {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.diagram__expenses {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 27px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #000;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 1px;
+  margin-right: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin: 0;
+  }
+
+  .chart__container {
+    width: 100%;
+    max-width: 336px;
+  }
+
+  .tablet__container {
+    width: 100%;
+    max-width: 336px;
+  }
+
+  .selectContainer {
+    flex-direction: row;
+  }
+
+  .select__year {
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  .doughnut {
+    width: 100%;
+    max-width: 380px;
+    height: 336px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .doughnut {
+    width: 288px;
+    height: 288px;
+  }
+
+  .container {
+    justify-content: flex-end;
+    max-width: 775px;
+    border-left: 1px solid rgba(231, 229, 242, 1);
+  }
+
+  .statistics__header {
+    margin-bottom: 20px;
+  }
+
+  /* .diagram__expenses {
+    top: 135px;
+    left: 105px;
+  } */
+}

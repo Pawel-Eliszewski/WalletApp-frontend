@@ -1,0 +1,54 @@
+.mobileContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: calc(100vh - 70px);
+  background-color: rgba(231, 234, 242, 1);
+  padding: 20px 20px;
+}
+
+.tabletContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  min-height: calc(100vh - 70px);
+  background-image: url(/assets/dashboard-background-tablet.png);
+  background-size: cover;
+  background-position: center;
+  padding: 20px 20px;
+}
+
+.tabletWrapper {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.tabletInnerBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.desktopContainer {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  background-size: cover;
+  background-image: url(/assets/dashboard-background-desktop.png);
+  background-position: center;
+  padding: 40px 40px;
+}
+
+.desktopInnerWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 435px;
+}

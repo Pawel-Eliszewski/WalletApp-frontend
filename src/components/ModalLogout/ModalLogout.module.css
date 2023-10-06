@@ -1,0 +1,108 @@
+.container {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 300px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: column;
+	margin: 0 auto;
+	background-color: white;
+	padding-bottom: 25px;
+	border-radius: 20px;
+	z-index: 10;
+}
+
+.question {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.buttons {
+	display: flex;
+	justify-content: space-evenly;
+	width: 100%;
+}
+
+.item-yes {
+	background-color: var(--primary-income-color);
+	width: 100px;
+	height: 40px;
+	border-radius: 20px;
+	border: none;
+	cursor: pointer;
+	color: white;
+	transition: 300ms;
+}
+
+.item-yes:hover,
+.item-yes:focus {
+	background-color: var(--btn-green-hover);
+	transition: 300ms;
+}
+
+.item-no {
+	background: none;
+	width: 100px;
+	height: 40px;
+	border-radius: 20px;
+	border: none;
+	outline: 1px solid var(--household-products-diagram-color);
+	cursor: pointer;
+	color: var(--household-products-diagram-color);
+	transition: 300ms;
+}
+
+.item-no:hover,
+.item-no:focus {
+	outline: 1px solid black;
+	transition: 300ms;
+	color: black;
+	background: none;
+}
+
+.backdrop {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	transform: scale(0);
+	transition-duration: 250ms;
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+}
+
+.backdropIsOpen {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+	visibility: visible;
+	transform: scale(1);
+	background-color: rgba(0, 0, 0, 0.25);
+	transition-duration: 250ms;
+	pointer-events: all;
+	transform: none;
+	z-index: 10;
+}
+
+@media screen and (min-width: 768px) {
+	.container {
+		position: fixed;
+		z-index: 4;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		border-radius: 20px;
+		padding-top: 40px;
+		padding-bottom: 60px;
+	}
+}

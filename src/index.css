@@ -1,0 +1,53 @@
+:root {
+	--primary-gray-font-color: #bdbdbd;
+	--secondary-gray-font-color: #e0e0e0;
+	--primary-expense-color: #ff6596;
+	--primary-income-color: #24cca7;
+	--main-expenses-diagram-color: #fed057;
+	--products-diagram-color: #ffd8d0;
+	--car-diagram-color: #ffd8d0;
+	--self-care-diagram-color: #ffd8d0;
+	--child-care-diagram-color: #6e78e8;
+	--household-products-diagram-color: #4a56e2;
+	--education-diagram-color: #81e1ff;
+	--other-expenses-diagram-color: #00ad84;
+	--btn-green-hover: #1eb191;
+}
+
+body {
+	color: #000000;
+	font-family: "Circe", sans-serif, "Poppins", sans-serif;
+	margin: 0;
+	padding: 0;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+	display: none;
+}
+
+a {
+	text-decoration: none;
+	color: #000000;
+}
+
+ul:focus-visible {
+	outline: none;
+}
+
+li {
+	list-style-type: none;
+}
+
+button:hover,
+button:focus {
+	transition: 300ms;
+	cursor: pointer;
+}
+
+button:focus-visible {
+	outline: none;
+	border: none;
+}

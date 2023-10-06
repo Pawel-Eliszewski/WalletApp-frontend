@@ -1,0 +1,264 @@
+.homeWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 380px;
+}
+
+table.tableWrapper {
+  overflow: hidden scroll;
+  text-align: center;
+}
+
+tr.tableHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  line-height: 27px;
+  height: 58px;
+  border-radius: 30px;
+  background-color: white;
+  width: 728px;
+  padding-left: 20px;
+  padding-right: 155px;
+}
+
+th.tableHeadItem:nth-child(2) {
+  padding-left: 10px;
+}
+
+th.tableHeadItem:nth-child(4) {
+  margin-right: 60px;
+}
+
+tr.data {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  word-wrap: break-word;
+  font-size: 16px;
+  line-height: 24px;
+  min-height: 52px;
+  width: 728px;
+  padding-inline: 10px;
+}
+
+tr.data:not(:last-child)::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 10px;
+  bottom: 0;
+  width: 680px;
+  border: 1px solid #dcdcdf;
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+}
+
+td.dataItem {
+  color: var(--primary-text-color);
+  font-weight: 400;
+  font-size: 16px;
+}
+
+td.dataItem:nth-child(1) {
+  width: 70px;
+}
+
+td.dataItem:nth-child(2) {
+  width: 20px;
+}
+
+td.dataItem:nth-child(3) {
+  width: 80px;
+}
+
+td.dataItem:nth-child(4) {
+  width: 110px;
+}
+
+td.dataItem:nth-child(5) {
+  width: 70px;
+}
+
+td.dataItem:nth-child(6) {
+  width: 90px;
+}
+
+span.dataComment {
+  width: 120px;
+  text-align: end;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre-line;
+  padding-block: 5px;
+}
+
+span.dataSum[data-type="income"] {
+  color: var(--primary-income-color);
+}
+
+span.dataSum[data-type="expense"] {
+  color: var(--primary-expense-color);
+}
+
+ul.dataMob {
+  list-style: none;
+  width: 100%;
+  min-width: 280px;
+  padding: 0;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+ul.dataMob[data-type="expense"] {
+  border-left: 5px solid var(--primary-expense-color);
+}
+
+ul.dataMob[data-type="income"] {
+  border-left: 5px solid var(--primary-income-color);
+}
+
+ul.dataMob:not(:last-child) {
+  margin: 0 auto 10px;
+}
+
+span.headItemMob {
+  display: block;
+  text-align: end;
+  max-width: 110px;
+  white-space: nowrap;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+li.dataItemMob {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  background-color: white;
+  padding-right: 15px;
+  padding-left: 10px;
+  width: 100%;
+}
+
+li.dataItemMob:first-child {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+li.dataItemMob:not(:last-child) {
+  border-bottom: 1px solid #dcdcdf;
+}
+
+li.dataItemMob {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 50px;
+  line-height: calc(24 / 16);
+}
+
+.dataItemBtnEdit {
+  background: none;
+  border: none;
+  transform: scale(1);
+  transition: 200ms;
+}
+
+.dataItemBtnEdit:focus,
+.dataItemBtnEdit:hover {
+  outline: none;
+  border: none;
+  background: none;
+}
+
+.dataItemBtnDelete {
+  background-color: var(--primary-income-color);
+  font-size: 12px;
+  width: 67px;
+  height: 26px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: 300ms;
+}
+
+.dataItemBtnDelete:focus,
+.dataItemBtnDelete:hover {
+  background-color: var(--btn-green-hover);
+}
+
+.buttonsWrapperMob {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: space-between;
+  height: 47px;
+  line-height: calc(24 / 16);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: white;
+  padding-inline: 15px;
+}
+
+.buttonsWrapper {
+  display: flex;
+}
+
+.btnIcon {
+  margin-right: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .homeWrapper {
+    width: 100%;
+    max-width: 728px;
+  }
+
+  table.tableWrapper {
+    margin: 0 auto;
+  }
+
+  .data {
+    max-width: 728px;
+  }
+
+  .dataItemBtnEdit {
+    padding-inline: 0;
+  }
+
+  .dataItemBtnEdit:hover,
+  .dataItemBtnEdit:focus {
+    transform: scale(1.1);
+    transition: 200ms;
+    outline: none;
+    background: none;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .homeWrapper {
+    flex-shrink: 0;
+    flex-grow: 1;
+    border-left: 1px solid rgba(231, 229, 242, 1);
+    padding-left: 40px;
+    width: 100%;
+    max-width: 775px;
+  }
+
+  table.tableWrapper {
+    max-height: 65vh;
+  }
+}

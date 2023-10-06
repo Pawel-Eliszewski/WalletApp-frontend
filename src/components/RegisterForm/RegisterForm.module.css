@@ -1,0 +1,160 @@
+.register {
+  display: flex;
+  min-width: 320px;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.register__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgba(189, 189, 189, 0.7);
+}
+
+.field {
+  border-bottom: 1px solid rgba(189, 189, 189, 0.7);
+  margin-bottom: 30px;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+.fieldimg {
+  margin-right: 20px;
+  margin-left: 15px;
+}
+
+.email {
+  margin-right: 15px;
+  margin-left: 10px;
+}
+
+.register__field {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 18px;
+  color: rgba(189, 189, 189, 1);
+}
+
+.register__header {
+  display: flex;
+  margin-top: -40px;
+  margin-bottom: 20px;
+}
+
+.register__header img {
+  margin-right: 10px;
+}
+
+.register__signup {
+  width: 250px;
+  height: 45px;
+  background-color: var(--primary-income-color);
+  color: white;
+  letter-spacing: 2px;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: 300ms;
+}
+
+.register__signup:hover,
+.register__signup:focus {
+  background-color: var(--btn-green-hover);
+  transition: 300ms;
+}
+
+.register__signin {
+  width: 250px;
+  height: 45px;
+  background-color: transparent;
+  border: none;
+  outline: 1px solid var(--household-products-diagram-color);
+  color: var(--household-products-diagram-color);
+  letter-spacing: 2px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 300ms;
+}
+
+.register__signin:hover,
+.register__signin:focus {
+  outline: 1px solid black;
+  transition: 300ms;
+  color: black;
+  background: none;
+}
+
+.error {
+  color: red;
+  font-size: 10px;
+  position: absolute;
+  top: 33px;
+}
+
+.h2 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 45px;
+}
+
+.meter {
+  position: absolute;
+  background-color: rgba(229, 241, 239, 1);
+  height: 4px;
+  width: 100%;
+  top: 45px;
+  border-radius: 2px;
+}
+
+.meter__element {
+  position: absolute;
+  background-color: rgba(36, 204, 167, 1);
+  height: 4px;
+  width: 40%;
+  top: 0;
+  border-radius: 2px;
+}
+
+@media (min-width: 768px) {
+  .register {
+    width: 533px;
+    height: 616px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 1);
+    z-index: 9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .register__form {
+    display: flex;
+    align-items: center;
+  }
+
+  .register__field {
+    width: 380px;
+  }
+
+  .register__header {
+    margin-top: -40px;
+  }
+
+  .field {
+    margin-bottom: 50px;
+    padding-bottom: 15px;
+    width: 409px;
+    display: flex;
+  }
+
+  .error {
+    top: 50px;
+  }
+}
