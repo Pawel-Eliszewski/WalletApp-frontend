@@ -83,7 +83,7 @@ export const ModalAddTransaction = () => {
       transactionType === "expense" &&
       transactionCategory === "Select a category"
     ) {
-      Notify.info("Please select a category before submitting.");
+      Notify.info("Please select a category.");
       return;
     } else if (amount === "" || undefined) {
       Notify.info("Please provide the correct amount.");

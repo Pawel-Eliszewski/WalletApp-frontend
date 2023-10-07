@@ -21,12 +21,14 @@ export const DropdownMenu = ({ category, onClick }) => {
 
   useEffect(() => {
     setUpdatedCategory("Select a category");
+    setIsActive(false);
   }, [isModalAddTransactionOpen]);
 
   useEffect(() => {
     !isModalEditTransactionOpen
       ? setUpdatedCategory(null)
       : setUpdatedCategory(category);
+    setIsActive(false);
   }, [isModalEditTransactionOpen]);
 
   let categories = [
