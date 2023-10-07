@@ -64,7 +64,10 @@ export const ModalAddTransaction = () => {
   const handleTransactionTypeChange = () => {
     transactionType === "expense"
       ? setTransactionType("income")
-      : setTransactionType("expense");
+      : [
+          setTransactionType("expense"),
+          setTransactionCategory("Select a category"),
+        ];
   };
 
   const handleTransactionCategoryChange = (category) => {
