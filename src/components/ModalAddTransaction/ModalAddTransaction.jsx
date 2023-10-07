@@ -101,7 +101,6 @@ export const ModalAddTransaction = () => {
       })
     );
 
-    Notify.success("Transaction added successfully.");
     document.body.style.overflow = "unset";
     form.reset();
     setTransactionType("expense");

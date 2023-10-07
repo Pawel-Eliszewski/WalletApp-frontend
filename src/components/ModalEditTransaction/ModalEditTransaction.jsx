@@ -82,7 +82,6 @@ export const ModalEditTransaction = () => {
       })
     );
 
-    Notify.success("Transaction updated successfully.");
     setUpdatedCategory(updatedCategory);
     document.body.style.overflow = "unset";
     form.reset();

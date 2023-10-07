@@ -17,7 +17,6 @@ import { ButtonAddTransaction } from "../ButtonAddTransaction/ButtonAddTransacti
 import { Balance } from "../Balance/Balance";
 import { paginateTransactions } from "../../utils/pagination";
 import { nanoid } from "nanoid";
-import { Notify } from "notiflix";
 import styles from "./HomeTab.module.css";
 
 export const HomeTab = () => {
@@ -60,12 +59,7 @@ export const HomeTab = () => {
   };
 
   const handleDelete = (transactionId) => {
-    try {
-      dispatch(deleteTransaction(transactionId));
-      Notify.success("Transaction deleted successfully.");
-    } catch (e) {
-      console.error(e);
-    }
+    dispatch(deleteTransaction(transactionId));
   };
 
   return (
