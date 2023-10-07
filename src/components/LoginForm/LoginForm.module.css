@@ -23,7 +23,6 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  color: rgba(189, 189, 189, 0.7);
 }
 
 .field {
@@ -48,7 +47,6 @@
   outline: none;
   background-color: transparent;
   font-size: 18px;
-  color: rgba(189, 189, 189, 1);
   font-weight: 400;
   line-height: 27px;
   letter-spacing: 0em;
