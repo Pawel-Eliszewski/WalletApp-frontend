@@ -171,6 +171,7 @@ export const ModalAddTransaction = () => {
               placeholder="0.00"
             ></input>
             <Calendar
+              transactionType={transactionType}
               addTransactionDate={addTransactionDate}
               onChange={handleNewDate}
             />

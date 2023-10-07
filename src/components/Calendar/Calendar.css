@@ -1,0 +1,241 @@
+.rdt {
+    position: relative;
+}
+
+.rdtPicker {
+    display: none;
+    position: absolute;
+    min-width: 250px;
+    padding: 4px;
+    margin-top: 1px;
+    z-index: 100;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+    border: 1px solid #f9f9f9;
+}
+
+.rdtOpen .rdtPicker {
+    display: block;
+}
+
+.rdtStatic .rdtPicker {
+    box-shadow: none;
+    position: static;
+}
+
+.rdtPicker .rdtTimeToggle {
+    text-align: center;
+}
+
+.rdtPicker table {
+    width: 100%;
+    margin: 0;
+}
+
+.rdtPicker td,
+.rdtPicker th {
+    text-align: center;
+    height: 28px;
+}
+
+.rdtPicker td {
+    cursor: pointer;
+}
+
+.rdtPicker td.rdtOld,
+.rdtPicker td.rdtNew {
+    color: #999999;
+}
+
+.rdtPicker td.rdtToday {
+    position: relative;
+}
+
+.rdtPicker td.rdtActive.rdtToday:before {
+    border-bottom-color: #fff;
+}
+
+.rdtPicker td.rdtDisabled,
+.rdtPicker td.rdtDisabled:hover {
+    background: none;
+    color: #999999;
+    cursor: not-allowed;
+}
+
+.rdtPicker td span.rdtOld {
+    color: #999999;
+}
+
+.rdtPicker td span.rdtDisabled,
+.rdtPicker td span.rdtDisabled:hover {
+    background: none;
+    color: #999999;
+    cursor: not-allowed;
+}
+
+.rdtPicker th {
+    border-bottom: 1px solid #f9f9f9;
+}
+
+.rdtPicker .dow {
+    width: 14.2857%;
+    border-bottom: none;
+    cursor: default;
+}
+
+.rdtPicker th.rdtSwitch {
+    width: 100px;
+}
+
+.rdtPicker th.rdtNext,
+.rdtPicker th.rdtPrev {
+    font-size: 21px;
+    vertical-align: top;
+}
+
+.rdtPrev span,
+.rdtNext span {
+    display: block;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Chrome/Safari/Opera */
+    -khtml-user-select: none;
+    /* Konqueror */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+.rdtPicker th.rdtDisabled,
+.rdtPicker th.rdtDisabled:hover {
+    background: none;
+    color: #999999;
+    cursor: not-allowed;
+}
+
+.rdtPicker thead tr:first-of-type th {
+    cursor: pointer;
+}
+
+.rdtPicker thead tr:first-of-type th:hover {
+    background: #eeeeee;
+}
+
+.rdtPicker tfoot {
+    border-top: 1px solid #f9f9f9;
+}
+
+.rdtPicker button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.rdtPicker button:hover {
+    background-color: #eee;
+}
+
+.rdtPicker thead button {
+    width: 100%;
+    height: 100%;
+}
+
+td.rdtMonth,
+td.rdtYear {
+    height: 50px;
+    width: 25%;
+    cursor: pointer;
+}
+
+td.rdtMonth:hover,
+td.rdtYear:hover {
+    background: #eee;
+}
+
+.calendarBox {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 280px;
+    padding-right: 12px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid gray;
+}
+
+.calendar input {
+    cursor: pointer;
+    width: 280px;
+    border: none;
+    padding-left: 12px;
+    background: transparent;
+}
+
+.calendar input:focus-visible {
+    border: none;
+    outline: none;
+}
+
+.calendar::after {
+    content: url("/assets/icon-calendar.svg");
+    top: 0px;
+    left: 248px;
+    display: block;
+    position: absolute;
+    z-index: -1;
+}
+
+.calendar div {
+    width: 100%;
+    margin-top: 7px;
+    background-color: rgba(243, 243, 243, 0.93);
+    border-radius: 20px;
+}
+
+.calendar table {
+    background: transparent;
+}
+
+.calendar td {
+    border-radius: 5px;
+}
+
+.calendar td.rdtToday:before {
+    content: '';
+    display: inline-block;
+    border-left: 7px solid transparent;
+    border-bottom: 7px solid white;
+    border-top-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+}
+
+.calendar td:hover,
+.calendar .rdtToday {
+    background-color: var(--primary-expense-color);
+    color: white;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.calendar.income td:hover,
+.calendar.income .rdtToday {
+    background-color: var(--primary-income-color);
+}
+
+@media screen and (min-width: 768px) {
+    .calendar::after {
+        left: 143px;
+    }
+
+    .calendar input {
+        width: 100%;
+    }
+
+    .rdtPicker {
+        left: -40px;
+    }
+}

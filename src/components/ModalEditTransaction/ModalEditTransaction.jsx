@@ -149,6 +149,7 @@ export const ModalEditTransaction = () => {
               placeholder={selectedOrFakeTransaction.amount.toFixed(2) || ""}
             ></input>
             <Calendar
+              transactionType={selectedOrFakeTransaction.type}
               editTransactionDate={selectedOrFakeTransaction.date}
               onChange={handleUpdatedDate}
             />
