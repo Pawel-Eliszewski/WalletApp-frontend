@@ -23,6 +23,10 @@
   padding-bottom: 10px;
 }
 
+.currency_head_row {
+  height: 50px;
+}
+
 .currency_body {
   padding-top: 5px;
 }

@@ -21,7 +21,6 @@ export const ModalAddTransaction = () => {
   useEffect(() => {
     const form = document.getElementById("form");
     form.reset();
-    document.body.style.overflow = "unset";
     setTransactionType("expense");
     setTransactionCategory("Select a category");
     setAddTransactionDate(formattedTodayDate);
@@ -39,6 +38,7 @@ export const ModalAddTransaction = () => {
         dispatch(setIsModalAddTransactionOpen(false));
       }
     };
+    document.body.style.overflow = "hidden";
     document.addEventListener("keydown", handleKeyDown);
     return () => {
       document.removeEventListener("keydown", handleKeyDown);

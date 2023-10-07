@@ -168,6 +168,8 @@ li.dataItemMob {
 }
 
 .dataItemBtnEdit {
+  padding: 0 0;
+  margin: 0 0;
   color: black;
   background: none;
   border: none;
