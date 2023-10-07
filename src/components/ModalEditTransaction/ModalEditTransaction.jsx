@@ -74,7 +74,10 @@ export const ModalEditTransaction = () => {
       updateTransaction({
         transactionId: selectedOrFakeTransaction._id,
         type: selectedOrFakeTransaction.type,
-        category: updatedCategory,
+        category:
+          selectedOrFakeTransaction.type === "income"
+            ? "Income"
+            : updatedCategory,
         amount: numberUpdatedAmount || selectedOrFakeTransaction.amount,
         date: updatedDate,
         comment: updatedComment || selectedOrFakeTransaction.comment,
