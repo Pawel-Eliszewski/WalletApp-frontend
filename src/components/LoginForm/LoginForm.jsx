@@ -17,11 +17,7 @@ const LoginForm = () => {
       email: values.email,
       password: values.password,
     };
-    try {
-      dispatch(login(formData));
-    } catch (error) {
-      alert("An error occurred while processing the request.");
-    }
+    dispatch(login(formData));
   };
 
   return (

@@ -18,11 +18,7 @@ const RegisterForm = () => {
       email: values.email,
       password: values.password,
     };
-    try {
-      dispatch(register(formData));
-    } catch (error) {
-      console.log(error);
-    }
+    dispatch(register(formData));
   };
 
   return (

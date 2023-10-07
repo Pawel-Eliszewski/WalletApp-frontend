@@ -19,6 +19,7 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await instance.post("/user/register", credentials);
+      Notify.success("Registration successful.");
       return response.data;
     } catch (error) {
       error.response.data.message === "Email in use"
