@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { Notify } from "notiflix";
 
 export const instance = axios.create({
   baseURL: "https://wallet-app-18x3.onrender.com",
@@ -20,6 +21,9 @@ export const register = createAsyncThunk(
       const response = await instance.post("/user/register", credentials);
       return response.data;
     } catch (error) {
+      error.response.data.message === "Email in use"
+        ? Notify.failure("Email already in use")
+        : Notify.failure("Registration failed");
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -33,6 +37,7 @@ export const login = createAsyncThunk(
       setAuthHeader(response.data.data.token);
       return response.data;
     } catch (error) {
+      Notify.failure("Invalid email or password");
       return thunkAPI.rejectWithValue(error.message);
     }
   }

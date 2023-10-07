@@ -18,11 +18,10 @@ const RegisterForm = () => {
       email: values.email,
       password: values.password,
     };
-
     try {
       dispatch(register(formData));
     } catch (error) {
-      alert("An error occurred while processing the request.");
+      console.log(error);
     }
   };
 
@@ -43,7 +42,7 @@ const RegisterForm = () => {
               <img
                 className={styles.email}
                 src="/assets/icon-email.svg"
-                alt="email"
+                alt="email icon"
               />
               <Field
                 className={styles.register__field}
@@ -61,7 +60,7 @@ const RegisterForm = () => {
               <img
                 className={styles.fieldimg}
                 src="/assets/icon-lock.svg"
-                alt="lock"
+                alt="lock icon"
               />
               <Field
                 className={styles.register__field}
@@ -92,9 +91,6 @@ const RegisterForm = () => {
                 component="div"
                 className={styles.error}
               />
-              <div className={styles.meter}>
-                <div className={styles.meter__element}></div>
-              </div>
             </div>
             <button className={styles.register__signup} type="submit">
               REGISTER
