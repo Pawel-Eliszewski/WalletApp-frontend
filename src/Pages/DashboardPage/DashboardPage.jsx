@@ -71,7 +71,7 @@ const DesktopDashboard = () => {
   );
 };
 
-export const DashboardPage = () => {
+export default function DashboardPage() {
   return (
     <Media
       queries={{
@@ -89,4 +89,4 @@ export const DashboardPage = () => {
       )}
     </Media>
   );
-};
+}

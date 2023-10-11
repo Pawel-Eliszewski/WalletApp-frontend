@@ -1,20 +1,19 @@
 import { useEffect } from "react";
-import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
-import { RestrictedRoute } from "./components/RestrictedRoute/RestrictedRoute";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useMedia } from "react-use";
 import { selectIsRefreshing } from "./redux/session/selectors";
 import { refreshUser } from "./redux/session/operations";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
-import { DashboardPage } from "./Pages/DashboardPage/DashboardPage";
-import Loader from "./components/Loader/Loader";
+import DashboardPage from "./Pages/DashboardPage/DashboardPage";
+import { Loader } from "./components/Loader/Loader";
+import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
+import { RestrictedRoute } from "./components/RestrictedRoute/RestrictedRoute";
+import { HomeTab } from "./components/HomeTab/HomeTab";
 import { Currency } from "./components/Currency/Currency";
 import { DiagramTab } from "./components/DiagramTab/DiagramTab";
-import { useMedia } from "react-use";
-import "./App.css";
 
-import { HomeTab } from "./components/HomeTab/HomeTab";
 function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);

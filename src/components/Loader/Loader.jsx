@@ -1,6 +1,6 @@
 import s from "./Loader.module.css";
 
-function Loader() {
+export const Loader = () => {
   return (
     <div className={s.s}>
       <div className={s.Loader} data-text="Wallet">
@@ -11,6 +11,4 @@ function Loader() {
       </div>
     </div>
   );
-}
-
-export default Loader;
+};
