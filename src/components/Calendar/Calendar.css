@@ -215,14 +215,16 @@ td.rdtYear:hover {
 }
 
 .calendar td:hover,
-.calendar .rdtToday {
+.calendar .rdtToday,
+.calendar .rdtActive {
     background-color: var(--primary-expense-color);
     color: white;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
 .calendar.income td:hover,
-.calendar.income .rdtToday {
+.calendar.income .rdtToday,
+.calendar.income .rdtActive {
     background-color: var(--primary-income-color);
 }
 
