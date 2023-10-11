@@ -19,6 +19,10 @@ export const ModalEditTransaction = () => {
   );
 
   useEffect(() => {
+    setUpdatedCategory(selectedOrFakeTransaction.category);
+  }, [isModalEditTransactionOpen]);
+
+  useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
         const amount = document.getElementById("amount");
@@ -84,7 +88,7 @@ export const ModalEditTransaction = () => {
       })
     );
 
-    setUpdatedCategory(updatedCategory);
+    setUpdatedCategory(selectedOrFakeTransaction.category);
     document.body.style.overflow = "unset";
     form.reset();
     dispatch(setIsModalEditTransactionOpen(false));
