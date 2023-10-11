@@ -29,7 +29,6 @@ export const ModalEditTransaction = () => {
         dispatch(setIsModalEditTransactionOpen(false));
       }
     };
-    document.body.style.overflow = "hidden";
     document.addEventListener("keydown", handleKeyDown);
     return () => {
       document.removeEventListener("keydown", handleKeyDown);

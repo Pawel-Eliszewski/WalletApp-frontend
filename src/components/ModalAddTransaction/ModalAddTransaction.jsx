@@ -38,7 +38,6 @@ export const ModalAddTransaction = () => {
         dispatch(setIsModalAddTransactionOpen(false));
       }
     };
-    document.body.style.overflow = "hidden";
     document.addEventListener("keydown", handleKeyDown);
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
